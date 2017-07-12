@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spring_2017 (current).Plugins", "Spring_2017 (current).Plugins.csproj", "{AF9B361E-2C13-4D25-21B0-89B78C80D36A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spring_2017 (current)", "Spring_2017 (current).csproj", "{F80F6A26-5207-56CE-8DE3-A4DC2CE99EFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spring_2017 (current).Editor", "Spring_2017 (current).Editor.csproj", "{DD6F96B4-9904-26CA-5370-97CE8E2DBCF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF9B361E-2C13-4D25-21B0-89B78C80D36A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF9B361E-2C13-4D25-21B0-89B78C80D36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF9B361E-2C13-4D25-21B0-89B78C80D36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF9B361E-2C13-4D25-21B0-89B78C80D36A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F80F6A26-5207-56CE-8DE3-A4DC2CE99EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F80F6A26-5207-56CE-8DE3-A4DC2CE99EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F80F6A26-5207-56CE-8DE3-A4DC2CE99EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F80F6A26-5207-56CE-8DE3-A4DC2CE99EFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD6F96B4-9904-26CA-5370-97CE8E2DBCF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6F96B4-9904-26CA-5370-97CE8E2DBCF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6F96B4-9904-26CA-5370-97CE8E2DBCF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6F96B4-9904-26CA-5370-97CE8E2DBCF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
