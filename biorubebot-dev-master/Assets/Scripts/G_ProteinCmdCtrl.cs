@@ -14,7 +14,6 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 	private bool haveGTP = false;		// is g-protein bound to a GTP
 	private bool targeting = false;		// is g-protein targeting phosphate
 	public bool isActive = true;
-    private bool WinConMet = false;
 
 	private float delay = 0;			// used to delay proceed to target and undock
 	private float deltaDistance;		// // measures distance traveled to see if GTP is stuck behind something
@@ -101,12 +100,8 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         if (haveGTP && !roaming && (delay += Time.deltaTime) > 2)
         {
 			Undock ();
-            if (!WinConMet & (GameObject.FindWithTag("Win_GProteinFreed")))
-            {
-                WinScenario.dropTag("Win_GProteinFreed");
-                WinConMet = true;
-            }
-            
+            //check if action is a win condition for the scene/level
+            if (GameObject.FindWithTag("Win_GProteinFreed")) WinScenario.dropTag("Win_GProteinFreed");
         }
 
 

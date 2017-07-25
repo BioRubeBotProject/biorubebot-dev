@@ -21,15 +21,17 @@ using System.Collections;
 //Line 44:  Added call to IEnumerator co-routine 'Explode'
 //Lines 47-65:  Added 'Explode' to destroy ATP after dropping phosphate at the receptor
 
+
 public class ReceptorLegScript : MonoBehaviour
 {
   
   public ParticleSystem destructionEffect;
 
-  //Parent object used for unity editor Tree Hierarchy
-  public GameObject parentObject;
-  
-  private IEnumerator OnTriggerEnter2D(Collider2D other)
+
+  public GameObject parentObject;            //Parent object used for unity editor Tree Hierarchy
+  private bool WinConMet = false;           //used to determine if the win condition has already been met
+
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
   {
         if (other.gameObject.tag == "ATP" && other.GetComponent<ATPpathfinding>().found == true) 
         {                                    // helps prevent rogue ATP from hijacking leg
@@ -61,6 +63,12 @@ public class ReceptorLegScript : MonoBehaviour
             }
 
             StartCoroutine(Explode (other.gameObject)); //self-destruct after 3 seconds
+            //determine if win condition has been reached
+            if (!WinConMet & (GameObject.FindWithTag("Win_ReceptorPhosphorylation")))
+            {
+                WinScenario.dropTag("Win_ReceptorPhosphorylation");
+                WinConMet = true;
+            }
         }
 
         

@@ -94,10 +94,11 @@ public class Spawner : MonoBehaviour , Tutorial.SwitchOnOff
   //------------------------------------------------------------------------------------------------
   // Called when user releases mouse button. The "if" statement disallows object creation until the
   // Cell Membrane is in place or if the user is trying to create the Cell Membrane.
+  // Additional restriction on x position of mouse to ensure object won't be dropped behind the Menu drop down
   void OnMouseUp()
   {
-    if(cellMembrane != null || spawnedObject.name == "Cell Membrane")
-    {
+    if((cellMembrane != null || spawnedObject.name == "Cell Membrane") && x < 770.0)
+    {     
       spawnLocation = transform.position;
 	  GameObject obj = Instantiate (spawnedObject, spawnLocation, Quaternion.Euler(0f, 0f, degrees)) as GameObject;
 
@@ -108,7 +109,8 @@ public class Spawner : MonoBehaviour , Tutorial.SwitchOnOff
       if(obj != null) {
         obj.SetActive (false);
       }
-    }                                  
+    } 
+    
     transform.position = ReturnLocation;
     transform.localRotation = ReturnRotation;
     this.GetComponent<Collider2D>().enabled = true;

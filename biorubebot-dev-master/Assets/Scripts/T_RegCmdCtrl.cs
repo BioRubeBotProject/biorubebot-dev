@@ -27,12 +27,13 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 	private Vector3 ingressDistance;
 	private GameObject Nucleus;
 
-    //Parent object used for unity editor Tree Hierarchy
-    private GameObject parentObject;
+    
+    private GameObject parentObject;            //Parent object used for unity editor Tree Hierarchy
+    private bool WinConMet = false;             //used to determine if the win condition has already been met
 
-	
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 		GameObject gameControllerObject = GameObject.FindWithTag("GameController");
 		this.gameObject.GetComponent<CircleCollider2D> ().enabled = false;
 		isActive = true;
@@ -138,7 +139,14 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 					timeoutForInteraction = 0;
 					delay = 0;
 					tag = "ATP_tracking";
-				}
+
+                    //determine if win condition has been reached
+                    if (!WinConMet & (GameObject.FindWithTag("Win_Kinase_TReg_dock")))
+                    {
+                        WinScenario.dropTag("Win_Kinase_TReg_dock");
+                        WinConMet = true;
+                    }
+                }
 			}
 			//Increment the timeout variable by delta time
 			timeoutForInteraction += Time.deltaTime;
@@ -185,8 +193,8 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 				if (active_Kinase_P2 != null) {
 					//Enter the state of looking for the nearest NPC
 					this.tag = "T_Reg_To_NPC";
-                    
-                    if(GameObject.FindWithTag("Win_TranscriptionFactorCompleted")) WinScenario.dropTag("Win_TranscriptionFactorCompleted");
+                    //check if action is a win condition for the scene/level
+                    if (GameObject.FindWithTag("Win_TranscriptionFactorCompleted")) WinScenario.dropTag("Win_TranscriptionFactorCompleted");
 					
 					// Disable the Circle Collider the ATP was using
 					this.gameObject.GetComponent<CircleCollider2D> ().enabled = false;
@@ -252,9 +260,9 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 		} 
 		// Check if Tag is T_Reg_Complete,
 		else if (tag == "T_Reg_Complete") {
-			// Congratulations, the game is won
-			{
-                if(GameObject.FindWithTag("Win_TFactorEntersNPC")) WinScenario.dropTag("Win_TFactorEntersNPC");// FOR CONGRATULATIONS SCREEN
+            //check if action is a win condition for the scene/level
+            {
+                if (GameObject.FindWithTag("Win_TFactorEntersNPC")) WinScenario.dropTag("Win_TFactorEntersNPC");// FOR CONGRATULATIONS SCREEN
 				Roam.Roaming(this.gameObject);
 			}
 		}
