@@ -97,7 +97,7 @@ public class Spawner : MonoBehaviour , Tutorial.SwitchOnOff
   // Additional restriction on x position of mouse to ensure object won't be dropped behind the Menu drop down
   void OnMouseUp()
   {
-    if((cellMembrane != null || spawnedObject.name == "Cell Membrane") && x < 770.0)
+    if((cellMembrane != null || spawnedObject.name == "Cell Membrane") && x < 900.0)
     {     
       spawnLocation = transform.position;
 	  GameObject obj = Instantiate (spawnedObject, spawnLocation, Quaternion.Euler(0f, 0f, degrees)) as GameObject;
