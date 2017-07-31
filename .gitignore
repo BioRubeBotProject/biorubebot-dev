@@ -7,6 +7,11 @@
 UnityGenerated/
 Assets/AssetStoreTools*
 
+# Specific for this repo
+biorubebot-dev-master/Library
+biorubebot-dev-master/Assets/AssetStoreTools*
+biorubebot-dev-master/Obj
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
