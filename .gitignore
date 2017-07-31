@@ -1,10 +1,10 @@
 # =============== #
 # Unity generated #
 # =============== #
-Temp/
-Obj/
+/[Tt]emp/
+/[Oo]bj/
+/[Ll]ibrary/
 UnityGenerated/
-Library/
 Assets/AssetStoreTools*
 
 # ===================================== #
@@ -20,6 +20,16 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
+*.pdb
+
+#
+# Unity3d generated meta files
+#
+*.pidb.meta
+sysinfo.txt
+
+*.apk
+*.unitypackage
 
 # ============ #
 # OS generated #
