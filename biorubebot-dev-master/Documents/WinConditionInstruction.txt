@@ -17,5 +17,5 @@ Steps for Implementing a New Win Condition
 		Note: This string must be EXACTLY what was added in step 3
 
 6)	Add following line of code to script (Replace “Win_Example” with newly created tag) wherever the new win condition occurs in your code.
-	if (!WinConMet && (GameObject.FindWithTag("Win_Example "))) WinScenario.dropTag("Win_Example ");
+	if (GameObject.FindWithTag("Win_Example ")) WinScenario.dropTag("Win_Example ");
 		Note: This string must be EXACTLY what was added in step 3

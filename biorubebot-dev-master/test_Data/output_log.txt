@@ -25,25 +25,25 @@ Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Manage
 Loading C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Pathfinding.Ionic.Zip.Reduced.dll into Unity Child Domain
 Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Pathfinding.JsonFx.dll (this message is harmless)
 Loading C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Pathfinding.JsonFx.dll into Unity Child Domain
-- Completed reload, in  0.302 seconds
+- Completed reload, in  0.268 seconds
 Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.385534 ms
+UnloadTime: 1.157605 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.991729 ms
+UnloadTime: 3.087946 ms
 
 Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 991.
-Total: 0.726978 ms (FindLiveObjects: 0.054737 ms CreateObjectMapping: 0.045756 ms MarkObjects: 0.542240 ms  DeleteObjects: 0.083388 ms)
+Total: 0.697899 ms (FindLiveObjects: 0.058585 ms CreateObjectMapping: 0.047895 ms MarkObjects: 0.511450 ms  DeleteObjects: 0.079539 ms)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.280145 ms
+UnloadTime: 2.359685 ms
 
 Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 1231.
-Total: 0.874939 ms (FindLiveObjects: 0.072697 ms CreateObjectMapping: 0.064572 ms MarkObjects: 0.701320 ms  DeleteObjects: 0.035921 ms)
+Total: 0.855696 ms (FindLiveObjects: 0.072270 ms CreateObjectMapping: 0.062434 ms MarkObjects: 0.685497 ms  DeleteObjects: 0.034638 ms)
 
 Start -> 0
  
@@ -57,60 +57,48 @@ FastForwardButton -> 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
+OnTriggerEnter2D -> object name = _ReceptorInactive(Clone)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
 FastForwardButton -> 1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-FastForwardButton -> 2
+PauseButton -> 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-FastForwardButton -> 1
+PlayButton -> 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-FastForwardButton -> 2
+PlayButton -> 1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OnTriggerEnter2D -> object name = _ReceptorInactive(Clone)
+PauseButton -> 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OnTriggerEnter2D -> object name = _ReceptorInactive(Clone)
+PlayButton -> 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OnTriggerEnter2D -> object name = _ReceptorInactive(Clone)
+PlayButton -> 1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OnTriggerEnter2D -> object name = _ReceptorInactive(Clone)
+PauseButton -> 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OnTriggerEnter2D -> object name = _ReceptorInactive(Clone)
+PlayButton -> 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-OnTriggerEnter2D -> object name = _ReceptorInactive(Clone)
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.821103 ms
-
-Unloading 63 unused Assets to reduce memory usage. Loaded Objects now: 1018.
-Total: 1.530502 ms (FindLiveObjects: 0.046184 ms CreateObjectMapping: 0.051743 ms MarkObjects: 0.508884 ms  DeleteObjects: 0.922834 ms)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.733820 ms
-
-Unloading 370 unused Assets to reduce memory usage. Loaded Objects now: 548.
-Total: 0.793689 ms (FindLiveObjects: 0.060724 ms CreateObjectMapping: 0.044901 ms MarkObjects: 0.250593 ms  DeleteObjects: 0.436614 ms)
 
 Setting up 4 worker threads for Enlighten.
-  Thread -> id: 3638 -> priority: 1 
-  Thread -> id: 3750 -> priority: 1 
-  Thread -> id: 2c5c -> priority: 1 
-  Thread -> id: 2ab8 -> priority: 1 
+  Thread -> id: 393c -> priority: 1 
+  Thread -> id: 3190 -> priority: 1 
+  Thread -> id: 748 -> priority: 1 
+  Thread -> id: 700 -> priority: 1 
