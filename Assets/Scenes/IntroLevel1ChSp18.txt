@@ -1,0 +1,33 @@
+IntroLevel1 Changes Spring 2018
+
+Had to update some Assets for the project using:
+1.To do this go to the Assets menu at the top. 
+2.Import Package
+3.Select Package that needs to be updated
+
+
+Had to Reimport all at one point to fix some build errors
+-- option under assets menu
+
+
+fixed following scripts:
+(all changes are indicated in scripts with comments)
+
+ActivateTrigger.cs -- line 7--> ActivateTrigger was changed to 
+DoActiveTrigger.(both obj have same parameters)
+
+LoadScene.cs -- line 14-->in the rerstartbutton() method Application.LoadLevel(Application.loadedLevel)
+was replaced with SceneManager.LoadScene(homeMenuScene);.
+On line 22 --> Application.LoadLevel(nextScene); was replaced with the updated SceneManager.LoadScene(nextScene);
+On line 4 -->using UnityEngine.SceneManagement; <-- needed for SceneManager)
+
+AstarUpdateWindow.cs -- added lines 42 and 43 to replace obselete window.title on line 41.
+The old window.title received a string type. window.title has been replaced with window.titleContent.
+window.titleContent can recieve a GUIContent type which has a constructor to for dynamic creation with string.
+
+NavMeshRenderer.cs -- Line 24 lastLevel is looking for EditorApplication.currentScene to return a string.
+EditorApplication.currentScene is obselete, so i replaced it with SceneManager.GetActiveScene.ToString(), which
+returns the current scene as a Scene type converted to string for lastlevel. (This could probably be done with 
+.name instead of tostring(), which returns a Scene type data field called name. Need to test this.) 
+On line 28 EditorApplication.currentScene was replaced with SceneManager.GetActiveScene().ToString(), same
+rational as above. 
