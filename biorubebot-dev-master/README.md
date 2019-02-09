@@ -1,26 +1,40 @@
-# BioRubeBot (Development)
-This is the git repository for the production version of BioRubeBot.
+# BioRubeBot
 
-The master branch in this repository contains the version of the game
-as it existed at start of development.   Development MUST occur in the
-biorubebot-dev repository - only release branches from that repo and
-hotfix branches in this repo should be pushed to the master branch.
+#### About This Project
+This project is an ongoing development of an education Biology game focused on biological cellular activity.
 
-At start of a project, developers should pull the current master from
-biorubebot-production into the master branch in this repository. At that
-time, a new product release branch should be created from the master in
-THIS repository.   For example, a "Spring2017" branch should be created
-for development started in that semester.
+Dr. Sara Cline, Professor of Biology at Athens State University, envisioned a game that would introduce individuals to biological cellular activity.  BioRubeBot is an educational application developed to entertain and educate young and old alike.  Game play is designed to simulate the cellular Mitogen-activated Protein Kinase signalling process (MAP-K).
 
-Team members need to create a new branch for each feature that they are
-adding or modifying.  When ready to integrate this feature, merge your
-work into the product release branch.  Feature branches may be deleted
-once one confirms the merge was successful.  Upon completion of the project,
-the product release branch should be merged into the master branch.
+### Notes to the developers
 
-Upon approval of changes, Prof. Lewis or Prof. Mayfield will merge the
-master branch in this repository into a release branch in
-biorubebot-production.  Once it's confirmed this is working, that branch
-will be merged into the master branch in the production repository.
+Developers that work on this project will **NOT** have access to making changes to master.
 
-The Project is currently compiled under Unity Version 5.5.0f3.
+### How to Build the Game Locally
+1. Navigate to the most current version in GitHub
+   * Based on current knowledge, the most up-to-date repository is:
+     https://github.com/BioRubeBotProject/Summer-2017/tree/master/biorubebot-dev-master
+2. Use command `git clone <link-from-URL-above>`
+3. Make note of the location that the repository is downloaded to.
+4. Download Unity Version `2018.3.2f1`
+5. Open Unity after verifying it is the aforementioned version
+6. Select the open icon at the top right of the Unity window
+7. Select the path from Step 3
+   * It may be required to "Switch Target" based on the OS being developed on
+
+
+### Notes to developers
+It is recommended to make two primary branches for the duration of your team
+1. Create a "production/pseudo-master" branch labeled `<Term(ex:Fall, Spring, Summer)><Year>-Production`, for example `Spring2019-Production`
+2. Create a "staging" branch labeled `<Term(ex:Fall, Spring, Summer)><Year>-Dev`, for example `Spring2019-Dev`
+
+The `-Production` branch will be used as the submission branch at the end of the semester.
+
+The `-Dev` branch will be used to bring together your teams changes *after testing has been done on individual branches* so that all teammates can have the current, working development branch.
+
+Team members should also make unique branches for each feature to be worked on so that neither the `-Dev` or `-Production` branches become corrupted with potentially bad code.
+
+Use
+
+The Project is currently compiled under Unity Version 2018.3.2f1.
+
+
