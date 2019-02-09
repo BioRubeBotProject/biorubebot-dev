@@ -55,7 +55,7 @@ crashlytics-build.properties
 
 # Unity generated #
 Temp/
-Library/*
+~/Library/
 
 # OS generated
 .DS_Store
