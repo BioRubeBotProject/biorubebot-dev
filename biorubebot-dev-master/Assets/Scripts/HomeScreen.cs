@@ -46,7 +46,7 @@ public class HomeScreen : MonoBehaviour {
 					PopupCell (cell4, 10.0f,  2.50f, 48f);
 					break;
 				case 78: 
-					PopupCell (cell5, 32.0f,  20.0f, 50f);
+					PopupCell (cell5, 32.0f,  20.0f, 49f);
 					break;
 				case 128:
 					playBtn.SetActive(true);
