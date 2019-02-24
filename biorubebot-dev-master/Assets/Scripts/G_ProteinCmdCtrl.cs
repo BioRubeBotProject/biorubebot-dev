@@ -41,8 +41,8 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 		childGDP.GetComponent<CircleCollider2D> ().enabled = false;
 		childGDP.GetComponent<Rigidbody2D> ().isKinematic = true;
 		childGDP.transform.parent = transform;
-		transform.GetChild (2).GetComponent<SpriteRenderer> ().color = Color.cyan; // = {255,91,99,255};
-		transform.GetChild (3).GetComponent<SpriteRenderer> ().color = Color.red; // = {64,231,255, 255};
+		transform.GetChild (2).GetComponent<SpriteRenderer> ().color = Color.red; // = {255,91,99,255};
+		transform.GetChild (3).GetComponent<SpriteRenderer> ().color = Color.cyan; // = {64,231,255, 255};
 	}
 
 	private void FixedUpdate()
