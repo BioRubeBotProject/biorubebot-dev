@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 using System.Collections;
 
@@ -129,3 +130,4 @@ public class PanAndZoom : MonoBehaviour
 	}
 }
 
+*/
