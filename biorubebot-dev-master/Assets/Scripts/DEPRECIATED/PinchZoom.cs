@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿/*
+using UnityEngine;
 
 public class PinchZoom : MonoBehaviour
 {
@@ -47,6 +48,4 @@ public class PinchZoom : MonoBehaviour
 	}
 }
 
-
-
-
+*/
