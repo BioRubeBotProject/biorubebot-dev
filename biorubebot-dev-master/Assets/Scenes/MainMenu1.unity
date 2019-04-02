@@ -585,7 +585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 25, y: 10}
+  m_AnchoredPosition: {x: -19.699997, y: 10}
   m_SizeDelta: {x: 50, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058251694
@@ -814,7 +814,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 130, y: 175}
+  m_AnchoredPosition: {x: 130, y: 210}
   m_SizeDelta: {x: 225, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1483393499
@@ -858,9 +858,8 @@ MonoBehaviour:
     Metteer, \n   Jeremy Parker, Jeremy Rogers, \n   Danny Carroll, Eric Rogers,\n
     \  Kevin Means, Jonathan Dauwen,\n   Jason Hymas, Shelley Bess, \n   Chris Charlton,
     Denzel Sears, \n   Lisa George, Daniel Hughes, \n   David Brosnan, Joshua Brookover,\n
-    \  Eric Day, William Kelley, and\n   Page Sparks\n\n\nSpecial thanks to the faculty
-    of Athens State University's Computer Science Department whose mentorship made
-    this game possible."
+    \  Eric Day, William Kelley, and\n   Page Sparks\n\nDesigned and developed at
+    Athens\nState University."
 --- !u!222 &1483393500
 CanvasRenderer:
   m_ObjectHideFlags: 0
