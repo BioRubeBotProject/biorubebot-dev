@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 5866848}
   - component: {fileID: 11479298}
   - component: {fileID: 8284694}
+  - component: {fileID: 6546410348708365628}
   m_Layer: 0
   m_Name: Transcription Regulator2
   m_TagString: T_Reg
@@ -255,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa3ae3e2324a1449a21aa424ee21722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TReg_P2: {fileID: 0}
   destructionEffect: {fileID: 19829752, guid: 48f415e7efec513478db9735f52810aa, type: 3}
   isActive: 0
   timeoutMaxInterval: 15
@@ -384,3 +386,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &6546410348708365628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69cfe52413bdf6243ba22be532f847c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -13,6 +13,7 @@ using System;
 
 public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 	private GameObject active_Kinase_P2;
+    public GameObject TReg_P2;
 	public ParticleSystem destructionEffect;
 	public bool isActive;
 	public static bool gameWon;
@@ -123,9 +124,13 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 			if (midpointAchieved [0] && midpointAchieved [1]) {
 				// Check if the kinase has a parent
 				if (active_Kinase_P2.gameObject.transform.parent.parent == null) {
-					// Set the kinase's parent to be this T_Reg
-					active_Kinase_P2.transform.parent = this.gameObject.transform;
-					
+                    GameObject obj = Instantiate(TReg_P2, gameObject.transform.position, Quaternion.identity) as GameObject;
+                    obj.transform.parent = parentObject.transform; //Sets curent object to be under the parent object.
+                    this.gameObject.SetActive(false);
+
+                    // Set the kinase's parent to be this T_Reg
+                    active_Kinase_P2.transform.parent = obj.transform;
+                    
 					// Switch kinase to move with the its parent
 					active_Kinase_P2.GetComponent<Rigidbody2D> ().isKinematic = true;
 					active_Kinase_P2.GetComponent<PolygonCollider2D> ().enabled = false;
