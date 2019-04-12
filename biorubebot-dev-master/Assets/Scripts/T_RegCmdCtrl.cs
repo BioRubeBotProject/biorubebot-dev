@@ -131,7 +131,8 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 				if (active_Kinase_P2.gameObject.transform.parent.parent == null) {
                     GameObject obj = Instantiate(TReg_P2, gameObject.transform.position, Quaternion.identity) as GameObject;
                     obj.transform.parent = parentObject.transform; //Sets curent object to be under the parent object.
-                    this.gameObject.SetActive(false);
+                    Destroy(gameObject);
+                    //this.gameObject.SetActive(false);
 
                     // Set the kinase's parent to be this T_Reg
                     active_Kinase_P2.transform.parent = obj.transform;
