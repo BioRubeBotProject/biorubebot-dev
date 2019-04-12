@@ -48,6 +48,11 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 
         //Get reference for parent object in UnityEditor
 		parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
+
+        //if(tag == "T_Reg2")
+        //{
+        //    this.tag = "ATP_Tracking";
+        //}
 	}
 	
 	// Update is called once per frame
