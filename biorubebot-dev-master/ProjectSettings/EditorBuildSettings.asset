@@ -6,49 +6,49 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Models.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Models - Tutorial1.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Main Menu.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Models - Tutorial2.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Models - Tutorial3.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Models - Tutorial4.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Models - Tutorial5.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Models - Tutorial6.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Models - Tutorial7.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Models - Tutorial8.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Models - Tutorial9.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Models - Tutorial10.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Models - Tutorial11.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/MainMenu.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/MainMenu2.unity
+    path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/MainMenu1.unity
@@ -62,6 +62,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: e53758f40a1e4874e89321c68c82639c
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 2de29b03b6c3fad479fc20becc1db8ad
   - enabled: 0
     path: Assets/Scenes/Tutorial1.unity
     guid: a9611f75e68413341b9ada1562340b60

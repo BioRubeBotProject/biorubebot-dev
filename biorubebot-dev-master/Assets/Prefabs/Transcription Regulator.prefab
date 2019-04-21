@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa3ae3e2324a1449a21aa424ee21722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TReg_P2: {fileID: 164320, guid: 21dce8bee1dbf4f47a5a3689efc588f4, type: 3}
   destructionEffect: {fileID: 19829752, guid: 48f415e7efec513478db9735f52810aa, type: 3}
   isActive: 0
   timeoutMaxInterval: 15

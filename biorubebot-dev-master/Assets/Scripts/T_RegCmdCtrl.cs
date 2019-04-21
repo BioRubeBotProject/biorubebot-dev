@@ -13,6 +13,7 @@ using System;
 
 public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 	private GameObject active_Kinase_P2;
+    public GameObject TReg_P2;
 	public ParticleSystem destructionEffect;
 	public bool isActive;
 	public static bool gameWon;
@@ -30,7 +31,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
     
     private GameObject parentObject;            //Parent object used for unity editor Tree Hierarchy
     private bool WinConMet = false;             //used to determine if the win condition has already been met
-
+    private bool trigger = false;
 
     // Use this for initialization
     void Start () {
@@ -47,6 +48,11 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 
         //Get reference for parent object in UnityEditor
 		parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
+
+        //if(tag == "T_Reg2")
+        //{
+        //    this.tag = "ATP_Tracking";
+        //}
 	}
 	
 	// Update is called once per frame
@@ -77,6 +83,30 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 			}
 		}
 		
+        if(tag == "ATP_tracking" && trigger == false)
+        {
+            this.transform.parent = parentObject.transform; //Sets curent object to be under the parent object.
+                                                            //Destroy(gameObject);
+                                                            //this.gameObject.SetActive(false);
+
+            active_Kinase_P2 = Roam.FindClosest(transform, "Kinase_Phase_2");
+
+            // Set the kinase's parent to be this T_Reg
+            active_Kinase_P2.transform.parent = this.transform;
+
+            // Switch kinase to move with the its parent
+            active_Kinase_P2.GetComponent<Rigidbody2D>().isKinematic = true;
+            active_Kinase_P2.GetComponent<PolygonCollider2D>().enabled = false;
+
+            // Enable the Box Collider for this T_Reg
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            // Enable the Circle Collider for the ATP to approach and "Dock"
+            this.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+
+            // Setup state for an ATP to come and dock with T_Regulator
+            timeoutForInteraction = 0;
+            delay = 0;
+        }
 		
 		// Default State when nothing is happening, T_Reg will just roam
 		if (tag == "T_Reg") {
@@ -123,22 +153,27 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
 			if (midpointAchieved [0] && midpointAchieved [1]) {
 				// Check if the kinase has a parent
 				if (active_Kinase_P2.gameObject.transform.parent.parent == null) {
-					// Set the kinase's parent to be this T_Reg
-					active_Kinase_P2.transform.parent = this.gameObject.transform;
-					
+                    GameObject obj = Instantiate(TReg_P2, gameObject.transform.position, Quaternion.identity) as GameObject;
+                    //obj.transform.parent = parentObject.transform; //Sets curent object to be under the parent object.
+                    //Destroy(gameObject);
+                    //this.gameObject.SetActive(false);
+
+                    // Set the kinase's parent to be this T_Reg
+                    //active_Kinase_P2.transform.parent = obj.transform;
+                    
 					// Switch kinase to move with the its parent
-					active_Kinase_P2.GetComponent<Rigidbody2D> ().isKinematic = true;
-					active_Kinase_P2.GetComponent<PolygonCollider2D> ().enabled = false;
+					//active_Kinase_P2.GetComponent<Rigidbody2D> ().isKinematic = true;
+					//active_Kinase_P2.GetComponent<PolygonCollider2D> ().enabled = false;
 					
 					// Enable the Box Collider for this T_Reg
-					this.gameObject.GetComponent<BoxCollider2D> ().enabled = true;
+					//this.gameObject.GetComponent<BoxCollider2D> ().enabled = true;
 					// Enable the Circle Collider for the ATP to approach and "Dock"
-					this.gameObject.GetComponent<CircleCollider2D> ().enabled = true;
+					//this.gameObject.GetComponent<CircleCollider2D> ().enabled = true;
 					
 					// Setup state for an ATP to come and dock with T_Regulator
-					timeoutForInteraction = 0;
-					delay = 0;
-					tag = "ATP_tracking";
+					//timeoutForInteraction = 0;
+					//delay = 0;
+					//tag = "ATP_tracking";
 
                     //determine if win condition has been reached
                     if (!WinConMet & (GameObject.FindWithTag("Win_Kinase_TReg_dock")))
@@ -146,6 +181,8 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject {
                         WinScenario.dropTag("Win_Kinase_TReg_dock");
                         WinConMet = true;
                     }
+
+                    Destroy(this.gameObject);
                 }
 			}
 			//Increment the timeout variable by delta time
