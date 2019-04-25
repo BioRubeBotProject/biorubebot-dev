@@ -33,7 +33,11 @@ The `-Dev` branch will be used to bring together your teams changes *after testi
 
 Team members should also make unique branches for each feature to be worked on so that neither the `-Dev` or `-Production` branches become corrupted with potentially bad code.
 
-Use
+It is suggested to follow the standard git practice of building individual feature branches.
+Feature branches similarly mock story names as each branch should accomplish a story.
+
+For more on how to use git and the etiquette, please review:
+https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/best-practices
 
 The Project is currently compiled under Unity Version 2018.3.2f1.
 
