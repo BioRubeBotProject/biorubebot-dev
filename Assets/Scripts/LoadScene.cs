@@ -11,20 +11,20 @@ public class LoadScene : MonoBehaviour
     public void restartbutton()
     {    
         Application.LoadLevel(Application.loadedLevel);
-        T_RegCmdCtrl.gameWon = false;
+        GameWon.Set_WinConditions();
     }
 
     //Load next scene
     public void loadNextScene()
     {
         Application.LoadLevel(nextScene);
-        T_RegCmdCtrl.gameWon = false;
+        GameWon.Set_WinConditions();
     }
     
     public void loadHomeMenu()
     {
         Application.LoadLevel(homeMenuScene);
-        T_RegCmdCtrl.gameWon = false;
+        GameWon.Set_WinConditions();
     }
 
 

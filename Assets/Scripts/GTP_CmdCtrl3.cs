@@ -19,9 +19,9 @@ public class GTP_CmdCtrl3: MonoBehaviour
 	
 	//private Vector2 randomDirection;	// new direction vector
 	private Vector3 dockingPosition;	// myTarget position +/- offset
-	private Vector3 lastPosition;		// previous position while moving to docked G-protein
+	private Vector3 lastPosition;       // previous position while moving to docked G-protein
 
-	private void Start()
+    private void Start()
 	{
 		lastPosition = transform.position;			
 	}
@@ -127,5 +127,8 @@ public class GTP_CmdCtrl3: MonoBehaviour
 		myTarget.tag = "OccupiedG_Protein";
 		transform.tag = "DockedGTP";
 		myTarget = null;
-	}
+
+        //determine if win condition has been reached
+        if (GameObject.FindWithTag("Win_DockedGTP")) WinScenario.dropTag("Win_DockedGTP");
+    }
 }

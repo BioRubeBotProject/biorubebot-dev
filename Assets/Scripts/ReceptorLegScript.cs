@@ -21,47 +21,57 @@ using System.Collections;
 //Line 44:  Added call to IEnumerator co-routine 'Explode'
 //Lines 47-65:  Added 'Explode' to destroy ATP after dropping phosphate at the receptor
 
+
 public class ReceptorLegScript : MonoBehaviour
 {
   
   public ParticleSystem destructionEffect;
 
-  //Parent object used for unity editor Tree Hierarchy
-  public GameObject parentObject;
-  
-  private IEnumerator OnTriggerEnter2D(Collider2D other)
+
+  public GameObject parentObject;            //Parent object used for unity editor Tree Hierarchy
+  private bool WinConMet = false;           //used to determine if the win condition has already been met
+
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
   {
-    if (other.gameObject.tag == "ATP" && other.GetComponent<ATPpathfinding>().found == true) 
-    {                                    // helps prevent rogue ATP from hijacking leg
-      ReceptorLegProperties objProps = (ReceptorLegProperties)this.GetComponent("ReceptorLegProperties");
-      objProps.isActive = false; 
-      objProps.gameObject.tag = "Untagged";
-      objProps.GetComponent<CircleCollider2D>().enabled = false;
-      other.GetComponent<CircleCollider2D>().enabled = false;
-      other.GetComponent<ATPproperties>().changeState(false);
-      other.GetComponent<ATPproperties>().dropOff(transform.name);
+        if (other.gameObject.tag == "ATP" && other.GetComponent<ATPpathfinding>().found == true) 
+        {                                    // helps prevent rogue ATP from hijacking leg
+            ReceptorLegProperties objProps = (ReceptorLegProperties)this.GetComponent("ReceptorLegProperties");
+            objProps.isActive = false; 
+            objProps.gameObject.tag = "Untagged";
+            objProps.GetComponent<CircleCollider2D>().enabled = false;
+            other.GetComponent<CircleCollider2D>().enabled = false;
+            other.GetComponent<ATPproperties>().changeState(false);
+            other.GetComponent<ATPproperties>().dropOff(transform.name);
 
-      //Get reference for parent object in UnityEditor
-	  parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
+            //Get reference for parent object in UnityEditor
+	        parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
       
-      yield return new WaitForSeconds(3);
-      Transform tail = other.transform.FindChild ("Tail");
-      tail.transform.SetParent (transform);
-      other.GetComponent<ATPproperties>().changeState(true);
-      other.GetComponent<CircleCollider2D>().enabled = true;
-      other.gameObject.tag = "Untagged";
+            yield return new WaitForSeconds(3);
+            Transform tail = other.transform.Find ("Tail");
+            tail.transform.SetParent (transform);
+            other.GetComponent<ATPproperties>().changeState(true);
+            other.GetComponent<CircleCollider2D>().enabled = true;
+            other.gameObject.tag = "Untagged";
       
-      //code added to identify a 'left' receptor phosphate for G-protein docking
-      //if it is a left phosphate, G-protein must rotate to dock
-      //NOTE: EACH PHOSPHATE ATTACHED TO A RECEPTOR IS NOW TAGGED AS "receptorPhosphate"
-      tail.transform.tag = "ReceptorPhosphate";
-      if (transform.name == "_InnerReceptorFinalLeft")
-      {
-          tail.transform.GetChild(0).tag = "Left";
-      }
+            //code added to identify a 'left' receptor phosphate for G-protein docking
+            //if it is a left phosphate, G-protein must rotate to dock
+            //NOTE: EACH PHOSPHATE ATTACHED TO A RECEPTOR IS NOW TAGGED AS "receptorPhosphate"
+            tail.transform.tag = "ReceptorPhosphate";
+            if (transform.name == "_InnerReceptorFinalLeft")
+            {
+                tail.transform.GetChild(0).tag = "Left";
+            }
 
-      StartCoroutine(Explode (other.gameObject)); //self-destruct after 3 seconds
-    }
+            StartCoroutine(Explode (other.gameObject)); //self-destruct after 3 seconds
+            //determine if win condition has been reached
+            if (!WinConMet & (GameObject.FindWithTag("Win_ReceptorPhosphorylation")))
+            {
+                WinScenario.dropTag("Win_ReceptorPhosphorylation");
+                WinConMet = true;
+            }
+        }
+
+        
   }
 
   private IEnumerator Explode(GameObject other)

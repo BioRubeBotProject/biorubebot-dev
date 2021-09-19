@@ -29,7 +29,8 @@ public class DisableScreen : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (T_RegCmdCtrl.gameWon == true)
+        GameWon.Set_WinConditions();
+        if (GameWon.IsWon() == true)
             // Set active congratulations to ative. Unity does not support activating so had to update
             foreach (GameObject obj2 in gratsPanel)
                 obj2.SetActive(true);

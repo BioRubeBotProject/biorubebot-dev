@@ -9,7 +9,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 	private GameObject childGDP = null;
 	private GameObject Kinase;
 
-	private bool docked = false;		// does g-protein position = receptor phosphate position
+    private bool docked = false;		// does g-protein position = receptor phosphate position
 	private bool roaming = false;		// is g-protein free to roam about with GTP in tow
 	private bool haveGTP = false;		// is g-protein bound to a GTP
 	private bool targeting = false;		// is g-protein targeting phosphate
@@ -21,12 +21,12 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 
 	private Transform myTarget; 		// = openTarget.transform
 	private GameObject openTarget;		// a 'ReceptorPhosphate' (target) object
-	
+
 	//private Vector2 randomDirection;	// new direction vector
-	
+
 	private Vector3 lastPosition;		// previous position while moving to phosphate
 	private Vector3 dockingPosition;	// where to station the g-protein at docking
-	
+
 	private void Start()
 	{
         //test
@@ -35,25 +35,25 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 
 
         lastPosition = transform.position;
-		
+
 		//Instantiate a GDP child to tag along
 		childGDP = (GameObject)Instantiate (GDP, transform.position + new Vector3(2.2f, 0.28f, 0), Quaternion.identity);
 		childGDP.GetComponent<CircleCollider2D> ().enabled = false;
 		childGDP.GetComponent<Rigidbody2D> ().isKinematic = true;
 		childGDP.transform.parent = transform;
-		transform.GetChild (2).GetComponent<SpriteRenderer> ().color = Color.white;
-		transform.GetChild (3).GetComponent<SpriteRenderer> ().color = Color.white;
+		transform.GetChild (2).GetComponent<SpriteRenderer> ().color = Color.red; // = {255,91,99,255};
+		transform.GetChild (3).GetComponent<SpriteRenderer> ().color = Color.cyan; // = {64,231,255, 255};
 	}
 
 	private void FixedUpdate()
 	{
-      
+
         //IF G-Protein does not have a GTP(red) AND it does have GDP(blue)
 		if (!haveGTP && transform.tag == "OccupiedG_Protein")
         {
             haveGTP = true;
         }
-			
+
         //IF G-Protein is not targeting a phosphate AND G-Protein is not docked to receptor AND G-Protein does not have a GTP(red)
         if (!targeting && !docked && !haveGTP)
         {
@@ -63,20 +63,20 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 
             //IF phosphate is found
 			if (openTarget != null)
-            {  
+            {
 
 
                 //Stop movement and set to kinematic   (David 03/05)
                 //if(transform.GetComponent<Rigidbody2D>().isKinematic == false)
                 //{
                 //    transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                //    transform.GetComponent<BoxCollider2D>().enabled = true;             
+                //    transform.GetComponent<BoxCollider2D>().enabled = true;
                 //    transform.GetComponent<Rigidbody2D>().isKinematic = true;
 
                 //    //transform.GetComponent<CircleCollider2D>().enabled = false;
-                   
+
                 //}
-                                                               
+
                 myTarget = openTarget.transform;
 				dockingPosition = GetOffset ();
 				LockOn ();  //call dibs
@@ -87,9 +87,9 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         //ELSE IF G-Protein is not docked to receptor AND G-Protein does not have a GTP(red)                *On route to receptor phosphate
         else if (!docked && !haveGTP)
         {
-           
+
 			docked = ProceedToTarget ();
-			
+
 			if (docked)
             {
 				ReleaseGDP ();
@@ -100,33 +100,37 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         if (haveGTP && !roaming && (delay += Time.deltaTime) > 2)
         {
 			Undock ();
-		}
+            //check if action is a win condition for the scene/level
+            if (GameObject.FindWithTag("Win_GProteinFreed")) WinScenario.dropTag("Win_GProteinFreed");
+        }
 
 
 
         //ELSE IF G-Protein has GTP(red) AND G-Protein is ready to roam with attached GTP(red)
         else if (haveGTP && roaming)
         {
-			/*
-            if (Kinase == null) 
+            /*
+            if (Kinase == null)
             {
 				Kinase = Roam.FindClosest (transform, "Kinase");
 		    }
 
-			if (Kinase != null || myTarget != null) 
+			if (Kinase != null || myTarget != null)
             {
 				Roam.FindAndWait (Kinase.GetComponent<KinaseCmdCtrl> (), this.gameObject, ref myTarget, ref delay, "Kinase_Prep_A");
-				if (myTarget != null && (delay) >= 5) 
+				if (myTarget != null && (delay) >= 5)
                 {
 
 				}
 			}
-             
-            else 
+
+            else
             {
 				Roam.Roaming (this.gameObject);
 			}
             */
+
+
 
 			GameObject Kinase = Roam.FindClosest (transform, "Kinase");
 			if(Kinase != null && !myTarget && isActive)
@@ -139,7 +143,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 			if(myTarget && (delay += Time.deltaTime) >= 5)
             {
 				isActive = false;
-			} 
+			}
 
 			else if(isActive == true)
             {
@@ -158,16 +162,16 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 
 
 /*	GetOffset determines whether a target is to the  left or right of the receptor
-	and based on the targets position, relative to the receptor, an offset is 
+	and based on the targets position, relative to the receptor, an offset is
 	is figured into the docking position so the g-protein will mate up with the
-	receptor phosphate.If resizing objects these values will have to be changed to ensure 
+	receptor phosphate.If resizing objects these values will have to be changed to ensure
 	GDP snaps to G_Protein properly */
 	private Vector3 GetOffset()
 	{
 		if (myTarget.GetChild(0).tag == "Left")
 		{
 			//tag left G-Protein for GTP to reference in GTP_CmdCtrl.cs:
-			transform.GetChild(0).tag = "Left"; 
+			transform.GetChild(0).tag = "Left";
 			return myTarget.position + new Vector3 (-2.2f, 0.285f, myTarget.position.z);
 		}
 
@@ -185,7 +189,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 	private void LockOn()
 	{
 		targeting = true;
-		myTarget.tag = "Target";   
+		myTarget.tag = "Target";
     }
 
 /*	ProceedToTarget instructs this object to move towards its 'dockingPosition'
@@ -193,7 +197,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
  	move around the object  */
 	private bool ProceedToTarget()
 	{
-       
+
         //Unity manual says if the distance between the two objects is < _speed * Time.deltaTime,
         //protein position will equal docking...doesn't seem to work, so it's hard coded below
         transform.position = Vector2.MoveTowards (transform.position, dockingPosition, _speed *Time.deltaTime);
@@ -203,7 +207,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
             //if I didn't move...I'm stuck.  Give me a push
             Roam.Roaming(this.gameObject);
         }
-      
+
 		lastPosition = transform.position;      //breadcrumb trail
 
 		//check to see how close to the phosphate and disable collider when close
@@ -219,7 +223,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
             //transform.GetComponent<CircleCollider2D>().enabled = false;
             //transform.GetComponent<BoxCollider2D>().enabled = false;
             transform.GetComponent<Rigidbody2D>().isKinematic = true;
-             
+
 		}
 
 

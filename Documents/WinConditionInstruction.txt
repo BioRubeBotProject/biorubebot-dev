@@ -1,0 +1,21 @@
+Steps for Implementing a New Win Condition
+
+1)	Drag “WinCon_Unchecked” prefab (Project > Assets > Prefabs) to appropriate scene (or copy a currently placed WinCon_Unchecked object from an existing level)
+
+2)	Change coordinates (Inspector > Transform > X, Y, Z) to reflect proper location (First WinCon at -60, -45, 0 ; second at x of -53; 3rd at x of -46; etc. as of end of term Summer 2017).
+
+3)	Create a New Tag
+	a.	Inspector > Tag > Add Tag… (Bottom)
+	b.	Plus sign button (Bottom Right)
+	c.	Type descriptive new tag name (Current naming convention is Win_DescriptionOfEvent).
+			Note: You may want to copy this name to the clipboard for steps 5 and 6
+	d.	Select Save
+
+4)	Reselect WinCon_Unchecked prefab and set the tag to your newly created tag (Inspector > Tag > choose rag from dropdown menu)
+
+5)	Open GameWon.cs file (Project > Assets > Scripts) and add tag to WinConditionTags string array
+		Note: This string must be EXACTLY what was added in step 3
+
+6)	Add following line of code to script (Replace “Win_Example” with newly created tag) wherever the new win condition occurs in your code.
+	if (GameObject.FindWithTag("Win_Example ")) WinScenario.dropTag("Win_Example ");
+		Note: This string must be EXACTLY what was added in step 3

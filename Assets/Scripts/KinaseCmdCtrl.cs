@@ -14,9 +14,10 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
 	private float delay;
 	private float timeoutForInteraction;
 	public float timeoutMaxInterval;
+    private bool WinConMet = false;           //used to determine if the win condition has already been met
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		myTarget = null;
 		midpointSet = false;
 		midpointAchieved [0] = false;
@@ -83,7 +84,13 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
 						active_G_Protein.GetComponent<BoxCollider2D>().enabled = true;
 					}
 					Roam.Roaming(active_G_Protein);
-				}
+                    //determine if win condition has been reached
+                    if (!WinConMet & (GameObject.FindWithTag("Win_KinaseTransformation")))
+                    {
+                        WinScenario.dropTag("Win_KinaseTransformation");
+                        WinConMet = true;
+                    }
+                }
 			}
 			timeoutForInteraction += Time.deltaTime;
 		}

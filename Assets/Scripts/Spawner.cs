@@ -22,6 +22,7 @@ public class Spawner : MonoBehaviour , Tutorial.SwitchOnOff
   bool isSnapped;                     // has this object been snapped to a radius?
   float x;                            // mouse x coordinate
   float y;                            // mouse y coordinate
+  float xfrom;                        // mouse x when object is created
   float degrees;                      // calculated # of degrees for object instantiation
   Transform nucleus;                  // the nucleus (child) of the cellMembrane
   Vector3 ReturnLocation;             // original location of the "button"
@@ -61,7 +62,8 @@ public class Spawner : MonoBehaviour , Tutorial.SwitchOnOff
       nucleus = cellMembrane.transform.GetChild(0).gameObject.transform;
     }
     this.GetComponent<Collider2D>().enabled = false;
-  }
+    xfrom = Input.mousePosition.x;
+    }
   
   //------------------------------------------------------------------------------------------------
   // Called repeatedly as the user drags the mouse with the mouse button held down while hovering
@@ -94,10 +96,13 @@ public class Spawner : MonoBehaviour , Tutorial.SwitchOnOff
   //------------------------------------------------------------------------------------------------
   // Called when user releases mouse button. The "if" statement disallows object creation until the
   // Cell Membrane is in place or if the user is trying to create the Cell Membrane.
+  // Additional restriction on x position of mouse to ensure object won't be dropped behind the Menu drop down
   void OnMouseUp()
   {
-    if(cellMembrane != null || spawnedObject.name == "Cell Membrane")
-    {
+    //float MenuPos = Camera.main.WorldToScreenPoint(GameObject.FindWithTag("Drop_Down_Button").transform.position).x;
+
+    if ((cellMembrane != null || spawnedObject.name == "Cell Membrane"))// && x < (MenuPos - (MenuPos/7.77))) //This is ghetto. Why 7.77? *shrugggg* 
+    {     
       spawnLocation = transform.position;
 	  GameObject obj = Instantiate (spawnedObject, spawnLocation, Quaternion.Euler(0f, 0f, degrees)) as GameObject;
 
@@ -108,7 +113,8 @@ public class Spawner : MonoBehaviour , Tutorial.SwitchOnOff
       if(obj != null) {
         obj.SetActive (false);
       }
-    }                                  
+    } 
+    
     transform.position = ReturnLocation;
     transform.localRotation = ReturnRotation;
     this.GetComponent<Collider2D>().enabled = true;

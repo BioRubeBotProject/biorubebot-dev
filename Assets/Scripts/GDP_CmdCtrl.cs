@@ -7,8 +7,8 @@ public class GDP_CmdCtrl : MonoBehaviour
 	public ParticleSystem destructionEffect;	// 'poof' special effect for 'expended' GDP
 	public GameObject parentObject; //Parent object used for unity editor Tree Hierarchy
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         //Get reference for parent object in UnityEditor
 		parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
@@ -22,7 +22,9 @@ public class GDP_CmdCtrl : MonoBehaviour
 			tag = "DyingGDP";
 			StartCoroutine (ReleasingGDP ());
 			StartCoroutine (DestroyGDP ()); //Destroy GDP
-		}
+            //determine if win condition has been reached
+            if (GameObject.FindWithTag("Win_ReleasedGDP")) WinScenario.dropTag("Win_ReleasedGDP");
+        }
 
 		Roam.Roaming ( this.gameObject );
 	}

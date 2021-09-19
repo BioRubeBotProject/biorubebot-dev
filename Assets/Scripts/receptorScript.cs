@@ -9,12 +9,11 @@ using UnityEngine;
 
 public class receptorScript : MonoBehaviour
 {
-
     public GameObject _ActiveReceptor;
 
-    //Parent object used for unity editor Tree Hierarchy
-	public GameObject parentObject;
     
+    public GameObject parentObject;     //Parent object used for unity editor Tree Hierarchy
+
     #region Private Methods
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -34,7 +33,9 @@ public class receptorScript : MonoBehaviour
 			other.GetComponent<Rigidbody2D>().isKinematic = true;
        
 			StartCoroutine(transformReceptor(other));
-		}
+            //check if action is a win condition for the scene/level
+            if (GameObject.FindWithTag("Win_FullReceptorActivated")) WinScenario.dropTag("Win_FullReceptorActivated");
+        }
 
 
 
@@ -47,14 +48,18 @@ public class receptorScript : MonoBehaviour
             other.GetComponent<ExtraCellularProperties>().changeState(false);
             other.GetComponent<Rigidbody2D>().isKinematic = true;
       
-            StartCoroutine(transformLeftReceptor(other));   
+            StartCoroutine(transformLeftReceptor(other));
+            //check if action is a win condition for the scene/level
+            if (GameObject.FindWithTag("Win_LeftReceptorWithProtein")) WinScenario.dropTag("Win_LeftReceptorWithProtein");
         }
 
 
         //IF right receptor collides with left receptor(with protein signaller)                                                      
         else if (other.gameObject.tag == "RightReceptor" && this.gameObject.name.Equals("Left_Receptor_Active(Clone)"))
         {                
-            StartCoroutine(transformLeftReceptorWithProtein(other));         
+            StartCoroutine(transformLeftReceptorWithProtein(other));
+            //check if action is a win condition for the scene/level
+            if (GameObject.FindWithTag("Win_ReceptorsCollideWithProtein")) WinScenario.dropTag("Win_ReceptorsCollideWithProtein");
         }
 
     }
