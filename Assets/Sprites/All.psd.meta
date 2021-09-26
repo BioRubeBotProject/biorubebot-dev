@@ -1,83 +1,169 @@
 fileFormatVersion: 2
 guid: 162fe2643b54fb545a5615b40ea497af
-timeCreated: 1444232752
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Receptor Body
-    21300002: Extracellular Signal Body
-    21300004: Receptor Cap Outline
-    21300006: Extracellular Wall
-    21300008: All_4
-    21300010: Receptor Cap Body
-    21300012: Something Outline
-    21300014: Inner Receptor Outline Final
-    21300016: Inner Receptor Outline Transistion
-    21300018: Inner Receptor Outline Start
-    21300020: Transcription Regulator Outline
-    21300022: Something Body
-    21300024: Inner Receptor Body Final
-    21300026: Inner Receptor Body Transistion
-    21300028: Inner Receptor Body Start
-    21300030: Transcription Regulator Body
-    21300032: Something Side A
-    21300034: Something Side B
-    21300036: Receptor Outline
-    21300038: Kinase_Side_A
-    21300040: Phosphate Transport Outline
-    21300042: Inner Circle Object Outline
-    21300044: Kinase Outline
-    21300046: Inner Circle Object Body
-    21300048: Phosphate Transport Body
-    21300050: Kinase Side B
-    21300052: Kinase Side A
-    21300054: Kinase_Side_A2
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Receptor Body
+  - first:
+      213: 21300002
+    second: Extracellular Signal Body
+  - first:
+      213: 21300004
+    second: Receptor Cap Outline
+  - first:
+      213: 21300006
+    second: Extracellular Wall
+  - first:
+      213: 21300008
+    second: All_4
+  - first:
+      213: 21300010
+    second: Receptor Cap Body
+  - first:
+      213: 21300012
+    second: Something Outline
+  - first:
+      213: 21300014
+    second: Inner Receptor Outline Final
+  - first:
+      213: 21300016
+    second: Inner Receptor Outline Transistion
+  - first:
+      213: 21300018
+    second: Inner Receptor Outline Start
+  - first:
+      213: 21300020
+    second: Transcription Regulator Outline
+  - first:
+      213: 21300022
+    second: Something Body
+  - first:
+      213: 21300024
+    second: Inner Receptor Body Final
+  - first:
+      213: 21300026
+    second: Inner Receptor Body Transistion
+  - first:
+      213: 21300028
+    second: Inner Receptor Body Start
+  - first:
+      213: 21300030
+    second: Transcription Regulator Body
+  - first:
+      213: 21300032
+    second: Something Side A
+  - first:
+      213: 21300034
+    second: Something Side B
+  - first:
+      213: 21300036
+    second: Receptor Outline
+  - first:
+      213: 21300038
+    second: Kinase_Side_A
+  - first:
+      213: 21300040
+    second: Phosphate Transport Outline
+  - first:
+      213: 21300042
+    second: Inner Circle Object Outline
+  - first:
+      213: 21300044
+    second: Kinase Outline
+  - first:
+      213: 21300046
+    second: Inner Circle Object Body
+  - first:
+      213: 21300048
+    second: Phosphate Transport Body
+  - first:
+      213: 21300050
+    second: Kinase Side B
+  - first:
+      213: 21300052
+    second: Kinase Side A
+  - first:
+      213: 21300054
+    second: Kinase_Side_A2
+  externalObjects: {}
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
-    filterMode: -1
+    serializedVersion: 2
+    filterMode: 1
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: Receptor Body
+    - serializedVersion: 2
+      name: Receptor Body
       rect:
         serializedVersion: 2
         x: 11
@@ -85,9 +171,20 @@ TextureImporter:
         width: 239
         height: 453
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Extracellular Signal Body
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Extracellular Signal Body
       rect:
         serializedVersion: 2
         x: 637
@@ -95,9 +192,20 @@ TextureImporter:
         width: 138
         height: 136
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Receptor Cap Outline
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Receptor Cap Outline
       rect:
         serializedVersion: 2
         x: 421
@@ -105,9 +213,20 @@ TextureImporter:
         width: 47
         height: 25
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Extracellular Wall
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Extracellular Wall
       rect:
         serializedVersion: 2
         x: 626
@@ -115,9 +234,20 @@ TextureImporter:
         width: 159
         height: 159
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: All_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: All_4
       rect:
         serializedVersion: 2
         x: 160
@@ -125,9 +255,20 @@ TextureImporter:
         width: 4
         height: 4
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Receptor Cap Body
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Receptor Cap Body
       rect:
         serializedVersion: 2
         x: 433
@@ -135,9 +276,20 @@ TextureImporter:
         width: 22
         height: 13
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Something Outline
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Something Outline
       rect:
         serializedVersion: 2
         x: 940
@@ -145,9 +297,20 @@ TextureImporter:
         width: 155
         height: 97
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Inner Receptor Outline Final
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inner Receptor Outline Final
       rect:
         serializedVersion: 2
         x: 329
@@ -155,9 +318,20 @@ TextureImporter:
         width: 48
         height: 103
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Inner Receptor Outline Transistion
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inner Receptor Outline Transistion
       rect:
         serializedVersion: 2
         x: 419
@@ -165,9 +339,20 @@ TextureImporter:
         width: 46
         height: 103
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Inner Receptor Outline Start
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inner Receptor Outline Start
       rect:
         serializedVersion: 2
         x: 523
@@ -175,9 +360,20 @@ TextureImporter:
         width: 48
         height: 103
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Transcription Regulator Outline
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Transcription Regulator Outline
       rect:
         serializedVersion: 2
         x: 655
@@ -185,9 +381,20 @@ TextureImporter:
         width: 100
         height: 126
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Something Body
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Something Body
       rect:
         serializedVersion: 2
         x: 971
@@ -195,9 +402,20 @@ TextureImporter:
         width: 92
         height: 71
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Inner Receptor Body Final
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inner Receptor Body Final
       rect:
         serializedVersion: 2
         x: 343
@@ -205,9 +423,20 @@ TextureImporter:
         width: 22
         height: 103
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Inner Receptor Body Transistion
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inner Receptor Body Transistion
       rect:
         serializedVersion: 2
         x: 431
@@ -215,9 +444,20 @@ TextureImporter:
         width: 22
         height: 103
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Inner Receptor Body Start
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inner Receptor Body Start
       rect:
         serializedVersion: 2
         x: 536
@@ -225,9 +465,20 @@ TextureImporter:
         width: 22
         height: 103
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Transcription Regulator Body
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Transcription Regulator Body
       rect:
         serializedVersion: 2
         x: 666
@@ -235,9 +486,20 @@ TextureImporter:
         width: 79
         height: 95
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Something Side A
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Something Side A
       rect:
         serializedVersion: 2
         x: 890
@@ -245,9 +507,20 @@ TextureImporter:
         width: 59
         height: 90
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Something Side B
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Something Side B
       rect:
         serializedVersion: 2
         x: 1080
@@ -255,9 +528,20 @@ TextureImporter:
         width: 59
         height: 90
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Receptor Outline
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Receptor Outline
       rect:
         serializedVersion: 2
         x: 0
@@ -265,9 +549,20 @@ TextureImporter:
         width: 263
         height: 462
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Kinase_Side_A2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kinase_Side_A2
       rect:
         serializedVersion: 2
         x: 673
@@ -275,9 +570,20 @@ TextureImporter:
         width: 220
         height: 98
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Phosphate Transport Outline
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phosphate Transport Outline
       rect:
         serializedVersion: 2
         x: 1038
@@ -285,9 +591,20 @@ TextureImporter:
         width: 152
         height: 146
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Inner Circle Object Outline
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inner Circle Object Outline
       rect:
         serializedVersion: 2
         x: 464
@@ -295,9 +612,20 @@ TextureImporter:
         width: 66
         height: 66
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Kinase Outline
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kinase Outline
       rect:
         serializedVersion: 2
         x: 673
@@ -305,9 +633,20 @@ TextureImporter:
         width: 220
         height: 106
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Inner Circle Object Body
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inner Circle Object Body
       rect:
         serializedVersion: 2
         x: 471
@@ -315,9 +654,20 @@ TextureImporter:
         width: 53
         height: 53
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Phosphate Transport Body
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phosphate Transport Body
       rect:
         serializedVersion: 2
         x: 1053
@@ -325,9 +675,20 @@ TextureImporter:
         width: 124
         height: 114
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Kinase Side B
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kinase Side B
       rect:
         serializedVersion: 2
         x: 685
@@ -335,9 +696,20 @@ TextureImporter:
         width: 197
         height: 81
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Kinase Side A
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kinase Side A
       rect:
         serializedVersion: 2
         x: 666
@@ -345,9 +717,31 @@ TextureImporter:
         width: 219
         height: 106
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 2, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 1
+  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
