@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ReceptorPathfinding : MonoBehaviour
 {
     #region Public Fields + Properties + Events + Delegates + Enums
 
-    public bool displayPath = true;
-    public float maxHeadingChange = 60;
     public Transform SightEnd;
     public Transform sightStart;
-    public int speed = 100;
-    public bool spotted = false;
+    public float     maxHeadingChange = 60;
+    public int       speed            = 100;
+    public bool      displayPath      = true;
+    public bool      spotted          = false;
 
     #endregion Public Fields + Properties + Events + Delegates + Enums
 
@@ -25,39 +26,53 @@ public class ReceptorPathfinding : MonoBehaviour
 
     private void Raycasting()
     {
-        //while (true) {
+        Quaternion rotation;
+        string     strLvl    = null;
+        string     strFind   = null;
+        bool       found     = false;
+        int        index     = 0;//index into the game Ojbect array
+        int        count     = 0;//number of found receptors
 
+        strLvl = SceneManager.GetActiveScene().name;
+        if(strLvl == "Level1")
+            strFind = "ExternalReceptor";
+        else if(strLvl == "Level2")
+            strFind = "GPCR";
 
-        int x = 0;
-        myFoundObjs = GameObject.FindGameObjectsWithTag("ExternalReceptor");
-        while (x < myFoundObjs.Length && myFoundObjs[x].GetComponent<ExternalReceptorProperties>().isActive == false)
+        myFoundObjs = GameObject.FindGameObjectsWithTag(strFind);
+        count = myFoundObjs.Length;
+
+        for(index = 0; index < count; index++)
         {
-            x++;
+            if((strLvl == "Level1" && myFoundObjs[index].GetComponent<ActivationProperties>().isActive == true) ||
+                (strLvl == "Level2" && myFoundObjs[index].GetComponent<ActivationProperties>().isActive == false))
+            {
+                myTarget = myFoundObjs[index];
+                found = true;
+                break;
+            }
         }
 
-        int count = myFoundObjs.GetUpperBound(0);
-
-        if (x <= count)
+        if(found)
         {
-			if (myFoundObjs [x].GetComponent<ExternalReceptorProperties> ().isActive == true)
+            //Debug.Log("We found a receptor!");
+            sightStart = myTarget.GetComponent<CircleCollider2D>().transform;
+
+            transform.position += transform.up * Time.deltaTime * speed;
+            if(displayPath == true)
             {
-				//Debug.Log("We found a receptor!");
-				sightStart = myFoundObjs [x].transform;
-				transform.position += transform.up * Time.deltaTime * speed;
-				if (displayPath == true) {
-					Debug.DrawLine (sightStart.position, SightEnd.position, Color.green);
-				}
-				spotted = Physics2D.Linecast (sightStart.position, SightEnd.position);
+                Debug.DrawLine(sightStart.position, SightEnd.position, Color.green);
+            }
+            spotted  = Physics2D.Linecast(sightStart.position, SightEnd.position);
+            rotation = Quaternion.LookRotation(SightEnd.position - sightStart.position, sightStart.TransformDirection (Vector3.up));
 
-
-				Quaternion rotation = Quaternion.LookRotation (SightEnd.position - sightStart.position, sightStart.TransformDirection (Vector3.up));
-				transform.rotation = new Quaternion (0, 0, rotation.z, rotation.w);
-			}
-		} 
-		else {
-			sightStart = null;
-			spotted = false;
-		}
+            transform.rotation = new Quaternion (0, 0, rotation.z, rotation.w);
+        } 
+        else
+        {
+            sightStart = null;
+            spotted    = false;
+        }
     }
 
     private void Roam()

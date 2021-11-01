@@ -64,10 +64,6 @@ public class receptorScript : MonoBehaviour
 
     }
 
-
-
-
-
    	//Transforms full receptor after protein signaller collides
 	private IEnumerator transformReceptor(Collider2D other)
 	{
@@ -79,7 +75,6 @@ public class receptorScript : MonoBehaviour
         GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add (NewReceptor);
 		this.gameObject.SetActive(false);
 	}
-
 
     //Transforms left receptor after protein signaller collides
     private IEnumerator transformLeftReceptor(Collider2D other)
@@ -114,7 +109,5 @@ public class receptorScript : MonoBehaviour
         Destroy(this.gameObject);  
     }
 
-
     #endregion Private Methods
-
 }

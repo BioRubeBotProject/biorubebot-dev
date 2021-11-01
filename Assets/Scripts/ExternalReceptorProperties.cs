@@ -5,18 +5,23 @@
 
 using UnityEngine;
 
-public class ExternalReceptorProperties : MonoBehaviour
+public class ExternalReceptorProperties : MonoBehaviour , ActivationProperties
 {
     #region Public Fields + Properties + Events + Delegates + Enums
 
     public Color ActiveColor = Color.white;
     public bool allowMovement = true;
-    public bool isActive = true;
     public Color NonActiveColor = Color.gray;
+    private bool m_isActive = true;
 
     #endregion Public Fields + Properties + Events + Delegates + Enums
 
     #region Public Methods
+    public bool isActive
+    {
+        get => m_isActive;
+        set => m_isActive = value;
+    }
 
     public void changeState(bool message)
     {
