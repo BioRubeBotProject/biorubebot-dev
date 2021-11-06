@@ -79,6 +79,7 @@ TagManager:
   - Win_TGP_Bound_to_GPCR
   - GPCR_B
   - Win_03_GTP_Binds_to_Alpha
+  - tGProteinDock
   layers:
   - Default
   - TransparentFX

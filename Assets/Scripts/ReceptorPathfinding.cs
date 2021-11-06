@@ -55,9 +55,7 @@ public class ReceptorPathfinding : MonoBehaviour
 
         if(found)
         {
-            //Debug.Log("We found a receptor!");
             sightStart = myTarget.GetComponent<CircleCollider2D>().transform;
-            Debug.Log(sightStart.position);
 
             transform.position += transform.up * Time.deltaTime * speed;
             if(displayPath == true)

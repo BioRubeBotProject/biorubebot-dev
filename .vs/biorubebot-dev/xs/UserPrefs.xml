@@ -1,14 +1,14 @@
 ﻿<Properties StartupConfiguration="{A61B43A6-6328-CC7A-2C29-9A7866254458}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/G_ProteinCmdCtrl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ReceptorPathfinding.cs">
     <Files>
       <File FileName="Assets/Scripts/ATPpathfinding.cs" Line="36" Column="61" />
-      <File FileName="Assets/Scripts/GPCRProperties.cs" Line="38" Column="15" />
-      <File FileName="Assets/Scripts/GPCR.cs" Line="46" Column="5" />
-      <File FileName="Assets/Scripts/receptorMovement.cs" Line="36" Column="27" />
-      <File FileName="Assets/Scripts/T-GProteinMovement.cs" Line="57" Column="13" />
-      <File FileName="Assets/Scripts/ATPproperties.cs" Line="46" Column="63" />
-      <File FileName="Assets/Scripts/TGProteinProperties.cs" Line="106" Column="7" />
-      <File FileName="Assets/Scripts/G_ProteinCmdCtrl.cs" Line="12" Column="22" />
+      <File FileName="Assets/Scripts/GPCRProperties.cs" />
+      <File FileName="Assets/Scripts/GPCR.cs" />
+      <File FileName="Assets/Scripts/receptorMovement.cs" />
+      <File FileName="Assets/Scripts/ATPproperties.cs" />
+      <File FileName="Assets/Scripts/TGProteinProperties.cs" />
+      <File FileName="Assets/Scripts/G_ProteinCmdCtrl.cs" />
+      <File FileName="Assets/Scripts/ReceptorPathfinding.cs" Line="58" Column="13" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +16,7 @@
           <Node name="biorubebot-dev" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="G_ProteinCmdCtrl.cs" selected="True" />
+                <Node name="ATPpathfinding.cs" selected="True" />
               </Node>
             </Node>
           </Node>
