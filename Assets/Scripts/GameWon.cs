@@ -16,6 +16,7 @@ class GameWon : MonoBehaviour {
             "Win_ReleasedGDP",                                                                  //GDP Win Conditions
             "Win_GPCR_Activated",
             "Win_TGP_Bound_to_GPCR",
+            "Win_03_GTP_Binds_to_Alpha",
             "Win_KinaseTransformation"                                                          //Kinase Win Conditions
         };
 

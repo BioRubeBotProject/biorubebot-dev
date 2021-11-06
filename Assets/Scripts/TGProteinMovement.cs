@@ -6,20 +6,52 @@ public class TGProteinMovement : MonoBehaviour
 {
     public  float      speed;
     public  GameObject targetObject;
+    public  GameObject GDP;
     private GameObject cellMembrane;
     private GameObject closestTarget;
+    private GameObject childGDP;
     private bool       targetFound;
     private bool       isDockedAtGpcr;
+    private bool       hasGdpAttached;
+    private bool       hasGtpAttached;
     private string     rotationDirection;
 
 
     private void Start()
     {
+        Transform doc = null;
+
         cellMembrane      = GameObject.FindGameObjectWithTag("CellMembrane");
         closestTarget     = null;
         targetFound       = false;
         rotationDirection = null;
         isDockedAtGpcr    = false;
+        hasGdpAttached    = true;
+        hasGtpAttached    = false;
+
+        Debug.Log("T-G-Protien position = " + transform.position);
+
+        childGDP = (GameObject)Instantiate (GDP, transform.position, Quaternion.identity);
+        childGDP.transform.SetParent(this.transform);
+
+        foreach(Transform child in transform)
+        {
+            Debug.Log(child.tag);
+            if(child.tag == "tGProteinDock")
+            {
+                Debug.Log("Found it");
+                doc = child;
+                break;
+            }
+        }
+
+        if(null != doc)
+            childGDP.transform.position = doc.position;
+        childGDP.GetComponent<CircleCollider2D> ().enabled = false;
+        childGDP.GetComponent<Rigidbody2D> ().isKinematic  = true;
+
+        //transform.GetChild(2).GetComponent<SpriteRenderer> ().color = Color.red;
+        //transform.GetChild(3).GetComponent<SpriteRenderer> ().color = Color.cyan;
     }
 
 
@@ -41,7 +73,13 @@ public class TGProteinMovement : MonoBehaviour
                         transform.RotateAround(cellMembrane.transform.position, Vector3.forward, speed * Time.deltaTime);
                 }
             }
+
         }
+    }
+
+    private void dropGdp()
+    {
+        childGDP.tag  = "ReleasedGDP";
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -52,12 +90,12 @@ public class TGProteinMovement : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if(other.gameObject.tag == "GPCR_B" && this.gameObject.name.Equals("ABG-ALL(Clone)"))
         {                
-            Debug.Log("docked");
             //StartCoroutine(transformLeftReceptorWithProtein(other));
             //check if action is a win condition for the scene/level
             if(GameObject.FindWithTag("Win_TGP_Bound_to_GPCR"))
                 WinScenario.dropTag("Win_TGP_Bound_to_GPCR");
             isDockedAtGpcr = true;
+            dropGdp();
         }
     }
 
