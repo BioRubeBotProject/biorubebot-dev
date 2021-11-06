@@ -158,7 +158,6 @@
     <Compile Include="Assets/AstarPathfindingProject/Core/Misc/PathReturnQueue.cs" />
     <Compile Include="Assets/AstarPathfindingProject/Core/astarclasses.cs" />
     <Compile Include="Assets/AstarPathfindingProject/TurnBased/SingleNodeBlocker.cs" />
-    <Compile Include="Assets\NewInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll" />

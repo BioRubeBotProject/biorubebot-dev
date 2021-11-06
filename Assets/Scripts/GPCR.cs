@@ -25,25 +25,26 @@ public class GPCR : MonoBehaviour
             other.GetComponent<ExtraCellularProperties>().changeState(false);
             other.GetComponent<Rigidbody2D>().isKinematic = true;
        
-            //StartCoroutine(transformReceptor(other));
+            StartCoroutine(transformReceptor(other));
             //check if action is a win condition for the scene/level
-            //if(GameObject.FindWithTag("Win_FullReceptorActivated")) WinScenario.dropTag("Win_FullReceptorActivated");
+            if(GameObject.FindWithTag("Win_GPCR_Activated"))
+                WinScenario.dropTag("Win_GPCR_Activated");
         }
     }
 
-    /*//Transforms full receptor after protein signaller collides
+    //Transforms full receptor after protein signaller collides
     private IEnumerator transformReceptor(Collider2D other)
     {
         yield return new WaitForSeconds(2);
-        GameObject NewReceptor = (GameObject)Instantiate(_ActiveGPCR, transform.position, transform.rotation);
+        GameObject NewGPCR = (GameObject)Instantiate(_ActiveGPCR, transform.position, transform.rotation);
 
         //Sets newReceptor to be under the parent object.
-        NewReceptor.transform.parent = parentObject.transform;
-        GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add (NewReceptor);
+        NewGPCR.transform.parent = parentObject.transform;
+        GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(NewGPCR);
         this.gameObject.SetActive(false);
     }
 
-    //Transforms left receptor after protein signaller collides
+    /*//Transforms left receptor after protein signaller collides
     private IEnumerator transformLeftReceptor(Collider2D other)
     {
         yield return new WaitForSeconds(2);

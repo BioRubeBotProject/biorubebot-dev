@@ -76,7 +76,6 @@
     <Compile Include="Assets/AstarPathfindingProject/Editor/GraphEditors/GraphEditor.cs" />
     <Compile Include="Assets/AstarPathfindingProject/Editor/Misc/AstarEnumFlagDrawer.cs" />
     <Compile Include="Assets/AstarPathfindingProject/Editor/EditorUtilities.cs" />
-    <Compile Include="Assets\NewInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/AstarPathfindingProject/Editor/EditorAssets/Materials/Navmesh.shader" />
