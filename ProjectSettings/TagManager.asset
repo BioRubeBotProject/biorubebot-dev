@@ -75,6 +75,9 @@ TagManager:
   - Win_LeftReceptorWithProtein
   - Drop_Down_Button
   - GPCR
+  - Win_GPCR_Activated
+  - Win_TGP_Bound_to_GPCR
+  - GPCR_B
   layers:
   - Default
   - TransparentFX

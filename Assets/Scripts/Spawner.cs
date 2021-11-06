@@ -81,7 +81,8 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
         if(cellMembrane != null || spawnedObject.name == "Cell Membrane")
         {
             if(spawnedObject.name == "_ReceptorInactive" || spawnedObject.name == "NPC" ||
-                spawnedObject.name == "Right_Receptor_Inactive" || spawnedObject.name == "Left_Receptor_Inactive")
+                spawnedObject.name == "Right_Receptor_Inactive" || spawnedObject.name == "Left_Receptor_Inactive" ||
+                spawnedObject.name == "GPCR-A" || spawnedObject.name == "ABG-ALL")
             {
                 ThisIsARotatableObject();
             }
@@ -136,15 +137,17 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
     {
         float cellDistance = Vector3.Distance(guidePosition, cellMembrane.transform.position);
         float nucDistance = Vector3.Distance(guidePosition, nucleus.transform.position);
+
+        Debug.Log(cellMembrane.transform.localScale.x);
         if(cellDistance < snapDistance * cellMembrane.transform.localScale.x &&
-           cellDistance > snapRadius / 1.2)
+           cellDistance > snapRadius / 1.2)//are we close to the cell membrane wall?
         {
             float cellMemX = guidePosition.x - cellMembrane.transform.position.x;
             float cellMemY = guidePosition.y - cellMembrane.transform.position.y;
             SnapAndRotate(cellMemY, cellMemX, cellMembrane.transform);
         }
         else if(cellDistance < snapRadius / 1.3 &&
-                nucDistance < snapDistance * 1.8 * nucleus.transform.localScale.x)
+                nucDistance < snapDistance * 1.8 * nucleus.transform.localScale.x)//nucleus wall?
         {
             float nucleusX = guidePosition.x - nucleus.transform.position.x;
             float nucleusY = guidePosition.y - nucleus.transform.position.y;

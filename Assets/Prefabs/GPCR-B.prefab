@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5195427890273802601}
   - component: {fileID: -5833480495888802603}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GPCR-B
-  m_TagString: Untagged
+  m_TagString: GPCR_B
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 4659705790624057503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 8818340537174518457}
   m_Father: {fileID: 0}
@@ -42,10 +42,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.29282618, y: 0.09760857}
+  m_Offset: {x: 1.2385613, y: -2.4313693}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.8572712, y: 4.780117}
+  m_Size: {x: 3.4668982, y: 3.9126215}
   m_EdgeRadius: 0
 --- !u!1 &7149349326375398096
 GameObject:
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8818340537174518457}
   - component: {fileID: 7306069522449098707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: G-Protein Coupled Receptor-B
   m_TagString: Untagged
   m_Icon: {fileID: 0}

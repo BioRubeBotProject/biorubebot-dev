@@ -10,8 +10,6 @@ using UnityEngine;
 public class receptorScript : MonoBehaviour
 {
     public GameObject _ActiveReceptor;
-
-    
     public GameObject parentObject;     //Parent object used for unity editor Tree Hierarchy
 
     #region Private Methods

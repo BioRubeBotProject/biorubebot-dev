@@ -43,39 +43,5 @@ public class GPCR : MonoBehaviour
         GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(NewGPCR);
         this.gameObject.SetActive(false);
     }
-
-    /*//Transforms left receptor after protein signaller collides
-    private IEnumerator transformLeftReceptor(Collider2D other)
-    {
-        yield return new WaitForSeconds(2);
-
-        //delete protein signaller
-        Destroy(other.gameObject);
-
-        GameObject NewReceptor = (GameObject)Instantiate(_ActiveGPCR, transform.position, transform.rotation);
-
-        //Sets newReceptor to be under the parent object.
-        NewReceptor.transform.parent = parentObject.transform;
-        GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(NewReceptor);
-        this.gameObject.SetActive(false);      
-    }
-
-    //Transform left receptor(with protein) after right receptor collides
-    private IEnumerator transformLeftReceptorWithProtein(Collider2D other)
-    {
-             
-        yield return new WaitForSeconds((float) 0.25);
-        other.GetComponent<receptorMovement>().destroyReceptor();
-
-        GameObject NewReceptor = (GameObject)Instantiate(_ActiveGPCR, transform.position, transform.rotation);
-
-        //Sets newReceptor to be under the parent object.
-        NewReceptor.transform.parent = parentObject.transform;
-        GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(NewReceptor);
-        this.gameObject.SetActive(false);
-
-        Destroy(this.gameObject);  
-    }*/
-
     #endregion Private Methods
 }
