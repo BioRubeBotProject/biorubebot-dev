@@ -95,6 +95,9 @@ public class TGProteinMovement : MonoBehaviour
             if(GameObject.FindWithTag("Win_TGP_Bound_to_GPCR"))
                 WinScenario.dropTag("Win_TGP_Bound_to_GPCR");
             isDockedAtGpcr = true;
+            TGProteinProperties objProps = (TGProteinProperties)this.GetComponent("TGProteinProperties");
+            objProps.isActive = true;
+
             dropGdp();
         }
     }

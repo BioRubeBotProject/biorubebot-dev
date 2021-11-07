@@ -64,6 +64,7 @@ public class GTP_CmdCtrl: MonoBehaviour
             origin = trackThis.transform;
         }
 
+        Debug.Log(trackThis.name);
         Vector3 trackCollider = trackThis.GetComponent<CircleCollider2D>().bounds.center;
         RaycastHit2D collision = Physics2D.Linecast(origin.position, trackCollider);
 
@@ -142,21 +143,42 @@ public class GTP_CmdCtrl: MonoBehaviour
 
     public void FixedUpdate() 
     {
-        if (Time.timeScale > 0)
+        GameObject obj       = null;
+        GameObject objParent = null;
+
+        if(Time.timeScale > 0)
         { 
-            if (spin) 
+            if(spin) 
             {
                 transform.rotation = Quaternion.Slerp (transform.rotation, rotation, 2 * Time.deltaTime);
-                if (Quaternion.Angle(transform.rotation,rotation)==0 ) { spin = false; }
+                if(Quaternion.Angle(transform.rotation,rotation) == 0)
+                    spin = false;
             }
-            if(found == false) { Roam2(); }
-            if (!targeting)//Look for a target
+            if(found == false)
+                Roam2();
+
+            if(!targeting)//Look for a target
             {
                 Roam2();
-                //rigidbody.AddForce(transform.forward);
                 Roam.Roaming (this.gameObject);
-                openTarget = Roam.FindClosest (transform, "DockedG_Protein");
-                if (openTarget != null)
+
+                openTarget = Roam.FindClosest(transform, "DockedG_Protein");
+                if(null == openTarget)
+                {
+                    obj = Roam.FindClosest(transform, "tGProteinDock");
+                    if(null != obj)
+                    {
+                        objParent = obj.transform.parent.gameObject;
+
+                        TGProteinProperties objProps = (TGProteinProperties)objParent.GetComponent("TGProteinProperties");
+                        if(objProps.isActive)
+                        {
+                            openTarget = obj;
+                        }
+                    }
+                }
+
+                if(openTarget != null)
                 {
                     myTarget = openTarget.transform;
                     dockingPosition = GetOffset ();
@@ -164,12 +186,12 @@ public class GTP_CmdCtrl: MonoBehaviour
                 }
             }
             
-            else if (!docked)
+            else if(!docked)
             {
-                if ((delay += Time.deltaTime) < 5)//wait 5 seconds before proceeding to target
+                if((delay += Time.deltaTime) < 5)//wait 5 seconds before proceeding to target
                     Roam.Roaming (this.gameObject);
-                    //Roam2();
-                else {
+                else
+                {
                     //docked = ProceedToTarget();
                     docked = Roam.ProceedToVector(this.gameObject,dockingPosition);
                 }
@@ -181,13 +203,17 @@ public class GTP_CmdCtrl: MonoBehaviour
 /*  GetOffset determines whether a target is to the  left or right of the receptor
     and based on the targets position, relative to the receptor, an offset is 
     is figured into the docking position so the GTP will mate up with the
-    G-protein.  */
+    G-protein.*/
     private Vector3 GetOffset()
     {   
-        if (myTarget.GetChild(0).tag == "Left")
-            return myTarget.position + new Vector3 (-2.2f, 0.28f, 0);
+        if(myTarget.childCount > 0)//if we have children dealing Level1 G-Protein
+        {
+            if(myTarget.GetChild(0).tag == "Left")
+                return myTarget.position + new Vector3 (-2.2f, 0.28f, 0);
+        }
         else
-            return myTarget.position + new Vector3 (2.2f, 0.28f, 0);
+            return myTarget.position;//if no children, Level2 T-G-Protein, just get the target's pos
+        return myTarget.position + new Vector3 (2.2f, 0.28f, 0);
     }
     
 /*  LockOn retags the target 'DockedG_Protein' to 'Target' so it
@@ -196,7 +222,7 @@ public class GTP_CmdCtrl: MonoBehaviour
     will target an individual docked g-protein.  */
     private void LockOn()
     {
-        targeting = true;
+        targeting    = true;
         myTarget.tag = "Target";
     }
 
