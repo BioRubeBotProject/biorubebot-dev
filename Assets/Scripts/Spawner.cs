@@ -9,6 +9,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
 {
@@ -76,13 +77,13 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
     // the camera instead of on the same level.
     void OnMouseDrag()
     {
-        guidePosition = Camera.main.ScreenToWorldPoint(new Vector3(x, y, spawnedObject.transform.position.z + 1));
+        string[] rotatableNames = {"_ReceptorInactive", "NPC", "Right_Receptor_Inactive", "Left_Receptor_Inactive",
+                                   "GPCR-A", "ABG-ALL", "Adenylyl_cyclase-A"};
 
+        guidePosition = Camera.main.ScreenToWorldPoint(new Vector3(x, y, spawnedObject.transform.position.z + 1));
         if(cellMembrane != null || spawnedObject.name == "Cell Membrane")
         {
-            if(spawnedObject.name == "_ReceptorInactive" || spawnedObject.name == "NPC" ||
-                spawnedObject.name == "Right_Receptor_Inactive" || spawnedObject.name == "Left_Receptor_Inactive" ||
-                spawnedObject.name == "GPCR-A" || spawnedObject.name == "ABG-ALL")
+            if(rotatableNames.Any(spawnedObject.name.Contains))
             {
                 ThisIsARotatableObject();
             }
@@ -136,9 +137,8 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
     void ThisIsARotatableObject()
     {
         float cellDistance = Vector3.Distance(guidePosition, cellMembrane.transform.position);
-        float nucDistance = Vector3.Distance(guidePosition, nucleus.transform.position);
+        float nucDistance  = Vector3.Distance(guidePosition, nucleus.transform.position);
 
-        Debug.Log(cellMembrane.transform.localScale.x);
         if(cellDistance < snapDistance * cellMembrane.transform.localScale.x &&
            cellDistance > snapRadius / 1.2)//are we close to the cell membrane wall?
         {
