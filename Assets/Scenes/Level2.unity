@@ -16787,7 +16787,7 @@ GameObject:
   - component: {fileID: 1935185762}
   m_Layer: 0
   m_Name: adenylyl cyclase Button
-  m_TagString: Untagged
+  m_TagString: AdenylylCyclase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16818,8 +16818,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapRadius: 0
-  snapDistance: 0
+  snapRadius: 24
+  snapDistance: 40
   spawnedObject: {fileID: 5117861752728446461, guid: f67b4e3c15f0e2948a3f47241de92da5,
     type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}

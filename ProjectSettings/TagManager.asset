@@ -80,6 +80,7 @@ TagManager:
   - GPCR_B
   - Win_03_GTP_Binds_to_Alpha
   - tGProteinDock
+  - AdenylylCyclase
   layers:
   - Default
   - TransparentFX

@@ -1,28 +1,29 @@
 ﻿<Properties StartupConfiguration="{A61B43A6-6328-CC7A-2C29-9A7866254458}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Spawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AlphaMovement.cs">
     <Files>
       <File FileName="Assets/Scripts/ATPpathfinding.cs" Line="36" Column="61" />
       <File FileName="Assets/Scripts/GPCRProperties.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GPCR.cs" Line="36" Column="39" />
+      <File FileName="Assets/Scripts/GPCR.cs" Line="14" Column="9" />
       <File FileName="Assets/Scripts/receptorMovement.cs" />
       <File FileName="Assets/Scripts/ATPproperties.cs" />
       <File FileName="Assets/Scripts/TGProteinProperties.cs" Line="5" Column="1" />
-      <File FileName="Assets/Scripts/G_ProteinCmdCtrl.cs" />
+      <File FileName="Assets/Scripts/G_ProteinCmdCtrl.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ReceptorPathfinding.cs" />
-      <File FileName="Assets/Scripts/GTP_CmdCtrl.cs" Line="171" Column="28" />
-      <File FileName="Assets/Scripts/TGProteinMovement.cs" Line="24" Column="9" />
+      <File FileName="Assets/Scripts/GTP_CmdCtrl.cs" Line="265" Column="24" />
+      <File FileName="Assets/Scripts/TGProteinMovement.cs" Line="98" Column="1" />
       <File FileName="Assets/Scripts/AdenylylCyclaseMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets/adenylylCyclaseProperties.cs" Line="30" Column="13" />
-      <File FileName="Assets/Scripts/Spawner.cs" Line="83" Column="20" />
+      <File FileName="Assets/adenylylCyclaseProperties.cs" Line="5" Column="65" />
+      <File FileName="Assets/AlphaProperties.cs" Line="20" Column="22" />
+      <File FileName="Assets/ActivationProperties.cs" Line="2" Column="27" />
+      <File FileName="Assets/AlphaMovement.cs" Line="13" Column="39" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="biorubebot-dev" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Spawner.cs" selected="True" />
-              </Node>
+              <Node name="Scripts" expanded="True" />
+              <Node name="AlphaMovement.cs" selected="True" />
             </Node>
           </Node>
         </State>

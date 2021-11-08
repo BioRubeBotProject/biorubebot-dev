@@ -85,14 +85,17 @@
     <Compile Include="Assets/Scripts/congratsOnOff.cs" />
     <Compile Include="Assets/Scripts/GameWon.cs" />
     <Compile Include="Assets/Scripts/ToggleOnOff.cs" />
+    <Compile Include="Assets/Scripts/AdenylylCyclaseMovement.cs" />
     <Compile Include="Assets/Scripts/GPCR.cs" />
     <Compile Include="Assets/Scripts/MouseActions.cs" />
+    <Compile Include="Assets/AlphaProperties.cs" />
     <Compile Include="Assets/Scripts/TGProteinMovement.cs" />
     <Compile Include="Assets/Scripts/DEPRECIATED/Pan.cs" />
     <Compile Include="Assets/Scripts/DisableScreen.cs" />
     <Compile Include="Assets/Scripts/CircleEdgeCollider2D.cs" />
     <Compile Include="Assets/Scripts/KeyFunction.cs" />
     <Compile Include="Assets/Scripts/GameSystem.cs" />
+    <Compile Include="Assets/AdenylylCyclaseProperties.cs" />
     <Compile Include="Assets/Scripts/ReceptorAI.cs" />
     <Compile Include="Assets/Scripts/KinaseCmdCtrl.cs" />
     <Compile Include="Assets/Scripts/PinchToZoom.cs" />
@@ -120,8 +123,7 @@
     <Compile Include="Assets/Scripts/G_ProteinCmdCtrl.cs" />
     <Compile Include="Assets/Scripts/ExtraCellularProperties.cs" />
     <Compile Include="Assets/ActivationProperties.cs" />
-    <Compile Include="Assets/Scripts/AdenylylCyclaseMovement.cs" />
-    <Compile Include="Assets/adenylylCyclaseProperties.cs" />
+    <Compile Include="Assets/AlphaMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Standard Assets (Mobile)/Shaders/Vertex Colored Shaders/Mobile Transparent Vertex Color.shader" />

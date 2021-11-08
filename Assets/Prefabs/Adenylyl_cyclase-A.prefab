@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 905086429251455228}
   - component: {fileID: 3153746540724377736}
-  - component: {fileID: 3207105807399465143}
+  - component: {fileID: 3276789703999567596}
   m_Layer: 0
   m_Name: Adenylyl_cyclase-A
   m_TagString: AdenylylCyclase
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d469d5bf95554dbdb10dbb4da7d2ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3207105807399465143
+--- !u!114 &3276789703999567596
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

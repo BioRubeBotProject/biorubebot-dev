@@ -14,8 +14,56 @@ public class TGProteinMovement : MonoBehaviour
     private bool       isDockedAtGpcr;
     private bool       hasGdpAttached;
     private bool       hasGtpAttached;
+    private bool       alphaSeparated;
     private string     rotationDirection;
 
+    Transform getAlpha()
+    {
+        Transform alpha = null;
+        bool      found = false;
+
+        foreach(Transform child in transform)
+        {
+            if(child.gameObject.name == "alpha")
+            {
+                alpha = child;
+                found = true;
+                break;
+            }
+        }
+        if(!found)
+            alpha = null;
+
+        return alpha;
+    }
+
+    Transform getDoc()
+    {
+        Transform doc   = null;
+        bool      found = false;
+
+        foreach(Transform child in transform)
+        {
+            if(child.gameObject.name == "alpha")
+            {
+                foreach(Transform subChild in child.transform)
+                {
+                    //without a GTP, tGProteinDock, with GTP, OccupiedG_Protein
+                    if(subChild.tag == "tGProteinDock" || 
+                        subChild.tag == "OccupiedG_Protein")
+                    {
+                        doc   = subChild;
+                        found = true;
+                        break;
+                    }
+                }
+            }
+        }
+        if(!found)
+            doc = null;
+
+        return doc;
+    }
 
     private void Start()
     {
@@ -28,39 +76,43 @@ public class TGProteinMovement : MonoBehaviour
         isDockedAtGpcr    = false;
         hasGdpAttached    = true;
         hasGtpAttached    = false;
-
-        Debug.Log("T-G-Protien position = " + transform.position);
+        alphaSeparated    = false;
 
         childGDP = (GameObject)Instantiate (GDP, transform.position, Quaternion.identity);
         childGDP.transform.SetParent(this.transform);
 
-        foreach(Transform child in transform)
-        {
-            Debug.Log(child.tag);
-            if(child.tag == "tGProteinDock")
-            {
-                Debug.Log("Found it");
-                doc = child;
-                break;
-            }
-        }
-
+        doc = getDoc();
         if(null != doc)
             childGDP.transform.position = doc.position;
         childGDP.GetComponent<CircleCollider2D> ().enabled = false;
         childGDP.GetComponent<Rigidbody2D> ().isKinematic  = true;
-
-        //transform.GetChild(2).GetComponent<SpriteRenderer> ().color = Color.red;
-        //transform.GetChild(3).GetComponent<SpriteRenderer> ().color = Color.cyan;
     }
 
+    private void separateAlpha()
+    {
+        Transform alpha = null;
+
+        if(alphaSeparated)
+            return;
+
+        alpha = getAlpha();
+        if(null != alpha)
+        {
+            alpha.parent = null;
+            alpha.GetComponent<ActivationProperties>().isActive = true;
+            alphaSeparated = true;
+        }
+        else
+            print("alpha is null");
+    }
 
     public void Update()
     {
+        Transform doc = null;
+
         if(Time.timeScale != 0)//if we are not paused
         {       
-            //If target Found
-            if(!isDockedAtGpcr)
+            if(!isDockedAtGpcr)//if we aren't bound to a GPCR
             {
                 closestTarget = findClosestTarget();
                 if(null != closestTarget)
@@ -73,24 +125,31 @@ public class TGProteinMovement : MonoBehaviour
                         transform.RotateAround(cellMembrane.transform.position, Vector3.forward, speed * Time.deltaTime);
                 }
             }
+            doc = getDoc();
 
+            if(null != doc)
+            {
+                if(doc.tag == "OccupiedG_Protein")
+                    hasGtpAttached = true;
+                else
+                    hasGtpAttached = false;
+            }
+            if(hasGtpAttached && !alphaSeparated)
+                separateAlpha();
         }
     }
 
     private void dropGdp()
     {
-        childGDP.tag  = "ReleasedGDP";
+        childGDP.tag   = "ReleasedGDP";
+        hasGdpAttached = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
 	{
-        Debug.Log("OnTriggerEnter2D -> object name = " + this.gameObject.name);
-
         //IF right receptor collides with left receptor(with protein signaller)                                                      
-        Debug.Log(other.gameObject.name);
         if(other.gameObject.tag == "GPCR_B" && this.gameObject.name.Equals("ABG-ALL(Clone)"))
         {                
-            //StartCoroutine(transformLeftReceptorWithProtein(other));
             //check if action is a win condition for the scene/level
             if(GameObject.FindWithTag("Win_TGP_Bound_to_GPCR"))
                 WinScenario.dropTag("Win_TGP_Bound_to_GPCR");

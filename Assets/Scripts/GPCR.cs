@@ -11,9 +11,6 @@ public class GPCR : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //test
-        Debug.Log("OnTriggerEnter2D -> object name = " + this.gameObject.name);
-
         //Get reference for parent object in UnityEditor
         parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
         

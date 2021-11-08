@@ -23,8 +23,6 @@ public class TimeScale : MonoBehaviour
 
         //Set savedTimeScale to 1 so 'PlayButton' will operate correctly 
         savedTimeScale = 1;
-
-        Debug.Log("Start -> " + Time.timeScale);
     }
 
 
@@ -56,8 +54,6 @@ public class TimeScale : MonoBehaviour
             Time.timeScale = 1;
             fastforward.GetComponent<UnityEngine.UI.Image>().color = Color.white;
         }
-
-        Debug.Log("PlayButton -> " + Time.timeScale);
     }
 
 
@@ -77,8 +73,6 @@ public class TimeScale : MonoBehaviour
             pause.GetComponent<UnityEngine.UI.Image>().color = Color.white;
             PlayButton();
         }
-
-        Debug.Log("PauseButton -> " + Time.timeScale);
     }
 
 
@@ -106,8 +100,6 @@ public class TimeScale : MonoBehaviour
             //Remove highlight from button
             EventSystem.current.SetSelectedGameObject(null);
         }
-
-        Debug.Log("FastForwardButton -> " + Time.timeScale);
     }
 
 
@@ -116,8 +108,6 @@ public class TimeScale : MonoBehaviour
         //Pause game and set savedTime to 1 so play button will work correctly
         Time.timeScale = 0;
         savedTimeScale = 1;
-
-        Debug.Log("ResetButton -> " + Time.timeScale);
     }
 
 

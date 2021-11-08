@@ -169,6 +169,8 @@ public class GTP_CmdCtrl: MonoBehaviour
                     if(null != obj)
                     {
                         objParent = obj.transform.parent.gameObject;
+                        if(null != objParent && objParent.name == "alpha")
+                            objParent = objParent.transform.parent.gameObject;
 
                         TGProteinProperties objProps = (TGProteinProperties)objParent.GetComponent("TGProteinProperties");
                         if(objProps.isActive)
