@@ -22,15 +22,15 @@ public class GPCR : MonoBehaviour
             other.GetComponent<ExtraCellularProperties>().changeState(false);
             other.GetComponent<Rigidbody2D>().isKinematic = true;
        
-            StartCoroutine(transformReceptor(other));
+            StartCoroutine(transformReceptor());
             //check if action is a win condition for the scene/level
             if(GameObject.FindWithTag("Win_GPCR_Activated"))
                 WinScenario.dropTag("Win_GPCR_Activated");
         }
     }
 
-    //Transforms full receptor after protein signaller collides
-    private IEnumerator transformReceptor(Collider2D other)
+    //Transforms the GPCR to be an activated GPCR once protein collides with it
+    private IEnumerator transformReceptor()
     {
         yield return new WaitForSeconds(2);
         GameObject NewGPCR = (GameObject)Instantiate(_ActiveGPCR, transform.position, transform.rotation);

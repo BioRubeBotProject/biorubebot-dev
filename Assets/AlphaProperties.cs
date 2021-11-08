@@ -20,7 +20,6 @@ public class AlphaProperties : MonoBehaviour, ActivationProperties
     public void changeState(bool message)
     {
         this.isActive = message;
-        print("Alpha isActive = " + m_isActive);
     }
   
     #endregion Public Methods

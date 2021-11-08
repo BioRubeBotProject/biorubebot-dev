@@ -81,6 +81,7 @@ TagManager:
   - Win_03_GTP_Binds_to_Alpha
   - tGProteinDock
   - AdenylylCyclase
+  - Alpha
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,7 @@ public class TGProteinProperties : MonoBehaviour, ActivationProperties
   
     #endregion Public Fields + Properties + Events + Delegates + Enums
     #region Public Methods
-  
+
     public bool isActive
     {
         get => m_isActive;

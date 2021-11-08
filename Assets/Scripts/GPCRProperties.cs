@@ -21,12 +21,6 @@ public class GPCRProperties : MonoBehaviour , ActivationProperties
     public void changeState(bool message)
     {
         this.isActive = message;
-        if(this.isActive == false)
-        {
-        }
-        else
-        {
-        }
     }
 
     #endregion Public Methods

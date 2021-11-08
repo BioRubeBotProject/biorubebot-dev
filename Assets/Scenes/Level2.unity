@@ -7863,7 +7863,7 @@ MonoBehaviour:
       transparent: 0
       flag: 0
     EventObjects:
-    - EventObject: {fileID: 148038, guid: dab783ec7e522184a921861075dcd5e5, type: 2}
+    - EventObject: {fileID: 0}
       spawn_params:
       - spawnLocation: {x: 0, y: 5, z: 0}
         spawnScale: {x: 10, y: 10, z: 10}
@@ -14782,7 +14782,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_Alignment: 0
@@ -15042,7 +15042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapRadius: 26.5
+  snapRadius: 25
   snapDistance: 40
   spawnedObject: {fileID: 3500750840656264705, guid: 96120b6a68b69cc4ea0aa95b36cbb577,
     type: 3}
@@ -16787,7 +16787,7 @@ GameObject:
   - component: {fileID: 1935185762}
   m_Layer: 0
   m_Name: adenylyl cyclase Button
-  m_TagString: AdenylylCyclase
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16818,7 +16818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapRadius: 24
+  snapRadius: 28
   snapDistance: 40
   spawnedObject: {fileID: 5117861752728446461, guid: f67b4e3c15f0e2948a3f47241de92da5,
     type: 3}

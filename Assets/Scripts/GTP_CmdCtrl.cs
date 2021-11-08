@@ -162,12 +162,13 @@ public class GTP_CmdCtrl: MonoBehaviour
                 Roam2();
                 Roam.Roaming (this.gameObject);
 
-                openTarget = Roam.FindClosest(transform, "DockedG_Protein");
+                openTarget = Roam.FindClosest(transform, "DockedG_Protein");//level one
                 if(null == openTarget)
                 {
-                    obj = Roam.FindClosest(transform, "tGProteinDock");
+                    obj = Roam.FindClosest(transform, "tGProteinDock");//level 2
                     if(null != obj)
                     {
+                        //get the TGProtien. Doc has parent alpha, which has parent TGProtein
                         objParent = obj.transform.parent.gameObject;
                         if(null != objParent && objParent.name == "alpha")
                             objParent = objParent.transform.parent.gameObject;
@@ -194,7 +195,6 @@ public class GTP_CmdCtrl: MonoBehaviour
                     Roam.Roaming (this.gameObject);
                 else
                 {
-                    //docked = ProceedToTarget();
                     docked = Roam.ProceedToVector(this.gameObject,dockingPosition);
                 }
                 if (docked) Cloak ();

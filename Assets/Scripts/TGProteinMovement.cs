@@ -17,6 +17,10 @@ public class TGProteinMovement : MonoBehaviour
     private bool       alphaSeparated;
     private string     rotationDirection;
 
+    /*  Function:   getAlpha() Transform
+        Purpose:    this function retrieves the Alpha child of the TGProtein
+        Return:     the T-G-Protein Alpha subunit
+    */
     Transform getAlpha()
     {
         Transform alpha = null;
@@ -37,25 +41,30 @@ public class TGProteinMovement : MonoBehaviour
         return alpha;
     }
 
-    Transform getDoc()
+    /*  Function:   getDoc() Transform
+        Purpose:    this function retrieves the prefab child of the TGProtein that is used
+                    as the docking station for the GTP and GDP. This station has tag of
+                    tGProteinDock when nothing is docked or GDP is docked and OccupiedG_Protein
+                    when GTP is attached
+        Return:     the dock, which is a child of Alpha
+    */
+    public Transform getDoc()
     {
         Transform doc   = null;
+        Transform alpha = null;
         bool      found = false;
 
-        foreach(Transform child in transform)
+        alpha = getAlpha();
+        if(null != alpha)
         {
-            if(child.gameObject.name == "alpha")
+            foreach(Transform subChild in alpha.transform)
             {
-                foreach(Transform subChild in child.transform)
+                //without a GTP, tGProteinDock, with GTP, OccupiedG_Protein
+                if(subChild.tag == "tGProteinDock" || subChild.tag == "OccupiedG_Protein")
                 {
-                    //without a GTP, tGProteinDock, with GTP, OccupiedG_Protein
-                    if(subChild.tag == "tGProteinDock" || 
-                        subChild.tag == "OccupiedG_Protein")
-                    {
-                        doc   = subChild;
-                        found = true;
-                        break;
-                    }
+                    doc   = subChild;
+                    found = true;
+                    break;
                 }
             }
         }
@@ -78,7 +87,7 @@ public class TGProteinMovement : MonoBehaviour
         hasGtpAttached    = false;
         alphaSeparated    = false;
 
-        childGDP = (GameObject)Instantiate (GDP, transform.position, Quaternion.identity);
+        childGDP = (GameObject)Instantiate(GDP, transform.position, Quaternion.identity);
         childGDP.transform.SetParent(this.transform);
 
         doc = getDoc();
@@ -88,6 +97,12 @@ public class TGProteinMovement : MonoBehaviour
         childGDP.GetComponent<Rigidbody2D> ().isKinematic  = true;
     }
 
+    /*  Function:   separateAlpha()
+        Purpose:    this function makes the alpha child of the T-GProtein
+                    no longer a child and sets the alpha subunit's isActive
+                    property to true. This will cause the Alpha to seek out
+                    an Adenylyl Cyclase if one is on the Cell Membrane wall
+    */
     private void separateAlpha()
     {
         Transform alpha = null;
@@ -117,7 +132,7 @@ public class TGProteinMovement : MonoBehaviour
                 closestTarget = findClosestTarget();
                 if(null != closestTarget)
                 {
-                    rotationDirection = setRotationDirection();
+                    rotationDirection = getRotationDirection();
 
                     if(rotationDirection == "right")
                         transform.RotateAround(cellMembrane.transform.position, Vector3.back, speed * Time.deltaTime);
@@ -139,12 +154,22 @@ public class TGProteinMovement : MonoBehaviour
         }
     }
 
+    /*  Function:   dropGdp()
+        Purpose:    this function retags the child GDP to be ReleasedGDP,
+                    which will cause it to detach and self-destruct.
+                    Also sets our global hasGDPAttached variable false
+    */
     private void dropGdp()
     {
         childGDP.tag   = "ReleasedGDP";
         hasGdpAttached = false;
     }
 
+    /*  Function:   OnTriggerEnter2D(Collider2D)
+        Purpose:    this function handles the event that the TGProtein collided with the
+                    active GCBR, setting our global isDockedAtGpcr variable true and
+                    setting the properties of the TGProtein
+    */
     private void OnTriggerEnter2D(Collider2D other)
 	{
         //IF right receptor collides with left receptor(with protein signaller)                                                      
@@ -153,15 +178,21 @@ public class TGProteinMovement : MonoBehaviour
             //check if action is a win condition for the scene/level
             if(GameObject.FindWithTag("Win_TGP_Bound_to_GPCR"))
                 WinScenario.dropTag("Win_TGP_Bound_to_GPCR");
+
             isDockedAtGpcr = true;
-            TGProteinProperties objProps = (TGProteinProperties)this.GetComponent("TGProteinProperties");
-            objProps.isActive = true;
+            this.GetComponent<ActivationProperties>().isActive = true;
 
             dropGdp();
         }
     }
 
-    private string setRotationDirection()
+    /*  Function:   getRotationDirection() string
+        Purpose:    this function determines the rotation direction around the
+                    Cell Membrane wall depending on whether it would be quicker
+                    to get to the target Object by going left or right.
+        Return:     left or right
+    */
+    private string getRotationDirection()
     {       
         //Find rotation direction given closest object
         var    currentRotation = transform.eulerAngles;
@@ -179,6 +210,14 @@ public class TGProteinMovement : MonoBehaviour
     }
 
 
+    /*  Function:   findClosestTarget()
+        Purpose:    this function finds the closest Object that should be targeted
+                    for the TGProtein to dock with. This is done by locating
+                    the closest object that has the same tag as the global
+                    variable targetObject, which is set in the prefab to be
+                    the active GPCR.
+        Return:     the closest active GPCR
+    */
     private GameObject findClosestTarget()
     {
         GameObject[] targets  = null;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class adenylylCyclaseProperties : MonoBehaviour, ActivationProperties
+public class AdenylylCyclaseProperties : MonoBehaviour, ActivationProperties
 {
     #region Public Fields + Properties + Events + Delegates + Enums
   
@@ -29,5 +29,6 @@ public class adenylylCyclaseProperties : MonoBehaviour, ActivationProperties
     {
         changeState(false);
     }
+
     #endregion Private Methods
 }

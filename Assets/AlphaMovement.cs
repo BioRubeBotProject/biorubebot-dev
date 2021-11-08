@@ -37,7 +37,7 @@ public class AlphaMovement : MonoBehaviour
                     closestTarget = findClosestTarget();
                     if(null != closestTarget)
                     {
-                        rotationDirection = setRotationDirection();
+                        rotationDirection = getRotationDirection();
 
                         if(rotationDirection == "right")
                             transform.RotateAround(cellMembrane.transform.position, Vector3.back, speed * Time.deltaTime);
@@ -49,6 +49,11 @@ public class AlphaMovement : MonoBehaviour
         }
     }
 
+    /*  Function:   onTriggerEnter2D(Collider2D)
+        Purpose:    handles the event that we collided with an AdenylylCyclase,
+                    setting the Cyclase's isActive property true and setting our
+                    global isDockedAtCyclase variable true
+    */
     private void OnTriggerEnter2D(Collider2D other)
 	{
         if(other.gameObject.tag == "AdenylylCyclase" && transform.name == "alpha")
@@ -57,10 +62,17 @@ public class AlphaMovement : MonoBehaviour
             if(GameObject.FindWithTag("Win_TGP_Bound_to_GPCR"))
                 WinScenario.dropTag("Win_TGP_Bound_to_GPCR");*/
             isDockedAtCyclase = true;
+            other.gameObject.GetComponent<ActivationProperties>().isActive = true;
         }
     }
 
-    private string setRotationDirection()
+    /*  Function:   getRotationDirection() string
+        Purpose:    this function determines the rotation direction around the
+                    Cell Membrane wall depending on whether it would be quicker
+                    to get to the target Object by going left or right.
+        Return:     left or right
+    */
+    private string getRotationDirection()
     {       
         //Find rotation direction given closest object
         var    currentRotation = transform.eulerAngles;
@@ -77,7 +89,12 @@ public class AlphaMovement : MonoBehaviour
         return strDir;
     }
 
-
+    /*  Function:   findClosestTarget()
+        Purpose:    this function locates the closest Object with the same tag
+                    as the global variable targetObject, which is set to
+                    AdenylylCyclase
+        Return:     the closest inactive AdenylylCyclase
+    */
     private GameObject findClosestTarget()
     {
         GameObject[] targets  = null;
@@ -90,13 +107,16 @@ public class AlphaMovement : MonoBehaviour
         position = transform.position;
 
         //for each GPCR in our targets list
-        foreach(GameObject GPCR in targets)
+        foreach(GameObject cyclase in targets)
         {
-            Vector3 diff        = GPCR.transform.position - position;
+            if(cyclase.GetComponent<ActivationProperties>().isActive)
+                continue;
+
+            Vector3 diff        = cyclase.transform.position - position;
             float   curDistance = diff.sqrMagnitude;
             if(curDistance < distance)
             {
-                target      = GPCR;
+                target      = cyclase;
                 distance    = curDistance;
                 targetFound = true;
             }
