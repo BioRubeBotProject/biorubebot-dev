@@ -122,8 +122,7 @@ public class ATPpathfinding : MonoBehaviour
                 roamInterval = UnityEngine.Random.Range(5, maxRoamChangeTime);   
                 movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
                 RaycastHit2D collision = Physics2D.Raycast(origin.position, origin.up);
-                if(collision.collider != null &&                  // must check for instance first
-                   collision.collider.name == "Cell Membrane(Clone)" &&
+                if(collision.collider != null && collision.collider.name == "Cell Membrane(Clone)" &&
                    collision.distance < 2)
                 {
                     if(heading <= 180)
@@ -166,8 +165,7 @@ public class ATPpathfinding : MonoBehaviour
             {
                 GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
                 objIndex = 0;
-                while(objIndex < foundObjs.Length && 
-                      foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
+                while(objIndex < foundObjs.Length && foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
                 {
                     ++objIndex;
                 }

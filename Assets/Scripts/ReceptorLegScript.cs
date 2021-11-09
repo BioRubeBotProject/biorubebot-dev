@@ -24,15 +24,12 @@ using System.Collections;
 
 public class ReceptorLegScript : MonoBehaviour
 {
-  
-  public ParticleSystem destructionEffect;
-
-
-  public GameObject parentObject;            //Parent object used for unity editor Tree Hierarchy
-  private bool WinConMet = false;           //used to determine if the win condition has already been met
+    public  ParticleSystem destructionEffect;
+    public  GameObject     parentObject;      //Parent object used for unity editor Tree Hierarchy
+    private bool           WinConMet = false; //used to determine if the win condition has already been met
 
     private IEnumerator OnTriggerEnter2D(Collider2D other)
-  {
+    {
         if (other.gameObject.tag == "ATP" && other.GetComponent<ATPpathfinding>().found == true) 
         {                                    // helps prevent rogue ATP from hijacking leg
             ReceptorLegProperties objProps = (ReceptorLegProperties)this.GetComponent("ReceptorLegProperties");
@@ -72,28 +69,27 @@ public class ReceptorLegScript : MonoBehaviour
         }
 
         
-  }
+    }
 
-  private IEnumerator Explode(GameObject other)
-  {
-    yield return new WaitForSeconds (3f);
-    //Instantiate our one-off particle system
-    ParticleSystem explosionEffect = Instantiate(destructionEffect) as ParticleSystem;
-    explosionEffect.transform.position = other.transform.position;
+    private IEnumerator Explode(GameObject other)
+    {
+        yield return new WaitForSeconds (3f);
+        //Instantiate our one-off particle system
+        ParticleSystem explosionEffect = Instantiate(destructionEffect) as ParticleSystem;
+        explosionEffect.transform.position = other.transform.position;
 
-    //Sets explosion effect to be under the parent object.
-	explosionEffect.transform.parent = parentObject.transform;
+        //Sets explosion effect to be under the parent object.
+	    explosionEffect.transform.parent = parentObject.transform;
     
-    //play it
-    explosionEffect.loop = false;
-    explosionEffect.Play();
+        //play it
+        explosionEffect.loop = false;
+        explosionEffect.Play();
     
-    //destroy the particle system when its duration is up, right
-    //it would play a second time.
-    Destroy(explosionEffect.gameObject, explosionEffect.duration);
+        //destroy the particle system when its duration is up, right
+        //it would play a second time.
+        Destroy(explosionEffect.gameObject, explosionEffect.duration);
     
-    //destroy our game object
-    Destroy(other.gameObject);
-  }
-
+        //destroy our game object
+        Destroy(other.gameObject);
+    }
 }
