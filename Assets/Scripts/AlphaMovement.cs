@@ -58,11 +58,11 @@ public class AlphaMovement : MonoBehaviour
 	{
         if(other.gameObject.tag == "AdenylylCyclase" && transform.name == "alpha")
         {
-            /*//check if action is a win condition for the scene/level
-            if(GameObject.FindWithTag("Win_TGP_Bound_to_GPCR"))
-                WinScenario.dropTag("Win_TGP_Bound_to_GPCR");*/
             isDockedAtCyclase = true;
             other.gameObject.GetComponent<ActivationProperties>().isActive = true;
+            //check if action is a win condition for the scene/level
+            if(GameObject.FindWithTag("Win_Alpha_Binds_to_Cyclase"))
+                WinScenario.dropTag("Win_Alpha_Binds_to_Cyclase");
         }
     }
 

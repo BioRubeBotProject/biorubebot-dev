@@ -78,10 +78,12 @@ TagManager:
   - Win_GPCR_Activated
   - Win_TGP_Bound_to_GPCR
   - GPCR_B
-  - Win_03_GTP_Binds_to_Alpha
   - tGProteinDock
   - AdenylylCyclase
   - Alpha
+  - Win_GTP_Binds_to_Alpha
+  - Win_Alpha_Binds_to_Cyclase
+  - Win_Alpha_Rejoins_GProtein
   layers:
   - Default
   - TransparentFX

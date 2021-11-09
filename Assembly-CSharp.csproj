@@ -55,7 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/WinBoxChange.cs" />
     <Compile Include="Assets/Scripts/DEPRECIATED/movePhosphate.cs" />
-    <Compile Include="Assets/Creator.cs" />
+    <Compile Include="Assets/Scripts/Creator.cs" />
     <Compile Include="Assets/Scripts/Transparent.cs" />
     <Compile Include="Assets/Scripts/CellMembrane.cs" />
     <Compile Include="Assets/Scripts/Wander.cs" />
@@ -68,7 +68,6 @@
     <Compile Include="Assets/Scripts/smoothfollowCSharp.cs" />
     <Compile Include="Assets/Scripts/receptorScript.cs" />
     <Compile Include="Assets/Scripts/ATPproperties.cs" />
-    <Compile Include="Assets/NewBehaviourScript.cs" />
     <Compile Include="Assets/Scripts/ReceptorLegProperties.cs" />
     <Compile Include="Assets/Scripts/Spawner.cs" />
     <Compile Include="Assets/Scripts/PinchZoom.cs" />
@@ -80,6 +79,7 @@
     <Compile Include="Assets/Scripts/PanelOnOff.cs" />
     <Compile Include="Assets/Scripts/ATPpathfinding.cs" />
     <Compile Include="Assets/Scripts/DEPRECIATED/moveGDP.cs" />
+    <Compile Include="Assets/Scripts/AlphaMovement.cs" />
     <Compile Include="Assets/Scripts/GPCRProperties.cs" />
     <Compile Include="Assets/Scripts/ObjectCollection.cs" />
     <Compile Include="Assets/Scripts/congratsOnOff.cs" />
@@ -88,14 +88,14 @@
     <Compile Include="Assets/Scripts/AdenylylCyclaseMovement.cs" />
     <Compile Include="Assets/Scripts/GPCR.cs" />
     <Compile Include="Assets/Scripts/MouseActions.cs" />
-    <Compile Include="Assets/AlphaProperties.cs" />
+    <Compile Include="Assets/Scripts/AlphaProperties.cs" />
     <Compile Include="Assets/Scripts/TGProteinMovement.cs" />
     <Compile Include="Assets/Scripts/DEPRECIATED/Pan.cs" />
     <Compile Include="Assets/Scripts/DisableScreen.cs" />
     <Compile Include="Assets/Scripts/CircleEdgeCollider2D.cs" />
     <Compile Include="Assets/Scripts/KeyFunction.cs" />
     <Compile Include="Assets/Scripts/GameSystem.cs" />
-    <Compile Include="Assets/AdenylylCyclaseProperties.cs" />
+    <Compile Include="Assets/Scripts/AdenylylCyclaseProperties.cs" />
     <Compile Include="Assets/Scripts/ReceptorAI.cs" />
     <Compile Include="Assets/Scripts/KinaseCmdCtrl.cs" />
     <Compile Include="Assets/Scripts/PinchToZoom.cs" />
@@ -122,8 +122,7 @@
     <Compile Include="Assets/Scripts/DEPRECIATED/ATPscript.cs" />
     <Compile Include="Assets/Scripts/G_ProteinCmdCtrl.cs" />
     <Compile Include="Assets/Scripts/ExtraCellularProperties.cs" />
-    <Compile Include="Assets/ActivationProperties.cs" />
-    <Compile Include="Assets/AlphaMovement.cs" />
+    <Compile Include="Assets/Scripts/ActivationProperties.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Standard Assets (Mobile)/Shaders/Vertex Colored Shaders/Mobile Transparent Vertex Color.shader" />

@@ -2,22 +2,26 @@
 using UnityEngine;
 
 
-class GameWon : MonoBehaviour {
+class GameWon : MonoBehaviour
+{
 
     //Array in which to place all win condition tags. Please read accompanying document "WinConditionInstruction".
-    public static string[] WinConditionTags = {
-            "Win_TFactorEntersNPC",                                                             //NPC Win Conditions
-            "Win_GProteinFreed", "Win_DockedGTP",                                               //G-Protein Win Conditions
-            "Win_TranscriptionFactorCompleted", "Win_T_Reg_Complete",                           //T-Reg Win Conditions
+    public static string[] WinConditionTags =
+        {
+            "Win_TFactorEntersNPC",
+            "Win_GProteinFreed", "Win_DockedGTP",
+            "Win_TranscriptionFactorCompleted", "Win_T_Reg_Complete",
             "Win_Kinase_TReg_dock",
-            "Win_FullReceptorActivated", "Win_ReceptorSitesOpen", "Win_ReceptorCompleted",      //Receptor Win Conditions
+            "Win_FullReceptorActivated", "Win_ReceptorSitesOpen", "Win_ReceptorCompleted",
             "Win_ReceptorPhosphorylation", "Win_LeftReceptorWithProtein",
             "Win_ReceptorsCollideWithProtein",
-            "Win_ReleasedGDP",                                                                  //GDP Win Conditions
+            "Win_ReleasedGDP",
             "Win_GPCR_Activated",
             "Win_TGP_Bound_to_GPCR",
-            "Win_03_GTP_Binds_to_Alpha",
-            "Win_KinaseTransformation"                                                          //Kinase Win Conditions
+            "Win_GTP_Binds_to_Alpha",
+            "Win_Alpha_Binds_to_Cyclase",
+            "Win_Alpha_Rejoins_GProtein",
+            "Win_KinaseTransformation"
         };
 
 

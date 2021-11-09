@@ -150,7 +150,11 @@ public class TGProteinMovement : MonoBehaviour
                     hasGtpAttached = false;
             }
             if(hasGtpAttached && !alphaSeparated)
+            {
                 separateAlpha();
+                if(GameObject.FindWithTag("Win_GTP_Binds_to_Alpha"))
+                    WinScenario.dropTag("Win_GTP_Binds_to_Alpha");
+            }
         }
     }
 
