@@ -84,6 +84,7 @@ TagManager:
   - Win_GTP_Binds_to_Alpha
   - Win_Alpha_Binds_to_Cyclase
   - Win_Alpha_Rejoins_GProtein
+  - PKA
   layers:
   - Default
   - TransparentFX

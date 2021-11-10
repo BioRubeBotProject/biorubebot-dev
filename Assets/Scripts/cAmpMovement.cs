@@ -1,56 +1,34 @@
-// **************************************************************
-// **** Updated on 10/02/15 by Kevin Means
-// **** 1.) Added commentary
-// **** 2.) Refactored code
-// **** 3.) ATP now tracks any object appropriately tagged
-// **** 4.) ATP roaming is now smooth and more random
-// **** 5.) Added collision contingency for Inner Cell Wall
-// **************************************************************
-// **** Updated on 10/09/15 by Kevin Means
-// **** 1.) ATP tracks directly to the docking object
-// **** 2.) trackThis object is now used instead of array index
-// ****     (fixed bug)
-// **** 3.) If this ATP accidentally services another object, the 
-// ****     object that this was tracking is "UnFound" to allow
-// ****     other objects to service it.
-// **** 4.) Calculates the incident angle for use with docking
-// ****     rotation in ATPproperties "dropOff" method.
-// **************************************************************
-// **** Updated on 10/22/15 by Kevin Means
-// **** 1.) Added code for smooth path around the left or right
-// ****     hand side of the nucleus (when it's in the way)
-// **************************************************************
-using UnityEngine;
 using System.Collections;
-using System;// for math
+using System.Collections.Generic;
+using UnityEngine;
+using System;
 
-public class ATPpathfinding : MonoBehaviour 
-{  
+public class cAmpMovement : MonoBehaviour
+{
     //------------------------------------------------------------------------------------------------
     #region Public Fields + Properties + Events + Delegates + Enums
-    public bool droppedOff = false;             // is phospate gone?
-    public bool found = false;                  // did this ATP find a dock?
-    public float maxHeadingChange;              // max possible rotation angle at a time
-    public float angleToRotate;                 // stores the angle in degrees between ATP and dock
-    public int maxRoamChangeTime;               // how long before changing heading/speed
-    public int minSpeed;                        // slowest the ATP will move
-    public int maxSpeed;                        // fastest the ATP will move
-    public string trackingTag;                  // objects of this tag are searched for and tracked
-    public GameObject trackThis;                // the object with which to dock
-    public Transform origin;                    // origin location/rotation is the physical ATP
+    public bool       foundPKA = false;  // did this cAMP find a PKA doc?
+    public float      maxHeadingChange;  // max possible rotation angle at a time
+    public float      angleToRotate;     // stores the angle in degrees between ATP and dock
+    public int        maxRoamChangeTime; // how long before changing heading/speed
+    public int        minSpeed;          // slowest the ATP will move
+    public int        maxSpeed;          // fastest the ATP will move
+    public string     trackingTag;       // objects of this tag are searched for and tracked
+    public GameObject trackThis;         // the object with which to dock
+    public Transform  origin;            // origin location/rotation is the physical ATP
     #endregion Public Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
   
     //------------------------------------------------------------------------------------------------
     #region Private Fields + Properties + Events + Delegates + Enums
-    private int objIndex = 0;                   // the index containing the above "trackThis" object
-    private float heading;                      // roaming direction
-    private float headingOffset;                // used for smooth rotation while roaming
-    private int movementSpeed;                  // roaming velocity
-    private int roamInterval = 0;               // how long until heading/speed change while roaming
-    private int roamCounter = 0;                // time since last heading speed change while roaming
-    private int curveCounter = 90;              // used for smooth transition when tracking
-    private Quaternion rotate;                  // rotation while tracking
+    private Quaternion rotate;             // rotation while tracking
+    private float      heading;            // roaming direction
+    private float      headingOffset;      // used for smooth rotation while roaming
+    private int        movementSpeed;      // roaming velocity
+    private int        objIndex      = 0;  // the index containing the above "trackThis" object
+    private int        roamInterval  = 0;  // how long until heading/speed change while roaming
+    private int        roamCounter   = 0;  // time since last heading speed change while roaming
+    private int        curveCounter  = 90; // used for smooth transition when tracking
     #endregion Private Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
   
@@ -63,33 +41,35 @@ public class ATPpathfinding : MonoBehaviour
     // ("angleToRotate") in order to give the "dropOff" function a baseline angle to use for rotation.
     private void Raycasting()
     {
-        Vector3 trackCollider = trackThis.GetComponent<CircleCollider2D>().bounds.center;
-        RaycastHit2D collision = Physics2D.Linecast(origin.position, trackCollider);
+        Vector3      trackCollider = trackThis.GetComponent<CircleCollider2D>().bounds.center;
+        RaycastHit2D collision     = Physics2D.Linecast(origin.position, trackCollider);
 
         if(collision.collider.name == "Inner Cell Wall")
         {
             Vector3 collisionAngle = collision.normal;
-            Vector3 direction = trackCollider - origin.position;
-            Vector3 angle = Vector3.Cross(direction, collisionAngle);
+            Vector3 direction      = trackCollider - origin.position;
+            Vector3 angle          = Vector3.Cross(direction, collisionAngle);
 
             if(angle.z < 0)// track to the right of the nucleus
             { 
-                rotate = Quaternion.LookRotation(origin.position-trackCollider, trackThis.transform.right);
+                rotate       = Quaternion.LookRotation(origin.position-trackCollider, trackThis.transform.right);
                 curveCounter = 90;
             }
             else//track to the left of the nucleus
             { 
-                rotate = Quaternion.LookRotation(origin.position-trackCollider, -trackThis.transform.right);
+                rotate       = Quaternion.LookRotation(origin.position-trackCollider, -trackThis.transform.right);
                 curveCounter = -90;
             }
         }
         else// calculate approach vector
         {            
-            float diffX = origin.position.x - trackCollider.x;
-            float diffY = origin.position.y - trackCollider.y;
+            float diffX   = origin.position.x - trackCollider.x;
+            float diffY   = origin.position.y - trackCollider.y;
             float degrees = ((float)Math.Atan2(diffY, diffX) * (180 / (float)Math.PI) + 90);
+
             transform.eulerAngles = new Vector3 (0, 0, degrees - curveCounter);
-            rotate = transform.localRotation;
+            rotate                = transform.localRotation;
+
             if(curveCounter > 0)
                 curveCounter -= 1;// slowly rotate left until counter empty
             else if(curveCounter < 0)
@@ -116,11 +96,12 @@ public class ATPpathfinding : MonoBehaviour
             roamCounter++;                                      
             if(roamCounter > roamInterval)                         
             {
-                roamCounter = 0;
-                var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);  
-                var ceiling = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
-                roamInterval = UnityEngine.Random.Range(5, maxRoamChangeTime);   
+                roamCounter   = 0;
+                var floor     = Mathf.Clamp(heading - maxHeadingChange, 0, 360);  
+                var ceiling   = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
+                roamInterval  = UnityEngine.Random.Range(5, maxRoamChangeTime);   
                 movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
+
                 RaycastHit2D collision = Physics2D.Raycast(origin.position, origin.up);
                 if(collision.collider != null && collision.collider.name == "Cell Membrane(Clone)" &&
                    collision.distance < 2)
@@ -154,43 +135,33 @@ public class ATPpathfinding : MonoBehaviour
     // "trackThis" and calls raycasting so that the ATP can seek it out.  Else, ATP wanders.
     private void Update()
     {
-        if(droppedOff) 
-        { 
-            found = false; 
-            trackThis.GetComponent<TrackingProperties>().UnFind();
-        }
-        else
+        if(foundPKA == false)
         {
-            if(found == false)
+            GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
+            objIndex = 0;
+            while(objIndex < foundObjs.Length && foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
             {
-                GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
-                objIndex = 0;
-                while(objIndex < foundObjs.Length && foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
-                {
-                    ++objIndex;
-                }
-                if(objIndex < foundObjs.Length) 
-                {
-                    if(foundObjs[objIndex].GetComponent<TrackingProperties>().Find() == true)
-                    { 
-                        trackThis = foundObjs[objIndex];
-                        found     = true; 
-                        if(trackThis.name == "Adenylyl_cyclase-B(Clone)")
-                        {
-                            print("Cyclase");
-                            trackThis.GetComponent<TrackingProperties>().isFound = false;
-                        }
-                    }
-                }
-                else
-                    trackThis = null;
+                ++objIndex;
             }
-            if(found == true && trackThis.tag == trackingTag)
-                Raycasting();
+            if(objIndex < foundObjs.Length) 
+            {
+                if(foundObjs[objIndex].GetComponent<TrackingProperties>().Find() == true)
+                { 
+                    trackThis = foundObjs[objIndex];
+                    foundPKA = true; 
+                    if(trackThis.name == "PKA-A(Clone)")
+                        trackThis.GetComponent<TrackingProperties>().isFound = false;
+                }
+            }
             else
-                found = false;
+                trackThis = null;
         }
-        if(found == false)
+        if(foundPKA == true && trackThis.tag == trackingTag)
+            Raycasting();
+        else
+            foundPKA = false;
+
+        if(foundPKA == false)
             Roam();
     }
     #endregion Private Methods
