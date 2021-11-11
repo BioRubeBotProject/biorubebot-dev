@@ -29,6 +29,7 @@ public class cAmpMovement : MonoBehaviour
     private int        roamInterval  = 0;  // how long until heading/speed change while roaming
     private int        roamCounter   = 0;  // time since last heading speed change while roaming
     private int        curveCounter  = 90; // used for smooth transition when tracking
+    private int        pkaColliderIndex = 0;
     #endregion Private Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
   
@@ -41,7 +42,9 @@ public class cAmpMovement : MonoBehaviour
     // ("angleToRotate") in order to give the "dropOff" function a baseline angle to use for rotation.
     private void Raycasting()
     {
-        Vector3      trackCollider = trackThis.GetComponent<CircleCollider2D>().bounds.center;
+        CircleCollider2D[] colliders = trackThis.GetComponents<CircleCollider2D>();
+
+        Vector3      trackCollider = colliders[pkaColliderIndex].bounds.center;
         RaycastHit2D collision     = Physics2D.Linecast(origin.position, trackCollider);
 
         if(collision.collider.name == "Inner Cell Wall")
@@ -138,6 +141,7 @@ public class cAmpMovement : MonoBehaviour
         if(foundPKA == false)
         {
             GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
+            GameObject   foundObj  = null;
             objIndex = 0;
             while(objIndex < foundObjs.Length && foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
             {
@@ -145,12 +149,26 @@ public class cAmpMovement : MonoBehaviour
             }
             if(objIndex < foundObjs.Length) 
             {
-                if(foundObjs[objIndex].GetComponent<TrackingProperties>().Find() == true)
-                { 
-                    trackThis = foundObjs[objIndex];
-                    foundPKA = true; 
-                    if(trackThis.name == "PKA-A(Clone)")
-                        trackThis.GetComponent<TrackingProperties>().isFound = false;
+                foundObj = foundObjs[objIndex];
+                if(foundObj.GetComponent<TrackingProperties>().Find() == true &&
+                   foundObj.GetComponent<ActivationProperties>().isActive == false)
+                {
+                    //only two colliders on PKA on which to track
+                    if(foundObj.GetComponent<PKAProperties>().coliderIndex > 1)
+                    {
+                        foundObj.GetComponent<TrackingProperties>().isFound = true;
+                    }
+                    else
+                    {
+                        trackThis = foundObjs[objIndex];
+                        foundPKA  = true; 
+                        if(trackThis.name == "PKA-A(Clone)")
+                        {
+                            trackThis.GetComponent<TrackingProperties>().isFound = false;
+                            pkaColliderIndex = trackThis.GetComponent<PKAProperties>().coliderIndex;
+                            trackThis.GetComponent<PKAProperties>().coliderIndex++;
+                        }
+                    }
                 }
             }
             else
