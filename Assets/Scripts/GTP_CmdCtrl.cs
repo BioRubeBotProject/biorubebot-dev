@@ -6,31 +6,31 @@ public class GTP_CmdCtrl: MonoBehaviour
 {
     //------------------------------------------------------------------------------------------------
     #region Public Fields + Properties + Events + Delegates + Enums
-    public float maxHeadingChange;              // max possible rotation angle at a time
-    public float angleToRotate;                 // stores the angle in degrees between GTP and dock
-    public int maxRoamChangeTime;               // how long before changing heading/speed
-    public int minSpeed;                        // slowest the GTP will move
-    public int maxSpeed;                        // fastest the GTP will move
-    public GameObject GTP1;                     // transform GTP upon docking
-    public bool droppedOff = false;             // is phospate gone?
-    public bool found = false;                  // did this GTP find a dock?
-    public string trackingTag;                  // objects of this tag are searched for and tracked
-    public GameObject trackThis;                // the object with which to dock
-    public Transform origin;                    // origin location/rotation is the physical GTP
+    public GameObject GTP1;                // transform GTP upon docking
+    public GameObject trackThis;           // the object with which to dock
     public Quaternion rotation;
-    public bool spin = false;
+    public Transform  origin;              // origin location/rotation is the physical GTP
+    public string     trackingTag;         // objects of this tag are searched for and tracked
+    public float      maxHeadingChange;    // max possible rotation angle at a time
+    public float      angleToRotate;       // stores the angle in degrees between GTP and dock
+    public bool       droppedOff = false;  // is phospate gone?
+    public bool       found      = false;  // did this GTP find a dock?
+    public bool       spin       = false;
+    public int        maxRoamChangeTime;   // how long before changing heading/speed
+    public int        minSpeed;            // slowest the GTP will move
+    public int        maxSpeed;            // fastest the GTP will move
     #endregion Public Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
     
     //------------------------------------------------------------------------------------------------
     #region Private Fields + Properties + Events + Delegates + Enums
-    private int objIndex = 0;                   // the index containing the above "trackThis" object
-    private float heading;                      // roaming direction
-    private float headingOffset;                // used for smooth rotation while roaming
-    private int movementSpeed;                  // roaming velocity
-    private int roamInterval = 0;               // how long until heading/speed change while roaming
-    private int roamCounter = 0;                // time since last heading speed change while roaming
-    private int curveCounter = 90;              // used for smooth transition when tracking
+    private int        objIndex = 0;                   // the index containing the above "trackThis" object
+    private float      heading;                      // roaming direction
+    private float      headingOffset;                // used for smooth rotation while roaming
+    private int        movementSpeed;                  // roaming velocity
+    private int        roamInterval = 0;               // how long until heading/speed change while roaming
+    private int        roamCounter = 0;                // time since last heading speed change while roaming
+    private int        curveCounter = 90;              // used for smooth transition when tracking
     private Quaternion rotate;                  // rotation while tracking
     #endregion Private Fields + Properties + Events + Delegates + Enums
 
@@ -110,36 +110,37 @@ public class GTP_CmdCtrl: MonoBehaviour
             rotate.z = heading -180;
             if(roamCounter > roamInterval)                         
             {                                                   
-                roamCounter = 0;
-                var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);  
-                var ceiling = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
-                roamInterval = UnityEngine.Random.Range(5, maxRoamChangeTime);   
+                roamCounter   = 0;
+                var floor     = Mathf.Clamp(heading - maxHeadingChange, 0, 360);  
+                var ceiling   = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
+                roamInterval  = UnityEngine.Random.Range(5, maxRoamChangeTime);   
                 movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
 
                 if(null != origin)
                 {
                     RaycastHit2D collision = Physics2D.Raycast(origin.position, origin.up);
 
-                    if(collision.collider != null &&                  // must check for instance first
-                       collision.collider.name == "Cell Membrane(Clone)" &&
+                    if(collision.collider != null && collision.collider.name == "Cell Membrane(Clone)" &&
                        collision.distance < 2)
                     {
-                        if(heading <= 180) { heading = heading + 180; }
-                        else { heading = heading - 180; }
+                        if(heading <= 180)
+                            heading = heading + 180;
+                        else
+                            heading = heading - 180;
+
                         movementSpeed = maxSpeed;
-                        roamInterval = maxRoamChangeTime;
+                        roamInterval  = maxRoamChangeTime;
                     }
                     else
-                    {
                         heading = UnityEngine.Random.Range(floor, ceiling);
-                    }
+
                     headingOffset = (transform.eulerAngles.z - heading) / (float)roamInterval;
                 }
             }
             transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - headingOffset);
             transform.position += transform.up * Time.deltaTime * movementSpeed;
         }
-    }   
+    }
 
     public void FixedUpdate() 
     {

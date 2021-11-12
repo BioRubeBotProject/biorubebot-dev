@@ -16,6 +16,7 @@ public class cAmpMovement : MonoBehaviour
     public string     trackingTag;       // objects of this tag are searched for and tracked
     public GameObject trackThis;         // the object with which to dock
     public Transform  origin;            // origin location/rotation is the physical ATP
+    public int        pkaColliderIndex = 0;
     #endregion Public Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
   
@@ -29,7 +30,6 @@ public class cAmpMovement : MonoBehaviour
     private int        roamInterval  = 0;  // how long until heading/speed change while roaming
     private int        roamCounter   = 0;  // time since last heading speed change while roaming
     private int        curveCounter  = 90; // used for smooth transition when tracking
-    private int        pkaColliderIndex = 0;
     #endregion Private Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
   
@@ -44,6 +44,7 @@ public class cAmpMovement : MonoBehaviour
     {
         CircleCollider2D[] colliders = trackThis.GetComponents<CircleCollider2D>();
 
+        print(colliders.Length);
         Vector3      trackCollider = colliders[pkaColliderIndex].bounds.center;
         RaycastHit2D collision     = Physics2D.Linecast(origin.position, trackCollider);
 
@@ -130,6 +131,22 @@ public class cAmpMovement : MonoBehaviour
     //------------------------------------------------------------------------------------------------
     private void Start()
     {
+    }
+
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
+    {
+        if(other is CircleCollider2D)
+        {
+            if(other.gameObject.tag == "PKA" && other.GetComponent<ActivationProperties>().isActive == false)
+            {
+                if(pkaColliderIndex == 2)
+                    other.GetComponent<ActivationProperties>().isActive = true;
+
+	            this.transform.parent = other.transform;
+                foundPKA              = true;
+            }
+        }
+        yield return new WaitForSeconds(1);
     }
   
     //------------------------------------------------------------------------------------------------

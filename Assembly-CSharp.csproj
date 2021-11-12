@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,6 +53,9 @@
     <UnityVersion>2021.1.21f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets/Scripts/WinBoxChange.cs" />
     <Compile Include="Assets/Scripts/DEPRECIATED/movePhosphate.cs" />
     <Compile Include="Assets/Scripts/Creator.cs" />
@@ -82,6 +85,8 @@
     <Compile Include="Assets/Scripts/ActivationProperties.cs" />
     <Compile Include="Assets/Scripts/DEPRECIATED/moveGDP.cs" />
     <Compile Include="Assets/Scripts/AlphaMovement.cs" />
+    <Compile Include="Assets/Scripts/PKAMovement.cs" />
+    <Compile Include="Assets/Scripts/PKAProperties.cs" />
     <Compile Include="Assets/Scripts/GPCRProperties.cs" />
     <Compile Include="Assets/Scripts/ObjectCollection.cs" />
     <Compile Include="Assets/Scripts/ActiveAdenylylCyclaseProperties.cs" />
@@ -126,8 +131,6 @@
     <Compile Include="Assets/Scripts/DEPRECIATED/ATPscript.cs" />
     <Compile Include="Assets/Scripts/G_ProteinCmdCtrl.cs" />
     <Compile Include="Assets/Scripts/ExtraCellularProperties.cs" />
-    <Compile Include="Assets/Scripts/PKAMovement.cs" />
-    <Compile Include="Assets/Scripts/PKAProperties.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Standard Assets (Mobile)/Shaders/Vertex Colored Shaders/Mobile Transparent Vertex Color.shader" />
