@@ -147,7 +147,6 @@ public class cAmpMovement : MonoBehaviour
                     if(pkaColliderIndex == 1)
                     {
                         other.GetComponent<ActivationProperties>().isActive = true;
-                        print("Set the PKA Active");
                     }
     
                     this.transform.parent = other.transform;

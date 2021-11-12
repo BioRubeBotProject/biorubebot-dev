@@ -89,7 +89,6 @@ public class PKAMovement : MonoBehaviour
         Roam();
         if(this.gameObject.GetComponent<ActivationProperties>().isActive && !isSeparated)
         {
-            print("Separating?");
             GameObject oldPKA = getOldPka();
             if(null != oldPKA)
             {
@@ -102,6 +101,8 @@ public class PKAMovement : MonoBehaviour
 
                 GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(newPKA);
                 oldPKA.gameObject.SetActive(false);
+                if(GameObject.FindWithTag("Win_PKA_Separates"))
+                    WinScenario.dropTag("Win_PKA_Separates");
             }
         }
     }
