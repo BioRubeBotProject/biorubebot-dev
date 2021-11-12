@@ -8,13 +8,13 @@ public class cAmpMovement : MonoBehaviour
     //------------------------------------------------------------------------------------------------
     #region Public Fields + Properties + Events + Delegates + Enums
     public float      maxHeadingChange;  // max possible rotation angle at a time
-    public float      angleToRotate;     // stores the angle in degrees between ATP and dock
+    public float      angleToRotate;     // stores the angle in degrees between cAMP and dock
     public int        maxRoamChangeTime; // how long before changing heading/speed
-    public int        minSpeed;          // slowest the ATP will move
-    public int        maxSpeed;          // fastest the ATP will move
+    public int        minSpeed;          // slowest the cAMP will move
+    public int        maxSpeed;          // fastest the cAMP will move
     public string     trackingTag;       // objects of this tag are searched for and tracked
     public GameObject trackThis;         // the object with which to dock
-    public Transform  origin;            // origin location/rotation is the physical ATP
+    public Transform  origin;            // origin location/rotation is the physical cAMP
     #endregion Public Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
   
@@ -37,9 +37,9 @@ public class cAmpMovement : MonoBehaviour
   
     #region Private Methods
     //------------------------------------------------------------------------------------------------
-    // Directs the ATP to the proper dock (to rotate and dropoff tail). The ATP seeks after the circle 
+    // Directs the cAMP to the proper dock (to rotate and dropoff tail). The cAMP seeks after the circle 
     // collider of the "trackThis" object, which should be projected to the side of the object. This 
-    // method will detect whether or not the "Inner Cell Wall" is in the ATP's line of sight with the
+    // method will detect whether or not the "Inner Cell Wall" is in the cAMP's line of sight with the
     // collider. If it is, a path will be plotted around it. The incident angle is also calculated 
     // ("angleToRotate") in order to give the "dropOff" function a baseline angle to use for rotation.
     private void Raycasting()
@@ -92,10 +92,10 @@ public class cAmpMovement : MonoBehaviour
     }
   
     //------------------------------------------------------------------------------------------------
-    // ATP wanders when not actively seeking a receptor leg. This method causes the ATP to randomly
+    // cAMP wanders when not actively seeking a receptor leg. This method causes the cAMP to randomly
     // change direction and speed at random intervals.  The tendency for purely random motion objects
     // to generally gravitate toward the edges of a circular container has been artificially remedied
-    // by Raycasting and turning the ATP onto a 180 degree course (directing them toward the center).  
+    // by Raycasting and turning the cAMP onto a 180 degree course (directing them toward the center).  
     private void Roam()
     {
         if(Time.timeScale != 0)// if game not paused
@@ -161,7 +161,7 @@ public class cAmpMovement : MonoBehaviour
     //------------------------------------------------------------------------------------------------
     // Update is called once per frame. Gets an array of potential GameObjects to track and tries to 
     // find one that is not "found" yet. If it finds one then it stores a pointer to the GameObject as
-    // "trackThis" and calls raycasting so that the ATP can seek it out.  Else, ATP wanders.
+    // "trackThis" and calls raycasting so that the cAMP can seek it out.  Else, cAMP wanders.
     private void Update()
     {
         if(foundPKA == false)

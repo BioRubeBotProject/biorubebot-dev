@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PKAMovement : MonoBehaviour
+public class PKABMovement : MonoBehaviour
 {
-    public GameObject activePKA;
     public Transform  origin;            // origin location/rotation is the physical PKA
     public float      maxHeadingChange;  // max possible rotation angle at a time
     public int        maxRoamChangeTime; // how long before changing heading/speed
@@ -13,7 +12,6 @@ public class PKAMovement : MonoBehaviour
 
     private float    heading;               // roaming direction
     private float    headingOffset;         //used for smooth rotation while roaming
-    private bool     isSeparated    = false;//whether the PKA has separated from the Kinase
     private int      movementSpeed  = 0;    // roaming velocity
     private int      roamInterval   = 0;    // how long until heading/speed change while roaming
     private int      roamCounter    = 0;    // time since last heading speed change while roaming
@@ -53,60 +51,12 @@ public class PKAMovement : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
     }
 
-    /*  Function:   getOldPka()
-        Purpose:    this function retrieves the child of this Game Object that
-                    is tagged inactivePKA. This is the blue part of the PKA that
-                    will separate off and transform once this PKA has two cAMPs
-                    attached
-        Return:     the PKA that will transform
-    */
-    public GameObject getOldPka()
-    {
-        GameObject oldPka = null;
-        bool       found  = false;
-
-
-        foreach(Transform child in this.transform)
-        {
-            if(child.tag == "inactivePKA")
-            {
-                oldPka = child.gameObject;
-                found  = true;
-                break;
-            }
-        }
-        if(!found)
-            oldPka = null;
-
-        return oldPka;
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Roam();
-        if(this.gameObject.GetComponent<ActivationProperties>().isActive && !isSeparated)
-        {
-            GameObject oldPKA = getOldPka();
-            if(null != oldPKA)
-            {
-                isSeparated = true;
-                this.gameObject.GetComponent<ActivationProperties>().isActive = false;
-
-                GameObject parentObject = this.gameObject;
-                GameObject newPKA       = (GameObject)Instantiate(activePKA, oldPKA.transform.position, oldPKA.transform.rotation);
-                newPKA.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
-
-                GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(newPKA);
-                oldPKA.gameObject.SetActive(false);
-                if(GameObject.FindWithTag("Win_PKA_Separates"))
-                    WinScenario.dropTag("Win_PKA_Separates");
-            }
-        }
     }
 }
