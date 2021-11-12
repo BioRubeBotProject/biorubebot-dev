@@ -7,7 +7,6 @@ public class cAmpMovement : MonoBehaviour
 {
     //------------------------------------------------------------------------------------------------
     #region Public Fields + Properties + Events + Delegates + Enums
-    public bool       foundPKA = false;  // did this cAMP find a PKA doc?
     public float      maxHeadingChange;  // max possible rotation angle at a time
     public float      angleToRotate;     // stores the angle in degrees between ATP and dock
     public int        maxRoamChangeTime; // how long before changing heading/speed
@@ -16,20 +15,23 @@ public class cAmpMovement : MonoBehaviour
     public string     trackingTag;       // objects of this tag are searched for and tracked
     public GameObject trackThis;         // the object with which to dock
     public Transform  origin;            // origin location/rotation is the physical ATP
-    public int        pkaColliderIndex = 0;
     #endregion Public Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
   
     //------------------------------------------------------------------------------------------------
     #region Private Fields + Properties + Events + Delegates + Enums
-    private Quaternion rotate;             // rotation while tracking
-    private float      heading;            // roaming direction
-    private float      headingOffset;      // used for smooth rotation while roaming
-    private int        movementSpeed;      // roaming velocity
-    private int        objIndex      = 0;  // the index containing the above "trackThis" object
-    private int        roamInterval  = 0;  // how long until heading/speed change while roaming
-    private int        roamCounter   = 0;  // time since last heading speed change while roaming
-    private int        curveCounter  = 90; // used for smooth transition when tracking
+    private CircleCollider2D trackCollider;
+    private Quaternion       rotate;                  // rotation while tracking
+    private float            heading;                 // roaming direction
+    private float            headingOffset;           // used for smooth rotation while roaming
+    private bool             foundPKA         = false;// did this cAMP find a PKA doc?
+    private bool             dockedWithPKA    = false;//did this cAMP dock with a PKA?
+    private int              movementSpeed;           // roaming velocity
+    private int              objIndex         = 0;    // the index containing the above "trackThis" object
+    private int              roamInterval     = 0;    // how long until heading/speed change while roaming
+    private int              roamCounter      = 0;    // time since last heading speed change while roaming
+    private int              curveCounter     = 90;   // used for smooth transition when tracking
+    private int              pkaColliderIndex = 0;    //the index of the PKA's collider array to track toward
     #endregion Private Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
   
@@ -44,31 +46,32 @@ public class cAmpMovement : MonoBehaviour
     {
         CircleCollider2D[] colliders = trackThis.GetComponents<CircleCollider2D>();
 
-        print(colliders.Length);
-        Vector3      trackCollider = colliders[pkaColliderIndex].bounds.center;
-        RaycastHit2D collision     = Physics2D.Linecast(origin.position, trackCollider);
+        trackCollider = colliders[pkaColliderIndex];
+
+        Vector3      vTrackCollider = colliders[pkaColliderIndex].bounds.center;
+        RaycastHit2D collision      = Physics2D.Linecast(origin.position, vTrackCollider);
 
         if(collision.collider.name == "Inner Cell Wall")
         {
             Vector3 collisionAngle = collision.normal;
-            Vector3 direction      = trackCollider - origin.position;
+            Vector3 direction      = vTrackCollider - origin.position;
             Vector3 angle          = Vector3.Cross(direction, collisionAngle);
 
             if(angle.z < 0)// track to the right of the nucleus
             { 
-                rotate       = Quaternion.LookRotation(origin.position-trackCollider, trackThis.transform.right);
+                rotate       = Quaternion.LookRotation(origin.position-vTrackCollider, trackThis.transform.right);
                 curveCounter = 90;
             }
             else//track to the left of the nucleus
             { 
-                rotate       = Quaternion.LookRotation(origin.position-trackCollider, -trackThis.transform.right);
+                rotate       = Quaternion.LookRotation(origin.position-vTrackCollider, -trackThis.transform.right);
                 curveCounter = -90;
             }
         }
         else// calculate approach vector
         {            
-            float diffX   = origin.position.x - trackCollider.x;
-            float diffY   = origin.position.y - trackCollider.y;
+            float diffX   = origin.position.x - vTrackCollider.x;
+            float diffY   = origin.position.y - vTrackCollider.y;
             float degrees = ((float)Math.Atan2(diffY, diffX) * (180 / (float)Math.PI) + 90);
 
             transform.eulerAngles = new Vector3 (0, 0, degrees - curveCounter);
@@ -135,17 +138,24 @@ public class cAmpMovement : MonoBehaviour
 
     private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
-        if(other is CircleCollider2D)
+        if(!dockedWithPKA)
         {
-            if(other.gameObject.tag == "PKA" && other.GetComponent<ActivationProperties>().isActive == false)
+            if(other == trackCollider)
             {
-                if(pkaColliderIndex == 2)
-                    other.GetComponent<ActivationProperties>().isActive = true;
-
-	            this.transform.parent = other.transform;
-                foundPKA              = true;
+                if(other.gameObject.tag == "PKA" && other.GetComponent<ActivationProperties>().isActive == false)
+                {
+                    if(pkaColliderIndex == 1)
+                    {
+                        other.GetComponent<ActivationProperties>().isActive = true;
+                        print("Set the PKA Active");
+                    }
+    
+                    this.transform.parent = other.transform;
+                    dockedWithPKA = true;
+                }
             }
         }
+
         yield return new WaitForSeconds(1);
     }
   
@@ -192,7 +202,9 @@ public class cAmpMovement : MonoBehaviour
                 trackThis = null;
         }
         if(foundPKA == true && trackThis.tag == trackingTag)
+        {
             Raycasting();
+        }
         else
             foundPKA = false;
 

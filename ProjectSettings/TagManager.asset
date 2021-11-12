@@ -85,6 +85,7 @@ TagManager:
   - Win_Alpha_Binds_to_Cyclase
   - Win_Alpha_Rejoins_GProtein
   - PKA
+  - inactivePKA
   layers:
   - Default
   - TransparentFX

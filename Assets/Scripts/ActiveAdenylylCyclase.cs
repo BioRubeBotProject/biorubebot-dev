@@ -13,11 +13,6 @@ public class ActiveAdenylylCyclase : MonoBehaviour
     {
         if(other.gameObject.tag == "ATP" && other.GetComponent<ATPpathfinding>().found == true)
         {
-            /*objProps.isActive = false; 
-            objProps.gameObject.tag = "Untagged";
-            objProps.GetComponent<CircleCollider2D>().enabled = false;*/
-            print("Got hit");
-
             other.GetComponent<CircleCollider2D>().enabled = false;
             other.GetComponent<ATPproperties>().changeState(false);
 

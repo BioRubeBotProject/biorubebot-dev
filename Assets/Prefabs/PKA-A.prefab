@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 7326066016782121904}
   m_Layer: 0
   m_Name: PKA
-  m_TagString: Untagged
+  m_TagString: inactivePKA
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,6 +316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cb0e80c5812c4bd8a47723e33975702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activePKA: {fileID: 6516999325490774323, guid: 81162f208dfbfe44d9ac84296a401856,
+    type: 3}
   origin: {fileID: 6177488551001468193}
   maxHeadingChange: 60
   maxRoamChangeTime: 50

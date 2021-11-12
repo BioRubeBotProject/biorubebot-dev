@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PKAMovement : MonoBehaviour
 {
-    public Transform origin;            // origin location/rotation is the physical PKA
-    public float     maxHeadingChange;  // max possible rotation angle at a time
-    public int       maxRoamChangeTime; // how long before changing heading/speed
-    public int       minSpeed;          // slowest the GTP will move
-    public int       maxSpeed;          // fastest the GTP will move
+    public GameObject activePKA;
+    public Transform  origin;            // origin location/rotation is the physical PKA
+    public float      maxHeadingChange;  // max possible rotation angle at a time
+    public int        maxRoamChangeTime; // how long before changing heading/speed
+    public int        minSpeed;          // slowest the GTP will move
+    public int        maxSpeed;          // fastest the GTP will move
 
-    private float    heading;          // roaming direction
-    private float    headingOffset;    // used for smooth rotation while roaming
-    private int      movementSpeed;    // roaming velocity
-    private int      roamInterval = 0; // how long until heading/speed change while roaming
-    private int      roamCounter  = 0; // time since last heading speed change while roaming
+    private float    heading;               // roaming direction
+    private float    headingOffset;         //used for smooth rotation while roaming
+    private bool     isSeparated    = false;//whether the PKA has separated from the Kinase
+    private int      movementSpeed  = 0;    // roaming velocity
+    private int      roamInterval   = 0;    // how long until heading/speed change while roaming
+    private int      roamCounter    = 0;    // time since last heading speed change while roaming
 
     // ATP wanders when not actively seeking a receptor leg. This method causes the ATP to randomly
     // change direction and speed at random intervals.  The tendency for purely random motion objects
@@ -60,9 +62,47 @@ public class PKAMovement : MonoBehaviour
     {
     }
 
+    public GameObject getOldPka()
+    {
+        GameObject oldPka = null;
+        bool       found  = false;
+
+
+        foreach(Transform child in this.transform)
+        {
+            if(child.tag == "inactivePKA")
+            {
+                oldPka = child.gameObject;
+                found  = true;
+                break;
+            }
+        }
+        if(!found)
+            oldPka = null;
+
+        return oldPka;
+    }
+
     // Update is called once per frame
     void Update()
     {
         Roam();
+        if(this.gameObject.GetComponent<ActivationProperties>().isActive && !isSeparated)
+        {
+            print("Separating?");
+            GameObject oldPKA = getOldPka();
+            if(null != oldPKA)
+            {
+                isSeparated = true;
+                this.gameObject.GetComponent<ActivationProperties>().isActive = false;
+
+                GameObject parentObject = this.gameObject;
+                GameObject newPKA       = (GameObject)Instantiate(activePKA, oldPKA.transform.position, oldPKA.transform.rotation);
+                newPKA.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
+
+                GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(newPKA);
+                oldPKA.gameObject.SetActive(false);
+            }
+        }
     }
 }
