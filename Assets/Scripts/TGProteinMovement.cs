@@ -14,7 +14,9 @@ public class TGProteinMovement : MonoBehaviour
     private bool       isDockedAtGpcr;
     private bool       hasGdpAttached;
     private bool       hasGtpAttached;
-    private bool       alphaSeparated;
+    private bool       isAlphaSeparated = false;
+    private float      childPosX        = 0.0f;
+    private float      childPosY        = 0.0f;
     private string     rotationDirection;
 
     /*  Function:   getAlpha() Transform
@@ -76,8 +78,10 @@ public class TGProteinMovement : MonoBehaviour
 
     private void Start()
     {
-        Transform doc = null;
+        Transform  doc   = null;
+        Transform alpha = null;
 
+        alpha = getAlpha();
         cellMembrane      = GameObject.FindGameObjectWithTag("CellMembrane");
         closestTarget     = null;
         targetFound       = false;
@@ -85,10 +89,11 @@ public class TGProteinMovement : MonoBehaviour
         isDockedAtGpcr    = false;
         hasGdpAttached    = true;
         hasGtpAttached    = false;
-        alphaSeparated    = false;
+        isAlphaSeparated  = false;
 
         childGDP = (GameObject)Instantiate(GDP, transform.position, Quaternion.identity);
-        childGDP.transform.SetParent(this.transform);
+        if(null != alpha)
+            childGDP.transform.SetParent(alpha.transform);
 
         doc = getDoc();
         if(null != doc)
@@ -107,18 +112,21 @@ public class TGProteinMovement : MonoBehaviour
     {
         Transform alpha = null;
 
-        if(alphaSeparated)
+        if(isAlphaSeparated)
             return;
 
         alpha = getAlpha();
         if(null != alpha)
         {
-            alpha.parent = null;
+            childPosX    = alpha.transform.position.x;
+            childPosY    = alpha.transform.position.y;
+            alpha.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
+
             alpha.GetComponent<ActivationProperties>().isActive = true;
-            alphaSeparated = true;
+            isAlphaSeparated = true;
+            //isDockedAtGpcr   = false;
+            alpha.GetComponent<AlphaMovement>().targetBetaGamma = this.gameObject;
         }
-        else
-            print("alpha is null");
     }
 
     public void Update()
@@ -126,7 +134,7 @@ public class TGProteinMovement : MonoBehaviour
         Transform doc = null;
 
         if(Time.timeScale != 0)//if we are not paused
-        {       
+        {
             if(!isDockedAtGpcr)//if we aren't bound to a GPCR
             {
                 closestTarget = findClosestTarget();
@@ -149,13 +157,34 @@ public class TGProteinMovement : MonoBehaviour
                 else
                     hasGtpAttached = false;
             }
-            if(hasGtpAttached && !alphaSeparated)
+            if(hasGtpAttached && !isAlphaSeparated)
             {
                 separateAlpha();
                 if(GameObject.FindWithTag("Win_GTP_Binds_to_Alpha"))
                     WinScenario.dropTag("Win_GTP_Binds_to_Alpha");
             }
         }
+    }
+
+    public Transform getGdp()
+    {
+        Transform alpha = getAlpha();
+        Transform gdp   = null;
+        bool      found = false;
+
+        foreach(Transform child in alpha.transform)
+        {
+            if(child.gameObject.name == "GDP(Clone)")
+            {
+                gdp   = child;
+                found = true;
+                break;
+            }
+        }
+        if(!found)
+            gdp = null;
+
+        return gdp;
     }
 
     /*  Function:   dropGdp()
@@ -165,8 +194,12 @@ public class TGProteinMovement : MonoBehaviour
     */
     private void dropGdp()
     {
-        childGDP.tag   = "ReleasedGDP";
-        hasGdpAttached = false;
+        Transform objGdp = getGdp();
+        if(null != objGdp)
+        {
+            objGdp.tag     = "ReleasedGDP";
+            hasGdpAttached = false;
+        }
     }
 
     /*  Function:   OnTriggerEnter2D(Collider2D)
@@ -176,17 +209,52 @@ public class TGProteinMovement : MonoBehaviour
     */
     private void OnTriggerEnter2D(Collider2D other)
 	{
+        GameObject objCollided = other.gameObject;
+        Transform  objDoc      = null;
+
         //IF right receptor collides with left receptor(with protein signaller)                                                      
-        if(other.gameObject.tag == "GPCR_B" && this.gameObject.name.Equals("ABG-ALL(Clone)"))
-        {                
-            //check if action is a win condition for the scene/level
-            if(GameObject.FindWithTag("Win_TGP_Bound_to_GPCR"))
-                WinScenario.dropTag("Win_TGP_Bound_to_GPCR");
+        if(objCollided.tag == "GPCR_B" && this.gameObject.name.Equals("ABG-ALL(Clone)"))
+        {
+            print("collided");
+            if(!isAlphaSeparated)
+            {
+                //check if action is a win condition for the scene/level
+                if(GameObject.FindWithTag("Win_TGP_Bound_to_GPCR"))
+                    WinScenario.dropTag("Win_TGP_Bound_to_GPCR");
 
-            isDockedAtGpcr = true;
-            this.GetComponent<ActivationProperties>().isActive = true;
+                isDockedAtGpcr = true;
+                this.GetComponent<ActivationProperties>().isActive = true;
 
-            dropGdp();
+                dropGdp();
+            }
+        }
+        else if(objCollided.tag == "Alpha" && this.gameObject.name.Equals("ABG-ALL(Clone)"))
+        {
+            if(objCollided.GetComponent<AlphaMovement>().doFindBetaGamma && //the Alpha is looking for a parent
+               objCollided.GetComponent<AlphaMovement>().targetBetaGamma == this.gameObject)//and its looking for me
+            {
+                Vector3 newPos = new Vector3(childPosX, childPosY, this.transform.position.z);
+
+                objCollided.GetComponent<AlphaMovement>().doFindBetaGamma = false;
+                objCollided.GetComponent<AlphaProperties>().isActive      = false;
+                objCollided.transform.parent                              = this.transform;
+
+                objCollided.transform.position = newPos;
+                objCollided.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
+
+                childGDP         = objCollided.GetComponent<AlphaMovement>().GDP;
+                isAlphaSeparated = false;
+                isDockedAtGpcr   = false;
+
+                objDoc = getDoc();
+                if(null != objDoc)
+                {
+                    objDoc.tag = "tGProteinDock";
+                    print("setting doc tag to tGProteinDock");
+                }
+                if(GameObject.FindWithTag("Win_Alpha_Rejoins_GProtein"))
+                    WinScenario.dropTag("Win_Alpha_Rejoins_GProtein");
+            }
         }
     }
 

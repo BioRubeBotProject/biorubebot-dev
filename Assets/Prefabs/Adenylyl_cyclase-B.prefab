@@ -80,6 +80,8 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   replaceATPWith: {fileID: 5247027091866179102, guid: 47f6f51089ac2994c924be8901abb328,
     type: 3}
+  inactiveCyclase: {fileID: 5117861752728446461, guid: f67b4e3c15f0e2948a3f47241de92da5,
+    type: 3}
 --- !u!114 &7827874668073291116
 MonoBehaviour:
   m_ObjectHideFlags: 0

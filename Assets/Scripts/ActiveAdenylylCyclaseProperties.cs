@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveAdenylylCyclaseProperties : MonoBehaviour
+public class ActiveAdenylylCyclaseProperties : MonoBehaviour, ActivationProperties
 {
+    #region Public Fields + Properties + Events + Delegates + Enums
+  
+    public bool m_isActive = false;//ready for GTP
+  
+    #endregion Public Fields + Properties + Events + Delegates + Enums
 
-    // Start is called before the first frame update
-    void Start()
+    public bool isActive
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        get => m_isActive;
+        set => m_isActive = value;
     }
 }

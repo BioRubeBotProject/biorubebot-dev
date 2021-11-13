@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class AlphaMovement : MonoBehaviour
 {
+    public  bool       doFindBetaGamma;
+    public  GameObject targetObject;   //AdenylylCyclase-A
+    public  GameObject targetBetaGamma;//parent GTProtien
+    public  GameObject GDP;
     public  float      speed;
-    public  GameObject targetObject;//AdenylylCyclase-A
     public  float      gtpActiveTimeMax;
+
+    private GameObject inactiveCyclase;
     private GameObject cellMembrane;
     private GameObject closestTarget;
     private bool       isDockedAtCyclase;
     private bool       targetFound;
     private bool       hasGdpAttached;
     private bool       hasGtpAttached;
-    private bool       doFindParent;
     private string     rotationDirection;
     private float      activeStart = 0.0f;
 
@@ -25,10 +29,10 @@ public class AlphaMovement : MonoBehaviour
         closestTarget     = null;
         targetFound       = false;
         rotationDirection = null;
-        doFindParent      = false;
+        doFindBetaGamma   = false;
     }
 
-    GameObject getDockStation()
+    private GameObject getDoc()
     {
         GameObject doc   = null;
         bool       found = false;
@@ -48,18 +52,16 @@ public class AlphaMovement : MonoBehaviour
         return doc;
     }
 
-    GameObject getGtpChild()
+    private GameObject getGtpChild()
     {
         GameObject objGtp = null;
-        GameObject doc    = getDockStation();
+        GameObject doc    = getDoc();
         bool       found  = false;
 
         if(null != doc)
         {
-            print("Found doc");
             foreach(Transform child in doc.transform)
             {
-                print(child.gameObject.name);
                 if(child.gameObject.name == "GTP(Clone)")
                 {
                     objGtp = child.gameObject;
@@ -74,17 +76,62 @@ public class AlphaMovement : MonoBehaviour
         return objGtp;
     }
 
-    void dropGtp()
+    private IEnumerator spawnGdp()
+    {
+        GameObject doc      = null;
+        GameObject childGdp = null;
+
+        yield return new WaitForSeconds(2.5f);
+        childGdp = (GameObject)Instantiate(GDP, transform.position, Quaternion.identity);
+        childGdp.transform.SetParent(this.transform);
+
+        doc = getDoc();
+        if(null != doc)
+            childGdp.transform.position = doc.transform.position;
+
+        childGdp.GetComponent<CircleCollider2D> ().enabled = false;
+        childGdp.GetComponent<Rigidbody2D> ().isKinematic  = true;
+        hasGdpAttached = true;
+    }
+
+    private void dropGtp()
     {
         GameObject childGtp = getGtpChild();
 
         if(null != childGtp)
         {
-            childGtp.tag   = "ReleasedGTP";
-            hasGtpAttached = false;
+            childGtp.transform.tag = "ReleasedGTP";
+            hasGtpAttached         = false;
         }
-        else
-            print("Could not get the Child GTP");
+    }
+
+    private void seekBetaGamma()
+    {
+        if(null != targetBetaGamma)
+        {
+            rotationDirection = getRotationDirection(targetBetaGamma);
+
+            if(rotationDirection == "right")
+                transform.RotateAround(cellMembrane.transform.position, Vector3.back, speed * Time.deltaTime);
+            else if(rotationDirection == "left")
+                transform.RotateAround(cellMembrane.transform.position, Vector3.forward, speed * Time.deltaTime);
+        }
+    }
+
+    private void setAdenylylCyclaseInactive()
+    {
+        GameObject activeCyclase = Roam.FindClosest(transform, "ATP_tracking");
+
+        if(null != inactiveCyclase)
+        {
+            inactiveCyclase.SetActive(true);
+            inactiveCyclase.GetComponent<ActivationProperties>().isActive = false;
+        }
+        if(null != activeCyclase)
+        {
+            activeCyclase.GetComponent<ActivationProperties>().isActive = false;
+            activeCyclase.SetActive(false);
+        }
     }
 
     public void Update()
@@ -106,7 +153,7 @@ public class AlphaMovement : MonoBehaviour
                     closestTarget = findClosestTarget();
                     if(null != closestTarget)
                     {
-                        rotationDirection = getRotationDirection();
+                        rotationDirection = getRotationDirection(closestTarget);
 
                         if(rotationDirection == "right")
                             transform.RotateAround(cellMembrane.transform.position, Vector3.back, speed * Time.deltaTime);
@@ -116,14 +163,25 @@ public class AlphaMovement : MonoBehaviour
                 }
 
                 if(Time.timeSinceLevelLoad > activeStart + gtpActiveTimeMax)
-                    doFindParent = true;
+                    doFindBetaGamma = true;
             }
-            if(doFindParent)
+
+            if(doFindBetaGamma)
             {
                 if(transform.gameObject.GetComponent<ActivationProperties>().isActive)
                     transform.gameObject.GetComponent<ActivationProperties>().isActive = false;
                 if(hasGtpAttached)
+                {
                     dropGtp();
+                    setAdenylylCyclaseInactive();
+                    StartCoroutine(spawnGdp());
+                    activeStart       = 0.0f;
+                    isDockedAtCyclase = false;
+                }
+                else if(hasGdpAttached)
+                {
+                    seekBetaGamma();
+                }
             }
         }
     }
@@ -137,25 +195,30 @@ public class AlphaMovement : MonoBehaviour
 	{
         if(other.gameObject.tag == "AdenylylCyclase" && transform.name == "alpha")
         {
-            isDockedAtCyclase = true;
-            other.gameObject.GetComponent<ActivationProperties>().isActive = true;
-            //check if action is a win condition for the scene/level
-            if(GameObject.FindWithTag("Win_Alpha_Binds_to_Cyclase"))
-                WinScenario.dropTag("Win_Alpha_Binds_to_Cyclase");
+            if(!doFindBetaGamma)
+            {
+                isDockedAtCyclase = true;
+                other.gameObject.GetComponent<ActivationProperties>().isActive = true;
+                inactiveCyclase = other.gameObject;
+                //check if action is a win condition for the scene/level
+                if(GameObject.FindWithTag("Win_Alpha_Binds_to_Cyclase"))
+                    WinScenario.dropTag("Win_Alpha_Binds_to_Cyclase");
+            }
         }
     }
 
-    /*  Function:   getRotationDirection() string
+    /*  Function:   getRotationDirection(GameObject) string
         Purpose:    this function determines the rotation direction around the
                     Cell Membrane wall depending on whether it would be quicker
-                    to get to the target Object by going left or right.
+                    to get to the given target Object by going left or right.
+        Parameters: the target GameObject
         Return:     left or right
     */
-    private string getRotationDirection()
+    private string getRotationDirection(GameObject targetObj)
     {       
         //Find rotation direction given closest object
         var    currentRotation = transform.eulerAngles;
-        var    targetRotation  = closestTarget.transform.eulerAngles;
+        var    targetRotation  = targetObj.transform.eulerAngles;
         string strDir          = null;
 
         float direction = (((targetRotation.z - currentRotation.z) + 360f) % 360f) > 180.0f ? -1 : 1;
@@ -206,3 +269,4 @@ public class AlphaMovement : MonoBehaviour
         return target;
     }
 }
+

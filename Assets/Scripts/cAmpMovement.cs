@@ -210,5 +210,6 @@ public class cAmpMovement : MonoBehaviour
         if(foundPKA == false)
             Roam();
     }
+
     #endregion Private Methods
 }

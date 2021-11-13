@@ -553,10 +553,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b9490419ffb40b49845e0cbab28247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  doFindBetaGamma: 0
   targetObject: {fileID: 5117861752728446461, guid: f67b4e3c15f0e2948a3f47241de92da5,
     type: 3}
-  gtpActiveTimeMax: 10
+  targetBetaGamma: {fileID: 0}
+  GDP: {fileID: 155230, guid: 80c59b74a31f1ff44bb6d2002c73805f, type: 3}
+  speed: 10
+  gtpActiveTimeMax: 45
 --- !u!61 &4865572442770232245
 BoxCollider2D:
   m_ObjectHideFlags: 0

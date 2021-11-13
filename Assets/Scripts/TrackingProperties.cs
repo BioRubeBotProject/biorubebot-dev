@@ -8,29 +8,30 @@
 using UnityEngine;
 using System.Collections;
 
-public class TrackingProperties : MonoBehaviour {
-  #region Public Fields + Properties + Events + Delegates + Enums
+public class TrackingProperties : MonoBehaviour
+{
+    #region Public Fields + Properties + Events + Delegates + Enums
 
-  public bool isFound = false;
+    public bool isFound = false;
 
-  #endregion Public Fields + Properties + Events + Delegates + Enums
+    #endregion Public Fields + Properties + Events + Delegates + Enums
 
-  //------------------------------------------------------------------------------------------------
-  public bool Find()
-  {
-    if(isFound == false)
+    //------------------------------------------------------------------------------------------------
+    public bool Find()
     {
-      isFound = true;
-      return true;
+        if(isFound == false)
+        {
+            isFound = true;
+            return true;
+        }
+        return false;
     }
-    return false;
-  }
 
-  //------------------------------------------------------------------------------------------------
-  // In case another object is unintentionally serviced by the ATP that was tracking this one, this
-  // allows this object to be "found" again.
-  public void UnFind()
-  {
-    isFound = false;
-  }
+    //------------------------------------------------------------------------------------------------
+    // In case another object is unintentionally serviced by the ATP that was tracking this one, this
+    // allows this object to be "found" again.
+    public void UnFind()
+    {
+        isFound = false;
+    }
 }

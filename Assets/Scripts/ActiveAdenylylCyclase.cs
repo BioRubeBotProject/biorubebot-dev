@@ -6,7 +6,8 @@ public class ActiveAdenylylCyclase : MonoBehaviour
 {
     public  ParticleSystem destructionEffect;
     public  GameObject     parentObject;      //Parent object used for unity editor Tree Hierarchy
-    public  GameObject     replaceATPWith; //what spawns when ATP collides and explodes
+    public  GameObject     replaceATPWith;    //what spawns when ATP collides and explodes
+    public  GameObject     inactiveCyclase;   //what spawns when this deactivates
     private bool           WinConMet = false; //used to determine if the win condition has already been met
 
     private IEnumerator OnTriggerEnter2D(Collider2D other)
@@ -54,5 +55,19 @@ public class ActiveAdenylylCyclase : MonoBehaviour
     
         //destroy our game object
         Destroy(other.gameObject);
+    }
+
+    public void Update()
+    {
+        /*if(this.GetComponent<ActivationProperties>().isActive == false)
+        {
+            GameObject parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
+            GameObject newCyclase   = (GameObject)Instantiate(inactiveCyclase, transform.position, transform.rotation);
+
+            newCyclase.transform.parent = parentObject.transform;
+            GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(newCyclase);
+            this.gameObject.SetActive(false);
+            this.gameObject.GetComponent<ActivationProperties>().isActive = false;
+        }*/
     }
 }

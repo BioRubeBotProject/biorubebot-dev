@@ -22,6 +22,7 @@ class GameWon : MonoBehaviour
             "Win_Alpha_Binds_to_Cyclase",
             "Win_Alpha_Rejoins_GProtein",
             "Win_PKA_Separates",
+            "Win_TR_Enters_Nucleus",
             "Win_KinaseTransformation"
         };
 

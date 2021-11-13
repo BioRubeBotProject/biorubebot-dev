@@ -5,6 +5,7 @@ using UnityEngine;
 public class AdenylylCyclaseMovement : MonoBehaviour
 {
     public GameObject activeCyclase;//Adenylyl Cyclase B
+
     //Start is called before the first frame update
     void Start()
     {
@@ -21,9 +22,10 @@ public class AdenylylCyclaseMovement : MonoBehaviour
             GameObject newCyclase   = (GameObject)Instantiate(activeCyclase, transform.position, transform.rotation);
 
             newCyclase.transform.parent = parentObject.transform;
+            newCyclase.GetComponent<ActivationProperties>().isActive = true;
+
             GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(newCyclase);
             this.gameObject.SetActive(false);
-            this.gameObject.GetComponent<ActivationProperties>().isActive = false;
         }
     }
 }

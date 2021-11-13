@@ -37,7 +37,7 @@ public class GTP_CmdCtrl: MonoBehaviour
     //------------------------------------------------------------------------------------------------
     static float _speed = 5f;   
 
-    private bool docked = false;        // GTP position = Docked G-protein position
+    private bool docked    = false;     // GTP position = Docked G-protein position
     private bool targeting = false;     // is GTP targeting docked G-protein
     
     private float delay = 0f;
@@ -189,16 +189,16 @@ public class GTP_CmdCtrl: MonoBehaviour
                     LockOn ();//call dibs
                 }
             }
-            
             else if(!docked)
             {
                 if((delay += Time.deltaTime) < 5)//wait 5 seconds before proceeding to target
-                    Roam.Roaming (this.gameObject);
+                    Roam.Roaming(this.gameObject);
                 else
                 {
-                    docked = Roam.ProceedToVector(this.gameObject,dockingPosition);
+                    docked = Roam.ProceedToVector(this.gameObject, dockingPosition);
                 }
-                if (docked) Cloak ();
+                if(docked)
+                    Cloak();
             }
             if(tag == "ReleasedGTP")
             {
@@ -264,9 +264,11 @@ public class GTP_CmdCtrl: MonoBehaviour
     //Cloak retags objects for future reference
     private void Cloak()
     {
-        transform.GetComponent<CircleCollider2D> ().enabled = false;
+        print("Cloaking");
+        transform.GetComponent<CircleCollider2D>().enabled = false;
         transform.GetComponent<Rigidbody2D>().isKinematic = true;
 
+        print(myTarget.name);
         transform.position = dockingPosition;
         transform.parent   = myTarget;
         myTarget.tag       = "OccupiedG_Protein";
