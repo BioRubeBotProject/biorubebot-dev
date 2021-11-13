@@ -34,7 +34,7 @@ public class ActiveAdenylylCyclase : MonoBehaviour
 
         yield return new WaitForSeconds (3f);
         //Instantiate our one-off particle system
-        ParticleSystem explosionEffect = Instantiate(destructionEffect) as ParticleSystem;
+        ParticleSystem explosionEffect     = Instantiate(destructionEffect) as ParticleSystem;
         explosionEffect.transform.position = other.transform.position;
 
         //Sets explosion effect to be under the parent object.

@@ -6,13 +6,16 @@ public class AlphaMovement : MonoBehaviour
 {
     public  float      speed;
     public  GameObject targetObject;//AdenylylCyclase-A
+    public  float      gtpActiveTimeMax;
     private GameObject cellMembrane;
     private GameObject closestTarget;
     private bool       isDockedAtCyclase;
     private bool       targetFound;
     private bool       hasGdpAttached;
     private bool       hasGtpAttached;
+    private bool       doFindParent;
     private string     rotationDirection;
+    private float      activeStart = 0.0f;
 
     private void Start()
     {
@@ -22,6 +25,66 @@ public class AlphaMovement : MonoBehaviour
         closestTarget     = null;
         targetFound       = false;
         rotationDirection = null;
+        doFindParent      = false;
+    }
+
+    GameObject getDockStation()
+    {
+        GameObject doc   = null;
+        bool       found = false;
+
+        foreach(Transform child in transform)
+        {
+            if(child.gameObject.name == "docStation")
+            {
+                doc   = child.gameObject;
+                found = true;
+                break;
+            }
+        }
+        if(!found)
+            doc = null;
+
+        return doc;
+    }
+
+    GameObject getGtpChild()
+    {
+        GameObject objGtp = null;
+        GameObject doc    = getDockStation();
+        bool       found  = false;
+
+        if(null != doc)
+        {
+            print("Found doc");
+            foreach(Transform child in doc.transform)
+            {
+                print(child.gameObject.name);
+                if(child.gameObject.name == "GTP(Clone)")
+                {
+                    objGtp = child.gameObject;
+                    found  = true;
+                    break;
+                }
+            }
+        }
+        if(!found)
+            objGtp = null;
+
+        return objGtp;
+    }
+
+    void dropGtp()
+    {
+        GameObject childGtp = getGtpChild();
+
+        if(null != childGtp)
+        {
+            childGtp.tag   = "ReleasedGTP";
+            hasGtpAttached = false;
+        }
+        else
+            print("Could not get the Child GTP");
     }
 
     public void Update()
@@ -32,6 +95,12 @@ public class AlphaMovement : MonoBehaviour
         {
             if(transform.gameObject.GetComponent<ActivationProperties>().isActive)
             {
+                if(0.0f == activeStart)//we just became active
+                {
+                    hasGtpAttached = true;//we have a GTP attached
+                    activeStart    = Time.timeSinceLevelLoad;
+                }
+
                 if(!isDockedAtCyclase)//if we aren't bound to a GPCR
                 {
                     closestTarget = findClosestTarget();
@@ -45,6 +114,16 @@ public class AlphaMovement : MonoBehaviour
                             transform.RotateAround(cellMembrane.transform.position, Vector3.forward, speed * Time.deltaTime);
                     }
                 }
+
+                if(Time.timeSinceLevelLoad > activeStart + gtpActiveTimeMax)
+                    doFindParent = true;
+            }
+            if(doFindParent)
+            {
+                if(transform.gameObject.GetComponent<ActivationProperties>().isActive)
+                    transform.gameObject.GetComponent<ActivationProperties>().isActive = false;
+                if(hasGtpAttached)
+                    dropGtp();
             }
         }
     }

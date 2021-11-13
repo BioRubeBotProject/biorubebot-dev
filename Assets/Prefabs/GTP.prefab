@@ -317,19 +317,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5ed403c0fc27d4a8551ddf2b26dbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destructionEffect: {fileID: 19829752, guid: 48f415e7efec513478db9735f52810aa, type: 3}
+  GTP1: {fileID: 0}
+  trackThis: {fileID: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  origin: {fileID: 0}
+  trackingTag: 
   maxHeadingChange: 0
   angleToRotate: 0
+  droppedOff: 0
+  found: 0
+  spin: 0
   maxRoamChangeTime: 0
   minSpeed: 0
   maxSpeed: 0
-  GTP1: {fileID: 0}
-  droppedOff: 0
-  found: 0
-  trackingTag: 
-  trackThis: {fileID: 0}
-  origin: {fileID: 0}
-  rotation: {x: 0, y: 0, z: 0, w: 0}
-  spin: 0
 --- !u!82 &8244104
 AudioSource:
   m_ObjectHideFlags: 0

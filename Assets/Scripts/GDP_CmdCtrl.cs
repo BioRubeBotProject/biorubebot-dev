@@ -4,8 +4,8 @@ using System.Collections;
 public class GDP_CmdCtrl : MonoBehaviour
 {
 
-	public ParticleSystem destructionEffect;	// 'poof' special effect for 'expended' GDP
-	public GameObject parentObject; //Parent object used for unity editor Tree Hierarchy
+	public ParticleSystem destructionEffect; //'poof' special effect for 'expended' GDP
+	public GameObject     parentObject;      //Parent object used for unity editor Tree Hierarchy
 
     // Use this for initialization
     void Start ()

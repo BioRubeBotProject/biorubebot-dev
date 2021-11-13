@@ -556,6 +556,7 @@ MonoBehaviour:
   speed: 10
   targetObject: {fileID: 5117861752728446461, guid: f67b4e3c15f0e2948a3f47241de92da5,
     type: 3}
+  gtpActiveTimeMax: 10
 --- !u!61 &4865572442770232245
 BoxCollider2D:
   m_ObjectHideFlags: 0

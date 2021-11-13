@@ -86,6 +86,8 @@ TagManager:
   - Win_Alpha_Rejoins_GProtein
   - PKA
   - inactivePKA
+  - Win_PKA_Separates
+  - ReleasedGTP
   layers:
   - Default
   - TransparentFX

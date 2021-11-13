@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections; 
-using System;                                   //for math
+using System;//for math
 
 public class GTP_CmdCtrl: MonoBehaviour
 {
     //------------------------------------------------------------------------------------------------
     #region Public Fields + Properties + Events + Delegates + Enums
+    public ParticleSystem destructionEffect; //'poof' special effect for 'expended' GDP
     public GameObject GTP1;                // transform GTP upon docking
     public GameObject trackThis;           // the object with which to dock
     public Quaternion rotation;
@@ -24,14 +25,13 @@ public class GTP_CmdCtrl: MonoBehaviour
     
     //------------------------------------------------------------------------------------------------
     #region Private Fields + Properties + Events + Delegates + Enums
-    private int        objIndex = 0;                   // the index containing the above "trackThis" object
-    private float      heading;                      // roaming direction
-    private float      headingOffset;                // used for smooth rotation while roaming
-    private int        movementSpeed;                  // roaming velocity
-    private int        roamInterval = 0;               // how long until heading/speed change while roaming
-    private int        roamCounter = 0;                // time since last heading speed change while roaming
-    private int        curveCounter = 90;              // used for smooth transition when tracking
-    private Quaternion rotate;                  // rotation while tracking
+    private float      heading;          // roaming direction
+    private float      headingOffset;    // used for smooth rotation while roaming
+    private int        movementSpeed;    // roaming velocity
+    private int        roamInterval = 0; // how long until heading/speed change while roaming
+    private int        roamCounter  = 0; // time since last heading speed change while roaming
+    private int        curveCounter = 90;// used for smooth transition when tracking
+    private Quaternion rotate;           // rotation while tracking
     #endregion Private Fields + Properties + Events + Delegates + Enums
 
     //------------------------------------------------------------------------------------------------
@@ -200,6 +200,12 @@ public class GTP_CmdCtrl: MonoBehaviour
                 }
                 if (docked) Cloak ();
             }
+            if(tag == "ReleasedGTP")
+            {
+                tag = "DyingGDP";
+                StartCoroutine (ReleasingGTP ());
+                StartCoroutine (DestroyGTP ()); //Destroy GDP
+            }
         }
     }
 
@@ -229,22 +235,24 @@ public class GTP_CmdCtrl: MonoBehaviour
         myTarget.tag = "Target";
     }
 
-/*  ProceedToTarget instructs this object to move towards its 'dockingPosition'
-    If this object gets stuck behind the nucleus, it will need a push to
-    move around the object  */
+    /*ProceedToTarget instructs this object to move towards its 'dockingPosition'
+      If this object gets stuck behind the nucleus, it will need a push to
+      move around the object  */
     private bool ProceedToTarget()
     {
         //Unity manual says if the distance between the two objects is < _speed * Time.deltaTime,
         //protein position will equal docking...doesn't seem to work, so it's hard coded below
         transform.position = Vector2.MoveTowards (transform.position, dockingPosition, _speed *Time.deltaTime);
         
-        if (!docked && Vector2.Distance (transform.position, lastPosition) < _speed * Time.deltaTime)
+        if(!docked && Vector2.Distance (transform.position, lastPosition) < _speed * Time.deltaTime)
             Roam.Roaming (this.gameObject);//if I didn't move...I'm stuck.  Give me a push
+
         lastPosition = transform.position;//breadcrumb trail
         //check to see how close to the g-protein and disable collider when close
         deltaDistance = Vector3.Distance (transform.position, dockingPosition);
         //once in range, station object at docking position
-        if (deltaDistance < _speed * Time.deltaTime) {
+        if(deltaDistance < _speed * Time.deltaTime)
+        {
             transform.GetComponent<CircleCollider2D> ().enabled = false;
             transform.GetComponent<Rigidbody2D>().isKinematic = true;
             transform.position = dockingPosition;
@@ -253,21 +261,46 @@ public class GTP_CmdCtrl: MonoBehaviour
         return (transform.position==dockingPosition);
     }
 
-//  Cloak retags objects for future reference
+    //Cloak retags objects for future reference
     private void Cloak()
     {
-        //GTP_Script2 ();
-        //GameObject obj = Instantiate(GTP1,gameObject.transform.position, Quaternion.identity) as GameObject;
-        //GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add (obj);
         transform.GetComponent<CircleCollider2D> ().enabled = false;
         transform.GetComponent<Rigidbody2D>().isKinematic = true;
+
         transform.position = dockingPosition;
-        transform.parent = myTarget;
-        myTarget.tag = "OccupiedG_Protein";
-        transform.tag = "DockedGTP";
-        myTarget = null;
+        transform.parent   = myTarget;
+        myTarget.tag       = "OccupiedG_Protein";
+        transform.tag      = "DockedGTP";
+        myTarget           = null;
 
         //determine if win condition has been reached
         if (GameObject.FindWithTag("Win_DockedGTP")) WinScenario.dropTag("Win_DockedGTP");
     }
+
+    public IEnumerator ReleasingGTP ()
+    {
+        GameObject parentObject = null;
+        yield return new WaitForSeconds (3f);
+
+        parentObject     = GameObject.FindGameObjectWithTag ("MainCamera");
+        transform.parent = parentObject.transform;
+
+        transform.GetComponent<Rigidbody2D> ().isKinematic  = false;
+        transform.GetComponent<CircleCollider2D>().enabled = true;
+    } 
+
+    public IEnumerator DestroyGTP()
+    {
+        GameObject parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
+
+        yield return new WaitForSeconds (2f);
+        ParticleSystem explosionEffect     = Instantiate(destructionEffect) as ParticleSystem;
+        explosionEffect.transform.parent   = parentObject.transform;
+        explosionEffect.transform.position = transform.position;
+        explosionEffect.loop = false;
+        explosionEffect.Play();
+        Destroy(explosionEffect.gameObject, explosionEffect.duration);
+        Destroy(gameObject);
+    }
+
 }
