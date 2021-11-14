@@ -215,7 +215,6 @@ public class TGProteinMovement : MonoBehaviour
         //IF right receptor collides with left receptor(with protein signaller)                                                      
         if(objCollided.tag == "GPCR_B" && this.gameObject.name.Equals("ABG-ALL(Clone)"))
         {
-            print("collided");
             if(!isAlphaSeparated)
             {
                 //check if action is a win condition for the scene/level

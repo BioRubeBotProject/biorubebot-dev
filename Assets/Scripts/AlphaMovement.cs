@@ -197,9 +197,9 @@ public class AlphaMovement : MonoBehaviour
         {
             if(!doFindBetaGamma)
             {
-                isDockedAtCyclase = true;
                 other.gameObject.GetComponent<ActivationProperties>().isActive = true;
-                inactiveCyclase = other.gameObject;
+                inactiveCyclase   = other.gameObject;
+                isDockedAtCyclase = true;
                 //check if action is a win condition for the scene/level
                 if(GameObject.FindWithTag("Win_Alpha_Binds_to_Cyclase"))
                     WinScenario.dropTag("Win_Alpha_Binds_to_Cyclase");

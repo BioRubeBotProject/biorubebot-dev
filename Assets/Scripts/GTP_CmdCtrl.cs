@@ -185,8 +185,8 @@ public class GTP_CmdCtrl: MonoBehaviour
                 if(openTarget != null)
                 {
                     myTarget = openTarget.transform;
-                    dockingPosition = GetOffset ();
-                    LockOn ();//call dibs
+                    dockingPosition = GetOffset();
+                    LockOn();//call dibs
                 }
             }
             else if(!docked)
@@ -203,14 +203,14 @@ public class GTP_CmdCtrl: MonoBehaviour
             if(tag == "ReleasedGTP")
             {
                 tag = "DyingGDP";
-                StartCoroutine (ReleasingGTP ());
-                StartCoroutine (DestroyGTP ()); //Destroy GDP
+                StartCoroutine(ReleasingGTP());
+                StartCoroutine(DestroyGTP()); //Destroy GDP
             }
         }
     }
 
 /*  GetOffset determines whether a target is to the  left or right of the receptor
-    and based on the targets position, relative to the receptor, an offset is 
+    and based on the target's position, relative to the receptor, an offset is 
     is figured into the docking position so the GTP will mate up with the
     G-protein.*/
     private Vector3 GetOffset()
@@ -250,13 +250,14 @@ public class GTP_CmdCtrl: MonoBehaviour
         lastPosition = transform.position;//breadcrumb trail
         //check to see how close to the g-protein and disable collider when close
         deltaDistance = Vector3.Distance (transform.position, dockingPosition);
+
         //once in range, station object at docking position
         if(deltaDistance < _speed * Time.deltaTime)
         {
             transform.GetComponent<CircleCollider2D> ().enabled = false;
             transform.GetComponent<Rigidbody2D>().isKinematic = true;
-            transform.position = dockingPosition;
-            transform.parent = myTarget;
+            transform.position                                = dockingPosition;
+            transform.parent                                  = myTarget;
         }//end if close enough
         return (transform.position==dockingPosition);
     }

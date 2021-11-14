@@ -17,6 +17,7 @@ public class PKAMovement : MonoBehaviour
     private int      movementSpeed  = 0;    // roaming velocity
     private int      roamInterval   = 0;    // how long until heading/speed change while roaming
     private int      roamCounter    = 0;    // time since last heading speed change while roaming
+    private int      numCamps       = 0;
 
     private void Roam()
     {
@@ -53,11 +54,90 @@ public class PKAMovement : MonoBehaviour
         }
     }
 
+    /*  Function:   getPkaWhite() GameObject
+        Purpose:    this function retrieves the child of this Game Object
+                    that is named "Protein Kinase". THis is the part of the
+                    PKA that is white. The other part is blue
+        Return:     the Protein Kinase
+    */
+    private GameObject getPkaWhite()
+    {
+        GameObject pka   = null;
+        bool       found = false;
+
+        foreach(Transform child in transform)
+        {
+            if(child.gameObject.name == "Protein Kinase")
+            {
+                pka   = child.gameObject;
+                found = true;
+                break;
+            }
+        }
+        if(!found)
+            pka = null;
+
+        return pka;
+    }
+
+    /*  Function:   getDoc() GameObject
+        Purpose:    this function retrieves one of the two docs that are
+                    used by the cAMPs for docking with the PKA. Once one
+                    cAMP has already docked, returns docStation2. Otherwise
+                    returns docStation1.
+        Return:     the appropriate doc station
+    */
+    private GameObject getDoc()
+    {
+        GameObject pka   = null;
+        GameObject doc   = null;
+        bool       found = false;
+
+        pka = getPkaWhite();
+        if(null != pka)
+        {
+            foreach(Transform child in pka.transform)
+            {
+                if(child.gameObject.name == "docStation" + (numCamps+1))
+                {
+                    doc   = child.gameObject;
+                    found = true;
+                    break;
+                }
+            }
+        }
+        if(!found)
+            doc = null;
+
+        return doc;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        GameObject newCamp  = null;
+        GameObject doc      = null;
+        GameObject pka      = null;
+
+        if(other.gameObject.name == "cAMP(Clone)" && numCamps < 2)
+        {
+            doc = getDoc();
+            if(null != doc)
+            {
+                other.gameObject.transform.parent = doc.transform;
+                other.transform.position = doc.transform.position;
+                other.GetComponent<cAmpMovement>().dockedWithPKA = true;
+                other.GetComponent<CircleCollider2D>().enabled = false;
+                numCamps++;
+                if(numCamps > 1)
+                    this.GetComponent<ActivationProperties>().isActive = true;
+            }
+        }
+    }
     /*  Function:   getOldPka()
         Purpose:    this function retrieves the child of this Game Object that
                     is tagged inactivePKA. This is the blue part of the PKA that

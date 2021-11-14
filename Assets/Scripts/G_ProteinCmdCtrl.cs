@@ -79,7 +79,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         //IF G-Protein has GTP(red) AND G-Protein is not ready to roam with attached GTP(red) AND wait time is over 2 seconds
         if(haveGTP && !roaming && (delay += Time.deltaTime) > 2)
         {
-            Undock ();
+            Undock();
             //check if action is a win condition for the scene/level
             if(GameObject.FindWithTag("Win_GProteinFreed"))
                 WinScenario.dropTag("Win_GProteinFreed");
@@ -104,7 +104,6 @@ public class G_ProteinCmdCtrl : MonoBehaviour
             {
                 Roam.Roaming (this.gameObject);
             }
-
         }
         //ELSE have G-Protein roam
         else
@@ -128,7 +127,6 @@ public class G_ProteinCmdCtrl : MonoBehaviour
             transform.GetChild(0).tag = "Left";
             return myTarget.position + new Vector3 (-2.2f, 0.285f, myTarget.position.z);
         }
-
         else
         {
             return myTarget.position + new Vector3(2.2f, 0.285f, myTarget.position.z);
@@ -154,7 +152,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 
         //Unity manual says if the distance between the two objects is < _speed * Time.deltaTime,
         //protein position will equal docking...doesn't seem to work, so it's hard coded below
-        transform.position = Vector2.MoveTowards (transform.position, dockingPosition, _speed *Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, dockingPosition, _speed *Time.deltaTime);
 
         if (Vector2.Distance (transform.position, lastPosition) < _speed * Time.deltaTime)
         {

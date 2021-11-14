@@ -89,6 +89,8 @@ TagManager:
   - Win_PKA_Separates
   - ReleasedGTP
   - Win_TR_Enters_Nucleus
+  - PkaDoc1
+  - PkaDoc2
   layers:
   - Default
   - TransparentFX

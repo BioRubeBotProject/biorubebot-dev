@@ -7,14 +7,15 @@ public class cAmpMovement : MonoBehaviour
 {
     //------------------------------------------------------------------------------------------------
     #region Public Fields + Properties + Events + Delegates + Enums
-    public float      maxHeadingChange;  // max possible rotation angle at a time
-    public float      angleToRotate;     // stores the angle in degrees between cAMP and dock
-    public int        maxRoamChangeTime; // how long before changing heading/speed
-    public int        minSpeed;          // slowest the cAMP will move
-    public int        maxSpeed;          // fastest the cAMP will move
-    public string     trackingTag;       // objects of this tag are searched for and tracked
-    public GameObject trackThis;         // the object with which to dock
-    public Transform  origin;            // origin location/rotation is the physical cAMP
+    public  GameObject trackThis;         // the object with which to dock
+    public  Transform  origin;            // origin location/rotation is the physical cAMP
+    public  string     trackingTag;       // objects of this tag are searched for and tracked
+    public  float      maxHeadingChange;  // max possible rotation angle at a time
+    public  float      angleToRotate;     // stores the angle in degrees between cAMP and dock
+    public  bool       dockedWithPKA     = false;//did this cAMP dock with a PKA?
+    public  int        maxRoamChangeTime; // how long before changing heading/speed
+    public  int        minSpeed;          // slowest the cAMP will move
+    public  int        maxSpeed;          // fastest the cAMP will move
     #endregion Public Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
   
@@ -25,7 +26,6 @@ public class cAmpMovement : MonoBehaviour
     private float            heading;                 // roaming direction
     private float            headingOffset;           // used for smooth rotation while roaming
     private bool             foundPKA         = false;// did this cAMP find a PKA doc?
-    private bool             dockedWithPKA    = false;//did this cAMP dock with a PKA?
     private int              movementSpeed;           // roaming velocity
     private int              objIndex         = 0;    // the index containing the above "trackThis" object
     private int              roamInterval     = 0;    // how long until heading/speed change while roaming
@@ -45,7 +45,6 @@ public class cAmpMovement : MonoBehaviour
     private void Raycasting()
     {
         CircleCollider2D[] colliders = trackThis.GetComponents<CircleCollider2D>();
-
         trackCollider = colliders[pkaColliderIndex];
 
         Vector3      vTrackCollider = colliders[pkaColliderIndex].bounds.center;
@@ -96,7 +95,7 @@ public class cAmpMovement : MonoBehaviour
     // change direction and speed at random intervals.  The tendency for purely random motion objects
     // to generally gravitate toward the edges of a circular container has been artificially remedied
     // by Raycasting and turning the cAMP onto a 180 degree course (directing them toward the center).  
-    private void Roam()
+    private void roam()
     {
         if(Time.timeScale != 0)// if game not paused
         {
@@ -140,16 +139,10 @@ public class cAmpMovement : MonoBehaviour
     {
         if(!dockedWithPKA)
         {
-            if(other == trackCollider)
+            if(other.gameObject == trackThis)
             {
                 if(other.gameObject.tag == "PKA" && other.GetComponent<ActivationProperties>().isActive == false)
                 {
-                    if(pkaColliderIndex == 1)
-                    {
-                        other.GetComponent<ActivationProperties>().isActive = true;
-                    }
-    
-                    this.transform.parent = other.transform;
                     dockedWithPKA = true;
                 }
             }
@@ -164,51 +157,56 @@ public class cAmpMovement : MonoBehaviour
     // "trackThis" and calls raycasting so that the cAMP can seek it out.  Else, cAMP wanders.
     private void Update()
     {
-        if(foundPKA == false)
+        if(Time.timeScale != 0)
         {
-            GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
-            GameObject   foundObj  = null;
-            objIndex = 0;
-            while(objIndex < foundObjs.Length && foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
+            if(dockedWithPKA)
+                return;
+            if(foundPKA == false)
             {
-                ++objIndex;
-            }
-            if(objIndex < foundObjs.Length) 
-            {
-                foundObj = foundObjs[objIndex];
-                if(foundObj.GetComponent<TrackingProperties>().Find() == true &&
-                   foundObj.GetComponent<ActivationProperties>().isActive == false)
+                GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
+                GameObject   foundObj  = null;
+                objIndex = 0;
+                while(objIndex < foundObjs.Length && foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
                 {
-                    //only two colliders on PKA on which to track
-                    if(foundObj.GetComponent<PKAProperties>().coliderIndex > 1)
+                    ++objIndex;
+                }
+                if(objIndex < foundObjs.Length) 
+                {
+                    foundObj = foundObjs[objIndex];
+                    if(foundObj.GetComponent<TrackingProperties>().Find() == true &&
+                       foundObj.GetComponent<ActivationProperties>().isActive == false)
                     {
-                        foundObj.GetComponent<TrackingProperties>().isFound = true;
-                    }
-                    else
-                    {
-                        trackThis = foundObjs[objIndex];
-                        foundPKA  = true; 
-                        if(trackThis.name == "PKA-A(Clone)")
+                        //only two colliders on PKA on which to track
+                        if(foundObj.GetComponent<PKAProperties>().coliderIndex > 1)
                         {
-                            trackThis.GetComponent<TrackingProperties>().isFound = false;
-                            pkaColliderIndex = trackThis.GetComponent<PKAProperties>().coliderIndex;
-                            trackThis.GetComponent<PKAProperties>().coliderIndex++;
+                            foundObj.GetComponent<TrackingProperties>().isFound = true;
+                        }
+                        else
+                        {
+                            trackThis = foundObjs[objIndex];
+                            foundPKA  = true; 
+                            if(trackThis.name == "PKA-A(Clone)")
+                            {
+                                trackThis.GetComponent<TrackingProperties>().isFound = false;
+                                pkaColliderIndex = trackThis.GetComponent<PKAProperties>().coliderIndex;
+                                trackThis.GetComponent<PKAProperties>().coliderIndex++;
+                            }
                         }
                     }
                 }
+                else
+                    trackThis = null;
+            }
+            if(foundPKA == true && trackThis.tag == trackingTag)
+            {
+                Raycasting();
             }
             else
-                trackThis = null;
+                foundPKA = false;
+    
+            if(foundPKA == false)
+                roam();
         }
-        if(foundPKA == true && trackThis.tag == trackingTag)
-        {
-            Raycasting();
-        }
-        else
-            foundPKA = false;
-
-        if(foundPKA == false)
-            Roam();
     }
 
     #endregion Private Methods

@@ -23,9 +23,9 @@ public class ActiveAdenylylCyclase : MonoBehaviour
             yield return new WaitForSeconds(3);
             other.GetComponent<ATPproperties>().changeState(true);
             other.GetComponent<CircleCollider2D>().enabled = true;
-            other.gameObject.tag = "Untagged";
+            other.gameObject.tag                           = "Untagged";
       
-            StartCoroutine(Explode (other.gameObject)); //self-destruct after 3 seconds
+            StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
         }
     }
 
@@ -59,15 +59,5 @@ public class ActiveAdenylylCyclase : MonoBehaviour
 
     public void Update()
     {
-        /*if(this.GetComponent<ActivationProperties>().isActive == false)
-        {
-            GameObject parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
-            GameObject newCyclase   = (GameObject)Instantiate(inactiveCyclase, transform.position, transform.rotation);
-
-            newCyclase.transform.parent = parentObject.transform;
-            GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(newCyclase);
-            this.gameObject.SetActive(false);
-            this.gameObject.GetComponent<ActivationProperties>().isActive = false;
-        }*/
     }
 }
