@@ -5,6 +5,7 @@ using UnityEngine;
 public class PKAMovement : MonoBehaviour
 {
     public GameObject activePKA;
+    public GameObject cAmp;
     public Transform  origin;            // origin location/rotation is the physical PKA
     public float      maxHeadingChange;  // max possible rotation angle at a time
     public int        maxRoamChangeTime; // how long before changing heading/speed
@@ -181,6 +182,7 @@ public class PKAMovement : MonoBehaviour
                 GameObject parentObject = this.gameObject;
                 GameObject newPKA       = (GameObject)Instantiate(activePKA, oldPKA.transform.position, oldPKA.transform.rotation);
                 newPKA.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
+                newPKA.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
 
                 GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(newPKA);
                 oldPKA.gameObject.SetActive(false);

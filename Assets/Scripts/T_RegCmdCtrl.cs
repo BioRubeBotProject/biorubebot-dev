@@ -146,8 +146,8 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
             if(!midpointAchieved [0] || !midpointAchieved [1])
             {
                 // Proceed to the Kinase
-                midpointAchieved [0] = Roam.ProceedToVector (active_Kinase_P2, midpoint + new Vector3 (0.0f, 0.52f, 0.0f));
-                midpointAchieved [1] = Roam.ProceedToVector (this.gameObject, midpoint + new Vector3 (0.0f, -0.52f, 0.0f));
+                midpointAchieved [0] = Roam.ProceedToVector(active_Kinase_P2, midpoint + new Vector3 (0.0f, 0.52f, 0.0f));
+                midpointAchieved [1] = Roam.ProceedToVector(this.gameObject, midpoint + new Vector3 (0.0f, -0.52f, 0.0f));
             }
             // Check if the midpoint has been achieved
             if(midpointAchieved [0] && midpointAchieved [1])
