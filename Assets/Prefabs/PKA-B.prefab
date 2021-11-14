@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8519492112436902420}
   - component: {fileID: 3890077229968498156}
   - component: {fileID: 4150380350900046918}
+  - component: {fileID: 282544000345999333}
   m_Layer: 0
   m_Name: PKA-B
-  m_TagString: Untagged
+  m_TagString: Kinase_Phase_2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,12 +94,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a0eb668fb87486e93fce679a247355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activePKA: {fileID: 0}
   origin: {fileID: 4388956790229215717}
   maxHeadingChange: 60
   maxRoamChangeTime: 50
   minSpeed: 3
   maxSpeed: 4
+--- !u!60 &282544000345999333
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6516999325490774323}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1, y: 1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.57376194, y: 0.6017209}
+      - {x: 0.112449884, y: 1.2248995}
+      - {x: -0.74468076, y: 1.0721555}
+      - {x: -0.95105654, y: 0.30901694}
+      - {x: -0.96261734, y: -1.0339166}
+      - {x: -0.14693165, y: -0.92146665}
+      - {x: 0.58778536, y: -0.80901694}
+      - {x: 1.1897092, y: -0.8856619}
+      - {x: 0.99682975, y: 0.07685757}
+      - {x: 1.9241459, y: 0.28822064}
+      - {x: 1.7920587, y: 0.83417857}
+      - {x: 1.0635061, y: 1.058682}
 --- !u!1 &6686465311299277970
 GameObject:
   m_ObjectHideFlags: 0

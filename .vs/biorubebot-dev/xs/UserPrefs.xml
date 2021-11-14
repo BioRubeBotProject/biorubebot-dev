@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{A61B43A6-6328-CC7A-2C29-9A7866254458}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PKAMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ATPpathfinding.cs">
     <Files>
       <File FileName="Assets/Scripts/AlphaMovement.cs" Line="85" Column="35" />
       <File FileName="Assets/Scripts/ActiveAdenylylCyclaseProperties.cs" Line="12" Column="1" />
       <File FileName="Assets/Scripts/cAmpMovement.cs" Line="24" Column="30" />
       <File FileName="Assets/Scripts/PKAProperties.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/G_ProteinCmdCtrl.cs" Line="182" Column="82" />
-      <File FileName="Assets/Scripts/PKAMovement.cs" Line="123" Column="33" />
+      <File FileName="Assets/Scripts/PKAMovement.cs" Line="90" Column="27" />
       <File FileName="Assets/Scripts/AdenylylCyclaseMovement.cs" Line="28" Column="9" />
       <File FileName="Assets/Scripts/PKABMovement.cs" Line="14" Column="29" />
       <File FileName="Assets/Scripts/GTP_CmdCtrl.cs" Line="198" Column="53" />
@@ -15,6 +15,9 @@
       <File FileName="Assets/Scripts/TrackingProperties.cs" />
       <File FileName="Assets/Scripts/ActivationProperties.cs" />
       <File FileName="Assets/Scripts/ExtraCellularProperties.cs" />
+      <File FileName="Assets/Scripts/T_RegCmdCtrl.cs" Line="100" Column="9" />
+      <File FileName="Assets/Scripts/ATPproperties.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ATPpathfinding.cs" Line="71" Column="51" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,7 +25,7 @@
           <Node name="biorubebot-dev" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="PKAMovement.cs" selected="True" />
+                <Node name="ATPpathfinding.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -41,7 +44,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/ryanwood/BioRube2/biorubebot-dev/Assets/Scripts/GameSystem.cs" relfile="Assets/Scripts/GameSystem.cs" line="22" column="1" />
-      <Breakpoint file="/Users/ryanwood/BioRube2/biorubebot-dev/Assets/Scripts/PKAMovement.cs" relfile="Assets/Scripts/PKAMovement.cs" line="117" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
