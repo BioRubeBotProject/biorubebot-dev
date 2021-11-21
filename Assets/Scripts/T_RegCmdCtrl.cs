@@ -1,4 +1,12 @@
-﻿// **************************************************************
+﻿/*  File:       T_RegCmdCtrl
+    Purpose:    This file handles the movement and seeking of the Transcription
+                Regulator. The Transcription Regulator seeks out a Kinase with
+                which to bind and transforms once it has bound to one. Also
+                awaits an ATP to drop off a phosphate so that it can then
+                move into the Nuclear Pore Complex
+*/
+
+// **************************************************************
 // **** Updated on 10/22/15 by Kevin Means
 // **** 1.) Changed the "T_Reg_To_NPC" code to allow the t-reg
 // ****     to track to position relative to the NPC and enter
@@ -188,8 +196,8 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
                     Vector2[] pos = new Vector2[2];
                     
                     //Collect the x and y values for this T_Reg and the ATP in separate Vector2 variables
-                    pos [0] = new Vector2 (transform.position.x, transform.position.y);
-                    pos [1] = new Vector2 (ATP.transform.position.x, ATP.transform.position.y);
+                    pos[0] = new Vector2 (transform.position.x, transform.position.y);
+                    pos[1] = new Vector2 (ATP.transform.position.x, ATP.transform.position.y);
                     
                     // Check if the Distance between the the ATP and the T_Reg is less than 6.0f
                     if(Vector2.Distance (pos [0], pos [1]) < 6.0f)

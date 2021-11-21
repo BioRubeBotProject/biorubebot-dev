@@ -1,3 +1,13 @@
+/*  File:       cAmpMovement
+    Purpose:    this file handles all the movement for the cAMPs, which
+                wander around the Cell Membrane unless there is an inactive
+                PKA around, in which case it tracks to it to bind with it.
+                This code was modelled after the ATP Pathfinding file
+    Notes:      needs improvement because it does not stay inside the Cell
+                Membrane as it should
+    Author:     Ryan Wood
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,27 +16,27 @@ using System;
 public class cAmpMovement : MonoBehaviour
 {
     //------------------------------------------------------------------------------------------------
+    //these public variables are all set in the cAMP Prefab
     #region Public Fields + Properties + Events + Delegates + Enums
-    public  GameObject trackThis;         // the object with which to dock
-    public  Transform  origin;            // origin location/rotation is the physical cAMP
-    public  string     trackingTag;       // objects of this tag are searched for and tracked
-    public  float      maxHeadingChange;  // max possible rotation angle at a time
-    public  float      angleToRotate;     // stores the angle in degrees between cAMP and dock
+    public  GameObject trackThis;                // the object with which to dock
+    public  Transform  origin;                   // origin location/rotation is the physical cAMP
+    public  string     trackingTag;              // objects of this tag are searched for and tracked
+    public  float      maxHeadingChange;         // max possible rotation angle at a time
+    public  float      angleToRotate;            // stores the angle in degrees between cAMP and dock
     public  bool       dockedWithPKA     = false;//did this cAMP dock with a PKA?
-    public  int        maxRoamChangeTime; // how long before changing heading/speed
-    public  int        minSpeed;          // slowest the cAMP will move
-    public  int        maxSpeed;          // fastest the cAMP will move
+    public  int        maxRoamChangeTime;        // how long before changing heading/speed
+    public  int        minSpeed;                 // slowest the cAMP will move
+    public  int        maxSpeed;                 // fastest the cAMP will move
     #endregion Public Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
   
     //------------------------------------------------------------------------------------------------
     #region Private Fields + Properties + Events + Delegates + Enums
-    private CircleCollider2D trackCollider;
     private Quaternion       rotate;                  // rotation while tracking
     private float            heading;                 // roaming direction
     private float            headingOffset;           // used for smooth rotation while roaming
     private bool             foundPKA         = false;// did this cAMP find a PKA doc?
-    private int              movementSpeed;           // roaming velocity
+    private int              movementSpeed    = 0;    // roaming velocity
     private int              objIndex         = 0;    // the index containing the above "trackThis" object
     private int              roamInterval     = 0;    // how long until heading/speed change while roaming
     private int              roamCounter      = 0;    // time since last heading speed change while roaming
@@ -36,7 +46,6 @@ public class cAmpMovement : MonoBehaviour
     //------------------------------------------------------------------------------------------------
   
     #region Private Methods
-    //------------------------------------------------------------------------------------------------
     // Directs the cAMP to the proper dock (to rotate and dropoff tail). The cAMP seeks after the circle 
     // collider of the "trackThis" object, which should be projected to the side of the object. This 
     // method will detect whether or not the "Inner Cell Wall" is in the cAMP's line of sight with the
@@ -45,7 +54,6 @@ public class cAmpMovement : MonoBehaviour
     private void Raycasting()
     {
         CircleCollider2D[] colliders = trackThis.GetComponents<CircleCollider2D>();
-        trackCollider = colliders[pkaColliderIndex];
 
         Vector3      vTrackCollider = colliders[pkaColliderIndex].bounds.center;
         RaycastHit2D collision      = Physics2D.Linecast(origin.position, vTrackCollider);
@@ -135,6 +143,11 @@ public class cAmpMovement : MonoBehaviour
     {
     }
 
+    /*  Function:   OnTriggerEnter2D(Collider2D) IEnumerator
+        Purpose:    this function handles the collistion between the cAMP and a
+                    PKA GamObject. Sets the dockedWithPKA variable true
+        Parameters: the Collider of GameObject with which the cAMP collided
+    */
     private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
         if(!dockedWithPKA)
@@ -151,10 +164,14 @@ public class cAmpMovement : MonoBehaviour
         yield return new WaitForSeconds(1);
     }
   
-    //------------------------------------------------------------------------------------------------
-    // Update is called once per frame. Gets an array of potential GameObjects to track and tries to 
-    // find one that is not "found" yet. If it finds one then it stores a pointer to the GameObject as
-    // "trackThis" and calls raycasting so that the cAMP can seek it out.  Else, cAMP wanders.
+    /*  Function:   Update()
+        Purpose:    called once per frame, this function looks for a PKA that is
+                    inactive and has not been "found", which means it has a
+                    colliderIndex of <= 1 because PKA has only two docs
+                    with which cAMP can doc. Once two cAMP docs with the PKA, it is activated.
+                    if there is no inactive PKA in sight that has not been found,
+                    the cAMP roams
+    */
     private void Update()
     {
         if(Time.timeScale != 0)
@@ -166,6 +183,8 @@ public class cAmpMovement : MonoBehaviour
                 GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
                 GameObject   foundObj  = null;
                 objIndex = 0;
+                
+                //loop through the Objects with the tracking tag until we get an index that isn't "found" yet
                 while(objIndex < foundObjs.Length && foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
                 {
                     ++objIndex;

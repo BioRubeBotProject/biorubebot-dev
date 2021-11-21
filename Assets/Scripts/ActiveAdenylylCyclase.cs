@@ -1,3 +1,15 @@
+/*  File:       ActiveAdenylylCyclase
+    Purpose:    The active Adenylyl Cyclase is connected to the Trimeric
+                G-Protein's Alpha subunit. It converts ATP into cAMP.
+                This file is connected to the Active version of the Prefab,
+                which is instantiated when the Alpha subunit collides with the
+                inactive Adenylyl Cyclase.
+                This file provides the functions that allow the Active Adenylyl
+                Cyclase to turn ATP into cAMP
+    Author:     Ryan Wood
+    Created:    Fall 2021
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +20,13 @@ public class ActiveAdenylylCyclase : MonoBehaviour
     public  GameObject     parentObject;      //Parent object used for unity editor Tree Hierarchy
     public  GameObject     replaceATPWith;    //what spawns when ATP collides and explodes
     public  GameObject     inactiveCyclase;   //what spawns when this deactivates
-    private bool           WinConMet = false; //used to determine if the win condition has already been met
 
+    /*  Function:   OnTriggerEnter2D(Collider2D) IEnumerator
+        Purpose:    this function handles the event that the Active Adenylyl Cyclase
+                    colldied with an ATP in the game, calling explode on the ATP
+        Parameters: the Collider of the ATP with which the Cyclase collided
+        Return:     nothing really imporant
+    */
     private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "ATP" && other.GetComponent<ATPpathfinding>().found == true)
@@ -29,6 +46,15 @@ public class ActiveAdenylylCyclase : MonoBehaviour
         }
     }
 
+    /*  Function:   Explode(GameObject) IEnumerator
+        Purpose:    this function causes the given GameObject to explode in the
+                    game and sets it to inactive, making it leave the game.
+                    in place of the given Object, an instance of replaceATPWith
+                    is instantiated. In Unity, this variable is set to the
+                    cAMP prefab, so that spawns where the ATP explodes
+        Parameters: the ATP to explode
+        Return:     nothing important
+    */
     private IEnumerator Explode(GameObject other)
     {
         GameObject child = null;
@@ -55,9 +81,5 @@ public class ActiveAdenylylCyclase : MonoBehaviour
     
         //destroy our game object
         Destroy(other.gameObject);
-    }
-
-    public void Update()
-    {
     }
 }

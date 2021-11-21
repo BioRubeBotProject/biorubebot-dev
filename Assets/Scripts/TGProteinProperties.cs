@@ -1,3 +1,11 @@
+/*  File:       TGProteinProperties
+    Purpose:    includes the functions and definitions for the T-G-Protein's
+                properties, implementing the ActivationProperties Interface
+                so that the isActive variable can easily be retrieved and set
+                through GameObject.GetActiveComponent<ActivationProperties>().isActive
+    Author:     Ryan Wood
+    Created:    Fall 2021
+*/
 using UnityEngine;
 
 public class TGProteinProperties : MonoBehaviour, ActivationProperties

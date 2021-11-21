@@ -6,7 +6,7 @@ public class congratsOnOff : MonoBehaviour, Tutorial.SwitchOnOff
 
     void Tutorial.SwitchOnOff.enable()
     {
-        if (tag == "T_Reg_Complete")
+        if(tag == "T_Reg_Complete")
         {
             this.gameObject.SetActive(true);
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//Candidate for deletion. Not sure it's used. Check for references and remove
+using UnityEngine;
 
 public class MouseActions : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class MouseActions : MonoBehaviour
     // Use this for initialization 
     private void Start()
     {
-        if (is2DCamera)
+        if(is2DCamera)
         {
             height = 0;
         }
@@ -38,37 +39,37 @@ public class MouseActions : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-            if (hit.collider != null)
+            if(hit.collider != null)
             {
                 target = hit.collider.gameObject.transform;
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if(Input.GetMouseButtonDown(1))
         {
             mouseOrigin = Input.mousePosition;
             isPanning = true;
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        if(Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             Camera.main.orthographicSize += zoomSpeed;
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        else if(Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            if (Camera.main.orthographicSize >= 0)
+            if(Camera.main.orthographicSize >= 0)
             {
                 Camera.main.orthographicSize -= zoomSpeed;
             }
         }
 
-        if (!Input.GetMouseButton(1)) isPanning = false;
+        if(!Input.GetMouseButton(1)) isPanning = false;
 
-        if (isPanning)
+        if(isPanning)
         {
             target = null;
             Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - mouseOrigin);
@@ -77,10 +78,10 @@ public class MouseActions : MonoBehaviour
             transform.Translate(move, Space.Self);
         }
 
-        if (target != null)
+        if(target != null)
         {
             Vector3 wantedPosition;
-            if (followBehind)
+            if(followBehind)
                 wantedPosition = target.TransformPoint(0, height, -distance);
             else
                 wantedPosition = target.TransformPoint(0, height, distance);
@@ -89,7 +90,7 @@ public class MouseActions : MonoBehaviour
 
             transform.LookAt(target, target.up);
 
-            if (is2DCamera)
+            if(is2DCamera)
             {
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }

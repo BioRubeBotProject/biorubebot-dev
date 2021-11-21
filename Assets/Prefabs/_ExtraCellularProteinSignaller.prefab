@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 403208}
   - component: {fileID: 21203208}
   - component: {fileID: 11466174}
-  - component: {fileID: 11466172}
   - component: {fileID: 11466170}
   - component: {fileID: 5001612}
   - component: {fileID: 5873878}
@@ -109,27 +108,6 @@ MonoBehaviour:
   allowMovement: 1
   isActive: 1
   NonActiveColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
---- !u!114 &11466172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103208}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255bf2eceac15424586a9fe7c1f4c2ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  directionChangeInterval: 3
-  fMode: 1
-  maxHeadingChange: 30
-  nextWaypointDisance: 0
-  pathfinding: 0
-  seekTime: 10
-  speed: 3
-  target: {fileID: 0}
-  updateRate: 0
 --- !u!114 &11466170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,11 +185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeca092161799c34fa2c6f4308d45cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayPath: 0
-  maxHeadingChange: 60
   SightEnd: {fileID: 483176}
   sightStart: {fileID: 0}
+  maxHeadingChange: 60
   speed: 8
+  displayPath: 0
   spotted: 0
 --- !u!82 &8238892
 AudioSource:

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//Candidate for deletion. Ensure no references and remove
+using UnityEngine;
 using System.Collections;
 
 public class GTPScript2 : MonoBehaviour 

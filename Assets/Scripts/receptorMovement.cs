@@ -24,36 +24,36 @@ public class receptorMovement : MonoBehaviour
 
     public void Update()
     {
-        if (Time.timeScale != 0)
-        {       
+        if(Time.timeScale != 0)
+        {
             //If target Found
-            if (findClosestTarget())
-            {          
+            if(findClosestTarget())
+            {
                 rotationDirection = setRotationDirection();
 
-                if (rotationDirection == "right")
+                if(rotationDirection == "right")
                 {
                     transform.RotateAround(cellMembrane.transform.position, Vector3.back, speed * Time.deltaTime);
                 }
 
-                else if (rotationDirection == "left")
+                else if(rotationDirection == "left")
                 {
                     transform.RotateAround(cellMembrane.transform.position, Vector3.forward, speed * Time.deltaTime);
                 }
-            }          
+            }
         }
     }
 
 
     private string setRotationDirection()
-    {       
+    {
         //Find rotation direction given closest object
         var currentRotation = transform.eulerAngles;
         var targetRotation = closestTarget.transform.eulerAngles;
 
         float direction = (((targetRotation.z - currentRotation.z) + 360f) % 360f) > 180.0f ? -1 : 1;       //Clockwise(right) = -1 , CounterClockWise(left) = 1
 
-        if (direction == -1)
+        if(direction == -1)
         {
             return ("right");
         }
@@ -65,7 +65,6 @@ public class receptorMovement : MonoBehaviour
 
     }
 
-
     private GameObject findClosestTarget()
     {
         GameObject[] targets;
@@ -73,11 +72,11 @@ public class receptorMovement : MonoBehaviour
         closestTarget = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
-        foreach (GameObject go in targets)
+        foreach(GameObject go in targets)
         {
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
+            if(curDistance < distance)
             {
                 closestTarget = go;
                 distance = curDistance;
@@ -90,7 +89,7 @@ public class receptorMovement : MonoBehaviour
 
     public void destroyReceptor()
     {
-        if (this.gameObject != null)
+        if(this.gameObject != null)
         {
             Destroy(this.gameObject);
         }

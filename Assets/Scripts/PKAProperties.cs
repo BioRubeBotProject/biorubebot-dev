@@ -1,3 +1,11 @@
+/*  File:       PKAProperties
+    Purpose:    This file holds the properties for the PKA, implementing the
+                ActivationProperties Interface so that its activation status
+                can be retrieved or set using
+                GameObject.GetComponent<ActivationProperties>().isActive
+    Author:     Ryan Wood
+    Created:    Fall 2021
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

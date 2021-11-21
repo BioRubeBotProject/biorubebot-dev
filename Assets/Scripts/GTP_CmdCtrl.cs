@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*  File:       GTP_CmdCtrl
+    Purpose:    This file handles the movement of a GTP. A GTP will seek out
+                a G-Protein in level one and intro levels. It will seek out
+                a Trimeric G-Protein Alpha subunit in level 2. After being
+                attached to an Alpha subunit for a period of time, it hydrolizes
+                and self-destructs.
+*/
+
+using UnityEngine;
 using System.Collections; 
 using System;//for math
 
@@ -52,59 +60,26 @@ public class GTP_CmdCtrl: MonoBehaviour
     private Vector3 lastPosition;
     // previous position while moving to docked G-protein
 
+    /*  Function:   Start()
+        Purpose:    This function is called upon instantiation and
+                    initializes last position to current
+    */
     private void Start()
     {
         lastPosition = transform.position;          
     }
 
-    private void Raycasting()
-    {
-        if(null != trackThis)
-        {
-            origin = trackThis.transform;
-        }
-
-        Debug.Log(trackThis.name);
-        Vector3 trackCollider = trackThis.GetComponent<CircleCollider2D>().bounds.center;
-        RaycastHit2D collision = Physics2D.Linecast(origin.position, trackCollider);
-
-        if(collision.collider.name == "Inner Cell Wall")
-        {
-            Vector3 collisionAngle = collision.normal;
-            Vector3 direction = trackCollider - origin.position;
-            Vector3 angle = Vector3.Cross(direction, collisionAngle);
-            if(angle.z < 0)                                   // track to the right of the nucleus
-            { 
-                rotate = Quaternion.LookRotation(origin.position-trackCollider, trackThis.transform.right);
-                curveCounter = 90;
-            }
-            else                                              // track to the left of the nucleus
-            { 
-                rotate = Quaternion.LookRotation(origin.position-trackCollider, -trackThis.transform.right);
-                curveCounter = -90;
-            }
-        }
-        else                                                // calculate approach vector
-        {            
-            float diffX = origin.position.x - trackCollider.x;
-            float diffY = origin.position.y - trackCollider.y;
-            float degrees = ((float)Math.Atan2(diffY, diffX) * (180 / (float)Math.PI) + 90);
-            transform.eulerAngles = new Vector3 (0, 0, degrees - curveCounter);
-            rotate = transform.localRotation;
-            if(curveCounter > 0) { curveCounter -= 1; }       // slowly rotate left until counter empty
-            else if(curveCounter < 0) {curveCounter += 1; }   // slowly rotate right until counter empty
-        }
-        transform.localRotation = new Quaternion(0,0,rotate.z, rotate.w);
-        transform.position += transform.up * Time.deltaTime * maxSpeed;
-        
-        angleToRotate = Vector3.Angle(trackThis.transform.up, transform.up);
-        Vector3 crossProduct = Vector3.Cross(trackThis.transform.up, transform.up);
-        if (crossProduct.z < 0) angleToRotate = -angleToRotate; // .Angle always returns a positive #
-    }
-
+    /*  Functin:    Roam2()
+        Purpose:    this function has the GTP roam around the cell membrane
+                    aimlessly. This is called when there is nothing around
+                    for the GTP to seek out and bind with.
+                    Must have been named Roam2 in order to be consistent
+                    with other functions in this game that do the same thing
+                    but not step on the Roam class that is used in this file
+    */
     private void Roam2()
     {
-        if(Time.timeScale != 0)                               // if game not paused
+        if(Time.timeScale != 0)// if game not paused
         {
             roamCounter++; 
             rotate.z = heading -180;
@@ -142,6 +117,21 @@ public class GTP_CmdCtrl: MonoBehaviour
         }
     }
 
+    /*  Function:   FixedUpdate()
+        Purpose:    This function determines whether the GTP should roam around
+                    or if there is something for it to seek our and bind with.
+                    In level one, looks for a G-Protein that is docked with the
+                    Recptor to go bind with. This it finds by looking for a
+                    nearby GameObject with the tag "DockedG_Protein". In the
+                    second level, looks for a T_GProtein's Alpha Subunit with
+                    which to bind. This it finds by searching for a nearby Game
+                    Object with the tag "tGProteinDock". Once an appropriate
+                    Object is found, the GTP targets the object and tracks
+                    to it until it collides with it.
+                    This function also continuously checks the GTP's tag for
+                    ReleasedGDP, which causes it to explode and be removed from
+                    the game
+    */
     public void FixedUpdate() 
     {
         GameObject obj       = null;
@@ -209,10 +199,13 @@ public class GTP_CmdCtrl: MonoBehaviour
         }
     }
 
-/*  GetOffset determines whether a target is to the  left or right of the receptor
-    and based on the target's position, relative to the receptor, an offset is 
-    is figured into the docking position so the GTP will mate up with the
-    G-protein.*/
+    /*  Function:   GetOffset() Vector3
+        Purpose:    GetOffset determines whether a target is to the  left or right of the receptor
+                    and based on the target's position, relative to the receptor, an offset is 
+                    is figured into the docking position so the GTP will mate up with the
+                    G-protein.
+        Return:     the offset from the target, a smidge to the left or right
+    */
     private Vector3 GetOffset()
     {   
         if(myTarget.childCount > 0)//if we have children dealing Level1 G-Protein
@@ -224,52 +217,25 @@ public class GTP_CmdCtrl: MonoBehaviour
             return myTarget.position;//if no children, Level2 T-G-Protein, just get the target's pos
         return myTarget.position + new Vector3 (2.2f, 0.28f, 0);
     }
-    
-/*  LockOn retags the target 'DockedG_Protein' to 'Target' so it
-    is overlooked in subsequent searches for 'DockedG_Protein's.  This
-    and the assigning of a 'dockingPosition' ensures only one GTP
-    will target an individual docked g-protein.  */
+
+    /*  Function:   LockOn()
+        Purpose:    retags the target 'DockedG_Protein' to 'Target' so it
+                    is overlooked in subsequent searches for 'DockedG_Protein's.  This
+                    and the assigning of a 'dockingPosition' ensures only one GTP
+                    will target an individual docked g-protein.
+    */
     private void LockOn()
     {
         targeting    = true;
         myTarget.tag = "Target";
     }
 
-    /*ProceedToTarget instructs this object to move towards its 'dockingPosition'
-      If this object gets stuck behind the nucleus, it will need a push to
-      move around the object  */
-    private bool ProceedToTarget()
-    {
-        //Unity manual says if the distance between the two objects is < _speed * Time.deltaTime,
-        //protein position will equal docking...doesn't seem to work, so it's hard coded below
-        transform.position = Vector2.MoveTowards (transform.position, dockingPosition, _speed *Time.deltaTime);
-        
-        if(!docked && Vector2.Distance (transform.position, lastPosition) < _speed * Time.deltaTime)
-            Roam.Roaming (this.gameObject);//if I didn't move...I'm stuck.  Give me a push
-
-        lastPosition = transform.position;//breadcrumb trail
-        //check to see how close to the g-protein and disable collider when close
-        deltaDistance = Vector3.Distance (transform.position, dockingPosition);
-
-        //once in range, station object at docking position
-        if(deltaDistance < _speed * Time.deltaTime)
-        {
-            transform.GetComponent<CircleCollider2D> ().enabled = false;
-            transform.GetComponent<Rigidbody2D>().isKinematic = true;
-            transform.position                                = dockingPosition;
-            transform.parent                                  = myTarget;
-        }//end if close enough
-        return (transform.position==dockingPosition);
-    }
-
     //Cloak retags objects for future reference
     private void Cloak()
     {
-        print("Cloaking");
         transform.GetComponent<CircleCollider2D>().enabled = false;
         transform.GetComponent<Rigidbody2D>().isKinematic = true;
 
-        print(myTarget.name);
         transform.position = dockingPosition;
         transform.parent   = myTarget;
         myTarget.tag       = "OccupiedG_Protein";

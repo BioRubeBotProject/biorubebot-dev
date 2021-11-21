@@ -20,6 +20,9 @@
 // **** 1.) Added code for smooth path around the left or right
 // ****     hand side of the nucleus (when it's in the way)
 // **************************************************************
+// **** Updated Fall 2021 by Ryan Wood
+// ****  Added code for seeking an active Adenylyl Cyclase
+///*************************************************************
 using UnityEngine;
 using System.Collections;
 using System;// for math

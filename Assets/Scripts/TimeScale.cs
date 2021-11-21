@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*  File:       TimeScale
+    Purpose:    this file handles the Pause/Play/FF/Reset button press events,
+                Causing the game to speed up, reset, play or pause appropriately
+*/
+
+using UnityEngine;
 using System;
 using System.IO;
 using System.Text;
@@ -129,7 +134,8 @@ public class TimeScale : MonoBehaviour
         PauseButton();
         //Display the Rule Message dialog and components
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Rules_Message"))
+        {
             obj.SetActive(true);
+        }
     }
-
 }

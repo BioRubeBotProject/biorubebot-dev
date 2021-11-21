@@ -1,26 +1,40 @@
+/*  File:       AlphaMovement
+    Purpose:    The Trimeric G-Protein's Alpha subunit breaks off from the
+                whole and moves toward an inactive Adenylyl Cyclase on the
+                Cell Membrane. Once there, the subunit activates the Cyclase
+                so it can turn ATP into cAMP. The Apha subunit has a docking
+                station for GDP or GTP depending on whether the subunit
+                is Active or not
+    Author:     Ryan Wood
+    Created:    Fall 2021
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AlphaMovement : MonoBehaviour
 {
-    public  bool       doFindBetaGamma;
+    //all these public variables are set in the Prefab
+    public  bool       doFindBetaGamma;//whether we are actively seeking beta-gamma subunit
     public  GameObject targetObject;   //AdenylylCyclase-A
     public  GameObject targetBetaGamma;//parent GTProtien
-    public  GameObject GDP;
-    public  float      speed;
-    public  float      gtpActiveTimeMax;
+    public  GameObject GDP;            //in the Prefab, this is set to the GTP Prefab
+    public  float      speed;          //how quickly to move along, set in the Prefab
+    public  float      gtpActiveTimeMax;//how long the GTP remains in the doc before hydrolizing
 
-    private GameObject inactiveCyclase;
-    private GameObject cellMembrane;
-    private GameObject closestTarget;
-    private bool       isDockedAtCyclase;
-    private bool       targetFound;
-    private bool       hasGdpAttached;
-    private bool       hasGtpAttached;
-    private string     rotationDirection;
-    private float      activeStart = 0.0f;
+    private GameObject inactiveCyclase;  //the Adenylyl Cyclase to which this Apha is attached
+    private GameObject cellMembrane;     //the Cell Membrane on which the Alpha is attached
+    private GameObject closestTarget;    //looking for Adenylyl, this is the nearest one
+    private bool       isDockedAtCyclase;//docked at an Active Adenylyl Cyclase
+    private bool       targetFound;      //located an inactive Adenylyl Cyclase
+    private bool       hasGdpAttached;   //whether GDP is attached to the alpha in the doc
+    private bool       hasGtpAttached;   //whether GTP is attached to the alpha in the doc
+    private string     rotationDirection;//left of right around the Cell Membrane
+    private float      activeStart = 0.0f;//the time at which the Alpha was activated by GTP
 
+    /*  Function:   Start()
+        Purpose:    initializes some globals
+    */
     private void Start()
     {
         Transform doc = null;
@@ -32,6 +46,13 @@ public class AlphaMovement : MonoBehaviour
         doFindBetaGamma   = false;
     }
 
+    /*  Function:   getDoc() GameObject
+        Purpose:    this function retrieves the Doc station from the Alpha,
+                    which is a child of the Alpha and returns it. This is a
+                    GameObject that is used for GTP to track and bind with
+                    the Alpha. It's also the spawn location for GDP
+        Return:     the doc for GTP and GDP
+    */
     private GameObject getDoc()
     {
         GameObject doc   = null;
@@ -52,6 +73,11 @@ public class AlphaMovement : MonoBehaviour
         return doc;
     }
 
+    /*  Function:   getGtpChild() GameObject
+        Purpose:    this function returns the GTP that is currently attached
+                    to this Alpha subunit via its doc station
+        Return:     the GTP attached if there is one
+    */
     private GameObject getGtpChild()
     {
         GameObject objGtp = null;
@@ -76,6 +102,13 @@ public class AlphaMovement : MonoBehaviour
         return objGtp;
     }
 
+    /*  Function:   spawnGdp() IEnumerator
+        Purpose:    this function spawns a GDP in the doc station of this
+                    Alpha Subunit. This is the trigger for the Alpha to move
+                    back to the Beta-Gamma complex and away from the Adenylyl
+                    Cyclase
+        Return:     nothing important
+    */
     private IEnumerator spawnGdp()
     {
         GameObject doc      = null;
@@ -94,6 +127,11 @@ public class AlphaMovement : MonoBehaviour
         hasGdpAttached = true;
     }
 
+    /*  Function:   dropGtp()
+        Purpose:    this function simply retags the GTP GameObject to
+                    ReleaseGTP. This tag change willl automatically cause
+                    the GTP to detatch, and explode, leaving the game
+    */
     private void dropGtp()
     {
         GameObject childGtp = getGtpChild();
@@ -105,6 +143,12 @@ public class AlphaMovement : MonoBehaviour
         }
     }
 
+    /*  Function:   seekBetaGamma()
+        Purpose:    this function causes the Alpha to move back toward the
+                    Beta-Gamma complex and away from the Adenylyl Cyclase.
+                    the Alpha does this once a GDP spawns in place of the GTP
+                    after the GTP hydrolizes
+    */
     private void seekBetaGamma()
     {
         if(null != targetBetaGamma)
@@ -118,6 +162,12 @@ public class AlphaMovement : MonoBehaviour
         }
     }
 
+    /*  Function:   setAdenylylCyclaseInactive()
+        Purpose:    this function sets the Active Adenylyl Cyclase with which
+                    this Alpha Subunit has bound to inactive. This will cause
+                    the Active Cyclase to leave the game and an Inactive Adenylyl
+                    Cyclase to spawn in its place
+    */
     private void setAdenylylCyclaseInactive()
     {
         GameObject activeCyclase = Roam.FindClosest(transform, "ATP_tracking");
@@ -134,6 +184,13 @@ public class AlphaMovement : MonoBehaviour
         }
     }
 
+    /*  Function:   Update()
+        Purpose:    this function is called once per frame. It sets variables and
+                    calls functions to move the Alpha toward an inactive Adenylyl
+                    Cyclase or toward a Beta-Gamma depending on whether it is
+                    active or not, and sets/checks a timer for when the GTP
+                    should hydrolize and leave the game
+    */
     public void Update()
     {
         Transform doc = null;
@@ -142,15 +199,16 @@ public class AlphaMovement : MonoBehaviour
         {
             if(transform.gameObject.GetComponent<ActivationProperties>().isActive)
             {
-                if(0.0f == activeStart)//we just became active
+                //we just became active, start timer and set GTP attached true
+                if(0.0f == activeStart)
                 {
                     hasGtpAttached = true;//we have a GTP attached
                     activeStart    = Time.timeSinceLevelLoad;
                 }
 
-                if(!isDockedAtCyclase)//if we aren't bound to a GPCR
+                if(!isDockedAtCyclase)//if we aren't bound to a Cyclase
                 {
-                    closestTarget = findClosestTarget();
+                    closestTarget = findClosestTarget();//find closes Inactive Adenylyl Cyclase
                     if(null != closestTarget)
                     {
                         rotationDirection = getRotationDirection(closestTarget);
@@ -162,6 +220,7 @@ public class AlphaMovement : MonoBehaviour
                     }
                 }
 
+                //check the timer. Time for GTP to leave?
                 if(Time.timeSinceLevelLoad > activeStart + gtpActiveTimeMax)
                     doFindBetaGamma = true;
             }

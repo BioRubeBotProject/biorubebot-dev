@@ -1,12 +1,29 @@
+/*  File:       TGProteinMovement
+    Purpose:    this file handles the movement of the Trimeric G-Protein
+                that is spawned in Level 2. The T G-Protein spawns on the
+                Cell Membrane wall. It is attached via its protein ligands.
+                It moves along the cell wall toward an active GPCR if there
+                is one on the Cell Wall. Once it binds with a GPCR,
+                the T G-Protein releases its GDP (which it spawns with), becoming
+                receptive to a GTP. Once a GTP binds with it, the T G-Protein
+                separates the Alpha subunit from the Beta-Gamma
+                complex, and the Alpha Subunit moves toward an inactive
+                Adenylyl Cyclase.
+    Author:     Ryan Wood
+    Created:    Fall 2021
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TGProteinMovement : MonoBehaviour
 {
+    //these public variables are set in the Prefab
     public  float      speed;
     public  GameObject targetObject;
     public  GameObject GDP;
+
     private GameObject cellMembrane;
     private GameObject closestTarget;
     private GameObject childGDP;
@@ -76,9 +93,16 @@ public class TGProteinMovement : MonoBehaviour
         return doc;
     }
 
+    /*  Function:   Start()
+        Purpose:    this function initializes member variables, and is called
+                    upon instantiation of the T G-Protein. Since the T G-Protein
+                    is supposed to spawn initially with a GDP, this function
+                    instantiates the T G-Protein's GDP in the doc station
+                    of the Alpha Subunit
+    */
     private void Start()
     {
-        Transform  doc   = null;
+        Transform doc   = null;
         Transform alpha = null;
 
         alpha = getAlpha();
@@ -129,6 +153,14 @@ public class TGProteinMovement : MonoBehaviour
         }
     }
 
+    /*  Function:   Update()
+        Purpose:    This function, called once per frame, listens for the event
+                    that the T-G-Protein has docked with a GPCR. If it has not
+                    it seeks one out. This function also checks to see if the
+                    GDP with which the T-G-Protein spawns has been released and
+                    a GTP has docked with it. If so, separates the Alpha
+                    Subunit so it can go find an Adenylyl Cyclase to bind with
+    */
     public void Update()
     {
         Transform doc = null;
@@ -152,11 +184,14 @@ public class TGProteinMovement : MonoBehaviour
 
             if(null != doc)
             {
+                //when GTP attaches it retags the Doc to OccupiedG_Protein
                 if(doc.tag == "OccupiedG_Protein")
                     hasGtpAttached = true;
                 else
                     hasGtpAttached = false;
             }
+
+            //if we have GTP, we need to separate Alpha
             if(hasGtpAttached && !isAlphaSeparated)
             {
                 separateAlpha();
@@ -166,6 +201,11 @@ public class TGProteinMovement : MonoBehaviour
         }
     }
 
+    /*  Function:   getDcp()
+        Purpose:    This function retrieves the child of the Alpha subunit
+                    that is the GDP the T-G-Protein spawned with
+        Return:     the GDP child
+    */
     public Transform getGdp()
     {
         Transform alpha = getAlpha();
@@ -204,8 +244,11 @@ public class TGProteinMovement : MonoBehaviour
 
     /*  Function:   OnTriggerEnter2D(Collider2D)
         Purpose:    this function handles the event that the TGProtein collided with the
-                    active GCBR, setting our global isDockedAtGpcr variable true and
-                    setting the properties of the TGProtein
+                    active GPCR, setting our global isDockedAtGpcr variable true and
+                    setting the properties of the TGProtein. Also handles the event that
+                    the Alpha Subunit has come back after having been separated for
+                    some time and has collided with the Beta-Gamma complex,
+                    making the Alpha a child again
     */
     private void OnTriggerEnter2D(Collider2D other)
 	{
@@ -247,10 +290,8 @@ public class TGProteinMovement : MonoBehaviour
 
                 objDoc = getDoc();
                 if(null != objDoc)
-                {
                     objDoc.tag = "tGProteinDock";
-                    print("setting doc tag to tGProteinDock");
-                }
+
                 if(GameObject.FindWithTag("Win_Alpha_Rejoins_GProtein"))
                     WinScenario.dropTag("Win_Alpha_Rejoins_GProtein");
             }

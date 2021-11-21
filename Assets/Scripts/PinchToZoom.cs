@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//Not sure this is used. Candidate for deletion. Check for references and remove
+using UnityEngine;
 
 public class PinchToZoom : MonoBehaviour
 {

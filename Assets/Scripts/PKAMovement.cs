@@ -1,11 +1,21 @@
+/*  File:       PKAMovement
+    Purpose:    This file handles the movement of the PKA in Level 2 before
+                it is activated and breaks into two pieces. The PKA moves
+                about the Cell Membrane aimlessly until two cAMPs have
+                bound to it. At that point, it transforms and breaks into two
+                pieces.
+    Author:     Ryan Wood
+    Created:    Fall 2021
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PKAMovement : MonoBehaviour
 {
-    public GameObject activePKA;
-    public GameObject cAmp;
+    //these public members are set in the Prefab in Unity
+    public GameObject activePKA;         // Game Object to spawn once activated
     public Transform  origin;            // origin location/rotation is the physical PKA
     public float      maxHeadingChange;  // max possible rotation angle at a time
     public int        maxRoamChangeTime; // how long before changing heading/speed
@@ -20,17 +30,21 @@ public class PKAMovement : MonoBehaviour
     private int      roamCounter    = 0;    // time since last heading speed change while roaming
     private int      numCamps       = 0;
 
+    /*  Function:   Roam()
+        Purpose:    This function has the PKA move about the Cell Membrane with
+                    no particular direction or purpose while it awaits activation
+    */
     private void Roam()
     {
         if(Time.timeScale != 0)// if game not paused
         {
-            roamCounter++;                                      
-            if(roamCounter > roamInterval)                         
+            roamCounter++;
+            if(roamCounter > roamInterval)
             {
                 roamCounter   = 0;
-                var floor     = Mathf.Clamp(heading - maxHeadingChange, 0, 360);  
+                var floor     = Mathf.Clamp(heading - maxHeadingChange, 0, 360);
                 var ceiling   = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
-                roamInterval  = UnityEngine.Random.Range(5, maxRoamChangeTime);   
+                roamInterval  = UnityEngine.Random.Range(5, maxRoamChangeTime);
                 movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
 
                 RaycastHit2D collision = Physics2D.Raycast(origin.position, origin.up);
@@ -57,8 +71,8 @@ public class PKAMovement : MonoBehaviour
 
     /*  Function:   getPkaWhite() GameObject
         Purpose:    this function retrieves the child of this Game Object
-                    that is named "Protein Kinase". THis is the part of the
-                    PKA that is white. The other part is blue
+                    that is named "Protein Kinase". This is the part of the
+                    PKA that is white. The other part is green
         Return:     the Protein Kinase
     */
     private GameObject getPkaWhite()
@@ -94,9 +108,11 @@ public class PKAMovement : MonoBehaviour
         GameObject doc   = null;
         bool       found = false;
 
+        //get the white part of the PKA. The doc stations are a child of this
         pka = getPkaWhite();
         if(null != pka)
         {
+            //loop over children of PKAWhite and return appropriate doc
             foreach(Transform child in pka.transform)
             {
                 if(child.gameObject.name == "docStation" + (numCamps+1))
@@ -107,6 +123,7 @@ public class PKAMovement : MonoBehaviour
                 }
             }
         }
+
         if(!found)
             doc = null;
 
@@ -118,6 +135,17 @@ public class PKAMovement : MonoBehaviour
     {
     }
 
+    /*  Function:   OnTriggerEnter2D(Collider2D)
+        Purpose:    this function handles the event that the PKA collided
+                    with a cAMP Game Object. What happens then is that, if
+                    we have less than 2 cAMPs already, we essentiallly absorb
+                    the cAMP with which we collided. This function retrieves
+                    the appropriate doc station depending on the nubmer of cAMPs
+                    we have, and makes the cAMP with which we collided our
+                    child. Sets the cAMP's dockedWithPKA variable true so it
+                    knows it has been doced already
+        Parameters: the Collider of the Object with which PKA collided
+    */
     private void OnTriggerEnter2D(Collider2D other)
     {
         GameObject newCamp  = null;
@@ -139,14 +167,15 @@ public class PKAMovement : MonoBehaviour
             }
         }
     }
-    /*  Function:   getOldPka()
+
+    /*  Function:   getInactivePka()
         Purpose:    this function retrieves the child of this Game Object that
-                    is tagged inactivePKA. This is the blue part of the PKA that
+                    is tagged inactivePKA. This is the green part of the PKA that
                     will separate off and transform once this PKA has two cAMPs
                     attached
         Return:     the PKA that will transform
     */
-    public GameObject getOldPka()
+    public GameObject getInactivePka()
     {
         GameObject oldPka = null;
         bool       found  = false;
@@ -167,13 +196,21 @@ public class PKAMovement : MonoBehaviour
         return oldPka;
     }
 
-    // Update is called once per frame
+    /*  Function:   Update()
+        Purpose:    this function is called once per frame. Generally, it just
+                    calls the Roam function so that the PKA roams around the
+                    Cell Membrane awaiting activation. But, once the PKA becomes
+                    acitve, this function will kick off the process of separation
+                    for the two parts of the PKA, instantiating the Active Kinase
+                    and freeing it from the white portion of the PKA that will
+                    continue to roam around with its cAMPs attached
+    */
     void Update()
     {
         Roam();
         if(this.gameObject.GetComponent<ActivationProperties>().isActive && !isSeparated)
         {
-            GameObject oldPKA = getOldPka();
+            GameObject oldPKA = getInactivePka();
             if(null != oldPKA)
             {
                 isSeparated = true;

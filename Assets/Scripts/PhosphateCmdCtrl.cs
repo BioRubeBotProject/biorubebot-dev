@@ -1,3 +1,4 @@
+//Candidate for deltion. Check for references and remove
 using UnityEngine;
 using System.Collections;
 

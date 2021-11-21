@@ -1,3 +1,10 @@
+/*  File:       ActiveAdenylylCyclaseProperties
+    Purpose:    this file implements the ActivationProperties Interface,
+                providing a get/set for the isActive property.
+    Author:     Ryan Wood
+    Created:    Fall 2021
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +13,7 @@ public class ActiveAdenylylCyclaseProperties : MonoBehaviour, ActivationProperti
 {
     #region Public Fields + Properties + Events + Delegates + Enums
   
-    public bool m_isActive = false;//ready for GTP
+    public bool m_isActive = false;
   
     #endregion Public Fields + Properties + Events + Delegates + Enums
 

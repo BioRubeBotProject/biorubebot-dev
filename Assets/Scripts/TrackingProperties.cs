@@ -1,4 +1,13 @@
-﻿// **************************************************************
+﻿/*  File:       TrackingProperties
+    Purpose:    Allows tracking of generic Objects. Currently only used
+                by ATP, but this class could potentially be made more
+                useful, and other GameObjects could be refactored to more
+                generically track things.
+    Author:     Kevin Means
+    Created:    10/8/2015
+*/
+
+// **************************************************************
 // **** Created on 10/08/15 by Kevin Means
 // **** 1.) Allows tracking of generic objects
 // **************************************************************

@@ -1,4 +1,7 @@
-﻿using Pathfinding;
+﻿//Candidate for deletion. I think this thing has errors in it, and I don't think
+//it is being used anywhere now. Check for references and remove
+
+using Pathfinding;
 using System.Collections;
 using UnityEngine;
 

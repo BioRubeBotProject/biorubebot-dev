@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿//I think the author created this to try and refactor the existing GameObjects
+//to more generically wander about the Cell Membrane, but they did not finish
+//their work or comment their code very well. 
+
+//candidate for deletion. Check for references and remove.
+//OR expand, improve and refactor GameObjects to use?
+using System.Collections;
 using UnityEngine;
 
 public class Wander : MonoBehaviour
@@ -19,8 +25,6 @@ public class Wander : MonoBehaviour
     private CharacterController controller;
 
     private float heading;
-    //private Rigidbody2D rb;
-    //private Vector3 targetRotation;
 
     #endregion Private Fields + Properties + Events + Delegates + Enums
 
@@ -28,8 +32,6 @@ public class Wander : MonoBehaviour
 
     private void Awake()
     {
-        //rb = GetComponent<Rigidbody2D>();
-
         // Set random initial rotation 
         heading = Random.Range(0, 360);
         transform.eulerAngles = new Vector3(0, 0, heading);

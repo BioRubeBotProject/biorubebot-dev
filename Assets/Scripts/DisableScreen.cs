@@ -2,18 +2,20 @@
 using System.Collections;
 using System;
 
-public class DisableScreen : MonoBehaviour {
+public class DisableScreen : MonoBehaviour
+{
     public Rigidbody test;
     static GameObject[] gratsPanel;
    
     // Use this for initialization
 
-    void Start () {
+    void Start()
+    {
         gratsPanel = GameObject.FindGameObjectsWithTag("Congratulations");
         bool isGameBegin = true;
 
 
-        if (isGameBegin == true)
+        if(isGameBegin == true)
         {
             // Set active congratulations to ative. Unity does not support activating so had to update
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Congratulations"))
@@ -28,12 +30,16 @@ public class DisableScreen : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         GameWon.Set_WinConditions();
-        if (GameWon.IsWon() == true)
-            // Set active congratulations to ative. Unity does not support activating so had to update
-            foreach (GameObject obj2 in gratsPanel)
+        //Set active congratulations to ative. Unity does not support activating so had to update
+        if(GameWon.IsWon() == true)
+        {
+            foreach(GameObject obj2 in gratsPanel)
+            {
                 obj2.SetActive(true);
-
+            }
+        }
     }
 }

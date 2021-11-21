@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//Candidate for deletion. Check for references and remove
+using System.Collections;
 using UnityEngine;
 
 public class simpleMovement : MonoBehaviour

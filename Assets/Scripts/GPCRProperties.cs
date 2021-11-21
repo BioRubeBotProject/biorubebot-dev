@@ -1,3 +1,9 @@
+/*  File:       GPCRProperties
+    Purpose:    this file holds the functions and variables for the activation
+                property of the GPCR, implementing the ActivationProperties
+                Interface
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

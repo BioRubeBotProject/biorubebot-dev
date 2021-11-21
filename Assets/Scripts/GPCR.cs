@@ -1,24 +1,36 @@
+/*  Function:   GPCR
+    Purpose:    this function handles the collision of the inactive GPCR
+                with the Protien Signaler and the transformation into an
+                Active GPCR
+    Author:     Ryan Wood
+    Created:    Fall 2021
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GPCR : MonoBehaviour
 {
-    public GameObject _ActiveGPCR;
-    public GameObject parentObject; //Parent object used for unity editor Tree Hierarchy
+    //these are set in the Prefab
+    public GameObject _ActiveGPCR; //the Active GPCR Prefab
+    public GameObject parentObject;//Parent object used for unity editor Tree Hierarchy
 
     #region Private Methods
 
+    /*  Function:   OnTriggerEnter2D(Collider2D)
+        Purpose:    this function handles the event that the Protein Signaler
+                    collideed with the GPCR, calling the function that transforms
+                    it into an Active GPCR
+    */
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Get reference for parent object in UnityEditor
-        parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
-        
         //IF signal protein collides with GPCR
         if(other.gameObject.tag == "ECP" && this.gameObject.name.Equals("GPCR-A(Clone)"))
         {
-            GPCRProperties objProps = (GPCRProperties)this.GetComponent("GPCRProperties");
-            objProps.isActive = false;
+            //Get reference for parent object in UnityEditor
+            parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
+
+            this.gameObject.GetComponent<ActivationProperties>().isActive = false;
             other.GetComponent<ExtraCellularProperties>().changeState(false);
             other.GetComponent<Rigidbody2D>().isKinematic = true;
        
@@ -29,7 +41,9 @@ public class GPCR : MonoBehaviour
         }
     }
 
-    //Transforms the GPCR to be an activated GPCR once protein collides with it
+    /*  Function:   transformReceptor() IEnumerator
+        Purpose:    Transforms the GPCR to be an activated GPCR once protein collides with it
+    */
     private IEnumerator transformReceptor()
     {
         yield return new WaitForSeconds(2);

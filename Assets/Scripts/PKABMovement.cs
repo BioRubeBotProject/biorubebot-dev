@@ -1,3 +1,18 @@
+/*  File:       PKABMovement
+    Purpose:    This file was created to handle the PKA-B Prefab's movement
+                about the Cell Membrane. It has the PKA-B, which is what the
+                Kinase transforms into once two cAMP have attached to the PKA,
+                move about aimlessly. However, when it came time to update it
+                to deal with the Transcription Regulator binding to it, we ran
+                out of time to deal with how tightly coupled the Transcription
+                Regulator and the Kinase from Level 1 are.
+                This file could potentially be used in the future if the desire
+                is to move toward using the blue PKA that looks more like what
+                is in the Youtube videos. Will need some changes, and so will
+                the Transcription Regulator
+    Author:     Ryan Wood
+    Created:    Fall 2021
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +25,11 @@ public class PKABMovement : MonoBehaviour
     public int        minSpeed;          // slowest the GTP will move
     public int        maxSpeed;          // fastest the GTP will move
 
-    private float    heading;               // roaming direction
-    private float    headingOffset;         //used for smooth rotation while roaming
-    private int      movementSpeed  = 0;    // roaming velocity
-    private int      roamInterval   = 0;    // how long until heading/speed change while roaming
-    private int      roamCounter    = 0;    // time since last heading speed change while roaming
+    private float    heading;            // roaming direction
+    private float    headingOffset;      //used for smooth rotation while roaming
+    private int      movementSpeed  = 0; // roaming velocity
+    private int      roamInterval   = 0; // how long until heading/speed change while roaming
+    private int      roamCounter    = 0; // time since last heading speed change while roaming
 
     private void Roam()
     {

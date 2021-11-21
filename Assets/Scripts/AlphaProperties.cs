@@ -1,3 +1,9 @@
+/*  File:       AlphaProperties
+    Purpose:    this file implements the ActivationProperties Interface,
+                providing a get/set for the isActive property. The game
+                can set it or get it wherever it has a handle on the
+                Alpha through GameObject.GetComponent<ActivationProperties>()
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

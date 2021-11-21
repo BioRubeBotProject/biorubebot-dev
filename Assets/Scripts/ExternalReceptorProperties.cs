@@ -1,7 +1,9 @@
-﻿// Altered by CS452 Spring 2017 Project Team
-// Date: March 18, 2017
-
-//Functionality Added: Replaced IF statements with SWITCH statments for efficency
+﻿/*  File:       ExternalReceptorProperties
+    Purpose:    this file contains properties and functions for the
+                External Receptor. Implements the ActivationProperies Interface,
+                which allows the isActive property to be retrieved and set
+                through GameObject.GetComponent<ActivationProperties>().isActive
+*/
 
 using UnityEngine;
 
@@ -9,10 +11,11 @@ public class ExternalReceptorProperties : MonoBehaviour , ActivationProperties
 {
     #region Public Fields + Properties + Events + Delegates + Enums
 
-    public Color ActiveColor = Color.white;
-    public bool allowMovement = true;
-    public Color NonActiveColor = Color.gray;
-    private bool m_isActive = true;
+    public  Color ActiveColor    = Color.white;
+    public  bool  allowMovement  = true;
+    public  Color NonActiveColor = Color.gray;
+
+    private bool  m_isActive     = true;//odd choice to begin this Active. Maybe refactor at some point
 
     #endregion Public Fields + Properties + Events + Delegates + Enums
 
@@ -23,12 +26,21 @@ public class ExternalReceptorProperties : MonoBehaviour , ActivationProperties
         set => m_isActive = value;
     }
 
+    /*  Function:   changeState(bool)
+        Purpose:    this function changes the state of the Receptor to be the
+                    given value, modifying the isActive property to be the value.
+                    In implementation, its weird, though because it is already set
+                    by the isActive property by an external source, and this function
+                    is really just called to update the color of the parts of
+                    the prefab. When isActive is true, the active color is used
+                    and when isActive is false, the inactive color is used
+    */
     public void changeState(bool message)
     {
         this.isActive = message;
-        if (this.isActive == false)
+        if(this.isActive == false)
         {
-            foreach (Transform child in this.transform)
+            foreach(Transform child in this.transform)
             {
                 switch(child.name)
                 {
@@ -73,6 +85,9 @@ public class ExternalReceptorProperties : MonoBehaviour , ActivationProperties
 
     #region Private Methods
 
+    /*  Function:   Start()
+        Purpose:    initializes the isActive state to true upon instantiation
+    */
     private void Start()
     {
         changeState(true);
