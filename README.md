@@ -15,7 +15,7 @@ Developers that work on this project will **NOT** have access to making changes 
      https://github.com/BioRubeBotProject/Summer-2017/tree/master/biorubebot-dev-master
 2. Use command `git clone <link-from-URL-above>`
 3. Make note of the location that the repository is downloaded to.
-4. Download Unity Version `2018.3.2f1`
+4. Download Unity Version `2021.1.21.f1'
 5. Open Unity after verifying it is the aforementioned version
 6. Select the open icon at the top right of the Unity window
 7. Select the path from Step 3
@@ -39,6 +39,6 @@ Feature branches similarly mock story names as each branch should accomplish a s
 For more on how to use git and the etiquette, please review:
 https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/best-practices
 
-The Project is currently compiled under Unity Version 2018.3.2f1.
+The Project is currently compiled under Unity Version 2021.1.21.f1.
 
 
