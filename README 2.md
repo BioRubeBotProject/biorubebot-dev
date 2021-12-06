@@ -18,7 +18,7 @@ work into the product release branch.  Feature branches may be deleted
 once one confirms the merge was successful.  Upon completion of the project,
 the product release branch should be merged into the master branch.
 
-Upon approval of changes, Prof. Lewis or Prof. Mayfield will merge the
+Upon approval of changes, Prof. Lewis or Prof. Maxwell will merge the
 master branch in this repository into a release branch in
 biorubebot-production.  Once it's confirmed this is working, that branch
 will be merged into the master branch in the production repository.
