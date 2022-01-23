@@ -38,6 +38,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
     private bool[]     midpointAchieved = new bool[2];
     private bool       midpointSet;
     private bool       WinConMet = false;             //used to determine if the win condition has already been met
+    private float      distancetoconnect;
 
     // Use this for initialization
     void Start()
@@ -52,6 +53,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
         active_Kinase_P2      = null;
         delay                 = 0.0f;
         timeoutForInteraction = 0.0f;
+        distancetoconnect = 2.0f;  //used to be 6.0f
         Nucleus = GameObject.FindGameObjectWithTag("CellMembrane").transform.GetChild(0).gameObject;
 
         //Get reference for parent object in UnityEditor
@@ -198,9 +200,9 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
                     //Collect the x and y values for this T_Reg and the ATP in separate Vector2 variables
                     pos[0] = new Vector2 (transform.position.x, transform.position.y);
                     pos[1] = new Vector2 (ATP.transform.position.x, ATP.transform.position.y);
-                    
-                    // Check if the Distance between the the ATP and the T_Reg is less than 6.0f
-                    if(Vector2.Distance (pos [0], pos [1]) < 6.0f)
+
+                    // Check if the Distance between the the ATP and the T_Reg is less than distancetoconnect
+                    if (Vector2.Distance (pos [0], pos [1]) < distancetoconnect)
                     {
                         //Set the T_Reg to be inactive because an ATP is close enough to dock
                         isActive = false;
