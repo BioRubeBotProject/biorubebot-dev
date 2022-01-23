@@ -21,11 +21,11 @@ public class Roam : MonoBehaviour
     public static float _min = -150f;
     public static float _speed = 5.0f;
 
-    public static void Roaming(GameObject Obj)
+    public static void Roaming(GameObject Obj)         //this is why things swing wildly around, there is no rotation, just random positons around where the obj currently is.
     {
         if(Time.timeScale > 0)// if simulation is running
         {
-            float randomX, randomY;     //random number between minX/maxX and minY/maxY
+            float randomX, randomY;     //random number between minX/maxX and minY/maxY          
             randomX = Random.Range(_min, _max); //get random x vector coordinate
             randomY = Random.Range(_min, _max); //get random y vector coordinate
                                                 //apply a force to the object in direction (x,y):
