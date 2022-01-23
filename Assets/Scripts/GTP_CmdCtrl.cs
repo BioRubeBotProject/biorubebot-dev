@@ -47,7 +47,9 @@ public class GTP_CmdCtrl: MonoBehaviour
 
     private bool docked    = false;     // GTP position = Docked G-protein position
     private bool targeting = false;     // is GTP targeting docked G-protein
-    
+    private int timerforlockon;         // has GTP been targeting for too long?
+    private int timerforlockonMAX = 500; //when is the GTP never going to arrive because its stuck or behind a membrain
+
     private float delay = 0f;
     private float deltaDistance;        // measures distance traveled to see if GTP is stuck behind something
     //private float randomX, randomY;       // random number between MIN/MAX_X and MIN/MAX_Y
@@ -58,6 +60,8 @@ public class GTP_CmdCtrl: MonoBehaviour
     //private Vector2 randomDirection;  // new direction vector
     private Vector3 dockingPosition;    // myTarget position +/- offset
     private Vector3 lastPosition;
+    
+
     // previous position while moving to docked G-protein
 
     /*  Function:   Start()
@@ -179,13 +183,25 @@ public class GTP_CmdCtrl: MonoBehaviour
                     LockOn();//call dibs
                 }
             }
-            else if(!docked)
+            else if(!docked)  
             {
                 if((delay += Time.deltaTime) < 5)//wait 5 seconds before proceeding to target
                     Roam.Roaming(this.gameObject);
                 else
                 {
                     docked = Roam.ProceedToVector(this.gameObject, dockingPosition);
+                    timerforlockon++;
+           
+                    if(timerforlockon > timerforlockonMAX && !docked) //if timer is high
+                    {                                  //reset lockedon,opentarget?,timer, mytarget.tag
+                        targeting = false;
+                        openTarget = null;
+                        myTarget.tag = "tGProteinDock";
+                        myTarget = null;
+                        obj = null;
+                        timerforlockon = 0;
+                    }
+                    
                 }
                 if(docked)
                     Cloak();
@@ -228,6 +244,7 @@ public class GTP_CmdCtrl: MonoBehaviour
     {
         targeting    = true;
         myTarget.tag = "Target";
+        timerforlockon = 0;   //sudo fix for issue where GTP is outside the cell wall and or stuck
     }
 
     //Cloak retags objects for future reference
