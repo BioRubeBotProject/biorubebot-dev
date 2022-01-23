@@ -174,9 +174,9 @@ public class ATPpathfinding : MonoBehaviour
                 }
                 if(objIndex < foundObjs.Length) 
                 {
-                    if(foundObjs[objIndex].GetComponent<TrackingProperties>().Find() == true)
+                    if(foundObjs[objIndex].GetComponent<TrackingProperties>().Find() == true) //currently tracks only first valid object.
                     { 
-                        trackThis = foundObjs[objIndex];
+                        trackThis = foundObjs[objIndex];                //TODO: around here, this should change so that we go through the list of all objects then find the NEAREST, the the nearest is the one we track. -cb 1/22/22
                         found     = true; 
                         if(trackThis.name == "Adenylyl_cyclase-B(Clone)")
                         {
