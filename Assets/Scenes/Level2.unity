@@ -10008,7 +10008,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: PROTEIN KINASE
+  m_Text: INHIBITED KINASE
 --- !u!222 &602569552
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13033,7 +13033,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'PROTEIN SIGNALLER
+  m_Text: 'MITOGEN
 
 '
 --- !u!222 &1207425704
@@ -17214,7 +17214,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: TRUNERUC G-PROTEIN
+  m_Text: TRIMERIC G-PROTEIN
 --- !u!222 &2019817705
 CanvasRenderer:
   m_ObjectHideFlags: 0
