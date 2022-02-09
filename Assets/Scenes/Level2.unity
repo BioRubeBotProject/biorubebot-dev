@@ -130,6 +130,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 74715831}
     m_Modifications:
+    - target: {fileID: 114720, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 117460, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 121990, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 129770, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 133708, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 156460, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 166388, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 179206, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 428420, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -276,7 +308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 59.999954
+      value: 59.999878
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_SizeDelta.y
@@ -284,11 +316,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 0.40000007
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 0.40000007
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalScale.z
@@ -304,7 +336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0.99998474
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalRotation.w
@@ -312,19 +344,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -30.000023
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -508,6 +540,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: MainMenu2
   homeMenuScene: 
+--- !u!223 &1142252
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142248}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 20
+  m_TargetDisplay: 0
 --- !u!1 &22615198
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,7 +1725,7 @@ GameObject:
   - component: {fileID: 121789470}
   - component: {fileID: 121789469}
   - component: {fileID: 121789468}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Dismiss Button
   m_TagString: Rules_Message
   m_Icon: {fileID: 0}
@@ -2805,7 +2858,7 @@ GameObject:
   - component: {fileID: 233623824}
   - component: {fileID: 233623826}
   - component: {fileID: 233623825}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Dismiss Text
   m_TagString: Rules_Message
   m_Icon: {fileID: 0}
@@ -3349,7 +3402,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 418938, guid: 3c893413983627a4faf3bac94d9987e7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 418938, guid: 3c893413983627a4faf3bac94d9987e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10533,7 +10586,7 @@ GameObject:
   - component: {fileID: 873269187}
   - component: {fileID: 873269186}
   - component: {fileID: 873269185}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Rules
   m_TagString: Rules_Message
   m_Icon: {fileID: 0}
@@ -11878,7 +11931,7 @@ GameObject:
   - component: {fileID: 1100862982}
   - component: {fileID: 1100862981}
   - component: {fileID: 1100862980}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Redo
   m_TagString: Congratulations
   m_Icon: {fileID: 0}
@@ -14966,7 +15019,7 @@ GameObject:
   - component: {fileID: 1572456150}
   - component: {fileID: 1572456152}
   - component: {fileID: 1572456151}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Redp text
   m_TagString: Congratulations
   m_Icon: {fileID: 0}
@@ -15049,7 +15102,7 @@ GameObject:
   - component: {fileID: 1602408938}
   - component: {fileID: 1602408940}
   - component: {fileID: 1602408939}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: How To Win
   m_TagString: Rules_Message
   m_Icon: {fileID: 0}
@@ -15711,7 +15764,7 @@ RectTransform:
   m_GameObject: {fileID: 1766009820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1103273884}
   m_RootOrder: 3
@@ -15937,7 +15990,7 @@ GameObject:
   - component: {fileID: 1772384902}
   - component: {fileID: 1772384904}
   - component: {fileID: 1772384903}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Win Conditions List
   m_TagString: Rules_Message
   m_Icon: {fileID: 0}
@@ -15998,7 +16051,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Use active GPCR, Cyclase, and Protein Kinase to help the Transcription
+  m_Text: Use active GPCR, Cyclase, and Uninhibited Kinase to help the Transcription
     Regulator into the Nucleus
 --- !u!222 &1772384904
 CanvasRenderer:
