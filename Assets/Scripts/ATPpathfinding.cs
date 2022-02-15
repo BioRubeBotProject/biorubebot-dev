@@ -106,7 +106,35 @@ public class ATPpathfinding : MonoBehaviour
         if(crossProduct.z < 0)
             angleToRotate = -angleToRotate; // .Angle always returns a positive #
     }
-  
+
+
+    private GameObject findNearest(GameObject[] foundObjs)
+    { //https://answers.unity.com/questions/1681663/how-to-find-the-closest-distance-between-two-objec.html
+
+        GameObject nearest = null;
+        var distance = Mathf.Infinity;
+        var position = transform.position;
+
+        foreach (GameObject thisobject in foundObjs)
+        {
+            if (thisobject.GetComponent<TrackingProperties>().isFound != true)
+            {
+                var diff = (thisobject.transform.position - position);
+                var curDistance = diff.sqrMagnitude;
+                if (curDistance < distance)
+                {
+                    nearest = thisobject.gameObject;
+                    distance = curDistance;
+                }
+
+            }
+
+
+        }
+        
+        return nearest;
+    }
+
     //------------------------------------------------------------------------------------------------
     // ATP wanders when not actively seeking a receptor leg. This method causes the ATP to randomly
     // change direction and speed at random intervals.  The tendency for purely random motion objects
@@ -155,7 +183,7 @@ public class ATPpathfinding : MonoBehaviour
     // Update is called once per frame. Gets an array of potential GameObjects to track and tries to 
     // find one that is not "found" yet. If it finds one then it stores a pointer to the GameObject as
     // "trackThis" and calls raycasting so that the ATP can seek it out.  Else, ATP wanders.
-    private void Update()
+    private void FixedUpdate()
     {
         if(droppedOff) 
         { 
@@ -167,23 +195,28 @@ public class ATPpathfinding : MonoBehaviour
             if(found == false)
             {
                 GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
-                objIndex = 0;
-                while(objIndex < foundObjs.Length && foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
-                {
-                    ++objIndex;
-                }
-                if(objIndex < foundObjs.Length) 
-                {
-                    if(foundObjs[objIndex].GetComponent<TrackingProperties>().Find() == true) //currently tracks only first valid object.
-                    { 
-                        trackThis = foundObjs[objIndex];                //TODO: around here, this should change so that we go through the list of all objects then find the NEAREST, the the nearest is the one we track. -cb 1/22/22
-                        found     = true; 
+                //                objIndex = 0;
+                //                while(objIndex < foundObjs.Length && foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
+                //                {
+                //                    ++objIndex;
+                //               }
+                //                if(objIndex < foundObjs.Length) 
+                //                {
+
+                //                    if(foundObjs[objIndex].GetComponent<TrackingProperties>().Find() == true) //currently tracks only first valid object.
+                //                   { 
+                //                        trackThis = foundObjs[objIndex];                
+                                                                            //Not doing anything with this TrackingProperties thing, commented out.
+                trackThis = findNearest(foundObjs);
+                if(trackThis != null && trackThis.GetComponent<TrackingProperties>().Find() == true)
+                { 
+                    found = true; 
                         if(trackThis.name == "Adenylyl_cyclase-B(Clone)")
                         {
                             print("Cyclase");
                             trackThis.GetComponent<TrackingProperties>().isFound = false;
                         }
-                    }
+//                    }
                 }
                 else
                     trackThis = null;
@@ -198,3 +231,4 @@ public class ATPpathfinding : MonoBehaviour
     }
     #endregion Private Methods
 }
+
