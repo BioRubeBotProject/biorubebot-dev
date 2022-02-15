@@ -31,6 +31,7 @@ public class AlphaMovement : MonoBehaviour
     private bool       hasGtpAttached;   //whether GTP is attached to the alpha in the doc
     private string     rotationDirection;//left of right around the Cell Membrane
     private float      activeStart = 0.0f;//the time at which the Alpha was activated by GTP
+    private bool       winconditionactivated = false;
 
     /*  Function:   Start()
         Purpose:    initializes some globals
@@ -260,8 +261,11 @@ public class AlphaMovement : MonoBehaviour
                 inactiveCyclase   = other.gameObject;
                 isDockedAtCyclase = true;
                 //check if action is a win condition for the scene/level
-                if(GameObject.FindWithTag("Win_Alpha_Binds_to_Cyclase"))
+                if (!winconditionactivated && GameObject.FindWithTag("Win_Alpha_Binds_to_Cyclase"))
+                {
                     WinScenario.dropTag("Win_Alpha_Binds_to_Cyclase");
+                    winconditionactivated = true;
+                }
             }
         }
     }

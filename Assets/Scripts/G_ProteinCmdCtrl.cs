@@ -23,6 +23,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
     private GameObject openTarget;         // a 'ReceptorPhosphate' (target) object
     private Vector3    lastPosition;       // previous position while moving to phosphate
     private Vector3    dockingPosition;    // where to station the g-protein at docking
+    private bool winconditionactivated = false;
 
     /*  Function:   Start()
         Purpose:    This function is called upon instantiation. It instantiates
@@ -91,8 +92,11 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         {
             Undock();
             //check if action is a win condition for the scene/level
-            if(GameObject.FindWithTag("Win_GProteinFreed"))
+            if (!winconditionactivated && GameObject.FindWithTag("Win_GProteinFreed"))
+            {
                 WinScenario.dropTag("Win_GProteinFreed");
+                winconditionactivated = true;
+            }
         }
         //ELSE IF G-Protein has GTP(red) AND G-Protein is ready to roam with attached GTP(red)
         else if(haveGTP && roaming)
