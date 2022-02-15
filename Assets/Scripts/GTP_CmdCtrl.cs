@@ -252,6 +252,7 @@ public class GTP_CmdCtrl: MonoBehaviour
     {
         transform.GetComponent<CircleCollider2D>().enabled = false;
         transform.GetComponent<Rigidbody2D>().isKinematic = true;
+        transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;  //added to stop the random slide that occasionally happens after docking
 
         transform.position = dockingPosition;
         transform.parent   = myTarget;
