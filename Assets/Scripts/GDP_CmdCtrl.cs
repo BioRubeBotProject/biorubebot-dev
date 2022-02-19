@@ -31,8 +31,9 @@ public class GDP_CmdCtrl : MonoBehaviour
     */
     void FixedUpdate()
     {
-        if(tag == "ReleasedGDP")
+        if (tag == "ReleasedGDP")
         {
+            Roam.Roaming(this.gameObject);
             tag = "DyingGDP";
             StartCoroutine(ReleasingGDP());
             StartCoroutine(DestroyGDP());//Destroy GDP
@@ -43,8 +44,19 @@ public class GDP_CmdCtrl : MonoBehaviour
                 winconditionactivated = true;
             }
         }
+        else if (tag == "DyingGDP")
+        {
+            //do nothing
+        }
+        else if (tag == "DockedGDP")
+        {
+            //do nothing
+        }
+        else
+        {
 
-        Roam.Roaming( this.gameObject);
+            Roam.Roaming(this.gameObject);  //this should only happen if someone makes one from the menu
+        }
     }
 
     /*  Function:   ReleasingGDP() IEnumerator
