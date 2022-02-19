@@ -35,6 +35,14 @@ public class TrackingProperties : MonoBehaviour
         }
         return false;
     }
+    public bool FindMultiple() //when you dont want find() to change the isFound flag.
+    {
+        if (isFound == false)
+        {
+            return true;
+        }
+        return false;
+    }
 
     //------------------------------------------------------------------------------------------------
     // In case another object is unintentionally serviced by the ATP that was tracking this one, this
