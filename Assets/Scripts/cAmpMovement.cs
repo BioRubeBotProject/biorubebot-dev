@@ -97,48 +97,31 @@ public class cAmpMovement : MonoBehaviour
         if(crossProduct.z < 0)
             angleToRotate = -angleToRotate; // .Angle always returns a positive #
     }
-  
-    //------------------------------------------------------------------------------------------------
-    // cAMP wanders when not actively seeking a receptor leg. This method causes the cAMP to randomly
-    // change direction and speed at random intervals.  The tendency for purely random motion objects
-    // to generally gravitate toward the edges of a circular container has been artificially remedied
-    // by Raycasting and turning the cAMP onto a 180 degree course (directing them toward the center).  
-    private void roam()
-    {
-        if(Time.timeScale != 0)// if game not paused
+
+    private GameObject findNearest(GameObject[] foundObjs)
+    { 
+
+        GameObject nearest = null;
+        var distance = Mathf.Infinity;
+        var position = transform.position;
+
+        foreach (GameObject thisobject in foundObjs)
         {
-            roamCounter++;                                      
-            if(roamCounter > roamInterval)                         
+            if (thisobject.GetComponent<TrackingProperties>().isFound != true)
             {
-                roamCounter   = 0;
-                var floor     = Mathf.Clamp(heading - maxHeadingChange, 0, 360);  
-                var ceiling   = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
-                roamInterval  = UnityEngine.Random.Range(5, maxRoamChangeTime);   
-                movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
-
-                RaycastHit2D collision = Physics2D.Raycast(origin.position, origin.up);
-                if(collision.collider != null && collision.collider.name == "Cell Membrane(Clone)" &&
-                   collision.distance < 2)
+                var diff = (thisobject.transform.position - position);
+                var curDistance = diff.sqrMagnitude;
+                if (curDistance < distance)
                 {
-                    if(heading <= 180)
-                        heading = heading + 180;
-                    else
-                        heading = heading - 180;
-
-                    movementSpeed = maxSpeed;
-                    roamInterval  = maxRoamChangeTime;
+                    nearest = thisobject.gameObject;
+                    distance = curDistance;
                 }
-                else
-                    heading = UnityEngine.Random.Range(floor, ceiling);
-
-                headingOffset = (transform.eulerAngles.z - heading) / (float)roamInterval;
             }
-            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - headingOffset);
-            transform.position += transform.up * Time.deltaTime * movementSpeed;
         }
+        return nearest;
     }
-  
-    //------------------------------------------------------------------------------------------------
+
+
     private void Start()
     {
     }
@@ -172,7 +155,7 @@ public class cAmpMovement : MonoBehaviour
                     if there is no inactive PKA in sight that has not been found,
                     the cAMP roams
     */
-    private void Update()
+    private void FixedUpdate()
     {
         if(Time.timeScale != 0)
         {
@@ -181,35 +164,25 @@ public class cAmpMovement : MonoBehaviour
             if(foundPKA == false)
             {
                 GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
-                GameObject   foundObj  = null;
-                objIndex = 0;
-                
-                //loop through the Objects with the tracking tag until we get an index that isn't "found" yet
-                while(objIndex < foundObjs.Length && foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
-                {
-                    ++objIndex;
-                }
-                if(objIndex < foundObjs.Length) 
-                {
-                    foundObj = foundObjs[objIndex];
-                    if(foundObj.GetComponent<TrackingProperties>().Find() == true &&
-                       foundObj.GetComponent<ActivationProperties>().isActive == false)
+                trackThis = findNearest(foundObjs); //loop through the Objects with the tracking tag until we get an index that isn't "found" yet
+
+                    if(trackThis.GetComponent<TrackingProperties>().Find() == true &&
+                       trackThis.GetComponent<ActivationProperties>().isActive == false)  //it also has to have it's activation proterties == false
                     {
                         //only two colliders on PKA on which to track
-                        if(foundObj.GetComponent<PKAProperties>().coliderIndex > 1)
+                        if(trackThis.GetComponent<PKAProperties>().coliderIndex > 1)
                         {
-                            foundObj.GetComponent<TrackingProperties>().isFound = true;
+                            trackThis.GetComponent<TrackingProperties>().isFound = true;
                         }
                         else
                         {
-                            trackThis = foundObjs[objIndex];
                             foundPKA  = true; 
-                            if(trackThis.name == "PKA-A(Clone)")
+                            if(trackThis.name == "PKA-A(Clone)") //currently should always be true
                             {
                                 trackThis.GetComponent<TrackingProperties>().isFound = false;
                                 pkaColliderIndex = trackThis.GetComponent<PKAProperties>().coliderIndex;
                                 trackThis.GetComponent<PKAProperties>().coliderIndex++;
-                            }
+                            } //add else if( other possible tags) when trackingTag has more than one possible tag - cb Spring2022
                         }
                     }
                 }
@@ -224,9 +197,8 @@ public class cAmpMovement : MonoBehaviour
                 foundPKA = false;
     
             if(foundPKA == false)
-                roam();
-        }
-    }
+                Roam.Roaming(this.gameObject);
+    } //end FixedUpdate()
 
     #endregion Private Methods
 }
