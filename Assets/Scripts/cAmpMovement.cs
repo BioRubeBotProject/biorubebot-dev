@@ -157,47 +157,50 @@ public class cAmpMovement : MonoBehaviour
     */
     private void FixedUpdate()
     {
-        if(Time.timeScale != 0)
+        if (Time.timeScale != 0)
         {
-            if(dockedWithPKA)
+            if (dockedWithPKA)
                 return;
-            if(foundPKA == false)
+            if (foundPKA == false)
             {
                 GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
                 trackThis = findNearest(foundObjs); //loop through the Objects with the tracking tag until we get an index that isn't "found" yet
-
-                    if(trackThis.GetComponent<TrackingProperties>().Find() == true &&
-                       trackThis.GetComponent<ActivationProperties>().isActive == false)  //it also has to have it's activation proterties == false
+                if (trackThis != null)
+                {
+                    
+                    if (trackThis.GetComponent<TrackingProperties>().Find() == true) //&&trackThis.GetComponent<ActivationProperties>().isActive == false)  
                     {
                         //only two colliders on PKA on which to track
-                        if(trackThis.GetComponent<PKAProperties>().coliderIndex > 1)
-                        {
-                            trackThis.GetComponent<TrackingProperties>().isFound = true;
-                        }
-                        else
-                        {
-                            foundPKA  = true; 
-                            if(trackThis.name == "PKA-A(Clone)") //currently should always be true
+                        
+                            
+                            if (trackThis.name == "PKA-A(Clone)") //currently should always be true
                             {
                                 trackThis.GetComponent<TrackingProperties>().isFound = false;
                                 pkaColliderIndex = trackThis.GetComponent<PKAProperties>().coliderIndex;
                                 trackThis.GetComponent<PKAProperties>().coliderIndex++;
-                            } //add else if( other possible tags) when trackingTag has more than one possible tag - cb Spring2022
-                        }
+                                if (trackThis.GetComponent<PKAProperties>().coliderIndex > 1) //if it already has one cAMP attached, then it needs no more.
+                                {
+                                      trackThis.GetComponent<TrackingProperties>().isFound = true;
+                                }
+                            foundPKA = true;
+                        } //add else if( other possible tags) when trackingTag has more than one possible tag - cb Spring2022
+                        
                     }
-                }
-                else
+                } else
                     trackThis = null;
             }
-            if(foundPKA == true && trackThis.tag == trackingTag)
+            
+
+            if (foundPKA == true && trackThis != null && trackThis.tag == trackingTag)
             {
                 Raycasting();
             }
             else
                 foundPKA = false;
-    
-            if(foundPKA == false)
+
+            if (foundPKA == false)
                 Roam.Roaming(this.gameObject);
+        }
     } //end FixedUpdate()
 
     #endregion Private Methods
