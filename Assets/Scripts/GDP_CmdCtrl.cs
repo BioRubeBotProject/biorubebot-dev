@@ -12,6 +12,7 @@ public class GDP_CmdCtrl : MonoBehaviour
     public GameObject     parentObject;      //Parent object used for unity editor Tree Hierarchy
 
     private bool winconditionactivated = false;
+    private Roamer r;                             //an object that holds the values for the roaming (random movement) methods
 
 
     /*  Function:   Start()
@@ -21,6 +22,7 @@ public class GDP_CmdCtrl : MonoBehaviour
     void Start()
     {
         parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
+        r = new Roamer();
     }
     
     /*  Function:   FixedUpdate()
@@ -33,7 +35,7 @@ public class GDP_CmdCtrl : MonoBehaviour
     {
         if (tag == "ReleasedGDP")
         {
-            Roam.Roaming(this.gameObject);
+            r.Roaming(this.gameObject);
             tag = "DyingGDP";
             StartCoroutine(ReleasingGDP());
             StartCoroutine(DestroyGDP());//Destroy GDP
@@ -55,7 +57,7 @@ public class GDP_CmdCtrl : MonoBehaviour
         else
         {
 
-            Roam.Roaming(this.gameObject);  //this should only happen if someone makes one from the menu
+            r.Roaming(this.gameObject);  //this should only happen if someone makes one from the menu
         }
     }
 

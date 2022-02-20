@@ -23,7 +23,6 @@ public class GTP_CmdCtrl: MonoBehaviour
     public float      maxHeadingChange;    // max possible rotation angle at a time
     public float      angleToRotate;       // stores the angle in degrees between GTP and dock
     public bool       droppedOff = false;  // is phospate gone?
-    public bool       found      = false;  // did this GTP find a dock?
     public bool       spin       = false;
     public int        maxRoamChangeTime;   // how long before changing heading/speed
     public int        minSpeed;            // slowest the GTP will move
@@ -60,66 +59,20 @@ public class GTP_CmdCtrl: MonoBehaviour
     //private Vector2 randomDirection;  // new direction vector
     private Vector3 dockingPosition;    // myTarget position +/- offset
     private Vector3 lastPosition;
-    
 
-    // previous position while moving to docked G-protein
+    private Roamer r;                             //an object that holds the values for the roaming (random movement) methods
+
 
     /*  Function:   Start()
-        Purpose:    This function is called upon instantiation and
-                    initializes last position to current
+        Purpose:    This function is called upon instantiation
     */
     private void Start()
     {
-        lastPosition = transform.position;          
+        lastPosition = transform.position;
+        r = new Roamer(minSpeed, maxSpeed, maxHeadingChange);
     }
 
-    /*  Functin:    Roam2()
-        Purpose:    this function has the GTP roam around the cell membrane
-                    aimlessly. This is called when there is nothing around
-                    for the GTP to seek out and bind with.
-                    Must have been named Roam2 in order to be consistent
-                    with other functions in this game that do the same thing
-                    but not step on the Roam class that is used in this file
-    */
-    private void Roam2()
-    {
-        if(Time.timeScale != 0)// if game not paused
-        {
-            roamCounter++; 
-            rotate.z = heading -180;
-            if(roamCounter > roamInterval)                         
-            {                                                   
-                roamCounter   = 0;
-                var floor     = Mathf.Clamp(heading - maxHeadingChange, 0, 360);  
-                var ceiling   = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
-                roamInterval  = UnityEngine.Random.Range(5, maxRoamChangeTime);   
-                movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
-
-                if(null != origin)
-                {
-                    RaycastHit2D collision = Physics2D.Raycast(origin.position, origin.up);
-
-                    if(collision.collider != null && collision.collider.name == "Cell Membrane(Clone)" &&
-                       collision.distance < 2)
-                    {
-                        if(heading <= 180)
-                            heading = heading + 180;
-                        else
-                            heading = heading - 180;
-
-                        movementSpeed = maxSpeed;
-                        roamInterval  = maxRoamChangeTime;
-                    }
-                    else
-                        heading = UnityEngine.Random.Range(floor, ceiling);
-
-                    headingOffset = (transform.eulerAngles.z - heading) / (float)roamInterval;
-                }
-            }
-            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - headingOffset);
-            transform.position += transform.up * Time.deltaTime * movementSpeed;
-        }
-    }
+ 
 
     /*  Function:   FixedUpdate()
         Purpose:    This function determines whether the GTP should roam around
@@ -149,18 +102,15 @@ public class GTP_CmdCtrl: MonoBehaviour
                 if(Quaternion.Angle(transform.rotation,rotation) == 0)
                     spin = false;
             }
-            if(found == false)
-                Roam2();
 
-            if(!targeting)//Look for a target
+            if (!targeting)//Look for a target
             {
-                Roam2();
-                Roam.Roaming (this.gameObject);
+                r.Roaming (this.gameObject);
 
-                openTarget = Roam.FindClosest(transform, "DockedG_Protein");//level one
+                openTarget = BioRubeLibrary.FindClosest(transform, "DockedG_Protein");//level one
                 if(null == openTarget)
                 {
-                    obj = Roam.FindClosest(transform, "tGProteinDock");//level 2
+                    obj = BioRubeLibrary.FindClosest(transform, "tGProteinDock");//level 2
                     if(null != obj)
                     {
                         //get the TGProtien. Doc has parent alpha, which has parent TGProtein
@@ -181,15 +131,16 @@ public class GTP_CmdCtrl: MonoBehaviour
                     myTarget = openTarget.transform;
                     dockingPosition = GetOffset();
                     LockOn();//call dibs
+                  //  r.moveToDock(this.gameObject, objParent);
                 }
             }
             else if(!docked)  
             {
-                if((delay += Time.deltaTime) < 5)//wait 5 seconds before proceeding to target
-                    Roam.Roaming(this.gameObject);
+                if((delay += Time.deltaTime) < 5)//wait 5 seconds before proceeding to target.   why?
+                    r.Roaming(this.gameObject);
                 else
                 {
-                    docked = Roam.ProceedToVector(this.gameObject, dockingPosition);
+                    docked = r.ProceedToVector(this.gameObject, dockingPosition);
                     timerforlockon++;
            
                     if(timerforlockon > timerforlockonMAX && !docked) //if timer is high
@@ -213,6 +164,17 @@ public class GTP_CmdCtrl: MonoBehaviour
                 StartCoroutine(DestroyGTP()); //Destroy GDP
             }
         }
+    }
+
+    //attempting re-write of how GTP attaches to Trimeric G-Protein (ABG-ALL)
+    private void OnTriggerEnter2D(Collider2D other) //Triggered from Unity when GTP's collider component hits another collider
+    {
+        if(other.gameObject.name == "ABG-ALL(Clone)") //if that other collider is "ABG-ALL(Clone)", then:
+        {
+            docked = true;
+            Cloak();
+        }
+
     }
 
     /*  Function:   GetOffset() Vector3
