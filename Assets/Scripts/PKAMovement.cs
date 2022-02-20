@@ -16,18 +16,12 @@ public class PKAMovement : MonoBehaviour
 {
     //these public members are set in the Prefab in Unity
     public GameObject activePKA;         // Game Object to spawn once activated
-    public Transform  origin;            // origin location/rotation is the physical PKA
-    public float      maxHeadingChange;  // max possible rotation angle at a time
-    public int        maxRoamChangeTime; // how long before changing heading/speed
+    public float      maxHeadingChange = 20;  // max possible rotation angle at a time
     public int        minSpeed;          // slowest the GTP will move
     public int        maxSpeed;          // fastest the GTP will move
 
-    private float    heading;               // roaming direction
-    private float    headingOffset;         //used for smooth rotation while roaming
+    private Roamer r;                             //an object that holds the values for the roaming (random movement) methods
     private bool     isSeparated    = false;//whether the PKA has separated from the Kinase
-    private int      movementSpeed  = 0;    // roaming velocity
-    private int      roamInterval   = 0;    // how long until heading/speed change while roaming
-    private int      roamCounter    = 0;    // time since last heading speed change while roaming
     private int      numCamps       = 0;
 
 
@@ -96,6 +90,7 @@ public class PKAMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        r = new Roamer(minSpeed, maxSpeed, maxHeadingChange);
     }
 
     /*  Function:   OnTriggerEnter2D(Collider2D)
@@ -159,8 +154,8 @@ public class PKAMovement : MonoBehaviour
         return oldPka;
     }
 
-    /*  Function:   Update()
-        Purpose:    this function is called once per frame. Generally, it just
+    /*  Function:   FixedUpdate()
+        Purpose:    this function is called once per physics update. Generally, it just
                     calls the Roam function so that the PKA roams around the
                     Cell Membrane awaiting activation. But, once the PKA becomes
                     acitve, this function will kick off the process of separation
@@ -170,7 +165,7 @@ public class PKAMovement : MonoBehaviour
     */
     void FixedUpdate()
     {
-        Roam.Roaming(this.gameObject);
+        r.Roaming(this.gameObject);
         if(this.gameObject.GetComponent<ActivationProperties>().isActive && !isSeparated)
         {
             GameObject oldPKA = getInactivePka();

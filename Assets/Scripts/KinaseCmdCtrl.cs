@@ -13,12 +13,13 @@
 using UnityEngine;
 using System.Collections;
 
-public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
+public class KinaseCmdCtrl : MonoBehaviour  //, Roamer.CollectObject
 {
     public  GameObject parentObject; //Parent object used for unity editor Tree Hierarchy
     public  GameObject Kinase_P2;
     public  float      timeoutMaxInterval;
 
+    private Roamer       r = new Roamer();
     private GameObject active_G_Protein;
     private GameObject T_Reg;
     private Transform  myTarget;
@@ -59,7 +60,7 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
 
         if(tag == "Kinase")
         {
-            Roam.Roaming(this.gameObject);
+            r.Roaming(this.gameObject);
         }
         else if(tag == "Kinase_Prep_A" || tag == "Kinase_Prep_B")
         {
@@ -67,17 +68,17 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
             {
                 if(!midpointSet && tag == "Kinase_Prep_A")
                 {
-                    midpoint = Roam.CalcMidPoint(active_G_Protein, this.gameObject);
+                    midpoint = BioRubeLibrary.CalcMidPoint(active_G_Protein, this.gameObject);
                     midpointSet = true;
                 }
-                else if(Roam.ApproachMidpoint(active_G_Protein,this.gameObject,midpointAchieved,midpoint, setupVector(), setupRestraint()))
+                else if(r.ApproachMidpoint(active_G_Protein,this.gameObject,midpointAchieved,midpoint, setupVector(), setupRestraint()))
                 {
                     setupNextPhase();
                 }
             }
             else
             {
-                Roam.Roaming(this.gameObject);
+                r.Roaming(this.gameObject);
             }
             timeoutForInteraction += Time.deltaTime;
         } 
@@ -85,8 +86,8 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
         {
             if(!midpointAchieved [0] || !midpointAchieved [1])
             {
-                midpointAchieved[0] = Roam.ProceedToVector(active_G_Protein,midpoint + new Vector3(0.0f,0.85f,0.0f)); //these values to be changed 
-                midpointAchieved[1] = Roam.ProceedToVector(this.gameObject,midpoint + new Vector3(0.0f,-0.85f,0.0f)); //for snapping kinase to gprotein
+                midpointAchieved[0] = r.ProceedToVector(active_G_Protein,midpoint + new Vector3(0.0f,0.85f,0.0f)); //these values to be changed 
+                midpointAchieved[1] = r.ProceedToVector(this.gameObject,midpoint + new Vector3(0.0f,-0.85f,0.0f)); //for snapping kinase to gprotein
             }
             if(midpointAchieved[0] && midpointAchieved[1]) 
             {
@@ -108,7 +109,7 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
                         this.gameObject.transform.parent                          = active_G_Protein.transform;
                         active_G_Protein.GetComponent<BoxCollider2D>().enabled    = true;
                     }
-                    Roam.Roaming(active_G_Protein);
+                    r.Roaming(active_G_Protein);
                     //determine if win condition has been reached
                     if(!WinConMet &(GameObject.FindWithTag("Win_KinaseTransformation")))
                     {
@@ -122,7 +123,7 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
         else if( tag == "Kinase_Phase_2")
         {
             if(T_Reg == null)
-                T_Reg = Roam.FindClosest(transform, "T_Reg");
+                T_Reg = BioRubeLibrary.FindClosest(transform, "T_Reg");
             if( T_Reg != null && !myTarget)
             {
                 delay = 0;

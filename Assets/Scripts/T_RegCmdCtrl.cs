@@ -19,7 +19,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
+public class T_RegCmdCtrl : MonoBehaviour
 {
     private GameObject     active_Kinase_P2;
     public  GameObject     TReg_P2;
@@ -39,6 +39,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
     private bool       midpointSet;
     private bool       WinConMet = false;             //used to determine if the win condition has already been met
     private float      distancetoconnect;
+    private Roamer r;                             //an object that holds the values for the roaming (random movement) methods
 
     // Use this for initialization
     void Start()
@@ -55,6 +56,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
         timeoutForInteraction = 0.0f;
         distancetoconnect = 2.0f;  //used to be 6.0f
         Nucleus = GameObject.FindGameObjectWithTag("CellMembrane").transform.GetChild(0).gameObject;
+        r = new Roamer();
 
         //Get reference for parent object in UnityEditor
         parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
@@ -90,7 +92,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
         if(tag == "ATP_tracking")
         {
             this.transform.parent = parentObject.transform; //Sets curent object to be under the parent object.
-            active_Kinase_P2      = Roam.FindClosest(transform, "Kinase_Phase_2");
+            active_Kinase_P2      = BioRubeLibrary.FindClosest(transform, "Kinase_Phase_2");
 
             // Set the kinase's parent to be this T_Reg
             active_Kinase_P2.transform.parent = this.transform;
@@ -112,7 +114,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
         // Default State when nothing is happening, T_Reg will just roam
         if(tag == "T_Reg")
         {
-            Roam.Roaming (this.gameObject);
+            r.Roaming (this.gameObject);
         } 
         // Else enter the state of approaching a Kinase
         else if(tag == "T_Reg_Prep_A")
@@ -123,13 +125,13 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
                 if(!midpointSet)// If midpoint not set, setup the midpoint between 
                 {
                     // the paired Kinase and this T_Reg
-                    midpoint = Roam.CalcMidPoint (active_Kinase_P2, this.gameObject);
+                    midpoint = BioRubeLibrary.CalcMidPoint (active_Kinase_P2, this.gameObject);
                     
                     // Say the has now been set
                     midpointSet = true; 
                 } 
                 // Else Approach the midpoint, if this point has been achieved setup the next phase T_Reg_Prep_B
-                else if(Roam.ApproachMidpoint(active_Kinase_P2, this.gameObject, midpointAchieved, midpoint, new Vector3(0.0f, 1.75f, 0.0f), 2.5f))
+                else if(r.ApproachMidpoint(active_Kinase_P2, this.gameObject, midpointAchieved, midpoint, new Vector3(0.0f, 1.75f, 0.0f), 2.5f))
                 {
                     delay = 0;
                     
@@ -145,7 +147,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
             else
             {
                 // Continue Roaming for 5 seconds after entering this state
-                Roam.Roaming (this.gameObject);
+                r.Roaming (this.gameObject);
             }
             // Increment the timeout variable by delta time
             timeoutForInteraction += Time.deltaTime; 
@@ -160,8 +162,8 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
             if (!midpointAchieved [0] || !midpointAchieved [1])
             {
                 // Proceed to the Kinase
-                midpointAchieved [0] = Roam.ProceedToVector(active_Kinase_P2, midpoint + new Vector3 (0.0f, 0.52f, 0.0f));
-                midpointAchieved [1] = Roam.ProceedToVector(this.gameObject, midpoint + new Vector3 (0.0f, -0.52f, 0.0f));
+                midpointAchieved [0] = r.ProceedToVector(active_Kinase_P2, midpoint + new Vector3 (0.0f, 0.52f, 0.0f));
+                midpointAchieved [1] = r.ProceedToVector(this.gameObject, midpoint + new Vector3 (0.0f, -0.52f, 0.0f));
             }
             // Check if the midpoint has been achieved
             if(midpointAchieved [0] && midpointAchieved [1])
@@ -191,7 +193,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
             if(isActive == true)
             {
                 // Find the Closest ATP
-                GameObject ATP = Roam.FindClosest (transform, "ATP");
+                GameObject ATP = BioRubeLibrary.FindClosest (transform, "ATP");
                 
                 //Check if the Closest ATP is not null, therefore one exists
                 if(ATP != null)
@@ -216,7 +218,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
                     } 
                 }
                 // Roam while the T_Reg is still active
-                Roam.Roaming (this.gameObject);
+                r.Roaming (this.gameObject);
             }
             
             //Increment the timeout variable by delta time
@@ -249,7 +251,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
                     active_Kinase_P2 = null;
                 }
                 // Roam while T_Reg is Active but not looking for a NPC
-                Roam.Roaming (this.gameObject);
+                r.Roaming (this.gameObject);
             }
             // Wait 3.5 Seconds after entering the stage where we have a phosphate
             else if((delay += Time.deltaTime) > 3.5f && isActive == false)
@@ -262,7 +264,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
         // If tag is T_Reg_To_NPC, then start moving toward the nearest NPC;
         else if (tag == "T_Reg_To_NPC") 
         {
-            GameObject NPC = Roam.FindClosest (this.transform, "NPC");
+            GameObject NPC = BioRubeLibrary.FindClosest (this.transform, "NPC");
             Transform nucTransform = Nucleus.transform;
             if (NPC != null) 
             { // calculate the distance and the approach vector
@@ -279,14 +281,14 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
                 ingressDistance.x = (distance - distanceOffset) * (float)Math.Cos(rads) + nucTransform.position.x;
                 ingressDistance.y = (distance - distanceOffset) * (float)Math.Sin(rads) + nucTransform.position.y;
                 // Check and move to the tempPosition, if we have then change state to T_Reg_To_Nucleus
-                if (Roam.ApproachVector (this.gameObject, tempPosition, new Vector3 (0, 0, 2), 0)) 
+                if (r.ApproachVector (this.gameObject, tempPosition, new Vector3 (0, 0, 2), 0)) 
                 {
                     this.tag = "T_Reg_To_Nucleus";
                 }
             }
             else
             {
-                Roam.Roaming(this.gameObject);
+                r.Roaming(this.gameObject);
             }
         } 
         // Check if Tag is T_Reg_To_Nucleus, proceed to the Nucleus
@@ -296,7 +298,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
             Physics2D.IgnoreCollision(Nucleus.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
             
             //Approach the Nucleus's midpoint
-            if(Roam.ProceedToVector(this.gameObject,ingressDistance))// T_Reg is in the Nucleus, Game is won
+            if(r.ProceedToVector(this.gameObject,ingressDistance))// T_Reg is in the Nucleus, Game is won
             {
                 Physics2D.IgnoreCollision(Nucleus.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
                 this.tag = "T_Reg_Complete";
@@ -305,7 +307,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
         else if(tag == "T_Reg_Complete")
         {
             if(GameObject.FindWithTag("Win_TFactorEntersNPC")) WinScenario.dropTag("Win_TFactorEntersNPC");// FOR CONGRATULATIONS SCREEN
-                Roam.Roaming(this.gameObject);
+                r.Roaming(this.gameObject);
         }
     }
     

@@ -171,7 +171,7 @@ public class AlphaMovement : MonoBehaviour
     */
     private void setAdenylylCyclaseInactive()
     {
-        GameObject activeCyclase = Roam.FindClosest(transform, "ATP_tracking");
+        GameObject activeCyclase = BioRubeLibrary.FindClosest(transform, "ATP_tracking");
 
         if(null != inactiveCyclase)
         {
