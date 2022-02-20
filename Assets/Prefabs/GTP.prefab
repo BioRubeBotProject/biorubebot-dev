@@ -299,12 +299,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.75
 --- !u!114 &11411036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,14 +323,13 @@ MonoBehaviour:
   rotation: {x: 0, y: 0, z: 0, w: 0}
   origin: {fileID: 0}
   trackingTag: 
-  maxHeadingChange: 0
+  maxHeadingChange: 60
   angleToRotate: 0
   droppedOff: 0
-  found: 0
   spin: 0
   maxRoamChangeTime: 0
-  minSpeed: 0
-  maxSpeed: 0
+  minSpeed: 2
+  maxSpeed: 4
 --- !u!82 &8244104
 AudioSource:
   m_ObjectHideFlags: 0
