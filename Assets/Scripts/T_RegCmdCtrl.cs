@@ -117,7 +117,8 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
         // Else enter the state of approaching a Kinase
         else if(tag == "T_Reg_Prep_A")
         {
-            if((delay += Time.deltaTime) >= 5.0f) // If Time delay, is less than 5 seconds keep Roaming
+          //  if((delay += Time.deltaTime) >= 5.0f) // If Time delay, is less than 5 seconds keep Roaming
+            if(active_Kinase_P2 != null)
             {
                 if(!midpointSet)// If midpoint not set, setup the midpoint between 
                 {
@@ -152,8 +153,11 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
         // Else if tag is T_Reg_Prep_B, enter the state next phase of approaching the Kinase
         else if(tag == "T_Reg_Prep_B")
         {
+            this.GetComponent<BoxCollider2D>().enabled = false;
+            active_Kinase_P2.GetComponent<PolygonCollider2D>().enabled = false;
+
             //If Midpoint has not been achieved, approach the midpoint
-            if(!midpointAchieved [0] || !midpointAchieved [1])
+            if (!midpointAchieved [0] || !midpointAchieved [1])
             {
                 // Proceed to the Kinase
                 midpointAchieved [0] = Roam.ProceedToVector(active_Kinase_P2, midpoint + new Vector3 (0.0f, 0.52f, 0.0f));
@@ -165,15 +169,16 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
                 // Check if the kinase has a parent
                 if(active_Kinase_P2.gameObject.transform.parent.parent == null)
                 {
-                    GameObject obj = Instantiate(TReg_P2, gameObject.transform.position, Quaternion.identity) as GameObject;
+                    GameObject obj = Instantiate(TReg_P2, gameObject.transform.position, Quaternion.identity) as GameObject; //(T_Reg phase 2) is now the parent?
+                    active_Kinase_P2.transform.rotation = new Quaternion(0, 0, 0, 1); //rotate the (now)child so that it is at 0,0,0 (matching the parent at whatever its rotation is)
                     //determine if win condition has been reached
-                    if(!WinConMet & (GameObject.FindWithTag("Win_Kinase_TReg_dock")))
+                    if (!WinConMet & (GameObject.FindWithTag("Win_Kinase_TReg_dock")))
                     {
                         WinScenario.dropTag("Win_Kinase_TReg_dock");
                         WinConMet = true;
                     }
 
-                    Destroy(this.gameObject);
+                    Destroy(this.gameObject);  //destroy t_reg normal, because TReg_2 now exists
                 }
             }
             //Increment the timeout variable by delta time
@@ -334,7 +339,7 @@ public class T_RegCmdCtrl : MonoBehaviour, Roam.CollectObject
                 //if it is a left phosphate, G-protein must rotate to dock
                 //NOTE: EACH PHOSPHATE ATTACHED TO A RECEPTOR IS NOW TAGGED AS "receptorPhosphate"
                 tail.transform.tag      = "T_RegPhosphate";
-                tail.transform.position = tail.parent.transform.position + new Vector3 (0.0f,-0.75f,0.0f);
+                tail.transform.localPosition = new Vector3 (0.0f,-0.4f,0.0f);
                 
                 StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
             }
