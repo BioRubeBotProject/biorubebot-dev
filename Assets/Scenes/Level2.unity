@@ -130,6 +130,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 74715831}
     m_Modifications:
+    - target: {fileID: 114720, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 117460, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 117460, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_TagString
+      value: Congratulations
+      objectReference: {fileID: 0}
+    - target: {fileID: 121990, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 129770, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 133708, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 156460, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 166388, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 179206, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 428420, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -165,6 +201,18 @@ PrefabInstance:
     - target: {fileID: 428420, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.008726536
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425728, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425728, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439850, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11439850, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -214,6 +262,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: Home
       objectReference: {fileID: 0}
+    - target: {fileID: 22289658, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 22401972, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -256,7 +308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_AnchorMax.x
@@ -276,7 +328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 59.999954
+      value: 59.999878
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_SizeDelta.y
@@ -284,11 +336,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 0.40000007
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 0.40000007
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalScale.z
@@ -304,7 +356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0.99998474
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalRotation.w
@@ -312,19 +364,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -30.000023
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 22445362, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1276,6 +1328,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 0.16666667, y: 0.16666667, z: 0.16666667}
   m_Children:
+  - {fileID: 1274800021}
+  - {fileID: 443236068}
   - {fileID: 873269184}
   - {fileID: 1567211864}
   - {fileID: 1142247}
@@ -1284,8 +1338,6 @@ RectTransform:
   - {fileID: 1170630501}
   - {fileID: 1510712412}
   - {fileID: 1169978342}
-  - {fileID: 1274800021}
-  - {fileID: 443236068}
   - {fileID: 1528948572}
   - {fileID: 1468394464}
   m_Father: {fileID: 48923278}
@@ -1672,7 +1724,7 @@ GameObject:
   - component: {fileID: 121789470}
   - component: {fileID: 121789469}
   - component: {fileID: 121789468}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Dismiss Button
   m_TagString: Rules_Message
   m_Icon: {fileID: 0}
@@ -1967,7 +2019,7 @@ RectTransform:
   m_LocalScale: {x: 1.00002, y: 1.00002, z: 1.00002}
   m_Children: []
   m_Father: {fileID: 74715831}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2805,7 +2857,7 @@ GameObject:
   - component: {fileID: 233623824}
   - component: {fileID: 233623826}
   - component: {fileID: 233623825}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Dismiss Text
   m_TagString: Rules_Message
   m_Icon: {fileID: 0}
@@ -3349,7 +3401,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 418938, guid: 3c893413983627a4faf3bac94d9987e7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 418938, guid: 3c893413983627a4faf3bac94d9987e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7623,7 +7675,7 @@ RectTransform:
   - {fileID: 521170690}
   - {fileID: 157461332}
   m_Father: {fileID: 74715831}
-  m_RootOrder: 9
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -10008,7 +10060,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: PROTEIN KINASE
+  m_Text: INHIBITED KINASE
 --- !u!222 &602569552
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10533,7 +10585,7 @@ GameObject:
   - component: {fileID: 873269187}
   - component: {fileID: 873269186}
   - component: {fileID: 873269185}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Rules
   m_TagString: Rules_Message
   m_Icon: {fileID: 0}
@@ -10556,7 +10608,7 @@ RectTransform:
   - {fileID: 1772384902}
   - {fileID: 121789467}
   m_Father: {fileID: 74715831}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11187,7 +11239,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 74715831}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11878,7 +11930,7 @@ GameObject:
   - component: {fileID: 1100862982}
   - component: {fileID: 1100862981}
   - component: {fileID: 1100862980}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Redo
   m_TagString: Congratulations
   m_Icon: {fileID: 0}
@@ -12550,7 +12602,7 @@ RectTransform:
   - {fileID: 515272768}
   - {fileID: 1103273884}
   m_Father: {fileID: 74715831}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -12813,7 +12865,7 @@ RectTransform:
   m_LocalScale: {x: 1.00002, y: 1.00002, z: 1.00002}
   m_Children: []
   m_Father: {fileID: 74715831}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13033,7 +13085,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'PROTEIN SIGNALLER
+  m_Text: 'MITOGEN
 
 '
 --- !u!222 &1207425704
@@ -13291,7 +13343,7 @@ Transform:
   m_LocalScale: {x: 35, y: 35, z: 1}
   m_Children: []
   m_Father: {fileID: 74715831}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1282834314
 GameObject:
@@ -14408,7 +14460,7 @@ RectTransform:
   m_LocalScale: {x: 1.00002, y: 1.00002, z: 1.00002}
   m_Children: []
   m_Father: {fileID: 74715831}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14837,7 +14889,7 @@ Transform:
   m_LocalScale: {x: 6.006873, y: 6.006873, z: 6.006873}
   m_Children: []
   m_Father: {fileID: 74715831}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1567211865
 MonoBehaviour:
@@ -14966,7 +15018,7 @@ GameObject:
   - component: {fileID: 1572456150}
   - component: {fileID: 1572456152}
   - component: {fileID: 1572456151}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Redp text
   m_TagString: Congratulations
   m_Icon: {fileID: 0}
@@ -15049,7 +15101,7 @@ GameObject:
   - component: {fileID: 1602408938}
   - component: {fileID: 1602408940}
   - component: {fileID: 1602408939}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: How To Win
   m_TagString: Rules_Message
   m_Icon: {fileID: 0}
@@ -15711,7 +15763,7 @@ RectTransform:
   m_GameObject: {fileID: 1766009820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1103273884}
   m_RootOrder: 3
@@ -15937,7 +15989,7 @@ GameObject:
   - component: {fileID: 1772384902}
   - component: {fileID: 1772384904}
   - component: {fileID: 1772384903}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Win Conditions List
   m_TagString: Rules_Message
   m_Icon: {fileID: 0}
@@ -15998,7 +16050,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Use active GPCR, Cyclase, and Protein Kinase to help the Transcription
+  m_Text: Use active GPCR, Cyclase, and Uninhibited Kinase to help the Transcription
     Regulator into the Nucleus
 --- !u!222 &1772384904
 CanvasRenderer:
@@ -17214,7 +17266,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: TRUNERUC G-PROTEIN
+  m_Text: TRIMERIC G-PROTEIN
 --- !u!222 &2019817705
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -38,7 +38,8 @@ public class DisableScreen : MonoBehaviour
         {
             foreach(GameObject obj2 in gratsPanel)
             {
-                obj2.SetActive(true);
+                if (obj2 != null)
+                    obj2.SetActive(true);
             }
         }
     }

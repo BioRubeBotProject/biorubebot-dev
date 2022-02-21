@@ -7,6 +7,8 @@
                 Game Objects interact with it differently based on these tags
                 as well, although the full list of tags and relevant behaviors
                 is not currently clear
+
+                TODO: seperate out the kinase states, and create various scripts for each version.  I e. when it seperates and becomes two new objects. -cb 1/22/22
 */
 using UnityEngine;
 using System.Collections;
@@ -40,7 +42,7 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
         parentObject          = GameObject.FindGameObjectWithTag("MainCamera");
     }
     
-    // Update is called once per frame
+    // Update is called once per physics update
     void FixedUpdate()
     {
         if(timeoutForInteraction > timeoutMaxInterval)
@@ -61,7 +63,7 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
         }
         else if(tag == "Kinase_Prep_A" || tag == "Kinase_Prep_B")
         {
-            if((delay += Time.deltaTime) >= 5.0f)
+            if((delay += Time.deltaTime) >= 5.0f)  //wont move for the first 5 seconds.
             {
                 if(!midpointSet && tag == "Kinase_Prep_A")
                 {
@@ -128,11 +130,11 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
                 myTarget = T_Reg.transform;
             }
 
-            if(myTarget &&(delay += Time.deltaTime) >= 5)
-            {
-            } 
-            else
-                Roam.Roaming(this.gameObject);
+           // if(myTarget && delay >= 5)
+           // {
+          //  } 
+           // else
+         //       Roam.Roaming(this.gameObject);
         }
     }
 

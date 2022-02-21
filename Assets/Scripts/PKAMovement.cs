@@ -30,44 +30,7 @@ public class PKAMovement : MonoBehaviour
     private int      roamCounter    = 0;    // time since last heading speed change while roaming
     private int      numCamps       = 0;
 
-    /*  Function:   Roam()
-        Purpose:    This function has the PKA move about the Cell Membrane with
-                    no particular direction or purpose while it awaits activation
-    */
-    private void Roam()
-    {
-        if(Time.timeScale != 0)// if game not paused
-        {
-            roamCounter++;
-            if(roamCounter > roamInterval)
-            {
-                roamCounter   = 0;
-                var floor     = Mathf.Clamp(heading - maxHeadingChange, 0, 360);
-                var ceiling   = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
-                roamInterval  = UnityEngine.Random.Range(5, maxRoamChangeTime);
-                movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
 
-                RaycastHit2D collision = Physics2D.Raycast(origin.position, origin.up);
-                if(collision.collider != null && collision.collider.name == "Cell Membrane(Clone)" &&
-                   collision.distance < 2)
-                {
-                    if(heading <= 180)
-                        heading = heading + 180;
-                    else
-                        heading = heading - 180;
-
-                    movementSpeed = maxSpeed;
-                    roamInterval  = maxRoamChangeTime;
-                }
-                else
-                    heading = UnityEngine.Random.Range(floor, ceiling);
-
-                headingOffset = (transform.eulerAngles.z - heading) / (float)roamInterval;
-            }
-            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - headingOffset);
-            transform.position += transform.up * Time.deltaTime * movementSpeed;
-        }
-    }
 
     /*  Function:   getPkaWhite() GameObject
         Purpose:    this function retrieves the child of this Game Object
@@ -148,9 +111,9 @@ public class PKAMovement : MonoBehaviour
     */
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GameObject newCamp  = null;
+      //  GameObject newCamp  = null;
         GameObject doc      = null;
-        GameObject pka      = null;
+       // GameObject pka      = null;
 
         if(other.gameObject.name == "cAMP(Clone)" && numCamps < 2)
         {
@@ -205,9 +168,9 @@ public class PKAMovement : MonoBehaviour
                     and freeing it from the white portion of the PKA that will
                     continue to roam around with its cAMPs attached
     */
-    void Update()
+    void FixedUpdate()
     {
-        Roam();
+        Roam.Roaming(this.gameObject);
         if(this.gameObject.GetComponent<ActivationProperties>().isActive && !isSeparated)
         {
             GameObject oldPKA = getInactivePka();

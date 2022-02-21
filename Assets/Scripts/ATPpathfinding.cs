@@ -106,45 +106,74 @@ public class ATPpathfinding : MonoBehaviour
         if(crossProduct.z < 0)
             angleToRotate = -angleToRotate; // .Angle always returns a positive #
     }
-  
+
+
+    private GameObject findNearest(GameObject[] foundObjs)
+    { //https://answers.unity.com/questions/1681663/how-to-find-the-closest-distance-between-two-objec.html
+
+        GameObject nearest = null;
+        var distance = Mathf.Infinity;
+        var position = transform.position;
+
+        foreach (GameObject thisobject in foundObjs)
+        {
+            if (thisobject.GetComponent<TrackingProperties>().isFound != true)
+            {
+                var diff = (thisobject.transform.position - position);
+                var curDistance = diff.sqrMagnitude;
+                if (curDistance < distance)
+                {
+                    nearest = thisobject.gameObject;
+                    distance = curDistance;
+                }
+
+            }
+
+
+        }
+        
+        return nearest;
+    }
+
     //------------------------------------------------------------------------------------------------
     // ATP wanders when not actively seeking a receptor leg. This method causes the ATP to randomly
     // change direction and speed at random intervals.  The tendency for purely random motion objects
     // to generally gravitate toward the edges of a circular container has been artificially remedied
-    // by Raycasting and turning the ATP onto a 180 degree course (directing them toward the center).  
-    private void Roam()
-    {
-        if(Time.timeScale != 0)// if game not paused
-        {
-            roamCounter++;                                      
-            if(roamCounter > roamInterval)                         
-            {
-                roamCounter = 0;
-                var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);  
-                var ceiling = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
-                roamInterval = UnityEngine.Random.Range(5, maxRoamChangeTime);   
-                movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
-                RaycastHit2D collision = Physics2D.Raycast(origin.position, origin.up);
-                if(collision.collider != null && collision.collider.name == "Cell Membrane(Clone)" &&
-                   collision.distance < 2)
-                {
-                    if(heading <= 180)
-                        heading = heading + 180;
-                    else
-                        heading = heading - 180;
-
-                    movementSpeed = maxSpeed;
-                    roamInterval  = maxRoamChangeTime;
-                }
-                else
-                    heading = UnityEngine.Random.Range(floor, ceiling);
-
-                headingOffset = (transform.eulerAngles.z - heading) / (float)roamInterval;
-            }
-            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - headingOffset);
-            transform.position += transform.up * Time.deltaTime * movementSpeed;
-        }
-    }
+    // by Raycasting and turning the ATP onto a 180 degree course (directing them toward the center).
+      
+ //   private void Roam()
+ //   {
+ //       if(Time.timeScale != 0)// if game not paused
+  //      {
+  //          roamCounter++;                                      
+ //           if(roamCounter > roamInterval)                         
+ //           {
+ //               roamCounter = 0;
+ //               var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);  
+ //               var ceiling = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
+ //               roamInterval = UnityEngine.Random.Range(5, maxRoamChangeTime);   
+//                movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
+ //               RaycastHit2D collision = Physics2D.Raycast(origin.position, origin.up);
+  //              if(collision.collider != null && collision.collider.name == "Cell Membrane(Clone)" &&
+ //                  collision.distance < 2)
+ //               {
+ //                   if(heading <= 180)
+  //                      heading = heading + 180;
+ //                   else
+ //                       heading = heading - 180;
+//
+ //                   movementSpeed = maxSpeed;
+//                  roamInterval  = maxRoamChangeTime;
+ //               }
+ //               else
+//                    heading = UnityEngine.Random.Range(floor, ceiling);
+//
+//                headingOffset = (transform.eulerAngles.z - heading) / (float)roamInterval;
+ //           }
+ //           transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - headingOffset);
+ //           transform.position += transform.up * Time.deltaTime * movementSpeed;
+ //       }
+ //   }
   
     //------------------------------------------------------------------------------------------------
     private void Start()
@@ -155,7 +184,7 @@ public class ATPpathfinding : MonoBehaviour
     // Update is called once per frame. Gets an array of potential GameObjects to track and tries to 
     // find one that is not "found" yet. If it finds one then it stores a pointer to the GameObject as
     // "trackThis" and calls raycasting so that the ATP can seek it out.  Else, ATP wanders.
-    private void Update()
+    private void FixedUpdate()
     {
         if(droppedOff) 
         { 
@@ -166,24 +195,15 @@ public class ATPpathfinding : MonoBehaviour
         {
             if(found == false)
             {
-                GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
-                objIndex = 0;
-                while(objIndex < foundObjs.Length && foundObjs[objIndex].GetComponent<TrackingProperties>().isFound == true)
-                {
-                    ++objIndex;
-                }
-                if(objIndex < foundObjs.Length) 
-                {
-                    if(foundObjs[objIndex].GetComponent<TrackingProperties>().Find() == true)
-                    { 
-                        trackThis = foundObjs[objIndex];
-                        found     = true; 
-                        if(trackThis.name == "Adenylyl_cyclase-B(Clone)")
+                GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);       
+                trackThis = findNearest(foundObjs);
+                if(trackThis != null && trackThis.GetComponent<TrackingProperties>().Find() == true)
+                { 
+                    found = true; 
+                        if(trackThis.name == "Adenylyl_cyclase-B(Clone)") //because cyclase takes multiple ATPs, turn off isFound after every Find
                         {
-                            print("Cyclase");
                             trackThis.GetComponent<TrackingProperties>().isFound = false;
                         }
-                    }
                 }
                 else
                     trackThis = null;
@@ -194,7 +214,8 @@ public class ATPpathfinding : MonoBehaviour
                 found = false;
         }
         if(found == false)
-            Roam();
+            Roam.Roaming(this.gameObject);
     }
     #endregion Private Methods
 }
+

@@ -17,34 +17,97 @@ using System.Collections;
 
 public class Roam : MonoBehaviour
 {
-    public static float _max = 150f;
-    public static float _min = -150f;
+  //  public static float _max = 150f;      //old roam vars
+ //   public static float _min = -150f;
     public static float _speed = 5.0f;
 
-    public static void Roaming(GameObject Obj)
+    //------------------------------------------------------------------------------------------------
+    #region Public Fields + Properties + Events + Delegates + Enums
+    public static float maxHeadingChange = 60;              // max possible rotation angle at a time
+    public static float angleToRotate = 0;                 // stores the angle in degrees between object and dock
+    public static int maxRoamChangeTime = 50;               // how long before changing heading/speed
+    public static int minSpeed = 3;                        // slowest the object will move
+    public static int maxSpeed = 4;                        // fastest the object will move
+    public string trackingTag;                  // objects of this tag are searched for and tracked
+    public static GameObject trackThis;                // the object with which to dock
+    public static Transform origin;                    // origin location/rotation is the physical object's transform
+    #endregion Public Fields + Properties + Events + Delegates + Enums
+    //------------------------------------------------------------------------------------------------
+
+    //------------------------------------------------------------------------------------------------
+    #region Private Fields + Properties + Events + Delegates + Enums
+    private static int objIndex = 0;                   // the index containing the above "trackThis" object
+    private static float heading;                      // roaming direction
+    private static float headingOffset;                // used for smooth rotation while roaming
+    private static int movementSpeed;                  // roaming velocity
+    private static int roamInterval = 0;               // how long until heading/speed change while roaming
+    private static int roamCounter = 0;                // time since last heading speed change while roaming
+    private static int curveCounter = 90;              // used for smooth transition when tracking
+    private static Quaternion rotate;                  // rotation while tracking
+    #endregion Private Fields + Properties + Events + Delegates + Enums
+    //------------------------------------------------------------------------------------------------
+
+
+
+    //   public static void Roaming(GameObject Obj)         //old roam - cb 2/19/22
+    //    {
+    //       if(Time.timeScale > 0)// if simulation is running
+    //       {
+    //            float randomX, randomY;     //random number between minX/maxX and minY/maxY          
+    //           randomX = Random.Range(_min, _max); //get random x vector coordinate
+    //            randomY = Random.Range(_min, _max); //get random y vector coordinate
+    //                                                  //   apply a force to the object in direction (x,y):
+    //           Obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(randomX, randomY), ForceMode2D.Force);
+    //        }
+    //   }
+
+    public static void Roaming(GameObject Obj)  //Changed roam from prev random x/y to the ATP's roaming function. -cb
     {
-        if(Time.timeScale > 0)// if simulation is running
+        if (Time.timeScale != 0)// if game not paused
         {
-            float randomX, randomY;     //random number between minX/maxX and minY/maxY
-            randomX = Random.Range(_min, _max); //get random x vector coordinate
-            randomY = Random.Range(_min, _max); //get random y vector coordinate
-                                                //apply a force to the object in direction (x,y):
-            Obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(randomX, randomY), ForceMode2D.Force);
+            roamCounter++;
+            if (roamCounter > roamInterval) //the object will randomly move in a direction for a random (5 to max) amount of time, for a random amount of speed
+            {
+                roamCounter = 0;
+                var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);
+                var ceiling = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
+                roamInterval = UnityEngine.Random.Range(5, maxRoamChangeTime);  
+                movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);  
+                RaycastHit2D collision = Physics2D.Raycast(Obj.transform.position, Obj.transform.up);
+                if (collision.collider != null && collision.collider.name == "Cell Membrane(Clone)" &&
+                   collision.distance < 2) //if it's too close to the cell wall, then turn around, and go maxSpeed and for the longest amount of time to get further away
+                {
+                    if (heading <= 180)
+                        heading = heading + 180;
+                    else
+                        heading = heading - 180;
+
+                    movementSpeed = maxSpeed;
+                    roamInterval = maxRoamChangeTime+10;
+                }
+                else
+                    heading = UnityEngine.Random.Range(floor, ceiling);
+
+                headingOffset = (Obj.transform.eulerAngles.z - heading) / (float)roamInterval;
+            }
+            Obj.transform.eulerAngles = new Vector3(0, 0, Obj.transform.eulerAngles.z - headingOffset);
+            Obj.transform.position += Obj.transform.up * Time.deltaTime * movementSpeed;
+            
         }
     }
 
-    public static void RoamingTandem(GameObject Obj1, GameObject Obj2, Vector3 Offset)
-    {
-        if(Time.timeScale > 0)// if simulation is running
-        {
-            float randomX, randomY;     //random number between minX/maxX and minY/maxY
-            randomX = Random.Range(_min, _max); //get random x vector coordinate
-            randomY = Random.Range(_min, _max); //get random y vector coordinate
-                                                //apply a force to the object in direction (x,y):
-            Obj1.GetComponent<Rigidbody2D>().AddForce(new Vector2(randomX, randomY), ForceMode2D.Force);
-            Obj2.transform.position = Obj1.transform.position + Offset;
-        }
-    }
+    //    public static void RoamingTandem(GameObject Obj1, GameObject Obj2, Vector3 Offset)        //old roam - cb 2/19/22
+    //    {
+    //        if(Time.timeScale > 0)// if simulation is running
+    //       {
+    //           float randomX, randomY;     //random number between minX/maxX and minY/maxY
+    //           randomX = Random.Range(_min, _max); //get random x vector coordinate
+    //           randomY = Random.Range(_min, _max); //get random y vector coordinate
+    //                                               //apply a force to the object in direction (x,y):
+    //           Obj1.GetComponent<Rigidbody2D>().AddForce(new Vector2(randomX, randomY), ForceMode2D.Force);
+    //          Obj2.transform.position = Obj1.transform.position + Offset;
+    //      }
+    //  }
 
     public static Vector3 CalcMidPoint(GameObject obj_1, GameObject obj_2)
     {

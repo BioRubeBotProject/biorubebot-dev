@@ -116,8 +116,11 @@ public class TGProteinMovement : MonoBehaviour
         isAlphaSeparated  = false;
 
         childGDP = (GameObject)Instantiate(GDP, transform.position, Quaternion.identity);
-        if(null != alpha)
+        if (null != alpha)
+        {
             childGDP.transform.SetParent(alpha.transform);
+            childGDP.tag = "DockedGDP";
+        }
 
         doc = getDoc();
         if(null != doc)
@@ -201,7 +204,7 @@ public class TGProteinMovement : MonoBehaviour
         }
     }
 
-    /*  Function:   getDcp()
+    /*  Function:   getGdp()
         Purpose:    This function retrieves the child of the Alpha subunit
                     that is the GDP the T-G-Protein spawned with
         Return:     the GDP child

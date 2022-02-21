@@ -11,6 +11,9 @@ public class GDP_CmdCtrl : MonoBehaviour
     public ParticleSystem destructionEffect; //'poof' special effect for 'expended' GDP
     public GameObject     parentObject;      //Parent object used for unity editor Tree Hierarchy
 
+    private bool winconditionactivated = false;
+
+
     /*  Function:   Start()
         Purpose:    this function is called upon instantiation and initializes
                     the parentObject member variable
@@ -28,17 +31,32 @@ public class GDP_CmdCtrl : MonoBehaviour
     */
     void FixedUpdate()
     {
-        if(tag == "ReleasedGDP")
+        if (tag == "ReleasedGDP")
         {
+            Roam.Roaming(this.gameObject);
             tag = "DyingGDP";
             StartCoroutine(ReleasingGDP());
             StartCoroutine(DestroyGDP());//Destroy GDP
             //determine if win condition has been reached
-            if(GameObject.FindWithTag("Win_ReleasedGDP"))
+            if (!winconditionactivated && GameObject.FindWithTag("Win_ReleasedGDP"))
+            {
                 WinScenario.dropTag("Win_ReleasedGDP");
+                winconditionactivated = true;
+            }
         }
+        else if (tag == "DyingGDP")
+        {
+            //do nothing
+        }
+        else if (tag == "DockedGDP")
+        {
+            //do nothing
+        }
+        else
+        {
 
-        Roam.Roaming( this.gameObject);
+            Roam.Roaming(this.gameObject);  //this should only happen if someone makes one from the menu
+        }
     }
 
     /*  Function:   ReleasingGDP() IEnumerator
