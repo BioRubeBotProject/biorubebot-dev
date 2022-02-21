@@ -211,11 +211,11 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
         {
             if(value == true)
             {
-                Roam.setAlpha(this.gameObject, 0.25f);
+                BioRubeLibrary.setAlpha(this.gameObject, 0.25f);
             }
             else
             {
-                Roam.setAlpha(this.gameObject, 1.00f);
+                BioRubeLibrary.setAlpha(this.gameObject, 1.00f);
             }
         }
         else

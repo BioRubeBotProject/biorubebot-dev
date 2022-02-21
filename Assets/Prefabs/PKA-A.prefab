@@ -359,11 +359,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activePKA: {fileID: 194232, guid: b1c7807253c1f944ba23c788a8b3ede3, type: 3}
-  origin: {fileID: 6177488551001468193}
-  maxHeadingChange: 60
-  maxRoamChangeTime: 50
-  minSpeed: 3
-  maxSpeed: 4
+  maxHeadingChange: 20
+  minSpeed: 1
+  maxSpeed: 2
 --- !u!114 &1282766105593202894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,9 +388,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.75, y: 1.2}
+  m_Offset: {x: -2.2, y: 1.3}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.5080961
 --- !u!58 &9156794440431842467
 CircleCollider2D:
   m_ObjectHideFlags: 0

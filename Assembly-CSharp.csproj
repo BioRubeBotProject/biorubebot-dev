@@ -72,7 +72,7 @@
     <Compile Include="Assets\Scripts\ReceptorLegProperties.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\PinchZoom.cs" />
-    <Compile Include="Assets\Scripts\Roam.cs" />
+    <Compile Include="Assets\Scripts\Roamer.cs" />
     <Compile Include="Assets\Scripts\PKABMovement.cs" />
     <Compile Include="Assets\Scripts\DialogueBox.cs" />
     <Compile Include="Assets\Scripts\receptorMovement.cs" />
@@ -124,6 +124,7 @@
     <Compile Include="Assets\Scripts\ExternalReceptorProperties.cs" />
     <Compile Include="Assets\Scripts\PanAndZoom.cs" />
     <Compile Include="Assets\Scripts\ReceptorPathfinding.cs" />
+    <Compile Include="Assets\Scripts\BioRubeLibrary.cs" />
     <Compile Include="Assets\Scripts\ButtonOnOff.cs" />
     <Compile Include="Assets\Scripts\GDP_CmdCtrl.cs" />
     <Compile Include="Assets\Scripts\DEPRECIATED\ATPscript.cs" />

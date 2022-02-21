@@ -29,9 +29,10 @@ public class cAmpMovement : MonoBehaviour
     public  int        maxSpeed;                 // fastest the cAMP will move
     #endregion Public Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
-  
+
     //------------------------------------------------------------------------------------------------
     #region Private Fields + Properties + Events + Delegates + Enums
+    private Roamer r;                             //an object that holds the values for the roaming (random movement) methods
     private Quaternion       rotate;                  // rotation while tracking
     private float            heading;                 // roaming direction
     private float            headingOffset;           // used for smooth rotation while roaming
@@ -124,6 +125,7 @@ public class cAmpMovement : MonoBehaviour
 
     private void Start()
     {
+        r = new Roamer(minSpeed, maxSpeed, maxHeadingChange);
     }
 
     /*  Function:   OnTriggerEnter2D(Collider2D) IEnumerator
@@ -199,7 +201,7 @@ public class cAmpMovement : MonoBehaviour
                 foundPKA = false;
 
             if (foundPKA == false)
-                Roam.Roaming(this.gameObject);
+                r.Roaming(this.gameObject);
         }
     } //end FixedUpdate()
 

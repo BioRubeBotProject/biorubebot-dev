@@ -12,6 +12,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
     public  GameObject GDP;              // for use creating a child of this object
     public  bool       isActive = true;
 
+    private Roamer r;                             //an object that holds the values for the roaming (random movement) methods
     private GameObject childGDP  = null;   // attached GDP, spawns with one of these
     private bool       docked    = false;  // does g-protein position = receptor phosphate position
     private bool       roaming   = false;  // is g-protein free to roam about with GTP in tow
@@ -45,6 +46,9 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 
         transform.GetChild(2).GetComponent<SpriteRenderer> ().color = Color.red; 
         transform.GetChild(3).GetComponent<SpriteRenderer> ().color = Color.cyan;
+
+        //initialize the roam object
+        r = new Roamer();
     }
 
     /*  Function:   FixedUpdate()
@@ -67,7 +71,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         if(!targeting && !docked && !haveGTP)
         {
             //Receptor phosphate = closest one to G-Protein
-            openTarget = Roam.FindClosest (transform, "ReceptorPhosphate");
+            openTarget = BioRubeLibrary.FindClosest (transform, "ReceptorPhosphate");
 
             //IF phosphate is found
             if (openTarget != null)
@@ -101,7 +105,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         //ELSE IF G-Protein has GTP(red) AND G-Protein is ready to roam with attached GTP(red)
         else if(haveGTP && roaming)
         {
-            GameObject Kinase = Roam.FindClosest (transform, "Kinase");
+            GameObject Kinase = BioRubeLibrary.FindClosest (transform, "Kinase");
             if(Kinase != null && !myTarget && isActive)
             {
                 delay = 0;
@@ -116,13 +120,13 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 
             else if(isActive == true)
             {
-                Roam.Roaming (this.gameObject);
+                r.Roaming (this.gameObject);
             }
         }
         //ELSE have G-Protein roam
         else
         {
-            Roam.Roaming (this.gameObject);
+            r.Roaming (this.gameObject);
         }
     }
 
@@ -178,7 +182,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         if (Vector2.Distance (transform.position, lastPosition) < _speed * Time.deltaTime)
         {
             //if I didn't move...I'm stuck.  Give me a push
-            Roam.Roaming(this.gameObject);
+            r.Roaming(this.gameObject);
         }
 
         lastPosition = transform.position;//breadcrumb trail
