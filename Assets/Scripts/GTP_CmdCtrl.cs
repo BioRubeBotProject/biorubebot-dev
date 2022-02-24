@@ -167,15 +167,15 @@ public class GTP_CmdCtrl: MonoBehaviour
     }
 
     //attempting re-write of how GTP attaches to Trimeric G-Protein (ABG-ALL)
-    private void OnTriggerEnter2D(Collider2D other) //Triggered from Unity when GTP's collider component hits another collider
-    {
-        if(other.gameObject.name == "ABG-ALL(Clone)") //if that other collider is "ABG-ALL(Clone)", then:
-        {
-            docked = true;
-            Cloak();
-        }
-
-    }
+ //   private void OnTriggerEnter2D(Collider2D other) //Triggered from Unity when GTP's collider component hits another collider
+//    {
+ //       if(other.gameObject.name == "ABG-ALL(Clone)") //if that other collider is "ABG-ALL(Clone)", then:
+//        {
+//            docked = true;
+ //           Cloak();
+ //       }
+//
+ //   }
 
     /*  Function:   GetOffset() Vector3
         Purpose:    GetOffset determines whether a target is to the  left or right of the receptor

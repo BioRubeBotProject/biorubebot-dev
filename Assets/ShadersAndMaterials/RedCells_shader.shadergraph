@@ -11,6 +11,9 @@
         },
         {
             "m_Id": "f254f05a689f4388a393674da66e66ab"
+        },
+        {
+            "m_Id": "593650def7f9479ebfe5bb950120f696"
         }
     ],
     "m_Keywords": [],
@@ -998,6 +1001,31 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty",
+    "m_ObjectId": "593650def7f9479ebfe5bb950120f696",
+    "m_Guid": {
+        "m_GuidSerialized": "c9e50f3c-6faf-40c5-bd21-208865a5f907"
+    },
+    "m_Name": "_MainTex",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "_MainTex",
+    "m_DefaultReferenceName": "_MainTex",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": false,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_Guid": ""
+    },
+    "m_Modifiable": true,
+    "m_DefaultType": 0
 }
 
 {

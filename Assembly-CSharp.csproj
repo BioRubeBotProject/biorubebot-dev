@@ -54,82 +54,82 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\WinBoxChange.cs" />
-    <Compile Include="Assets\Scripts\DEPRECIATED\movePhosphate.cs" />
     <Compile Include="Assets\Scripts\Creator.cs" />
-    <Compile Include="Assets\Scripts\Transparent.cs" />
     <Compile Include="Assets\Scripts\ActiveAdenylylCyclase.cs" />
-    <Compile Include="Assets\Scripts\CellMembrane.cs" />
     <Compile Include="Assets\Scripts\Wander.cs" />
-    <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\EventClass.cs" />
-    <Compile Include="Assets\Scripts\GTP_Spin.cs" />
-    <Compile Include="Assets\Scripts\DEPRECIATED\PanAndZoom.cs" />
-    <Compile Include="Assets\Scripts\ReceptorLegScript.cs" />
     <Compile Include="Assets\Scripts\UIControl.cs" />
     <Compile Include="Assets\Scripts\smoothfollowCSharp.cs" />
     <Compile Include="Assets\Scripts\receptorScript.cs" />
     <Compile Include="Assets\Scripts\ATPproperties.cs" />
+    <Compile Include="Assets\Scripts\Roamer.cs" />
+    <Compile Include="Assets\Scripts\DialogueBox.cs" />
+    <Compile Include="Assets\Scripts\DEPRECIATED\moveGDP.cs" />
+    <Compile Include="Assets\Scripts\GPCRProperties.cs" />
+    <Compile Include="Assets\Scripts\ObjectCollection.cs" />
+    <Compile Include="Assets\Scripts\congratsOnOff.cs" />
+    <Compile Include="Assets\Scripts\GameWon.cs" />
+    <Compile Include="Assets\Scripts\ToggleOnOff.cs" />
+    <Compile Include="Assets\Scripts\GPCR.cs" />
+    <Compile Include="Assets\Scripts\AlphaProperties.cs" />
+    <Compile Include="Assets\Scripts\TGProteinMovement.cs" />
+    <Compile Include="Assets\Scripts\DEPRECIATED\Pan.cs" />
+    <Compile Include="Assets\Scripts\KeyFunction.cs" />
+    <Compile Include="Assets\Scripts\AdenylylCyclaseProperties.cs" />
+    <Compile Include="Assets\Scripts\PinchToZoom.cs" />
+    <Compile Include="Assets\Scripts\Pan.cs" />
+    <Compile Include="Assets\Scripts\VolumeSlider.cs" />
+    <Compile Include="Assets\Scripts\simpleMovement.cs" />
+    <Compile Include="Assets\Scripts\GTP_Script2.cs" />
+    <Compile Include="Assets\Scripts\HomeScreen.cs" />
+    <Compile Include="Assets\Scripts\ExternalReceptorProperties.cs" />
+    <Compile Include="Assets\Scripts\ButtonOnOff.cs" />
+    <Compile Include="Assets\Scripts\GDP_CmdCtrl.cs" />
+    <Compile Include="Assets\Scripts\DEPRECIATED\ATPscript.cs" />
+    <Compile Include="Assets\Scripts\ExtraCellularProperties.cs" />
+    <Compile Include="Assets\Scripts\DEPRECIATED\movePhosphate.cs" />
+    <Compile Include="Assets\Scripts\Transparent.cs" />
+    <Compile Include="Assets\Scripts\CellMembrane.cs" />
+    <Compile Include="Assets\Scripts\LoadScene.cs" />
+    <Compile Include="Assets\Scripts\GTP_Spin.cs" />
+    <Compile Include="Assets\Scripts\DEPRECIATED\PanAndZoom.cs" />
+    <Compile Include="Assets\Scripts\ReceptorLegScript.cs" />
     <Compile Include="Assets\Scripts\ReceptorLegProperties.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\PinchZoom.cs" />
-    <Compile Include="Assets\Scripts\Roamer.cs" />
     <Compile Include="Assets\Scripts\PKABMovement.cs" />
-    <Compile Include="Assets\Scripts\DialogueBox.cs" />
     <Compile Include="Assets\Scripts\receptorMovement.cs" />
     <Compile Include="Assets\Scripts\T_RegCmdCtrl.cs" />
     <Compile Include="Assets\Scripts\TrackingProperties.cs" />
     <Compile Include="Assets\Scripts\PanelOnOff.cs" />
     <Compile Include="Assets\Scripts\ATPpathfinding.cs" />
     <Compile Include="Assets\Scripts\ActivationProperties.cs" />
-    <Compile Include="Assets\Scripts\DEPRECIATED\moveGDP.cs" />
     <Compile Include="Assets\Scripts\AlphaMovement.cs" />
     <Compile Include="Assets\Scripts\PKAMovement.cs" />
     <Compile Include="Assets\Scripts\PKAProperties.cs" />
-    <Compile Include="Assets\Scripts\GPCRProperties.cs" />
-    <Compile Include="Assets\Scripts\ObjectCollection.cs" />
     <Compile Include="Assets\Scripts\ActiveAdenylylCyclaseProperties.cs" />
-    <Compile Include="Assets\Scripts\congratsOnOff.cs" />
-    <Compile Include="Assets\Scripts\GameWon.cs" />
-    <Compile Include="Assets\Scripts\ToggleOnOff.cs" />
     <Compile Include="Assets\Scripts\AdenylylCyclaseMovement.cs" />
-    <Compile Include="Assets\Scripts\GPCR.cs" />
     <Compile Include="Assets\Scripts\MouseActions.cs" />
-    <Compile Include="Assets\Scripts\AlphaProperties.cs" />
-    <Compile Include="Assets\Scripts\TGProteinMovement.cs" />
-    <Compile Include="Assets\Scripts\DEPRECIATED\Pan.cs" />
     <Compile Include="Assets\Scripts\DisableScreen.cs" />
     <Compile Include="Assets\Scripts\CircleEdgeCollider2D.cs" />
-    <Compile Include="Assets\Scripts\KeyFunction.cs" />
     <Compile Include="Assets\Scripts\cAmpMovement.cs" />
     <Compile Include="Assets\Scripts\GameSystem.cs" />
-    <Compile Include="Assets\Scripts\AdenylylCyclaseProperties.cs" />
     <Compile Include="Assets\Scripts\ReceptorAI.cs" />
     <Compile Include="Assets\Scripts\KinaseCmdCtrl.cs" />
-    <Compile Include="Assets\Scripts\PinchToZoom.cs" />
     <Compile Include="Assets\Scripts\TGProteinProperties.cs" />
     <Compile Include="Assets\Scripts\GTP_CmdCtrl.cs" />
     <Compile Include="Assets\Scripts\DEPRECIATED\PinchToZoom.cs" />
     <Compile Include="Assets\Scripts\PhosphateCmdCtrl.cs" />
-    <Compile Include="Assets\Scripts\Pan.cs" />
-    <Compile Include="Assets\Scripts\VolumeSlider.cs" />
     <Compile Include="Assets\Scripts\WinScenario.cs" />
     <Compile Include="Assets\Scripts\TimeScale.cs" />
-    <Compile Include="Assets\Scripts\simpleMovement.cs" />
     <Compile Include="Assets\Scripts\DEPRECIATED\moveT_Reg.cs" />
-    <Compile Include="Assets\Scripts\GTP_Script2.cs" />
     <Compile Include="Assets\Scripts\Tutorial.cs" />
-    <Compile Include="Assets\Scripts\HomeScreen.cs" />
     <Compile Include="Assets\Scripts\DEPRECIATED\moveKinase.cs" />
     <Compile Include="Assets\Scripts\DEPRECIATED\PinchZoom.cs" />
-    <Compile Include="Assets\Scripts\ExternalReceptorProperties.cs" />
     <Compile Include="Assets\Scripts\PanAndZoom.cs" />
     <Compile Include="Assets\Scripts\ReceptorPathfinding.cs" />
     <Compile Include="Assets\Scripts\BioRubeLibrary.cs" />
-    <Compile Include="Assets\Scripts\ButtonOnOff.cs" />
-    <Compile Include="Assets\Scripts\GDP_CmdCtrl.cs" />
-    <Compile Include="Assets\Scripts\DEPRECIATED\ATPscript.cs" />
     <Compile Include="Assets\Scripts\G_ProteinCmdCtrl.cs" />
-    <Compile Include="Assets\Scripts\ExtraCellularProperties.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
@@ -752,8 +752,14 @@
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
@@ -770,11 +776,17 @@
     <Reference Include="UnityEngine.Purchasing.SecurityStub">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -784,6 +796,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Analytics">
       <HintPath>Library\ScriptAssemblies\Analytics.dll</HintPath>
@@ -797,14 +812,29 @@
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Purchasing.SecurityCore">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing.Codeless">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -814,6 +844,9 @@
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Monetization">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
@@ -826,6 +859,9 @@
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

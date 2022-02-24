@@ -54,44 +54,44 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Standard Assets\Utility\DynamicShadowSettings.cs" />
-    <Compile Include="Assets\Standard Assets\Utility\SimpleMouseRotator.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
     <Compile Include="Assets\Standard Assets\Utility\LerpControlledBob.cs" />
     <Compile Include="Assets\Standard Assets\Utility\PlatformSpecificContent.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
-    <Compile Include="Assets\Standard Assets\Utility\SmoothFollow.cs" />
     <Compile Include="Assets\Standard Assets\Utility\TimedObjectActivator.cs" />
-    <Compile Include="Assets\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\Standard Assets\Utility\CameraRefocus.cs" />
     <Compile Include="Assets\Standard Assets\Utility\ActivateTrigger.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" />
-    <Compile Include="Assets\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
+    <Compile Include="Assets\Standard Assets\Utility\CurveControlledBob.cs" />
+    <Compile Include="Assets\Standard Assets\2D\Scripts\Camera2DFollow.cs" />
+    <Compile Include="Assets\Standard Assets\Utility\AutoMoveAndRotate.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
+    <Compile Include="Assets\Standard Assets\2D\Scripts\PlatformerCharacter2D.cs" />
+    <Compile Include="Assets\Standard Assets\Utility\FPSCounter.cs" />
+    <Compile Include="Assets\Standard Assets\Utility\SimpleActivatorMenu.cs" />
+    <Compile Include="Assets\Standard Assets\Utility\SimpleMouseRotator.cs" />
+    <Compile Include="Assets\Standard Assets\Utility\SmoothFollow.cs" />
+    <Compile Include="Assets\Standard Assets\Utility\WaypointCircuit.cs" />
+    <Compile Include="Assets\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\Standard Assets\2D\Scripts\Platformer2DUserControl.cs" />
     <Compile Include="Assets\Standard Assets\Utility\WaypointProgressTracker.cs" />
     <Compile Include="Assets\Standard Assets\Utility\DragRigidbody.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
-    <Compile Include="Assets\Standard Assets\Utility\CurveControlledBob.cs" />
     <Compile Include="Assets\Standard Assets\Utility\FollowTarget.cs" />
     <Compile Include="Assets\Standard Assets\Utility\ForcedReset.cs" />
     <Compile Include="Assets\Standard Assets\Utility\ParticleSystemDestroyer.cs" />
     <Compile Include="Assets\Standard Assets\Utility\ObjectResetter.cs" />
     <Compile Include="Assets\Standard Assets\Utility\AutoMobileShaderSwitch.cs" />
-    <Compile Include="Assets\Standard Assets\2D\Scripts\Camera2DFollow.cs" />
-    <Compile Include="Assets\Standard Assets\Utility\AutoMoveAndRotate.cs" />
     <Compile Include="Assets\Standard Assets\Utility\FOVKick.cs" />
     <Compile Include="Assets\Standard Assets\2D\Scripts\Restarter.cs" />
     <Compile Include="Assets\Standard Assets\2D\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs" />
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
     <Compile Include="Assets\Standard Assets\Scripts\General Scripts\ActivateTrigger.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\MobileControlRig.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
-    <Compile Include="Assets\Standard Assets\2D\Scripts\PlatformerCharacter2D.cs" />
-    <Compile Include="Assets\Standard Assets\Utility\FPSCounter.cs" />
-    <Compile Include="Assets\Standard Assets\Utility\SimpleActivatorMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
@@ -706,8 +706,14 @@
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
@@ -724,11 +730,17 @@
     <Reference Include="UnityEngine.Purchasing.SecurityStub">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -738,6 +750,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Analytics">
       <HintPath>Library\ScriptAssemblies\Analytics.dll</HintPath>
@@ -751,14 +766,29 @@
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Purchasing.SecurityCore">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing.Codeless">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -768,6 +798,9 @@
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Monetization">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
@@ -780,6 +813,9 @@
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
