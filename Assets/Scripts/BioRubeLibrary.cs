@@ -51,6 +51,30 @@ public class BioRubeLibrary : MonoBehaviour
         return closestObject;
     }/* end FindClosest */
 
+    public static GameObject findNearest(GameObject[] foundObjs, Transform myTransform)
+    {
+
+        GameObject nearest = null;
+        var distance = Mathf.Infinity;
+        var position = myTransform.position;
+
+        foreach (GameObject thisobject in foundObjs)
+        {
+            if (thisobject.GetComponent<TrackingProperties>().isFound != true)
+            {
+                var diff = (thisobject.transform.position - position);
+                var curDistance = diff.sqrMagnitude;
+                if (curDistance < distance)
+                {
+                    nearest = thisobject.gameObject;
+                    distance = curDistance;
+                }
+            }
+        }
+        return nearest;
+    }
+
+
 
 
     public static void setAlpha(GameObject obj, float alpha)
