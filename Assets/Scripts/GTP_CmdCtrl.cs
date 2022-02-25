@@ -23,8 +23,6 @@ public class GTP_CmdCtrl: MonoBehaviour
     public float      maxHeadingChange;    // max possible rotation angle at a time
     public float      angleToRotate;       // stores the angle in degrees between GTP and dock
     public bool       droppedOff = false;  // is phospate gone?
-    public bool       spin       = false;
-    public int        maxRoamChangeTime;   // how long before changing heading/speed
     public int        minSpeed;            // slowest the GTP will move
     public int        maxSpeed;            // fastest the GTP will move
     #endregion Public Fields + Properties + Events + Delegates + Enums
@@ -96,12 +94,6 @@ public class GTP_CmdCtrl: MonoBehaviour
 
         if(Time.timeScale > 0)
         { 
-            if(spin) 
-            {
-                transform.rotation = Quaternion.Slerp (transform.rotation, rotation, 2 * Time.deltaTime);
-                if(Quaternion.Angle(transform.rotation,rotation) == 0)
-                    spin = false;
-            }
 
             if (!targeting)//Look for a target
             {
@@ -136,7 +128,7 @@ public class GTP_CmdCtrl: MonoBehaviour
             }
             else if(!docked)  
             {
-                if((delay += Time.deltaTime) < 5)//wait 5 seconds before proceeding to target.   why?
+                if((delay += Time.deltaTime) < 5)//wait 5 seconds before proceeding to target becuse this gives time for the GDP to exit the TrimericGprotein before it starts targeting it
                     r.Roaming(this.gameObject);
                 else
                 {

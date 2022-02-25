@@ -56,7 +56,6 @@ public class GDP_CmdCtrl : MonoBehaviour
         }
         else
         {
-
             r.Roaming(this.gameObject);  //this should only happen if someone makes one from the menu
         }
     }

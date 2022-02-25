@@ -172,7 +172,7 @@ MonoBehaviour:
   trackThis: {fileID: 0}
   origin: {fileID: 7665343153298190263}
   trackingTag: PKA
-  maxHeadingChange: 60
+  maxHeadingChange: 140
   angleToRotate: 0
   dockedWithPKA: 0
   maxRoamChangeTime: 50

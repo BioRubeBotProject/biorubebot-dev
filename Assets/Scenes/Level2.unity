@@ -4800,6 +4800,10 @@ PrefabInstance:
       value: 29.894787
       objectReference: {fileID: 0}
     - target: {fileID: 6879650, guid: 3c893413983627a4faf3bac94d9987e7, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 02910a6e6d432ce4d84a2696fa42eddc, type: 2}
+    - target: {fileID: 6879650, guid: 3c893413983627a4faf3bac94d9987e7, type: 3}
       propertyPath: m_Points.Array.size
       value: 302
       objectReference: {fileID: 0}

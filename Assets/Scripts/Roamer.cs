@@ -15,11 +15,11 @@ public class Roamer
 
     //------------------------------------------------------------------------------------------------
     #region Public Fields + Properties + Events + Delegates + Enums
-    public  float maxHeadingChange = 60;              // max possible rotation angle at a time
+    public  float maxHeadingChange = 80;              // max possible rotation angle at a time
     //public  float angleToRotate = 0;                 // stores the angle in degrees between object and dock
-    public  int maxRoamChangeTime = 50;               // how long before changing heading/speed
-    public  int minSpeed = 3;                        // slowest the object will move
-    public  int maxSpeed = 4;                        // fastest the object will move
+    public  int maxRoamChangeTime = 60;               // how long before changing heading/speed
+    public  int minSpeed = 5;                        // slowest the object will move
+    public  int maxSpeed = 10;                        // fastest the object will move
 
     #endregion Public Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
@@ -28,7 +28,8 @@ public class Roamer
     #region Private Fields + Properties + Events + Delegates + Enums
     // private  int objIndex = 0;                   // the index containing the above "trackThis" object
     private Transform origin;
-    private float heading = 0;                      // roaming direction
+    private Rigidbody rigidbody;
+    private float heading = 180;                      // roaming direction
     private  float headingOffset;                // used for smooth rotation while roaming
     private  int movementSpeed;                  // roaming velocity
     private  int roamInterval = 0;               // how long until heading/speed change while roaming
@@ -44,7 +45,7 @@ public class Roamer
     {
         //vars already set above
     }
-        public Roamer(int mins = 3, int maxs = 4, float mhc = 60 )
+        public Roamer(int mins = 3, int maxs = 4, float mhc = 90 )
     {
         maxHeadingChange = mhc;
         minSpeed = mins;
@@ -68,37 +69,45 @@ public class Roamer
     //Previously only used in ATP, now generic for all objects that roam in a brownian motion type way - cb Spring2022
     public void Roaming(GameObject Obj)  
     {
+        rigidbody = Obj.GetComponent<Rigidbody>();
         if (Time.timeScale != 0)// if game not paused
         {
             roamCounter++;
-            if (roamCounter > roamInterval) //where the movement amounts are calculated every 5 or so seconds
+            RaycastHit2D collision = Physics2D.Raycast(Obj.transform.position, Obj.transform.up);
+            //Debug.DrawRay(Obj.transform.position, Obj.transform.up * 6f, Color.red);
+            if (roamCounter > roamInterval) //where the movement amounts are calculated every second or so
             {
                 roamCounter = 0;
                 var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);
                 var ceiling = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
                 roamInterval = UnityEngine.Random.Range(5, maxRoamChangeTime);  
-                movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);  
-                RaycastHit2D collision = Physics2D.Raycast(Obj.transform.position, Obj.transform.up);
+                movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
                 if (collision.collider != null && (collision.collider.name == "Cell Membrane" || collision.collider.name == "Cell Membrane(clone)" || collision.collider.name == "Inner Cell Wall") &&
-                   collision.distance < 2) //if it's too close to the cell wall, then turn around, and go maxSpeed and for the longest amount of time to get further away
+                   collision.distance < 6) //if it's too close to the cell wall, then turn around, and go maxSpeed and for the longest amount of time to get further away
                 {
-                    if (heading <= 180)
-                        heading = heading + 180;
+                    if (heading <= 180) //reset heading to a better direction
+                        heading = heading + 160;
                     else
-                        heading = heading - 180;
+                        heading = heading - 160;
+                    //Debug.Log("soft turn " + heading.ToString() );
 
                     movementSpeed = maxSpeed;
-                    roamInterval = maxRoamChangeTime+10;
+                    roamInterval = maxRoamChangeTime;
+
                 }
-                else
+                else {
                     heading = UnityEngine.Random.Range(floor, ceiling);
+                }
 
                 headingOffset = (Obj.transform.eulerAngles.z - heading) / (float)roamInterval;
             }
+            
             //where the movement is applied:
             Obj.transform.eulerAngles = new Vector3(0, 0, Obj.transform.eulerAngles.z - headingOffset);
-            Obj.transform.position += Obj.transform.up * Time.deltaTime * movementSpeed;
-            
+            //Obj.transform.position += Obj.transform.up * Time.deltaTime * movementSpeed;
+            Obj.GetComponent<Rigidbody2D>().AddForce(Obj.transform.up * movementSpeed * 10);
+
+
         }
     }
     //------------------------------------------------------------------------------------------------

@@ -99,28 +99,6 @@ public class cAmpMovement : MonoBehaviour
             angleToRotate = -angleToRotate; // .Angle always returns a positive #
     }
 
-    private GameObject findNearest(GameObject[] foundObjs)
-    { 
-
-        GameObject nearest = null;
-        var distance = Mathf.Infinity;
-        var position = transform.position;
-
-        foreach (GameObject thisobject in foundObjs)
-        {
-            if (thisobject.GetComponent<TrackingProperties>().isFound != true)
-            {
-                var diff = (thisobject.transform.position - position);
-                var curDistance = diff.sqrMagnitude;
-                if (curDistance < distance)
-                {
-                    nearest = thisobject.gameObject;
-                    distance = curDistance;
-                }
-            }
-        }
-        return nearest;
-    }
 
 
     private void Start()
@@ -159,14 +137,15 @@ public class cAmpMovement : MonoBehaviour
     */
     private void FixedUpdate()
     {
-        if (Time.timeScale != 0)
+        if (Time.timeScale != 0) //if not paused
         {
             if (dockedWithPKA)
                 return;
             if (foundPKA == false)
             {
-                GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
-                trackThis = findNearest(foundObjs); //loop through the Objects with the tracking tag until we get an index that isn't "found" yet
+                //GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);
+                //trackThis = BioRubeLibrary.findNearest(foundObjs, this.transform); 
+                trackThis = BioRubeLibrary.FindClosest(this.transform, trackingTag); //loop through the Objects with the tracking tag until we get the closest that isn't "found" yet
                 if (trackThis != null)
                 {
                     
@@ -195,14 +174,15 @@ public class cAmpMovement : MonoBehaviour
 
             if (foundPKA == true && trackThis != null && trackThis.tag == trackingTag)
             {
-                Raycasting();
+                //Raycasting();
+                r.moveToDock(this.gameObject, trackThis);
             }
             else
                 foundPKA = false;
 
             if (foundPKA == false)
                 r.Roaming(this.gameObject);
-        }
+        } //end if(notpaused)
     } //end FixedUpdate()
 
     #endregion Private Methods
