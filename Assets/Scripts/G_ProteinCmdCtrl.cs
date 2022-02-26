@@ -15,7 +15,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
     private Roamer r;                      //an object that holds the values for the roaming (random movement) methods
     private GameObject childGDP  = null;   // attached GDP, spawns with one of these
     private bool       docked    = false;  // does g-protein position = receptor phosphate position
-    private bool       roaming   = false;  // is g-protein free to roam about with GTP in tow
+    public bool       roaming   = false;  // is g-protein free to roam about with GTP in tow
     public bool       haveGTP   = false;  // is g-protein bound to a GTP
     private bool       targeting = false;  // is g-protein targeting phosphate
     private float      delay     = 0;      // used to delay proceed to target and undock
@@ -66,7 +66,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
     {
         //IF G-Protein does not have a GTP(red) AND it does have GDP(blue)
         if(!haveGTP && transform.tag == "OccupiedG_Protein")
-            haveGTP = true;
+            haveGTP = true; //does this never happen? -cb
 
         //IF G-Protein is not targeting a phosphate AND G-Protein is not docked to receptor AND G-Protein does not have a GTP(red)
         if(!targeting && !docked && !haveGTP)
@@ -116,6 +116,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
             }
             else
             { r.Roaming(this.gameObject);
+                this.GetComponent<Rigidbody2D>().AddForce(this.transform.up * 2 * 10);
             }
            
         }
@@ -190,7 +191,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         if(deltaDistance < _speed * .5f)
         {
             transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            transform.GetComponent<Rigidbody2D>().isKinematic = true;
+            //transform.GetComponent<Rigidbody2D>().isKinematic = true;
         }
 
         if(deltaDistance < _speed * Time.deltaTime)
@@ -226,7 +227,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
     */
     private void Undock()
     {
-        transform.GetComponent<Rigidbody2D>().isKinematic = true;
+       // transform.GetComponent<Rigidbody2D>().isKinematic = true;
         GetComponent<Rigidbody2D>().simulated = true;
         transform.GetComponent<CircleCollider2D>().enabled = true;
 
