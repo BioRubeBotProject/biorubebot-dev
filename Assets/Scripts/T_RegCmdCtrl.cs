@@ -296,9 +296,9 @@ public class T_RegCmdCtrl : MonoBehaviour
                     
                     // Reset the Kinase back to Kinase_Phase_2, when it was looking for a T_Reg
                     active_Kinase_P2.GetComponent<Rigidbody2D> ().isKinematic = false;
-                    //Sets curent object to be under the parent object.
+                    //Release the Kinase to be under the parent object.
                     active_Kinase_P2.transform.parent = parentObject.transform;
-                    active_Kinase_P2.GetComponent<KinaseCmdCtrl> ().reset ();
+                    active_Kinase_P2.GetComponent<KinaseCmdCtrl> ().reset();
                     active_Kinase_P2.tag = "Kinase_Phase_2";
                     active_Kinase_P2 = null;
                 }
@@ -308,7 +308,7 @@ public class T_RegCmdCtrl : MonoBehaviour
             // Wait 3.5 Seconds after entering the stage where we have a phosphate
             else if((delay += Time.deltaTime) > 3.5f && isActive == false)
             {
-                //Time to release the Kinase and start looking for an NPC
+                //Time to start being able to move around again. (..?) -cb
                 isActive = true;
                 this.GetComponent<BoxCollider2D> ().enabled = true;
                 this.GetComponent<Rigidbody2D>().simulated = true;

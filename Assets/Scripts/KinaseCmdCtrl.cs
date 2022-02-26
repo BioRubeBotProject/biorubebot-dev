@@ -139,19 +139,31 @@ public class KinaseCmdCtrl : MonoBehaviour  //, Roamer.CollectObject
                 delay = 0;
                 T_Reg.GetComponent<T_RegCmdCtrl>().GetObject(this.gameObject, "T_Reg_Prep_A");
                 myTarget = T_Reg.transform;
-            }
-            else if (myTarget != null && delay >= 1000)
-            {
-                myTarget = null;
-                T_Reg = null;
+           // }
+           // else if (myTarget != null && delay >= 1000)
+          //  {
+          //      myTarget = null;
+          //      T_Reg = null;
             } else if(T_Reg != null && myTarget != null)
             {
                 r.moveToDock(this.gameObject, T_Reg);
                 //Debug.Log("moving to t_reg");
-                delay += 1;
-            } 
-            //else if()  //TODO else if this.gameobject is a child of T_Reg2
-            //    r.Roaming(this.gameObject);
+                //delay += 1;
+            }
+            else if(this.transform.parent.name == "Transcription Regulator2(Clone)")
+            {
+                //if(this.transform.parent.tag == "T_Reg_with_Phosphate")
+                //{
+                //    myTarget = null;
+                //    T_Reg = null;  //sudo reset, drop this t_reg2 because the r_reg2 has dropped you.  should have been happening from the .reset() that t_reg2 just sent to kinase.
+                //}
+
+                //do nothing
+
+            }
+            else{
+                r.Roaming(this.gameObject);
+            }
         }
     }
     private IEnumerator OnTriggerEnter2D(Collider2D other)
