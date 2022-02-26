@@ -90,8 +90,9 @@ public class ATPpathfinding : MonoBehaviour
                     trackThis = null;
             }
             if (found == true && trackThis.tag == trackingTag)
-                //Raycasting();
-                r.moveToDock(this.gameObject, trackThis);
+            {
+                angleToRotate  = r.moveToDock(this.gameObject, trackThis);
+            }
             else
                 found = false;
         }

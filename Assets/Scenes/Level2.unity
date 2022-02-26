@@ -7808,7 +7808,6 @@ GameObject:
   - component: {fileID: 443236072}
   - component: {fileID: 443236071}
   - component: {fileID: 443236070}
-  - component: {fileID: 443236069}
   m_Layer: 0
   m_Name: BackgroundButton
   m_TagString: Untagged
@@ -7835,21 +7834,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -300, y: -485}
+  m_AnchoredPosition: {x: -771, y: -468}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &443236069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443236067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55f7ef7a5ad4b524a93f95ef4f6087de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &443236070
 MonoBehaviour:
   m_ObjectHideFlags: 0

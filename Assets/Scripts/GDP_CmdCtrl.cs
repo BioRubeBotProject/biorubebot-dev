@@ -35,7 +35,7 @@ public class GDP_CmdCtrl : MonoBehaviour
     {
         if (tag == "ReleasedGDP")
         {
-            r.Roaming(this.gameObject);
+            //r.Roaming(this.gameObject);
             tag = "DyingGDP";
             StartCoroutine(ReleasingGDP());
             StartCoroutine(DestroyGDP());//Destroy GDP
@@ -67,7 +67,7 @@ public class GDP_CmdCtrl : MonoBehaviour
     public IEnumerator ReleasingGDP()
     {
         yield return new WaitForSeconds (3f);
-        transform.parent                                    = parentObject.transform;
+        //transform.parent                                    = parentObject.transform;
         transform.GetComponent<Rigidbody2D> ().isKinematic  = false;
         transform.GetComponent<CircleCollider2D> ().enabled = true;
     } 

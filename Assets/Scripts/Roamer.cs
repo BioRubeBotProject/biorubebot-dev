@@ -16,10 +16,10 @@ public class Roamer
     //------------------------------------------------------------------------------------------------
     #region Public Fields + Properties + Events + Delegates + Enums
     public  float maxHeadingChange = 80;              // max possible rotation angle at a time
-    //public  float angleToRotate = 0;                 // stores the angle in degrees between object and dock
     public  int maxRoamChangeTime = 60;               // how long before changing heading/speed
-    public  int minSpeed = 5;                        // slowest the object will move
-    public  int maxSpeed = 10;                        // fastest the object will move
+    public  int minSpeed = 2;                        // slowest the object will move
+    public  int maxSpeed = 4;                        // fastest the object will move
+    public float angleToRotate;                 // stores the angle in degrees between ATP and dock
 
     #endregion Public Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ public class Roamer
     private  int curveCounter = 90;              // used for smooth transition when tracking
     private GameObject trackThis;                // the object with which to dock
     private  Quaternion rotate;                  // rotation while tracking
-    public float angleToRotate;                 // stores the angle in degrees between ATP and dock
+    
     #endregion Private Fields + Properties + Events + Delegates + Enums
     //------------------------------------------------------------------------------------------------
     #region ClassConstructors
@@ -111,17 +111,29 @@ public class Roamer
         }
     }
     //------------------------------------------------------------------------------------------------
-    // Directs the Obj to the proper dock. The Obj seeks after the circle 
+    // Directs the Obj to the proper dock. The Obj seeks after the circle(or other, check trackcollider) 
     // collider of the "trackThis" object, which should be projected to the side of the object. This 
     // method will detect whether or not the "Inner Cell Wall" is in the Obj's line of sight with the
     // collider. If it is, a path will be plotted around it. The incident angle is also calculated 
     // ("angleToRotate") in order to give the "dropOff" function a baseline angle to use for rotation.
     //Previously only used in ATP, now generic for all objects that aproach other objects - cb Spring2022
-    public void moveToDock(GameObject Obj, GameObject dock)
+    //changed to RETURN angletorotate instead of just setting it for the class.
+    public float moveToDock(GameObject Obj, GameObject dock)
     {
+        angleToRotate = 0;
         origin = Obj.transform;
         trackThis = dock;
         Vector3 trackCollider = trackThis.GetComponent<CircleCollider2D>().bounds.center;
+        if (trackCollider == null)
+        {
+            trackCollider = trackThis.GetComponent<BoxCollider2D>().bounds.center;
+        } else if(trackCollider == null)
+        {
+            trackCollider = trackThis.GetComponent<PolygonCollider2D>().bounds.center;
+        } else if (trackCollider == null)
+        {
+            trackCollider = trackThis.GetComponent<EdgeCollider2D>().bounds.center;
+        }
         RaycastHit2D collision = Physics2D.Linecast(origin.position, trackCollider);
 
         if (collision.collider.name == "Inner Cell Wall")
@@ -155,11 +167,13 @@ public class Roamer
         }
         Obj.transform.localRotation = new Quaternion(0, 0, rotate.z, rotate.w);
         Obj.transform.position += Obj.transform.up * Time.deltaTime * maxSpeed;
+        //Obj.GetComponent<Rigidbody2D>().AddForce(Obj.transform.up * movementSpeed * 10);
 
         angleToRotate = Vector3.Angle(trackThis.transform.up, Obj.transform.up);
         Vector3 crossProduct = Vector3.Cross(trackThis.transform.up, Obj.transform.up);
         if (crossProduct.z < 0)
             angleToRotate = -angleToRotate; // .Angle always returns a positive #
+        return angleToRotate;
     }
 
 

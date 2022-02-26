@@ -45,17 +45,17 @@ public class GTP_CmdCtrl: MonoBehaviour
     private bool docked    = false;     // GTP position = Docked G-protein position
     private bool targeting = false;     // is GTP targeting docked G-protein
     private int timerforlockon;         // has GTP been targeting for too long?
-    private int timerforlockonMAX = 500; //when is the GTP never going to arrive because its stuck or behind a membrain
+    private int timerforlockonMAX = 800; //when is the GTP never going to arrive because its stuck or behind a membrain
 
     private float delay = 0f;
     private float deltaDistance;        // measures distance traveled to see if GTP is stuck behind something
     //private float randomX, randomY;       // random number between MIN/MAX_X and MIN/MAX_Y
     
     private GameObject openTarget;      //  found docked g-protein
-    private Transform myTarget;         // = openTarget.transform
+    public Transform myTarget;         // = openTarget.transform
     
     //private Vector2 randomDirection;  // new direction vector
-    private Vector3 dockingPosition;    // myTarget position +/- offset
+    public Vector3 dockingPosition;    // myTarget position +/- offset
     private Vector3 lastPosition;
 
     private Roamer r;                             //an object that holds the values for the roaming (random movement) methods
@@ -95,7 +95,7 @@ public class GTP_CmdCtrl: MonoBehaviour
         if(Time.timeScale > 0)
         { 
 
-            if (!targeting)//Look for a target
+            if (!targeting && !docked)//Look for a target
             {
                 r.Roaming (this.gameObject);
 
@@ -123,7 +123,7 @@ public class GTP_CmdCtrl: MonoBehaviour
                     myTarget = openTarget.transform;
                     dockingPosition = GetOffset();
                     LockOn();//call dibs
-                  //  r.moveToDock(this.gameObject, objParent);
+                  //  r.moveToDock(this.gameObject, openTarget);
                 }
             }
             else if(!docked)  
@@ -132,15 +132,23 @@ public class GTP_CmdCtrl: MonoBehaviour
                     r.Roaming(this.gameObject);
                 else
                 {
+                    //dockingPosition = GetOffset();
                     docked = r.ProceedToVector(this.gameObject, dockingPosition);
                     timerforlockon++;
            
                     if(timerforlockon > timerforlockonMAX && !docked) //if timer is high
                     {                                  //reset lockedon,opentarget?,timer, mytarget.tag
                         targeting = false;
+                        if (openTarget != null)
+                        {
+                            openTarget = null;
+                            myTarget.tag = "DockedG_Protein";
+                        } else
+                        {
+                            myTarget.tag = "tGProteinDock";
+                            myTarget = null;
+                        }
                         openTarget = null;
-                        myTarget.tag = "tGProteinDock";
-                        myTarget = null;
                         obj = null;
                         timerforlockon = 0;
                     }
@@ -177,15 +185,23 @@ public class GTP_CmdCtrl: MonoBehaviour
         Return:     the offset from the target, a smidge to the left or right
     */
     private Vector3 GetOffset()
-    {   
+    {
+        Debug.Log("GettingOffset() to: " + myTarget.position.ToString());
+
         if(myTarget.childCount > 0)//if we have children dealing Level1 G-Protein
         {
-            if(myTarget.GetChild(0).tag == "Left")
-                return myTarget.position + new Vector3 (-2.2f, 0.28f, 0);
+            if (myTarget.GetChild(0).tag == "Left")
+                return myTarget.position + new Vector3(-2.2f, 0.28f, 0);
+            else if (myTarget.GetChild(2).name == "Transporter Side A")
+            {
+                Debug.Log("GettingOffset() of side A to: " + myTarget.position.ToString()+ myTarget.GetChild(2).position.ToString() + " = " + (myTarget.position + myTarget.GetChild(2).position).ToString() );
+                return myTarget.position + myTarget.GetChild(2).localPosition + new Vector3(-1f,0,0);
+            }
+                
         }
         else
             return myTarget.position;//if no children, Level2 T-G-Protein, just get the target's pos
-        return myTarget.position + new Vector3 (2.2f, 0.28f, 0);
+        return myTarget.position + new Vector3 (-2.2f, 0.28f, 0);
     }
 
     /*  Function:   LockOn()
@@ -205,10 +221,11 @@ public class GTP_CmdCtrl: MonoBehaviour
     private void Cloak()
     {
         transform.GetComponent<CircleCollider2D>().enabled = false;
-        transform.GetComponent<Rigidbody2D>().isKinematic = true;
+        transform.GetComponent<Rigidbody2D>().isKinematic = false;
+        GetComponent<Rigidbody2D>().simulated = false;
         transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;  //added to stop the random slide that occasionally happens after docking
 
-        transform.position = dockingPosition;
+        //transform.position = dockingPosition;
         transform.parent   = myTarget;
         myTarget.tag       = "OccupiedG_Protein";
         transform.tag      = "DockedGTP";

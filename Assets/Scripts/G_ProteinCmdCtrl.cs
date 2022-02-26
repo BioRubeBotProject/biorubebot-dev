@@ -12,15 +12,15 @@ public class G_ProteinCmdCtrl : MonoBehaviour
     public  GameObject GDP;              // for use creating a child of this object
     public  bool       isActive = true;
 
-    private Roamer r;                             //an object that holds the values for the roaming (random movement) methods
+    private Roamer r;                      //an object that holds the values for the roaming (random movement) methods
     private GameObject childGDP  = null;   // attached GDP, spawns with one of these
     private bool       docked    = false;  // does g-protein position = receptor phosphate position
     private bool       roaming   = false;  // is g-protein free to roam about with GTP in tow
-    private bool       haveGTP   = false;  // is g-protein bound to a GTP
+    public bool       haveGTP   = false;  // is g-protein bound to a GTP
     private bool       targeting = false;  // is g-protein targeting phosphate
     private float      delay     = 0;      // used to delay proceed to target and undock
     private float      deltaDistance;      // // measures distance traveled to see if GTP is stuck behind something
-    private Transform  myTarget;           // = openTarget.transform
+    public Transform myTarget = null;           // = openTarget.transform
     private GameObject openTarget;         // a 'ReceptorPhosphate' (target) object
     private Vector3    lastPosition;       // previous position while moving to phosphate
     private Vector3    dockingPosition;    // where to station the g-protein at docking
@@ -33,11 +33,12 @@ public class G_ProteinCmdCtrl : MonoBehaviour
     private void Start()
     {
         //test
-        transform.GetComponent<BoxCollider2D>().enabled = true;
+        transform.GetComponent<CircleCollider2D>().enabled = true;
         lastPosition = transform.position;
 
         //Instantiate a GDP child to tag along
         childGDP = (GameObject)Instantiate (GDP, transform.position + new Vector3(2.2f, 0.28f, 0), Quaternion.identity);
+        childGDP.tag = "DockedGDP";
 
         //set its position and parent
         childGDP.GetComponent<CircleCollider2D> ().enabled = false;
@@ -87,6 +88,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
             docked = ProceedToTarget();
             if(docked)
             {
+                GetComponent<Rigidbody2D>().simulated = false; //turn off collision so the GTP can slide to the right location
                 ReleaseGDP();
             }
         }
@@ -110,21 +112,12 @@ public class G_ProteinCmdCtrl : MonoBehaviour
             {
                 delay = 0;
                 Kinase.GetComponent <KinaseCmdCtrl> ().GetObject (this.gameObject, "Kinase_Prep_A");
-                myTarget = Kinase.transform;
+                r.moveToDock(this.gameObject, Kinase);
             }
-
-            if(myTarget && (delay += Time.deltaTime) >= 5)
-            {
-                isActive = false;
-            }
-
-            else if(isActive == true)
-            {
-                r.Roaming (this.gameObject);
-            }
+           
         }
         //ELSE have G-Protein roam
-        else
+        else if (myTarget  == null)
         {
             r.Roaming (this.gameObject);
         }
@@ -182,7 +175,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         if (Vector2.Distance (transform.position, lastPosition) < _speed * Time.deltaTime)
         {
             //if I didn't move...I'm stuck.  Give me a push
-            r.Roaming(this.gameObject);
+           // r.Roaming(this.gameObject);
         }
 
         lastPosition = transform.position;//breadcrumb trail
@@ -200,10 +193,10 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         if(deltaDistance < _speed * Time.deltaTime)
         {
             transform.position = dockingPosition;
-            if(myTarget.GetChild(0).tag == "Left")
-            {
-                childGDP.transform.position = childGDP.transform.position - (new Vector3(2.2f, 0.28f, 0.0f) * 2);
-            }
+    //        if(myTarget.GetChild(0).tag == "Left")
+    //        {
+    //            childGDP.transform.position = childGDP.transform.position - (new Vector3(2.2f, 0.28f, 0.0f) * 2);
+    //        }
         }
         return(transform.position==dockingPosition);
     }
@@ -220,6 +213,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         targeting     = false;
         transform.tag = "DockedG_Protein";
         childGDP.tag  = "ReleasedGDP";
+        transform.eulerAngles = Vector3.zero; //rotate G-Protein so that the GTP will dock in the correct spot.
     }
 
     /*  Function:   Undock()
@@ -229,8 +223,9 @@ public class G_ProteinCmdCtrl : MonoBehaviour
     */
     private void Undock()
     {
-        transform.GetComponent<Rigidbody2D>().isKinematic = false;
-        transform.GetComponent<BoxCollider2D>().enabled = true;
+        transform.GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponent<Rigidbody2D>().simulated = true;
+        transform.GetComponent<CircleCollider2D>().enabled = true;
 
         docked        = false;
         targeting     = false;
