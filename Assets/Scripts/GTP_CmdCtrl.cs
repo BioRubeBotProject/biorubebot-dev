@@ -128,7 +128,7 @@ public class GTP_CmdCtrl: MonoBehaviour
             }
             else if(!docked)  
             {
-                if((delay += Time.deltaTime) < 5)//wait 5 seconds before proceeding to target becuse this gives time for the GDP to exit the TrimericGprotein before it starts targeting it
+                if((delay += Time.deltaTime) < 3) //wait 3(from 5) seconds before proceeding to target becuse this gives time for the GDP to exit the TrimericGprotein before it starts targeting it
                     r.Roaming(this.gameObject);
                 else
                 {
@@ -221,7 +221,7 @@ public class GTP_CmdCtrl: MonoBehaviour
     private void Cloak()
     {
         transform.GetComponent<CircleCollider2D>().enabled = false;
-        transform.GetComponent<Rigidbody2D>().isKinematic = false;
+        //transform.GetComponent<Rigidbody2D>().isKinematic = false;
         GetComponent<Rigidbody2D>().simulated = false;
         transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;  //added to stop the random slide that occasionally happens after docking
 

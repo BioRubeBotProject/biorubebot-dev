@@ -108,11 +108,14 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         else if(haveGTP && roaming)
         {
             GameObject Kinase = BioRubeLibrary.FindClosest (transform, "Kinase");
-            if(Kinase != null && !myTarget && isActive)
+            if (Kinase != null && !myTarget && isActive)
             {
                 delay = 0;
-                Kinase.GetComponent <KinaseCmdCtrl> ().GetObject (this.gameObject, "Kinase_Prep_A");
+                Kinase.GetComponent<KinaseCmdCtrl>().GetObject(this.gameObject, "Kinase_Prep_A");
                 r.moveToDock(this.gameObject, Kinase);
+            }
+            else
+            { r.Roaming(this.gameObject);
             }
            
         }

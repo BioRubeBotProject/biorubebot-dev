@@ -91,7 +91,11 @@ public class ATPpathfinding : MonoBehaviour
             }
             if (found == true && trackThis.tag == trackingTag)
             {
-                angleToRotate  = r.moveToDock(this.gameObject, trackThis);
+                try
+                {
+                    angleToRotate = r.moveToDock(this.gameObject, trackThis);
+                } catch (NullReferenceException e) { Debug.Log(e.ToString()); }
+
             }
             else
                 found = false;

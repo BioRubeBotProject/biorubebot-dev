@@ -59,6 +59,11 @@ public class Roamer
 
     #endregion ClassConstructors
 
+    public void SlowSpeed()
+    {
+        maxSpeed = minSpeed;
+    }
+
 
 
     //------------------------------------------------------------------------------------------------
@@ -123,17 +128,22 @@ public class Roamer
         angleToRotate = 0;
         origin = Obj.transform;
         trackThis = dock;
-        Vector3 trackCollider = trackThis.GetComponent<CircleCollider2D>().bounds.center;
-        if (trackCollider == null)
+
+        Vector3 trackCollider = Vector3.zero;
+        if (trackThis.GetComponent<CircleCollider2D>() != null)
+        {
+            trackCollider = trackThis.GetComponent<CircleCollider2D>().bounds.center;
+        } else if (trackThis.GetComponent<BoxCollider2D>() != null)
         {
             trackCollider = trackThis.GetComponent<BoxCollider2D>().bounds.center;
-        } else if(trackCollider == null)
+        } else if(trackThis.GetComponent<PolygonCollider2D>() != null)
         {
             trackCollider = trackThis.GetComponent<PolygonCollider2D>().bounds.center;
-        } else if (trackCollider == null)
+        } else if (trackThis.GetComponent<EdgeCollider2D>() != null)
         {
             trackCollider = trackThis.GetComponent<EdgeCollider2D>().bounds.center;
         }
+
         RaycastHit2D collision = Physics2D.Linecast(origin.position, trackCollider);
 
         if (collision.collider.name == "Inner Cell Wall")
@@ -166,7 +176,7 @@ public class Roamer
                 curveCounter += 1;// slowly rotate right until counter empty
         }
         Obj.transform.localRotation = new Quaternion(0, 0, rotate.z, rotate.w);
-        Obj.transform.position += Obj.transform.up * Time.deltaTime * maxSpeed;
+        Obj.transform.position += Obj.transform.up * Time.deltaTime * (maxSpeed+2);
         //Obj.GetComponent<Rigidbody2D>().AddForce(Obj.transform.up * movementSpeed * 10);
 
         angleToRotate = Vector3.Angle(trackThis.transform.up, Obj.transform.up);
@@ -201,7 +211,7 @@ public class Roamer
     {
         if(Vector3.Distance(obj.transform.position, destination) > restraint)
         {
-            Roaming(obj);
+        //    Roaming(obj);
         }
         return ProceedToVector(obj, destination + offset);
     }

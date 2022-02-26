@@ -115,11 +115,11 @@ public class KinaseCmdCtrl : MonoBehaviour  //, Roamer.CollectObject
                     if(this.gameObject.transform.parent.parent == null)
                     {
                         this.gameObject.GetComponent<Rigidbody2D>().isKinematic   = true;
-                        this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+                        this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
                         this.gameObject.transform.parent                          = active_G_Protein.transform;
                         this.GetComponent<Rigidbody2D>().simulated = true;
                     }
-                    r.Roaming(active_G_Protein);
+            //        r.Roaming(active_G_Protein);  //not sure why this exists
                     //determine if win condition has been reached
                     if(!WinConMet &(GameObject.FindWithTag("Win_KinaseTransformation")))
                     {
@@ -134,18 +134,24 @@ public class KinaseCmdCtrl : MonoBehaviour  //, Roamer.CollectObject
         {
             if(T_Reg == null)
                 T_Reg = BioRubeLibrary.FindClosest(transform, "T_Reg");
-            if( T_Reg != null && !myTarget)
+            if (T_Reg != null && myTarget == null)
             {
                 delay = 0;
-                T_Reg.GetComponent <T_RegCmdCtrl>().GetObject(this.gameObject,"T_Reg_Prep_A");
+                T_Reg.GetComponent<T_RegCmdCtrl>().GetObject(this.gameObject, "T_Reg_Prep_A");
                 myTarget = T_Reg.transform;
             }
-
-           // if(myTarget && delay >= 5)
-           // {
-          //  } 
-           // else
-         //       Roam.Roaming(this.gameObject);
+            else if (myTarget != null && delay >= 1000)
+            {
+                myTarget = null;
+                T_Reg = null;
+            } else if(T_Reg != null && myTarget != null)
+            {
+                r.moveToDock(this.gameObject, T_Reg);
+                //Debug.Log("moving to t_reg");
+                delay += 1;
+            } 
+            //else if()  //TODO else if this.gameobject is a child of T_Reg2
+            //    r.Roaming(this.gameObject);
         }
     }
     private IEnumerator OnTriggerEnter2D(Collider2D other)
@@ -192,7 +198,7 @@ public class KinaseCmdCtrl : MonoBehaviour  //, Roamer.CollectObject
             midpointAchieved[0] = false;
             midpointAchieved[1] = false;
 
-            this.GetComponent<PolygonCollider2D>().enabled         = false;
+            this.GetComponent<PolygonCollider2D>().enabled         = true;
 
             tag   = "Kinase_Prep_C";
             delay = 0.0f;
