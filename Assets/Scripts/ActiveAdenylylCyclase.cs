@@ -71,8 +71,8 @@ public class ActiveAdenylylCyclase : MonoBehaviour
         explosionEffect.loop = false;
         explosionEffect.Play();
         
-        child = (GameObject)Instantiate(replaceATPWith, transform.position, Quaternion.identity);
-        child.GetComponent<Rigidbody2D> ().isKinematic  = true;
+        child = (GameObject)Instantiate(replaceATPWith, other.transform.position, Quaternion.identity);
+        //child.GetComponent<Rigidbody2D> ().iskinematic = true;
         child.transform.parent = parentObject.transform;
     
         //destroy the particle system when its duration is up, right

@@ -233,7 +233,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300046, guid: 162fe2643b54fb545a5615b40ea497af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -300,14 +300,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   droppedOff: 0
   found: 0
-  maxHeadingChange: 60
+  maxHeadingChange: 120
   angleToRotate: 0
-  maxRoamChangeTime: 50
   minSpeed: 3
   maxSpeed: 4
   trackingTag: ATP_tracking
   trackThis: {fileID: 0}
-  origin: {fileID: 424368}
 --- !u!114 &11481572
 MonoBehaviour:
   m_ObjectHideFlags: 0
