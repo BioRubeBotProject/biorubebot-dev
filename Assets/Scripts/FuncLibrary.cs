@@ -39,11 +39,7 @@ public class FuncLibrary : MonoBehaviour
         explosionEffect.transform.position = other.transform.position;
 
         //Sets explosion effect to be under the parent object.
-        explosionEffect.transform.parent
-
-
-
- = parentObject.transform;
+        explosionEffect.transform.parent = parentObject.transform;
     
         //play it
         explosionEffect.loop = false;
