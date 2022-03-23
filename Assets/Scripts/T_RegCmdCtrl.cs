@@ -343,12 +343,15 @@ public class T_RegCmdCtrl : MonoBehaviour
                 tail.transform.tag      = "T_RegPhosphate";
                 tail.transform.localPosition = new Vector3 (0.0f,-0.4f,0.0f);
                 
-                StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
+              //  StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
+              FuncLibrary fl = new FuncLibrary();
+              StartCoroutine(fl.Explode(other.gameObject, parentObject.gameObject, destructionEffect));
+              Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called */
             }
         }
     }
     
-    //Enumerator for Exploding the ATP 
+  /*  //Enumerator for Exploding the ATP 
     private IEnumerator Explode(GameObject other)
     {
         yield return new WaitForSeconds(3f);
@@ -369,7 +372,7 @@ public class T_RegCmdCtrl : MonoBehaviour
         
         //destroy our game object
         Destroy(other.gameObject);
-    }
+    } */
     
     // Method to reset the basic to before looking for a Kinase
     private void reset()

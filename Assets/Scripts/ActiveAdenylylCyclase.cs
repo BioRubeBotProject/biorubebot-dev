@@ -42,11 +42,14 @@ public class ActiveAdenylylCyclase : MonoBehaviour
             other.GetComponent<CircleCollider2D>().enabled = true;
             other.gameObject.tag                           = "Untagged";
       
-            StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
+       StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
+      /*  FuncLibrary fl = new FuncLibrary();
+        StartCoroutine(fl.ExplodeChild(other.gameObject, parentObject.gameObject, replaceATPWith.gameObject, destructionEffect));
+        Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called */
         }
     }
 
-    /*  Function:   Explode(GameObject) IEnumerator
+     /*   Function:   Explode(GameObject) IEnumerator
         Purpose:    this function causes the given GameObject to explode in the
                     game and sets it to inactive, making it leave the game.
                     in place of the given Object, an instance of replaceATPWith
@@ -55,7 +58,7 @@ public class ActiveAdenylylCyclase : MonoBehaviour
         Parameters: the ATP to explode
         Return:     nothing important
     */
-    private IEnumerator Explode(GameObject other)
+        public IEnumerator Explode(GameObject other)
     {
         GameObject child = null;
 
@@ -82,4 +85,5 @@ public class ActiveAdenylylCyclase : MonoBehaviour
         //destroy our game object
         Destroy(other.gameObject);
     }
+   
 }

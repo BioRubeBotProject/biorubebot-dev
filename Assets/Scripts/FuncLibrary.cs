@@ -35,7 +35,6 @@ public class FuncLibrary : MonoBehaviour
 
         //Instantiate our one-off particle system
         ParticleSystem explosionEffect = Instantiate(destructionEffect) as ParticleSystem;
-        Debug.Log("destructionEffect in static library");
         explosionEffect.transform.position = other.transform.position;
 
         //Sets explosion effect to be under the parent object.
@@ -52,6 +51,43 @@ public class FuncLibrary : MonoBehaviour
         //destroy our game object
         Destroy(other.gameObject);
     } 
+
+    /*  Function:   Explode(GameObject) IEnumerator
+        Purpose:    this function causes the given GameObject to explode in the
+                    game and sets it to inactive, making it leave the game.
+                    in place of the given Object, an instance of replaceATPWith
+                    is instantiated. In Unity, this variable is set to the
+                    cAMP prefab, so that spawns where the ATP explodes
+        Parameters: the ATP to explode
+        Return:     nothing important
+    */
+        public IEnumerator ExplodeChild(GameObject other, GameObject parentObject, GameObject replaceATPWith, ParticleSystem destructionEffect)
+    {
+        GameObject child = null;
+
+        yield return new WaitForSeconds (3f);
+        //Instantiate our one-off particle system
+        ParticleSystem explosionEffect     = Instantiate(destructionEffect) as ParticleSystem;
+        explosionEffect.transform.position = other.transform.position;
+
+        //Sets explosion effect to be under the parent object.
+	    explosionEffect.transform.parent = parentObject.transform;
+    
+        //play it
+        explosionEffect.loop = false;
+        explosionEffect.Play();
+        
+        child = (GameObject)Instantiate(replaceATPWith, transform.position, Quaternion.identity);
+        child.GetComponent<Rigidbody2D> ().isKinematic  = true;
+        child.transform.parent = parentObject.transform;
+    
+        //destroy the particle system when its duration is up, right
+        //it would play a second time.
+        Destroy(explosionEffect.gameObject, explosionEffect.duration);
+    
+        //destroy our game object
+        Destroy(other.gameObject);
+    }
 }
 
 
