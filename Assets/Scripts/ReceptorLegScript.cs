@@ -1,3 +1,12 @@
+//Updated 6/27/2015
+//Lines 24-25:  Disable ATP collider while dropping off a phosphate
+//Lines 34-35:  Enable the ATP collider once phosphate dropped off
+//Lines 38-43:  Change receptor leg tags (referenced in G_ProteinCmdCtrl.cs)
+
+//Updated 6/29/2015
+//Line 44:  Added call to IEnumerator co-routine 'Explode'
+//Lines 47-65:  Added 'Explode' to destroy ATP after dropping phosphate at the receptor
+
 // **************************************************************
 // **** Updated on 10/08/15 by Kevin Means
 // **** 1.) Added condition to prevent rogue ATP from hijacking
@@ -9,17 +18,16 @@
 // **** 1.) Tag now reverts from "ATP_tracking" to "Untagged"
 // **************************************************************
 
+// **************************************************************
+//**** Updated 3/23/2022 by Alyson Mosely
+//**** 1.) Removed Explode and added it to FuncLibrary to be reused 
+//****     by other scripts
+// **************************************************************
+
+
 using UnityEngine;
 using System.Collections;
 
-//Updated 6/27/2015
-//Lines 24-25:  Disable ATP collider while dropping off a phosphate
-//Lines 34-35:  Enable the ATP collider once phosphate dropped off
-//Lines 38-43:  Change receptor leg tags (referenced in G_ProteinCmdCtrl.cs)
-
-//Updated 6/29/2015
-//Line 44:  Added call to IEnumerator co-routine 'Explode'
-//Lines 47-65:  Added 'Explode' to destroy ATP after dropping phosphate at the receptor
 
 
 public class ReceptorLegScript : MonoBehaviour
@@ -59,7 +67,10 @@ public class ReceptorLegScript : MonoBehaviour
                 tail.transform.GetChild(0).tag = "Left";
             }
 
-            StartCoroutine(Explode (other.gameObject)); //self-destruct after 3 seconds
+            FuncLibrary fl = new FuncLibrary();
+            StartCoroutine(fl.Explode(other.gameObject, parentObject.gameObject, destructionEffect));
+            Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called
+
             //determine if win condition has been reached
             if (!WinConMet & (GameObject.FindWithTag("Win_ReceptorPhosphorylation")))
             {
@@ -71,25 +82,5 @@ public class ReceptorLegScript : MonoBehaviour
         
     }
 
-    private IEnumerator Explode(GameObject other)
-    {
-        yield return new WaitForSeconds (3f);
-        //Instantiate our one-off particle system
-        ParticleSystem explosionEffect = Instantiate(destructionEffect) as ParticleSystem;
-        explosionEffect.transform.position = other.transform.position;
-
-        //Sets explosion effect to be under the parent object.
-	    explosionEffect.transform.parent = parentObject.transform;
-    
-        //play it
-        explosionEffect.loop = false;
-        explosionEffect.Play();
-    
-        //destroy the particle system when its duration is up, right
-        //it would play a second time.
-        Destroy(explosionEffect.gameObject, explosionEffect.duration);
-    
-        //destroy our game object
-        Destroy(other.gameObject);
-    }
+   
 }

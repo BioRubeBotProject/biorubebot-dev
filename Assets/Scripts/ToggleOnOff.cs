@@ -1,5 +1,4 @@
-﻿//candidate for deletion. Check for references and remove
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -25,3 +24,4 @@ public class ToggleOnOff : MonoBehaviour, Tutorial.SwitchOnOff
         this.GetComponent<Toggle>().interactable = false;
     }
 }
+
