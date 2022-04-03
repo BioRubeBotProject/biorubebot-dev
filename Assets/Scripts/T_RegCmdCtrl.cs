@@ -343,13 +343,63 @@ public class T_RegCmdCtrl : MonoBehaviour
                 tail.transform.tag      = "T_RegPhosphate";
                 tail.transform.localPosition = new Vector3 (0.0f,-0.4f,0.0f);
                 
+<<<<<<< HEAD
+              FuncLibrary fl = new FuncLibrary();
+              StartCoroutine(fl.Explode(other.gameObject, parentObject.gameObject, destructionEffect));
+              Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called */
+=======
+              //  StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
               FuncLibrary fl = new FuncLibrary();
               StartCoroutine(fl.Explode(other.gameObject, parentObject.gameObject, destructionEffect));
               Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called */
             }
+        } else if( other.tag == "Kinase_Phase_2")
+        {
+            Debug.Log("Touching Kinase");
+            active_Kinase_P2 = BioRubeLibrary.FindClosest(transform, "Kinase_Phase_2");
+            if (active_Kinase_P2.gameObject.transform.parent.parent == null)
+            {
+                GameObject obj = Instantiate(TReg_P2, gameObject.transform.position, Quaternion.identity) as GameObject; //TReg_2 Exists now.
+
+                //determine if win condition has been reached
+                if (!WinConMet & (GameObject.FindWithTag("Win_Kinase_TReg_dock")))
+                {
+                    WinScenario.dropTag("Win_Kinase_TReg_dock");
+                    WinConMet = true;
+                }
+                Debug.Log("Destroying TReg");
+                Destroy(this.gameObject);  //destroy t_reg normal, because TReg_2 now exists
+>>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
+            }
         }
     }
     
+<<<<<<< HEAD
+=======
+  /*  //Enumerator for Exploding the ATP 
+    private IEnumerator Explode(GameObject other)
+    {
+        yield return new WaitForSeconds(3f);
+        //Instantiate our one-off particle system
+        ParticleSystem explosionEffect = Instantiate(destructionEffect) as ParticleSystem;
+
+        //Sets curent object to be under the parent object.
+        explosionEffect.transform.parent   = parentObject.transform;
+        explosionEffect.transform.position = other.transform.position;
+        
+        //play it
+        explosionEffect.loop = false;
+        explosionEffect.Play();
+        
+        //destroy the particle system when its duration is up, right
+        //it would play a second time.
+        Destroy(explosionEffect.gameObject, explosionEffect.duration);
+        
+        //destroy our game object
+        Destroy(other.gameObject);
+    } */
+    
+>>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
     // Method to reset the basic to before looking for a Kinase
     private void reset()
     {
