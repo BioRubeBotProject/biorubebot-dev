@@ -145,8 +145,6 @@ public class T_RegCmdCtrl : MonoBehaviour
                         {
                             //Set the T_Reg to be inactive because an ATP is close enough to dock
                             isActive = false;
-                            //Disable the box Collider on this T_Reg
-                            this.GetComponent<Rigidbody2D>().simulated = false;
                         }
                     }
                     // Roam while the T_Reg is still active
