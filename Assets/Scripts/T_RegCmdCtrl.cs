@@ -101,10 +101,22 @@ public class T_RegCmdCtrl : MonoBehaviour
             active_Kinase_P2.GetComponent<Rigidbody2D>().isKinematic = true;
             active_Kinase_P2.GetComponent<PolygonCollider2D>().enabled = false;
 
+
+                        // Check if the Distance between the the ATP and the T_Reg is less than distancetoconnect
+                        if (Vector2.Distance(pos[0], pos[1]) < distancetoconnect)
+                        {
+                            //Set the T_Reg to be inactive because an ATP is close enough to dock
+                            isActive = false;
+                        }
+                    }
+                    // Roam while the T_Reg is still active
+                    r.Roaming(this.gameObject);
+                }
             // Enable the Box Collider for this T_Reg
             this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             // Enable the Circle Collider for the ATP to approach and "Dock"
             this.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+
 
             // Setup state for an ATP to come and dock with T_Regulator
             timeoutForInteraction = 0;
@@ -343,11 +355,11 @@ public class T_RegCmdCtrl : MonoBehaviour
                 tail.transform.tag      = "T_RegPhosphate";
                 tail.transform.localPosition = new Vector3 (0.0f,-0.4f,0.0f);
                 
-<<<<<<< HEAD
+
               FuncLibrary fl = new FuncLibrary();
               StartCoroutine(fl.Explode(other.gameObject, parentObject.gameObject, destructionEffect));
               Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called */
-=======
+
               //  StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
               FuncLibrary fl = new FuncLibrary();
               StartCoroutine(fl.Explode(other.gameObject, parentObject.gameObject, destructionEffect));
@@ -369,13 +381,13 @@ public class T_RegCmdCtrl : MonoBehaviour
                 }
                 Debug.Log("Destroying TReg");
                 Destroy(this.gameObject);  //destroy t_reg normal, because TReg_2 now exists
->>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
+
             }
         }
     }
     
-<<<<<<< HEAD
-=======
+
+
   /*  //Enumerator for Exploding the ATP 
     private IEnumerator Explode(GameObject other)
     {
@@ -399,7 +411,7 @@ public class T_RegCmdCtrl : MonoBehaviour
         Destroy(other.gameObject);
     } */
     
->>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
+
     // Method to reset the basic to before looking for a Kinase
     private void reset()
     {
