@@ -87,7 +87,7 @@ public class Roamer
                 var ceiling = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
                 roamInterval = UnityEngine.Random.Range(5, maxRoamChangeTime);  
                 movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
-                if (collision.collider != null && (collision.collider.name == "Cell Membrane" || collision.collider.name == "Cell Membrane(clone)" || collision.collider.name == "Inner Cell Wall") &&
+                if (collision.collider != null && (collision.collider.name == "Cell Membrane" || collision.collider.name == "Cell Membrane(clone)" ) &&
                    collision.distance < 6) //if it's too close to the cell wall, then turn around, and go maxSpeed and for the longest amount of time to get further away
                 {
                     if (heading <= 180) //reset heading to a better direction
@@ -110,7 +110,7 @@ public class Roamer
             //where the movement is applied:
             Obj.transform.eulerAngles = new Vector3(0, 0, Obj.transform.eulerAngles.z - headingOffset);
             //Obj.transform.position += Obj.transform.up * Time.deltaTime * movementSpeed;
-            Obj.GetComponent<Rigidbody2D>().AddForce(Obj.transform.up * movementSpeed * 10);
+            Obj.GetComponent<Rigidbody2D>().AddForce(Obj.transform.up * movementSpeed * 2);
 
 
         }
@@ -146,7 +146,7 @@ public class Roamer
 
         RaycastHit2D collision = Physics2D.Linecast(origin.position, trackCollider);
 
-        if (collision.collider.name == "Inner Cell Wall")
+        if (collision != null && collision.collider.name == "Inner Cell Wall")
         {
             Vector3 collisionAngle = collision.normal;
             Vector3 direction = trackCollider - origin.position;
@@ -177,7 +177,7 @@ public class Roamer
         }
         Obj.transform.localRotation = new Quaternion(0, 0, rotate.z, rotate.w);
         Obj.transform.position += Obj.transform.up * Time.deltaTime * (maxSpeed+2);
-        //Obj.GetComponent<Rigidbody2D>().AddForce(Obj.transform.up * movementSpeed * 10);
+        //Obj.GetComponent<Rigidbody2D>().AddForce(Obj.transform.up * movementSpeed * 4);
 
         angleToRotate = Vector3.Angle(trackThis.transform.up, Obj.transform.up);
         Vector3 crossProduct = Vector3.Cross(trackThis.transform.up, Obj.transform.up);
