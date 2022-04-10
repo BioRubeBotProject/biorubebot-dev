@@ -15,6 +15,8 @@ public class GTP_CmdCtrl: MonoBehaviour
     //------------------------------------------------------------------------------------------------
     #region Public Fields + Properties + Events + Delegates + Enums
     public ParticleSystem destructionEffect; //'poof' special effect for 'expended' GDP
+    public GameObject     parentObject;      //Parent object used for unity editor Tree Hierarchy
+    public GameObject     other;
     public GameObject GTP1;                // transform GTP upon docking
     public GameObject trackThis;           // the object with which to dock
     public Quaternion rotation;
@@ -161,7 +163,12 @@ public class GTP_CmdCtrl: MonoBehaviour
             {
                 tag = "DyingGDP";
                 StartCoroutine(ReleasingGTP());
-                StartCoroutine(DestroyGTP()); //Destroy GDP
+
+                FuncLibrary fl = new FuncLibrary();
+                StartCoroutine(fl.Explode(other.gameObject, parentObject.gameObject, destructionEffect));
+
+                Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called
+             //   StartCoroutine(DestroyGTP()); //Destroy GDP
             }
         }
     }
@@ -238,8 +245,9 @@ public class GTP_CmdCtrl: MonoBehaviour
         transform.GetComponent<CircleCollider2D>().enabled = true;
     } 
 
-    public IEnumerator DestroyGTP()
+   /* public IEnumerator DestroyGTP()
     {
+        Debug.Log("Destroy GTP");
         GameObject parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
 
         yield return new WaitForSeconds (2f);
@@ -250,6 +258,6 @@ public class GTP_CmdCtrl: MonoBehaviour
         explosionEffect.Play();
         Destroy(explosionEffect.gameObject, explosionEffect.duration);
         Destroy(gameObject);
-    }
+    }*/
 
 }
