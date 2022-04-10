@@ -6,6 +6,12 @@
                 and self-destructs.
 */
 
+// **************************************************************
+//**** Updated 4/10/2022 by Alyson Mosely
+//**** 1.) Removed DestroyGtP() local function and called FuncLibrary's
+//****     Explode()
+// **************************************************************
+
 using UnityEngine;
 using System.Collections; 
 using System;//for math
