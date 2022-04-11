@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // **************************************************************
 //  LIBRARY of non-static functions for BioRubeBot game
 //  
@@ -10,19 +8,13 @@
 // **** 2.) 
 // **** 3.) 
 // **************************************************************
->>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FuncLibrary : MonoBehaviour
 {
-<<<<<<< HEAD
-        public IEnumerator Explode(GameObject other, GameObject parentObject, ParticleSystem destructionEffect)
-    {
-        Debug.Log("library was called successfully");
-        yield return new WaitForSeconds (3f);
-=======
     
     /*
         Function:   Explode(GameObject other, GameObject parentObject, 
@@ -42,14 +34,11 @@ public class FuncLibrary : MonoBehaviour
 
         yield return new WaitForSeconds (3f);
 
->>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
         //Instantiate our one-off particle system
         ParticleSystem explosionEffect = Instantiate(destructionEffect) as ParticleSystem;
         explosionEffect.transform.position = other.transform.position;
 
         //Sets explosion effect to be under the parent object.
-<<<<<<< HEAD
-=======
         explosionEffect.transform.parent = parentObject.transform;
     
         //play it
@@ -83,19 +72,17 @@ public class FuncLibrary : MonoBehaviour
         explosionEffect.transform.position = other.transform.position;
 
         //Sets explosion effect to be under the parent object.
->>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
 	    explosionEffect.transform.parent = parentObject.transform;
     
         //play it
         explosionEffect.loop = false;
         explosionEffect.Play();
-<<<<<<< HEAD
-=======
+
         
         child = (GameObject)Instantiate(replaceATPWith, transform.position, Quaternion.identity);
         child.GetComponent<Rigidbody2D> ().isKinematic  = true;
         child.transform.parent = parentObject.transform;
->>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
+
     
         //destroy the particle system when its duration is up, right
         //it would play a second time.
@@ -105,10 +92,3 @@ public class FuncLibrary : MonoBehaviour
         Destroy(other.gameObject);
     }
 }
-
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce

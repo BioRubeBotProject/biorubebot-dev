@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\ATPproperties.cs" />
     <Compile Include="Assets\Scripts\Roamer.cs" />
     <Compile Include="Assets\Scripts\DialogueBox.cs" />
+    <Compile Include="Assets\Scripts\FuncLibrary.cs" />
     <Compile Include="Assets\Scripts\DEPRECIATED\moveGDP.cs" />
     <Compile Include="Assets\Scripts\GPCRProperties.cs" />
     <Compile Include="Assets\Scripts\ObjectCollection.cs" />

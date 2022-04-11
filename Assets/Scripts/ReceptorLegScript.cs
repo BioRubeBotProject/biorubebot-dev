@@ -7,10 +7,7 @@
 //Line 44:  Added call to IEnumerator co-routine 'Explode'
 //Lines 47-65:  Added 'Explode' to destroy ATP after dropping phosphate at the receptor
 
-<<<<<<< HEAD
 
-=======
->>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
 // **************************************************************
 // **** Updated on 10/08/15 by Kevin Means
 // **** 1.) Added condition to prevent rogue ATP from hijacking
@@ -21,9 +18,6 @@
 // **** Updated on 10/09/15 by Kevin Means
 // **** 1.) Tag now reverts from "ATP_tracking" to "Untagged"
 // **************************************************************
-
-// **************************************************************
-<<<<<<< HEAD
 // **** Updated on 3/22/22 by Alyson Mosely
 // **** 1.) Removed explode IEnumerator and moved it to FuncLibrary.cs
 // **** to be reused
@@ -33,18 +27,6 @@
 using UnityEngine;
 using System.Collections;
 
-
-=======
-//**** Updated 3/23/2022 by Alyson Mosely
-//**** 1.) Removed Explode and added it to FuncLibrary to be reused 
-//****     by other scripts
-// **************************************************************
-
-
-using UnityEngine;
-using System.Collections;
-
->>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
 
 
 public class ReceptorLegScript : MonoBehaviour
@@ -86,11 +68,9 @@ public class ReceptorLegScript : MonoBehaviour
 
             FuncLibrary fl = new FuncLibrary();
             StartCoroutine(fl.Explode(other.gameObject, parentObject.gameObject, destructionEffect));
-<<<<<<< HEAD
-            Debug.Log("destroy ATP here");
-=======
+
             Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called
->>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
+
 
             //determine if win condition has been reached
             if (!WinConMet & (GameObject.FindWithTag("Win_ReceptorPhosphorylation")))
@@ -102,9 +82,5 @@ public class ReceptorLegScript : MonoBehaviour
 
         
     }
-<<<<<<< HEAD
-=======
 
-   
->>>>>>> fb88059ce7a0bfb58061183f89c85105ecb103ce
 }

@@ -161,7 +161,6 @@ public class GTP_CmdCtrl: MonoBehaviour
             {
                 tag = "DyingGDP";
                 StartCoroutine(ReleasingGTP());
-                Debug.Log("Destroy GTP");
                 StartCoroutine(DestroyGTP()); //Destroy GDP
             }
         }
