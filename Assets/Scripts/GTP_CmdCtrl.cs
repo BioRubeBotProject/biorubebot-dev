@@ -170,11 +170,11 @@ public class GTP_CmdCtrl: MonoBehaviour
                 tag = "DyingGDP";
                 StartCoroutine(ReleasingGTP());
 
-                FuncLibrary fl = new FuncLibrary();
-                StartCoroutine(fl.Explode(other.gameObject, parentObject.gameObject, destructionEffect));
+               // FuncLibrary fl = new FuncLibrary();
+                //StartCoroutine(fl.Explode(other.gameObject, parentObject.gameObject, destructionEffect));
 
-                Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called
-             //   StartCoroutine(DestroyGTP()); //Destroy GDP
+                Debug.Log("destroy GTP here"); //prints to console to see if func was successfully called
+                StartCoroutine(DestroyGTP()); //Destroy GDP
             }
         }
     }
@@ -251,7 +251,7 @@ public class GTP_CmdCtrl: MonoBehaviour
         transform.GetComponent<CircleCollider2D>().enabled = true;
     } 
 
-   /* public IEnumerator DestroyGTP()
+   public IEnumerator DestroyGTP()
     {
         Debug.Log("Destroy GTP");
         GameObject parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
@@ -264,6 +264,6 @@ public class GTP_CmdCtrl: MonoBehaviour
         explosionEffect.Play();
         Destroy(explosionEffect.gameObject, explosionEffect.duration);
         Destroy(gameObject);
-    }*/
+    }
 
 }

@@ -38,17 +38,12 @@ public class FuncLibrary : MonoBehaviour
     }
 
     /************************************************************************************/
- //public IEnumerator ExplodeChild(GameObject other, GameObject parentObject, GameObject replaceATPWith, GameObject child, ParticleSystem destructionEffect)
-    
       public IEnumerator ExplodeChild(GameObject other, GameObject parentObject, GameObject replaceATPWith, ParticleSystem destructionEffect)
     {
-        //GameObject child = null;
-        //child = null;
-       
-        Debug.Log("ExplodeChild was called successfully");
-    
+        GameObject child = null;
+         Debug.Log("ExplodeChild was called successfully");
 
-        yield return new WaitForSeconds (3f);
+       
         //Instantiate our one-off particle system
         ParticleSystem explosionEffect     = Instantiate(destructionEffect) as ParticleSystem;
         explosionEffect.transform.position = other.transform.position;
@@ -59,27 +54,13 @@ public class FuncLibrary : MonoBehaviour
         //play it
         explosionEffect.loop = false;
         explosionEffect.Play();
-
-        if (replaceATPWith) {
-            Debug.Log("replaceATP exists");
-        } else {
-            Debug.Log("No game object found");
-        }
-
-        GameObject child = null;
         
-
-        if (child) {
-            Debug.Log("success");
-        } else {
-            Debug.Log("No game object found");
-        }
-   
-        child = (GameObject)Instantiate(replaceATPWith, transform.position, Quaternion.identity);        
-        child.GetComponent<Rigidbody2D> ().isKinematic  = true;
-        Debug.Log("Move child 2");
-        child.transform.parent = parentObject.transform;
-        Debug.Log("Move child 3");
+        //child = (GameObject)Instantiate(replaceATPWith, transform.position, Quaternion.identity);
+         child = (GameObject)Instantiate(replaceATPWith, parentObject.transform);
+         Debug.Log("instantiating here");
+         yield return new WaitForSeconds (5f);
+        //child.GetComponent<Rigidbody2D> ().isKinematic  = true;
+        //child.transform.parent = parentObject.transform;
     
         //destroy the particle system when its duration is up, right
         //it would play a second time.
@@ -87,6 +68,7 @@ public class FuncLibrary : MonoBehaviour
     
         //destroy our game object
         Destroy(other.gameObject);
+        Debug.Log("Destroy");
     }
 }
 
