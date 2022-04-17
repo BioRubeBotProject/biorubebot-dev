@@ -43,10 +43,10 @@ public class ActiveAdenylylCyclase : MonoBehaviour
             other.GetComponent<CircleCollider2D>().enabled = true;
             other.gameObject.tag                           = "Untagged";
       
-      // StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
+       StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
        
-        FuncLibrary fl = new FuncLibrary();
-        StartCoroutine(fl.ExplodeChild(other.gameObject, parentObject.gameObject, replaceATPWith.gameObject, destructionEffect));
+       // FuncLibrary fl = new FuncLibrary();
+      //  StartCoroutine(fl.ExplodeChild(other.gameObject, parentObject.gameObject, replaceATPWith.gameObject, destructionEffect));
         //StartCoroutine(fl.ExplodeChild(other.gameObject, parentObject.gameObject, child.gameObject, destructionEffect));
         Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called */
 
@@ -60,7 +60,7 @@ public class ActiveAdenylylCyclase : MonoBehaviour
                     is instantiated. In Unity, this variable is set to the
                     cAMP prefab, so that spawns where the ATP explodes
         Parameters: the ATP to explode
-        Return:     nothing important 
+        Return:     nothing important */
     
         public IEnumerator Explode(GameObject other)
     {
@@ -88,6 +88,6 @@ public class ActiveAdenylylCyclase : MonoBehaviour
     
         //destroy our game object
         Destroy(other.gameObject);
-    }*/
+    }
    
 }

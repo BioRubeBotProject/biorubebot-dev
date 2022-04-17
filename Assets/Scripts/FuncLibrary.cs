@@ -59,6 +59,7 @@ public class FuncLibrary : MonoBehaviour
          child = (GameObject)Instantiate(replaceATPWith, parentObject.transform);
          Debug.Log("instantiating here");
          yield return new WaitForSeconds (5f);
+
         //child.GetComponent<Rigidbody2D> ().isKinematic  = true;
         //child.transform.parent = parentObject.transform;
     
