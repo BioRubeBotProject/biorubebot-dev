@@ -5198,6 +5198,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1652320555}
     m_Modifications:
+    - target: {fileID: 114720, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 117460, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 121990, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 129770, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 133708, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 156460, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 166388, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 179206, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 428420, guid: 742d9cae8263e2943a955cac93047c26, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -18650,7 +18682,7 @@ GameObject:
   - component: {fileID: 2109620320}
   - component: {fileID: 2109620319}
   - component: {fileID: 2109620318}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Redo
   m_TagString: Congratulations
   m_Icon: {fileID: 0}
@@ -18834,7 +18866,7 @@ GameObject:
   - component: {fileID: 2145843560}
   - component: {fileID: 2145843562}
   - component: {fileID: 2145843561}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Redp text
   m_TagString: Congratulations
   m_Icon: {fileID: 0}
