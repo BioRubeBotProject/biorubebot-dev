@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1750861218381338615}
   - component: {fileID: 3483397180040374342}
+  - component: {fileID: 5808583974875829005}
   m_Layer: 0
   m_Name: Phosphate Transport Body
   m_TagString: Untagged
@@ -83,6 +84,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5808583974875829005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16750057044111985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f50df9ccf2e6044b33c906cdc6d185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeadingChange: 0
+  angleToRotate: 0
+  minSpeed: 0
+  maxSpeed: 0
+  trackingTag: 
+  trackThis: {fileID: 0}
+  destructionEffect: {fileID: 0}
+  other: {fileID: 0}
 --- !u!1 &2503802470087540674
 GameObject:
   m_ObjectHideFlags: 0
