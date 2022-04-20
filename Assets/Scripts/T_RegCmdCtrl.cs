@@ -1,4 +1,4 @@
-﻿/*  File:       T_RegCmdCtrl
+/*  File:       T_RegCmdCtrl
     Purpose:    This file handles the movement and seeking of the Transcription
                 Regulator. The Transcription Regulator seeks out a Kinase with
                 which to bind and transforms once it has bound to one. Also
@@ -385,6 +385,7 @@ public class T_RegCmdCtrl : MonoBehaviour
             yield return new WaitForSeconds(3f);
             //Instantiate our one-off particle system
             ParticleSystem explosionEffect = Instantiate(destructionEffect) as ParticleSystem;
+
             //Sets curent object to be under the parent object.
             explosionEffect.transform.parent   = parentObject.transform;
             explosionEffect.transform.position = other.transform.position;
@@ -394,6 +395,7 @@ public class T_RegCmdCtrl : MonoBehaviour
             //destroy the particle system when its duration is up, right
             //it would play a second time.
             Destroy(explosionEffect.gameObject, explosionEffect.duration);
+
             //destroy our game object
             Destroy(other.gameObject);
         } */

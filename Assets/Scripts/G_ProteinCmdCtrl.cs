@@ -88,7 +88,9 @@ public class G_ProteinCmdCtrl : MonoBehaviour
             docked = ProceedToTarget();
             if(docked)
             {
+
                 //GetComponent<Rigidbody2D>().simulated = false; //turn off collision so the GTP can slide to the right location
+
                 ReleaseGDP();
             }
         }

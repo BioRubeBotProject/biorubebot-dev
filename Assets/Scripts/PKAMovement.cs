@@ -119,6 +119,8 @@ public class PKAMovement : MonoBehaviour
                 other.transform.position = doc.transform.position;
                 other.GetComponent<cAmpMovement>().dockedWithPKA = true;
                 other.GetComponent<CircleCollider2D>().enabled = false;
+                other.GetComponent<Rigidbody2D>().isKinematic = true;
+                other.GetComponent<Rigidbody2D>().simulated = false;
                 numCamps++;
                 if(numCamps > 1)
                     this.GetComponent<ActivationProperties>().isActive = true;

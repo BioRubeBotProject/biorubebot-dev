@@ -6,6 +6,17 @@
     Author:     Alyson Mosely
     Created:    Fall 2022
 */
+
+// **************************************************************
+//  LIBRARY of non-static functions for BioRubeBot game
+//  
+//
+//
+// **** Created on 3/23/2022 by AMosely Spring2022
+// **** 1.) Moved Explode function from ReceptorLegScript.cs to here
+// **** 2.) 
+// **** 3.) 
+// **************************************************************
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,7 +65,9 @@ public class FuncLibrary : MonoBehaviour
         //play it
         explosionEffect.loop = false;
         explosionEffect.Play();
+
         
+
         //child = (GameObject)Instantiate(replaceATPWith, transform.position, Quaternion.identity);
          child = (GameObject)Instantiate(replaceATPWith, parentObject.transform);
          Debug.Log("instantiating here");
@@ -62,6 +75,12 @@ public class FuncLibrary : MonoBehaviour
 
         //child.GetComponent<Rigidbody2D> ().isKinematic  = true;
         //child.transform.parent = parentObject.transform;
+
+        //child = (GameObject)Instantiate(replaceATPWith, transform.position, Quaternion.identity);
+        //child.GetComponent<Rigidbody2D> ().isKinematic  = true;
+        //child.transform.parent = parentObject.transform;
+
+
     
         //destroy the particle system when its duration is up, right
         //it would play a second time.
@@ -71,8 +90,5 @@ public class FuncLibrary : MonoBehaviour
         Destroy(other.gameObject);
         Debug.Log("Destroy");
     }
+
 }
-
-
-
-

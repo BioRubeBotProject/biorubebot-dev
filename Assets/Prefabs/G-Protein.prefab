@@ -342,6 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 416470}
   - component: {fileID: 5090806}
+  - component: {fileID: 1590274393221543765}
   - component: {fileID: 11452286}
   - component: {fileID: 8263324}
   - component: {fileID: 2574531404507011055}
@@ -382,7 +383,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.5
+  m_Mass: 1
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_GravityScale: 0
@@ -391,6 +392,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!58 &1590274393221543765
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192286}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
+
 --- !u!114 &11452286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,6 +423,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GDP: {fileID: 155230, guid: 80c59b74a31f1ff44bb6d2002c73805f, type: 3}
   isActive: 1
+  haveGTP: 0
+  myTarget: {fileID: 0}
 --- !u!82 &8263324
 AudioSource:
   m_ObjectHideFlags: 0
