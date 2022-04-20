@@ -186,7 +186,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
 
         lastPosition = transform.position;//breadcrumb trail
 
-        //check to see how close to the phosphate and disable collider when close
+        //check to see how close to the phosphate
         deltaDistance = Vector3.Distance (transform.position, dockingPosition);
 
         //once in range, station object at docking position

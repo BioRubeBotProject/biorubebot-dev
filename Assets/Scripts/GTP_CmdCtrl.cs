@@ -37,6 +37,7 @@ public class GTP_CmdCtrl: MonoBehaviour
     private int        roamCounter  = 0; // time since last heading speed change while roaming
     private int        curveCounter = 90;// used for smooth transition when tracking
     private Quaternion rotate;           // rotation while tracking
+    private bool       doOnce      = true;
     #endregion Private Fields + Properties + Events + Delegates + Enums
 
     //------------------------------------------------------------------------------------------------
@@ -93,57 +94,58 @@ public class GTP_CmdCtrl: MonoBehaviour
         GameObject objParent = null;
 
         if(Time.timeScale > 0)
-        { 
+        {
 
             if (!targeting && !docked)//Look for a target
             {
-                r.Roaming (this.gameObject);
+                r.Roaming(this.gameObject); //move randomly
 
-                openTarget = BioRubeLibrary.FindClosest(transform, "DockedG_Protein");//level one
-                if(null == openTarget)
+                openTarget = BioRubeLibrary.FindClosest(transform, "DockedG_Protein");//level one, find a target
+                if (null == openTarget)
                 {
-                    obj = BioRubeLibrary.FindClosest(transform, "tGProteinDock");//level 2
-                    if(null != obj)
+                    obj = BioRubeLibrary.FindClosest(transform, "tGProteinDock");//level 2 find a target
+                    if (null != obj)
                     {
                         //get the TGProtien. Doc has parent alpha, which has parent TGProtein
                         objParent = obj.transform.parent.gameObject;
-                        if(null != objParent && objParent.name == "alpha")
+                        if (null != objParent && objParent.name == "alpha")
                             objParent = objParent.transform.parent.gameObject;
 
                         TGProteinProperties objProps = (TGProteinProperties)objParent.GetComponent("TGProteinProperties");
-                        if(objProps.isActive)
+                        if (objProps.isActive)
                         {
                             openTarget = obj;
                         }
                     }
                 }
 
-                if(openTarget != null)
+                if (openTarget != null)
                 {
                     myTarget = openTarget.transform;
                     dockingPosition = GetOffset();
                     LockOn();//call dibs
-                  //  r.moveToDock(this.gameObject, openTarget);
+                             //  r.moveToDock(this.gameObject, openTarget);
                 }
             }
-            else if(!docked)  
+            else if (!docked)
             {
-                if((delay += Time.deltaTime) < 3) //wait 3(from 5) seconds before proceeding to target becuse this gives time for the GDP to exit the TrimericGprotein before it starts targeting it
+                if ((delay += Time.deltaTime) < 3) //wait 3(from 5) seconds before proceeding to target becuse this gives time for the GDP to exit the TrimericGprotein before it starts targeting it
                     r.Roaming(this.gameObject);
                 else
                 {
                     //dockingPosition = GetOffset();
                     docked = r.ProceedToVector(this.gameObject, dockingPosition);
                     timerforlockon++;
-           
-                    if(timerforlockon > timerforlockonMAX && !docked) //if timer is high
+
+                    if (timerforlockon > timerforlockonMAX && !docked) //if timer is high
                     {                                  //reset lockedon,opentarget?,timer, mytarget.tag
                         targeting = false;
                         if (openTarget != null)
                         {
                             openTarget = null;
                             myTarget.tag = "DockedG_Protein";
-                        } else
+                        }
+                        else
                         {
                             myTarget.tag = "tGProteinDock";
                             myTarget = null;
@@ -152,10 +154,16 @@ public class GTP_CmdCtrl: MonoBehaviour
                         obj = null;
                         timerforlockon = 0;
                     }
-                    
+
                 }
-                if(docked)
-                    Cloak();
+                if (docked)
+                {
+                    if (doOnce)
+                    {
+                        StartCoroutine( Cloak() );
+                        doOnce = false;
+                    }
+                }
             }
             if(tag == "ReleasedGTP")
             {
@@ -218,7 +226,7 @@ public class GTP_CmdCtrl: MonoBehaviour
     }
 
     //Cloak retags objects for future reference
-    private void Cloak()
+    private IEnumerator Cloak()
     {
         transform.GetComponent<CircleCollider2D>().enabled = false;
         //transform.GetComponent<Rigidbody2D>().isKinematic = false;
@@ -233,6 +241,10 @@ public class GTP_CmdCtrl: MonoBehaviour
 
         //determine if win condition has been reached
         if (GameObject.FindWithTag("Win_DockedGTP")) WinScenario.dropTag("Win_DockedGTP");
+
+        yield return new WaitForSeconds(1.0f);
+        //Debug.Log("Moving to -1f,.1f");
+        transform.localPosition = new Vector3(-1f, 0.1f, 0);
     }
 
     public IEnumerator ReleasingGTP ()
