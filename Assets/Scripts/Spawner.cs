@@ -110,6 +110,7 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
                     Cell Membrane is in place or if the user is trying to create the Cell Membrane.
         ToDO:       Probably need to refactor this a bit to ensure objects are not spawned outside the cell membrane
                     if they shouldn't be or that they aren't spawned inside the membrane if they shouldn't be
+                    NOTE:  Dr. Cline has said that things should be able to be spawned anywhere, even if they dont work where they are spawned.
     */
     void OnMouseUp()
     {

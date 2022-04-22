@@ -224,7 +224,6 @@ public class T_RegCmdCtrl : MonoBehaviour
                         WinScenario.dropTag("Win_Kinase_TReg_dock");
                         WinConMet = true;
                     }
-
                     Destroy(this.gameObject);  //destroy t_reg normal, because TReg_2 now exists
                 }*/
             }
@@ -327,8 +326,7 @@ public class T_RegCmdCtrl : MonoBehaviour
         {
             if (this.tag == "ATP_tracking")
             {
-                //Set the T_Reg to inactive and the tag to T_Reg_With_Phosphate
-                this.gameObject.tag = "T_Reg_With_Phosphate";
+                
                 this.isActive = false;
 
                 //Disable All Colliders and set the state of ATP Properties to false
@@ -344,6 +342,9 @@ public class T_RegCmdCtrl : MonoBehaviour
                 this.GetComponent<CircleCollider2D>().enabled = false;
                 other.GetComponent<ATPproperties>().changeState(true);
                 other.GetComponent<CircleCollider2D>().enabled = true;
+
+                //Set the T_Reg to inactive and the tag to T_Reg_With_Phosphate
+                this.gameObject.tag = "T_Reg_With_Phosphate";
 
                 //code added to identify a 'left' receptor phosphate for G-protein docking
                 //if it is a left phosphate, G-protein must rotate to dock
@@ -374,6 +375,8 @@ public class T_RegCmdCtrl : MonoBehaviour
                 Debug.Log("Destroying TReg");
                 Destroy(this.gameObject);  //destroy t_reg normal, because TReg_2 now exists
 
+                other.gameObject.GetComponent<KinaseCmdCtrl>().t_RegTransform(obj); //passes the new t_reg_2 object for kinase to know about
+
             }
         }
     }
@@ -390,11 +393,9 @@ public class T_RegCmdCtrl : MonoBehaviour
             //Sets curent object to be under the parent object.
             explosionEffect.transform.parent   = parentObject.transform;
             explosionEffect.transform.position = other.transform.position;
-
             //play it
             explosionEffect.loop = false;
             explosionEffect.Play();
-
             //destroy the particle system when its duration is up, right
             //it would play a second time.
             Destroy(explosionEffect.gameObject, explosionEffect.duration);
