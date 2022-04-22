@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Pan.cs" />
     <Compile Include="Assets\Scripts\VolumeSlider.cs" />
     <Compile Include="Assets\Scripts\simpleMovement.cs" />
+    <Compile Include="Assets\Scripts\ADP_CmdCtrl.cs" />
     <Compile Include="Assets\Scripts\GTP_Script2.cs" />
     <Compile Include="Assets\Scripts\HomeScreen.cs" />
     <Compile Include="Assets\Scripts\ExternalReceptorProperties.cs" />
@@ -134,7 +135,6 @@
     <Compile Include="Assets\Scripts\ReceptorPathfinding.cs" />
     <Compile Include="Assets\Scripts\BioRubeLibrary.cs" />
     <Compile Include="Assets\Scripts\G_ProteinCmdCtrl.cs" />
-    <Compile Include="Assets\Scripts\ADP_CmdCtrl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
