@@ -20,14 +20,15 @@ public class KinaseCmdCtrl : MonoBehaviour  //, Roamer.CollectObject
 
     private Roamer       r = new Roamer();
     private GameObject active_G_Protein;
-    private GameObject T_Reg;
-    private Transform  myTarget;
+    public  GameObject T_Reg;
+    public  Transform  myTarget;
     public Vector3    midpoint;
     private float      delay;
     private float      timeoutForInteraction;
     private bool       midpointSet;
     private bool[]     midpointAchieved = new bool[2];
     private bool       WinConMet        = false; //used to determine if the win condition has already been met
+    private bool       docked           = false; //used when t_reg is docked and transformed.
 
     // Use this for initialization
     void Start()
@@ -70,23 +71,9 @@ public class KinaseCmdCtrl : MonoBehaviour  //, Roamer.CollectObject
         }
         else if(tag == "Kinase_Prep_A" || tag == "Kinase_Prep_B")
         {
-            // if((delay += Time.deltaTime) >= 5.0f)  //wont move for the first 5 seconds.
-            // {
-            //     if(!midpointSet && tag == "Kinase_Prep_A")
-            //    {
-            //        midpoint = BioRubeLibrary.CalcMidPoint(active_G_Protein, this.gameObject);
-            //         midpointSet = true;
-            //    }
-            //    else if(r.ApproachMidpoint(active_G_Protein,this.gameObject,midpointAchieved,midpoint, setupVector(), setupRestraint()))
-            //    {
-            //        setupNextPhase();
-            //    }
-            //}
+
             r.moveToDock(this.gameObject, active_G_Protein);
-            //else
-           // {
-            //    r.Roaming(this.gameObject);
-           // }
+
             timeoutForInteraction += Time.deltaTime;
         } 
         else if(tag == "Kinase_Prep_C") 
@@ -118,7 +105,7 @@ public class KinaseCmdCtrl : MonoBehaviour  //, Roamer.CollectObject
                         this.gameObject.transform.parent                          = active_G_Protein.transform;
                         this.GetComponent<Rigidbody2D>().simulated = true;
                     }
-            //        r.Roaming(active_G_Protein);  //not sure why this exists
+
                     //determine if win condition has been reached
                     if(!WinConMet &(GameObject.FindWithTag("Win_KinaseTransformation")))
                     {
@@ -143,7 +130,7 @@ public class KinaseCmdCtrl : MonoBehaviour  //, Roamer.CollectObject
           //  {
           //      myTarget = null;
           //      T_Reg = null;
-            } else if(T_Reg != null && myTarget != null)
+            } else if(T_Reg != null && myTarget != null  && !docked)
             {
                 r.moveToDock(this.gameObject, T_Reg);
                 //Debug.Log("moving to t_reg");
@@ -242,5 +229,11 @@ public class KinaseCmdCtrl : MonoBehaviour  //, Roamer.CollectObject
             this.gameObject.tag = newTag;
             active_G_Protein = obj;
         }
+    }
+    public void t_RegTransform(GameObject obj)
+    {
+        T_Reg = obj;
+        myTarget = obj.transform;
+        docked = true;
     }
 }
