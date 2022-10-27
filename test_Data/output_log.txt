@@ -1,49 +1,49 @@
 Initialize engine version: 5.6.1f1 (2860b30f0b54)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GT 750M   (ID=0xfe4)
-    Vendor:   NVIDIA
-    VRAM:     1986 MB
-    Driver:   10.18.13.5435
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon(TM) Vega 8 Graphics (ID=0x15d8)
+    Vendor:   ATI
+    VRAM:     2033 MB
+    Driver:   30.0.13023.4001
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
-Loading C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
-Loading C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Pathfinding.Ionic.Zip.Reduced.dll (this message is harmless)
-Loading C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Pathfinding.Ionic.Zip.Reduced.dll into Unity Child Domain
-Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Pathfinding.JsonFx.dll (this message is harmless)
-Loading C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\Pathfinding.JsonFx.dll into Unity Child Domain
-- Completed reload, in  0.268 seconds
-Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Admin\Desktop\biorubebot-dev-master\test_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Pathfinding.Ionic.Zip.Reduced.dll (this message is harmless)
+Loading C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Pathfinding.Ionic.Zip.Reduced.dll into Unity Child Domain
+Platform assembly: C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Pathfinding.JsonFx.dll (this message is harmless)
+Loading C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\Pathfinding.JsonFx.dll into Unity Child Domain
+- Completed reload, in  2.851 seconds
+Platform assembly: C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Nick White\Desktop\Biorube Changelogs\biorubebot-dev-NickWhite_Fall2022\test_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.157605 ms
+UnloadTime: 1.236600 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.087946 ms
+UnloadTime: 1.998800 ms
 
 Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 991.
-Total: 0.697899 ms (FindLiveObjects: 0.058585 ms CreateObjectMapping: 0.047895 ms MarkObjects: 0.511450 ms  DeleteObjects: 0.079539 ms)
+Total: 0.548000 ms (FindLiveObjects: 0.056400 ms CreateObjectMapping: 0.032200 ms MarkObjects: 0.405100 ms  DeleteObjects: 0.053300 ms)
 
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.359685 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.178400 ms
 
-Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 1231.
-Total: 0.855696 ms (FindLiveObjects: 0.072270 ms CreateObjectMapping: 0.062434 ms MarkObjects: 0.685497 ms  DeleteObjects: 0.034638 ms)
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 1422.
+Total: 0.918600 ms (FindLiveObjects: 0.086100 ms CreateObjectMapping: 0.059900 ms MarkObjects: 0.740000 ms  DeleteObjects: 0.031500 ms)
 
 Start -> 0
  
@@ -53,23 +53,19 @@ PlayButton -> 1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-FastForwardButton -> 2
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.657300 ms
 
-OnTriggerEnter2D -> object name = _ReceptorInactive(Clone)
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+Unloading 71 unused Assets to reduce memory usage. Loaded Objects now: 1018.
+Total: 1.514600 ms (FindLiveObjects: 0.070800 ms CreateObjectMapping: 0.060700 ms MarkObjects: 0.551600 ms  DeleteObjects: 0.830900 ms)
 
-FastForwardButton -> 1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.495000 ms
 
-PauseButton -> 0
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 1571.
+Total: 0.920500 ms (FindLiveObjects: 0.090400 ms CreateObjectMapping: 0.058400 ms MarkObjects: 0.744300 ms  DeleteObjects: 0.026300 ms)
 
-PlayButton -> 0
+Start -> 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -77,28 +73,18 @@ PlayButton -> 1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-PauseButton -> 0
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.311000 ms
 
-PlayButton -> 0
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+Unloading 169 unused Assets to reduce memory usage. Loaded Objects now: 1018.
+Total: 1.277600 ms (FindLiveObjects: 0.068200 ms CreateObjectMapping: 0.048200 ms MarkObjects: 0.447900 ms  DeleteObjects: 0.712400 ms)
 
-PlayButton -> 1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.561900 ms
 
-PauseButton -> 0
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+Unloading 370 unused Assets to reduce memory usage. Loaded Objects now: 548.
+Total: 0.908900 ms (FindLiveObjects: 0.068900 ms CreateObjectMapping: 0.046100 ms MarkObjects: 0.301500 ms  DeleteObjects: 0.491300 ms)
 
-PlayButton -> 0
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Setting up 4 worker threads for Enlighten.
-  Thread -> id: 393c -> priority: 1 
-  Thread -> id: 3190 -> priority: 1 
-  Thread -> id: 748 -> priority: 1 
-  Thread -> id: 700 -> priority: 1 
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: c84 -> priority: 1 
+  Thread -> id: 1db0 -> priority: 1 

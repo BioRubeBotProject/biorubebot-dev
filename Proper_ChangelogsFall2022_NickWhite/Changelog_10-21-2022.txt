@@ -1,0 +1,93 @@
+BioRubeLibrary.cs
+------------------------
+========================
+line 39-44:
+	from:
+		public static bool StillHere( GameObject obj, string objTag)
+		{
+        		GameObject[] trackable = GameObject.FindGameObjectsWithTag(objTag);
+        		for(int index = 0; index < trackable.Length; index++ )
+			{
+            			if(obj == trackable[index])
+                			return true;
+        		}
+        		return false;
+    		}
+	to:
+		public static bool StillExists( GameObject obj)
+    		{
+        		if(obj)
+            			return true;
+        		return false;
+    		}
+========================
+------------------------
+ReceptorPathfinding.cs
+------------------------
+========================
+line 32:
+	added:
+		private bool found = false;
+========================
+line 73-90
+	from:
+
+		myFoundObjs = GameObject.FindGameObjectsWithTag(strFind);
+        	count       = myFoundObjs.Length;
+        	if(start == -1)
+            		start = RNG.Next(0,count);
+        	for(index = start; count != 0 && (index != start || !looped); index++)
+        	{
+            		if(index >= count)
+			{
+                		index = 0;
+                		looped = true;
+            		}
+            		if((myFoundObjs[index].GetComponent<ActivationProperties>().isActive == activeFind))
+            		{
+                		myTarget = myFoundObjs[index];
+                		found    = true;
+                		break;
+            		}
+        	}
+
+
+	to:
+		if(!BioRubeLibrary.StillExists(myTarget) || myTarget.GetComponent<ActivationProperties>().isActive != activeFind)
+        	{
+            		found = false;
+            		myFoundObj = BioRubeLibrary.FindRandom(strFind);
+            		if(myFoundObj)
+            		{
+                		if((myFoundObj.GetComponent<ActivationProperties>().isActive == activeFind))
+                    		{
+                        		myTarget = myFoundObj;
+                        		found    = true;
+                    		}
+            		}
+        	}
+============================================================
+line 97:
+	removed:
+		start = -1;
+===========================================
+line 30:
+	removed:
+		private int start = -1;
+============================================
+line 29:
+	from:
+		private GameObject myTarget
+	to:
+		private GameObject myTarget = null;
+============================================
+-------------------------------------------------------------
+GPCR.cs
+-----------------------------------------------------------
+===========================================================
+line 36:
+	from:
+		this.gameObject.GetComponent<ActivationProperties>().isActive = false;
+	to:
+		this.gameObject.GetComponent<ActivationProperties>().isActive = true;
+		

@@ -1,0 +1,136 @@
+Added CircleCollider2D to prefab on cAmp
+isTrigger = false
+X = 0.01398952 Y=-0.02808714
+Radius = 0.3398492
+
+Edited other CircleCollider2D
+for isTrigger = true
+Radius:
+	from:
+		Radius = 0.3398492
+	to:
+		Radius = 0.5
+Edited RigidBody 2D
+material = BouncyBox
+	reason to keep the cAmp from getting stuck.
+-----------------------------------------------------
+Spawner.cs
+-------------------------------
+===============================
+line 115-130:
+	from:
+		void OnMouseUp()
+    		{
+			if((cellMembrane != null || spawnedObject.name == "Cell Membrane"))
+        		{
+            			spawnLocation = transform.position;
+            			GameObject obj = Instantiate(spawnedObject, spawnLocation, Quaternion.Euler(0f, 0f, degrees)) as GameObject;
+
+            			//Sets curent object to be under the parent object.
+            			obj.transform.parent = parentObject.transform;
+            			GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(obj);
+            			obj = GameObject.FindGameObjectWithTag("CellMembraneButton") as GameObject;
+           			if(obj != null)
+            			{
+                			obj.SetActive(false);
+            			}
+        		}
+	to:
+		void OnMouseUp()
+    		{
+        		bool candrop = true;
+        		if((cellMembrane != null || spawnedObject.name == "Cell Membrane"))
+        		{
+            			if(rotatableNames.Any(spawnedObject.name.Contains))
+                			if(!snapping)
+                    				candrop=false;
+            			if(candrop)
+            			{
+               				spawnLocation = transform.position;
+                			GameObject obj = Instantiate(spawnedObject, spawnLocation, Quaternion.Euler(0f, 0f, degrees)) as GameObject;
+
+                			//Sets curent object to be under the parent object.
+                			obj.transform.parent = parentObject.transform;
+                			GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(obj);
+                			obj = GameObject.FindGameObjectWithTag("CellMembraneButton") as GameObject;
+                			if(obj != null)
+                			{
+                   				obj.SetActive(false);
+                			}
+            			}
+        		}
+===============================
+line 27:
+	added:
+		public bool snapping=false;
+===============================
+line 38:
+	added:
+		string[] rotatableNames = {"_ReceptorInactive", "NPC", "Right_Receptor_Inactive", "Left_Receptor_Inactive",
+                                   "GPCR-A", "ABG-ALL", "Adenylyl_cyclase-A"};
+================================
+line 90-91:
+	removed:
+		string[] rotatableNames = {"_ReceptorInactive", "NPC", "Right_Receptor_Inactive", "Left_Receptor_Inactive",
+                                   "GPCR-A", "ABG-ALL", "Adenylyl_cyclase-A"};
+================================
+line 148-173:
+	from:
+		void ThisIsARotatableObject()
+    		{
+       			float cellDistance = Vector3.Distance(guidePosition, cellMembrane.transform.position);
+        		float nucDistance  = Vector3.Distance(guidePosition, nucleus.transform.position);
+
+        		if(cellDistance < snapDistance * cellMembrane.transform.localScale.x &&
+           		cellDistance > snapRadius / 1.2)//are we close to the cell membrane wall?
+        		{
+            			float cellMemX = guidePosition.x - cellMembrane.transform.position.x;
+            			float cellMemY = guidePosition.y - cellMembrane.transform.position.y;
+            			SnapAndRotate(cellMemY, cellMemX, cellMembrane.transform);
+        		}
+        		else if(cellDistance < snapRadius / 1.3 &&
+                	nucDistance < snapDistance * 1.8 * nucleus.transform.localScale.x)//nucleus wall?
+        		{
+            			float nucleusX = guidePosition.x - nucleus.transform.position.x;
+            			float nucleusY = guidePosition.y - nucleus.transform.position.y;
+            			SnapAndRotate(nucleusY, nucleusX, nucleus);
+        		}
+        		else
+        		{
+            			transform.localRotation = returnRotation;
+            			transform.position = guidePosition;
+            			degrees = 0f;
+        		}
+    		}
+	to:
+		void ThisIsARotatableObject()
+    		{
+        		float cellDistance = Vector3.Distance(guidePosition, cellMembrane.transform.position);
+        		float nucDistance  = Vector3.Distance(guidePosition, nucleus.transform.position);
+
+        		if(cellDistance < snapDistance * cellMembrane.transform.localScale.x &&
+           		cellDistance > snapRadius / 1.2)//are we close to the cell membrane wall?
+        		{
+            			snapping = true;
+            			float cellMemX = guidePosition.x - cellMembrane.transform.position.x;
+            			float cellMemY = guidePosition.y - cellMembrane.transform.position.y;
+            			SnapAndRotate(cellMemY, cellMemX, cellMembrane.transform);
+        		}
+        		else if(cellDistance < snapRadius / 1.3 &&
+                	nucDistance < snapDistance * 1.8 * nucleus.transform.localScale.x)//nucleus wall?
+        		{
+            			snapping = true;
+            			float nucleusX = guidePosition.x - nucleus.transform.position.x;
+            			float nucleusY = guidePosition.y - nucleus.transform.position.y;
+            			SnapAndRotate(nucleusY, nucleusX, nucleus);
+        		}
+        		else
+        		{
+            			snapping = false;
+            			transform.localRotation = returnRotation;
+            			transform.position = guidePosition;
+            			degrees = 0f;
+        		}
+    		}
+========================================================================
+------------------------------------------------------------------------

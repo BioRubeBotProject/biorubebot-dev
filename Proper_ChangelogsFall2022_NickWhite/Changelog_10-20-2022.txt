@@ -1,0 +1,33 @@
+G_ProteinCmdCtrl.cs
+------------------------------------------------------
+======================================================
+Line 75:
+	from:
+		openTarget = BioRubeLibrary.FindClosest (transform, "ReceptorPhosphate");
+	to:
+		openTarget = BioRubeLibrary.FindRandom("ReceptorPhosphate");
+=======================================================
+Line 112:
+	from:
+		GameObject Kinase = BioRubeLibrary.FindClosest (transform, "Kinase");
+	to:
+		GameObject Kinase = BioRubeLibrary.FindRandom ("Kinase");
+=======================================================
+-------------------------------------------------------
+ReceptorPathfinding.cs
+-------------------------------------------------------
+=======================================================
+line 50:
+	added:
+		bool looped = false;
+=======================================================
+line 76-77:
+	removed:
+		bool looped = false;
+=======================================================
+line 76:
+	from:
+		 for(index = start; index != start || !looped ; index++)
+	to:
+		 for(index = start; count != 0 && (index != start || !looped); index++)
+=======================================================
