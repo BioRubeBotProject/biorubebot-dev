@@ -6,6 +6,7 @@
     Author:     Ryan Wood
     Created:    Fall 2021
 */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,9 +18,10 @@ public class PKAProperties : MonoBehaviour, ActivationProperties
 
     public bool isActive
     {
-        get => m_isActive;
-        set => m_isActive = value;
+        get { return m_isActive; }
+        set { m_isActive = value; }
     }
+
     // Start is called before the first frame update
     void Start()
     {

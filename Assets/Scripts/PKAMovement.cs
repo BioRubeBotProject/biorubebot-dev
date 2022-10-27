@@ -16,58 +16,15 @@ public class PKAMovement : MonoBehaviour
 {
     //these public members are set in the Prefab in Unity
     public GameObject activePKA;         // Game Object to spawn once activated
-    public Transform  origin;            // origin location/rotation is the physical PKA
-    public float      maxHeadingChange;  // max possible rotation angle at a time
-    public int        maxRoamChangeTime; // how long before changing heading/speed
+    public float      maxHeadingChange = 20;  // max possible rotation angle at a time
     public int        minSpeed;          // slowest the GTP will move
     public int        maxSpeed;          // fastest the GTP will move
 
-    private float    heading;               // roaming direction
-    private float    headingOffset;         //used for smooth rotation while roaming
+    private Roamer r;                             //an object that holds the values for the roaming (random movement) methods
     private bool     isSeparated    = false;//whether the PKA has separated from the Kinase
-    private int      movementSpeed  = 0;    // roaming velocity
-    private int      roamInterval   = 0;    // how long until heading/speed change while roaming
-    private int      roamCounter    = 0;    // time since last heading speed change while roaming
     private int      numCamps       = 0;
 
-    /*  Function:   Roam()
-        Purpose:    This function has the PKA move about the Cell Membrane with
-                    no particular direction or purpose while it awaits activation
-    */
-    private void Roam()
-    {
-        if(Time.timeScale != 0)// if game not paused
-        {
-            roamCounter++;
-            if(roamCounter > roamInterval)
-            {
-                roamCounter   = 0;
-                var floor     = Mathf.Clamp(heading - maxHeadingChange, 0, 360);
-                var ceiling   = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
-                roamInterval  = UnityEngine.Random.Range(5, maxRoamChangeTime);
-                movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
 
-                RaycastHit2D collision = Physics2D.Raycast(origin.position, origin.up);
-                if(collision.collider != null && collision.collider.name == "Cell Membrane(Clone)" &&
-                   collision.distance < 2)
-                {
-                    if(heading <= 180)
-                        heading = heading + 180;
-                    else
-                        heading = heading - 180;
-
-                    movementSpeed = maxSpeed;
-                    roamInterval  = maxRoamChangeTime;
-                }
-                else
-                    heading = UnityEngine.Random.Range(floor, ceiling);
-
-                headingOffset = (transform.eulerAngles.z - heading) / (float)roamInterval;
-            }
-            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - headingOffset);
-            transform.position += transform.up * Time.deltaTime * movementSpeed;
-        }
-    }
 
     /*  Function:   getPkaWhite() GameObject
         Purpose:    this function retrieves the child of this Game Object
@@ -133,6 +90,7 @@ public class PKAMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        r = new Roamer(minSpeed, maxSpeed, maxHeadingChange);
     }
 
     /*  Function:   OnTriggerEnter2D(Collider2D)
@@ -148,9 +106,9 @@ public class PKAMovement : MonoBehaviour
     */
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GameObject newCamp  = null;
+      //  GameObject newCamp  = null;
         GameObject doc      = null;
-        GameObject pka      = null;
+       // GameObject pka      = null;
 
         if(other.gameObject.name == "cAMP(Clone)" && numCamps < 2)
         {
@@ -161,6 +119,8 @@ public class PKAMovement : MonoBehaviour
                 other.transform.position = doc.transform.position;
                 other.GetComponent<cAmpMovement>().dockedWithPKA = true;
                 other.GetComponent<CircleCollider2D>().enabled = false;
+                other.GetComponent<Rigidbody2D>().isKinematic = true;
+                other.GetComponent<Rigidbody2D>().simulated = false;
                 numCamps++;
                 if(numCamps > 1)
                     this.GetComponent<ActivationProperties>().isActive = true;
@@ -196,8 +156,8 @@ public class PKAMovement : MonoBehaviour
         return oldPka;
     }
 
-    /*  Function:   Update()
-        Purpose:    this function is called once per frame. Generally, it just
+    /*  Function:   FixedUpdate()
+        Purpose:    this function is called once per physics update. Generally, it just
                     calls the Roam function so that the PKA roams around the
                     Cell Membrane awaiting activation. But, once the PKA becomes
                     acitve, this function will kick off the process of separation
@@ -205,9 +165,9 @@ public class PKAMovement : MonoBehaviour
                     and freeing it from the white portion of the PKA that will
                     continue to roam around with its cAMPs attached
     */
-    void Update()
+    void FixedUpdate()
     {
-        Roam();
+        r.Roaming(this.gameObject);
         if(this.gameObject.GetComponent<ActivationProperties>().isActive && !isSeparated)
         {
             GameObject oldPKA = getInactivePka();

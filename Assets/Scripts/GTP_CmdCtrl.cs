@@ -23,9 +23,6 @@ public class GTP_CmdCtrl: MonoBehaviour
     public float      maxHeadingChange;    // max possible rotation angle at a time
     public float      angleToRotate;       // stores the angle in degrees between GTP and dock
     public bool       droppedOff = false;  // is phospate gone?
-    public bool       found      = false;  // did this GTP find a dock?
-    public bool       spin       = false;
-    public int        maxRoamChangeTime;   // how long before changing heading/speed
     public int        minSpeed;            // slowest the GTP will move
     public int        maxSpeed;            // fastest the GTP will move
     #endregion Public Fields + Properties + Events + Delegates + Enums
@@ -40,6 +37,7 @@ public class GTP_CmdCtrl: MonoBehaviour
     private int        roamCounter  = 0; // time since last heading speed change while roaming
     private int        curveCounter = 90;// used for smooth transition when tracking
     private Quaternion rotate;           // rotation while tracking
+    private bool       doOnce      = true;
     #endregion Private Fields + Properties + Events + Delegates + Enums
 
     //------------------------------------------------------------------------------------------------
@@ -47,75 +45,33 @@ public class GTP_CmdCtrl: MonoBehaviour
 
     private bool docked    = false;     // GTP position = Docked G-protein position
     private bool targeting = false;     // is GTP targeting docked G-protein
-    
+    private int timerforlockon;         // has GTP been targeting for too long?
+    private int timerforlockonMAX = 800; //when is the GTP never going to arrive because its stuck or behind a membrain
+
     private float delay = 0f;
     private float deltaDistance;        // measures distance traveled to see if GTP is stuck behind something
     //private float randomX, randomY;       // random number between MIN/MAX_X and MIN/MAX_Y
     
     private GameObject openTarget;      //  found docked g-protein
-    private Transform myTarget;         // = openTarget.transform
+    public Transform myTarget;         // = openTarget.transform
     
     //private Vector2 randomDirection;  // new direction vector
-    private Vector3 dockingPosition;    // myTarget position +/- offset
+    public Vector3 dockingPosition;    // myTarget position +/- offset
     private Vector3 lastPosition;
-    // previous position while moving to docked G-protein
+
+    private Roamer r;                             //an object that holds the values for the roaming (random movement) methods
+
 
     /*  Function:   Start()
-        Purpose:    This function is called upon instantiation and
-                    initializes last position to current
+        Purpose:    This function is called upon instantiation
     */
     private void Start()
     {
-        lastPosition = transform.position;          
+        lastPosition = transform.position;
+        r = new Roamer(minSpeed, maxSpeed, maxHeadingChange);
     }
 
-    /*  Functin:    Roam2()
-        Purpose:    this function has the GTP roam around the cell membrane
-                    aimlessly. This is called when there is nothing around
-                    for the GTP to seek out and bind with.
-                    Must have been named Roam2 in order to be consistent
-                    with other functions in this game that do the same thing
-                    but not step on the Roam class that is used in this file
-    */
-    private void Roam2()
-    {
-        if(Time.timeScale != 0)// if game not paused
-        {
-            roamCounter++; 
-            rotate.z = heading -180;
-            if(roamCounter > roamInterval)                         
-            {                                                   
-                roamCounter   = 0;
-                var floor     = Mathf.Clamp(heading - maxHeadingChange, 0, 360);  
-                var ceiling   = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
-                roamInterval  = UnityEngine.Random.Range(5, maxRoamChangeTime);   
-                movementSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
-
-                if(null != origin)
-                {
-                    RaycastHit2D collision = Physics2D.Raycast(origin.position, origin.up);
-
-                    if(collision.collider != null && collision.collider.name == "Cell Membrane(Clone)" &&
-                       collision.distance < 2)
-                    {
-                        if(heading <= 180)
-                            heading = heading + 180;
-                        else
-                            heading = heading - 180;
-
-                        movementSpeed = maxSpeed;
-                        roamInterval  = maxRoamChangeTime;
-                    }
-                    else
-                        heading = UnityEngine.Random.Range(floor, ceiling);
-
-                    headingOffset = (transform.eulerAngles.z - heading) / (float)roamInterval;
-                }
-            }
-            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - headingOffset);
-            transform.position += transform.up * Time.deltaTime * movementSpeed;
-        }
-    }
+ 
 
     /*  Function:   FixedUpdate()
         Purpose:    This function determines whether the GTP should roam around
@@ -138,57 +94,76 @@ public class GTP_CmdCtrl: MonoBehaviour
         GameObject objParent = null;
 
         if(Time.timeScale > 0)
-        { 
-            if(spin) 
-            {
-                transform.rotation = Quaternion.Slerp (transform.rotation, rotation, 2 * Time.deltaTime);
-                if(Quaternion.Angle(transform.rotation,rotation) == 0)
-                    spin = false;
-            }
-            if(found == false)
-                Roam2();
+        {
 
-            if(!targeting)//Look for a target
+            if (!targeting && !docked)//Look for a target
             {
-                Roam2();
-                Roam.Roaming (this.gameObject);
+                r.Roaming(this.gameObject); //move randomly
 
-                openTarget = Roam.FindClosest(transform, "DockedG_Protein");//level one
-                if(null == openTarget)
+                openTarget = BioRubeLibrary.FindRandom("DockedG_Protein");//level one, find a target
+                if (null == openTarget)
                 {
-                    obj = Roam.FindClosest(transform, "tGProteinDock");//level 2
-                    if(null != obj)
+                    obj = BioRubeLibrary.FindRandom("tGProteinDock");//level 2 find a target
+                    if (null != obj)
                     {
                         //get the TGProtien. Doc has parent alpha, which has parent TGProtein
                         objParent = obj.transform.parent.gameObject;
-                        if(null != objParent && objParent.name == "alpha")
+                        if (null != objParent && objParent.name == "alpha")
                             objParent = objParent.transform.parent.gameObject;
 
                         TGProteinProperties objProps = (TGProteinProperties)objParent.GetComponent("TGProteinProperties");
-                        if(objProps.isActive)
+                        if (objProps.isActive)
                         {
                             openTarget = obj;
                         }
                     }
                 }
 
-                if(openTarget != null)
+                if (openTarget != null)
                 {
                     myTarget = openTarget.transform;
                     dockingPosition = GetOffset();
                     LockOn();//call dibs
+                             //  r.moveToDock(this.gameObject, openTarget);
                 }
             }
-            else if(!docked)
+            else if (!docked)
             {
-                if((delay += Time.deltaTime) < 5)//wait 5 seconds before proceeding to target
-                    Roam.Roaming(this.gameObject);
+                if ((delay += Time.deltaTime) < 3) //wait 3(from 5) seconds before proceeding to target becuse this gives time for the GDP to exit the TrimericGprotein before it starts targeting it
+                    r.Roaming(this.gameObject);
                 else
                 {
-                    docked = Roam.ProceedToVector(this.gameObject, dockingPosition);
+                    //dockingPosition = GetOffset();
+                    docked = r.ProceedToVector(this.gameObject, dockingPosition);
+                    timerforlockon++;
+
+                    if (timerforlockon > timerforlockonMAX && !docked) //if timer is high
+                    {                                  //reset lockedon,opentarget?,timer, mytarget.tag
+                        targeting = false;
+                        if (openTarget != null)
+                        {
+                            openTarget = null;
+                            myTarget.tag = "DockedG_Protein";
+                        }
+                        else
+                        {
+                            myTarget.tag = "tGProteinDock";
+                            myTarget = null;
+                        }
+                        openTarget = null;
+                        obj = null;
+                        timerforlockon = 0;
+                    }
+
                 }
-                if(docked)
-                    Cloak();
+                if (docked)
+                {
+                    if (doOnce)
+                    {
+                        StartCoroutine( Cloak() );
+                        doOnce = false;
+                    }
+                }
             }
             if(tag == "ReleasedGTP")
             {
@@ -199,6 +174,17 @@ public class GTP_CmdCtrl: MonoBehaviour
         }
     }
 
+    //attempting re-write of how GTP attaches to Trimeric G-Protein (ABG-ALL)
+ //   private void OnTriggerEnter2D(Collider2D other) //Triggered from Unity when GTP's collider component hits another collider
+//    {
+ //       if(other.gameObject.name == "ABG-ALL(Clone)") //if that other collider is "ABG-ALL(Clone)", then:
+//        {
+//            docked = true;
+ //           Cloak();
+ //       }
+//
+ //   }
+
     /*  Function:   GetOffset() Vector3
         Purpose:    GetOffset determines whether a target is to the  left or right of the receptor
                     and based on the target's position, relative to the receptor, an offset is 
@@ -207,15 +193,23 @@ public class GTP_CmdCtrl: MonoBehaviour
         Return:     the offset from the target, a smidge to the left or right
     */
     private Vector3 GetOffset()
-    {   
+    {
+        Debug.Log("GettingOffset() to: " + myTarget.position.ToString());
+
         if(myTarget.childCount > 0)//if we have children dealing Level1 G-Protein
         {
-            if(myTarget.GetChild(0).tag == "Left")
-                return myTarget.position + new Vector3 (-2.2f, 0.28f, 0);
+            if (myTarget.GetChild(0).tag == "Left")
+                return myTarget.position + new Vector3(-2.2f, 0.28f, 0);
+            else if (myTarget.GetChild(2).name == "Transporter Side A")
+            {
+                Debug.Log("GettingOffset() of side A to: " + myTarget.position.ToString()+ myTarget.GetChild(2).position.ToString() + " = " + (myTarget.position + myTarget.GetChild(2).position).ToString() );
+                return myTarget.position + myTarget.GetChild(2).localPosition + new Vector3(-1f,0,0);
+            }
+                
         }
         else
             return myTarget.position;//if no children, Level2 T-G-Protein, just get the target's pos
-        return myTarget.position + new Vector3 (2.2f, 0.28f, 0);
+        return myTarget.position + new Vector3 (-2.2f, 0.28f, 0);
     }
 
     /*  Function:   LockOn()
@@ -228,15 +222,18 @@ public class GTP_CmdCtrl: MonoBehaviour
     {
         targeting    = true;
         myTarget.tag = "Target";
+        timerforlockon = 0;   //sudo fix for issue where GTP is outside the cell wall and or stuck
     }
 
     //Cloak retags objects for future reference
-    private void Cloak()
+    private IEnumerator Cloak()
     {
         transform.GetComponent<CircleCollider2D>().enabled = false;
-        transform.GetComponent<Rigidbody2D>().isKinematic = true;
+        //transform.GetComponent<Rigidbody2D>().isKinematic = false;
+        GetComponent<Rigidbody2D>().simulated = false;
+        transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;  //added to stop the random slide that occasionally happens after docking
 
-        transform.position = dockingPosition;
+        //transform.position = dockingPosition;
         transform.parent   = myTarget;
         myTarget.tag       = "OccupiedG_Protein";
         transform.tag      = "DockedGTP";
@@ -244,6 +241,10 @@ public class GTP_CmdCtrl: MonoBehaviour
 
         //determine if win condition has been reached
         if (GameObject.FindWithTag("Win_DockedGTP")) WinScenario.dropTag("Win_DockedGTP");
+
+        yield return new WaitForSeconds(1.0f);
+        //Debug.Log("Moving to -1f,.1f");
+        transform.localPosition = new Vector3(-1f, 0.1f, 0);
     }
 
     public IEnumerator ReleasingGTP ()

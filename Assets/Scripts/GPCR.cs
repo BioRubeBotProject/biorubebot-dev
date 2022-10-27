@@ -15,6 +15,9 @@ public class GPCR : MonoBehaviour
     public GameObject _ActiveGPCR; //the Active GPCR Prefab
     public GameObject parentObject;//Parent object used for unity editor Tree Hierarchy
 
+    private bool winconditionactivated = false;
+
+
     #region Private Methods
 
     /*  Function:   OnTriggerEnter2D(Collider2D)
@@ -30,14 +33,17 @@ public class GPCR : MonoBehaviour
             //Get reference for parent object in UnityEditor
             parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
 
-            this.gameObject.GetComponent<ActivationProperties>().isActive = false;
+            this.gameObject.GetComponent<ActivationProperties>().isActive = true;
             other.GetComponent<ExtraCellularProperties>().changeState(false);
             other.GetComponent<Rigidbody2D>().isKinematic = true;
        
             StartCoroutine(transformReceptor());
             //check if action is a win condition for the scene/level
-            if(GameObject.FindWithTag("Win_GPCR_Activated"))
+            if (!winconditionactivated && GameObject.FindWithTag("Win_GPCR_Activated"))
+            {
                 WinScenario.dropTag("Win_GPCR_Activated");
+                winconditionactivated = true;
+            }
         }
     }
 

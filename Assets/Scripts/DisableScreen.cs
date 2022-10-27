@@ -32,14 +32,22 @@ public class DisableScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameWon.Set_WinConditions();
-        //Set active congratulations to ative. Unity does not support activating so had to update
-        if(GameWon.IsWon() == true)
+        if (gratsPanel != null)
         {
-            foreach(GameObject obj2 in gratsPanel)
+            GameWon.Set_WinConditions();
+            //Set active congratulations to ative. Unity does not support activating so had to update
+            if (GameWon.IsWon() == true)
             {
-                obj2.SetActive(true);
+                foreach (GameObject obj2 in gratsPanel)
+                {
+                    if (obj2 != null)
+                        obj2.SetActive(true);
+                }
             }
+        } else
+        {
+            gratsPanel = GameObject.FindGameObjectsWithTag("Congratulations");
         }
     }
+
 }

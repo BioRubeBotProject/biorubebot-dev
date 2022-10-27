@@ -24,6 +24,7 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
     public static bool panning = true; // unknown
     public float       snapRadius;     // the radius for the spawned object to snap to
     public float       snapDistance;   // to rotate, object must be within this relative distance
+    public bool        snapping = false; // to check if an object is being placed on a snap only needed for anything that can snap
     public GameObject  spawnedObject;  // for final object instantiation (after user releases mouse)
     public Vector3     spawnLocation;  // for final object instantiation (after user releases mouse)
     public Vector3     guidePosition;  // cannot change "transform.position.x,y, or z" directly
@@ -35,6 +36,8 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
     private float      degrees;        // calculated # of degrees for object instantiation
     private Vector3    returnLocation; // original location of the "button"
     private Quaternion returnRotation; // orginal rotaion of the "button"
+    string[] rotatableNames = {"_ReceptorInactive", "NPC", "Right_Receptor_Inactive", "Left_Receptor_Inactive",
+                                   "GPCR-A", "ABG-ALL", "Adenylyl_cyclase-A"}; //list of all objects that snap
 
     /*  File:       Update()
         Purpose:    Called once per frame, this function updates the x and y position of
@@ -87,8 +90,6 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
     
     void OnMouseDrag()
     {
-        string[] rotatableNames = {"_ReceptorInactive", "NPC", "Right_Receptor_Inactive", "Left_Receptor_Inactive",
-                                   "GPCR-A", "ABG-ALL", "Adenylyl_cyclase-A"};
 
         guidePosition = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, spawnedObject.transform.position.z + 1));
         if(cellMembrane != null || spawnedObject.name == "Cell Membrane")
@@ -110,21 +111,29 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
                     Cell Membrane is in place or if the user is trying to create the Cell Membrane.
         ToDO:       Probably need to refactor this a bit to ensure objects are not spawned outside the cell membrane
                     if they shouldn't be or that they aren't spawned inside the membrane if they shouldn't be
+                    NOTE:  Dr. Cline has said that things should be able to be spawned anywhere, even if they dont work where they are spawned.
     */
     void OnMouseUp()
     {
+        bool candrop = true;
         if((cellMembrane != null || spawnedObject.name == "Cell Membrane"))
         {
-            spawnLocation = transform.position;
-            GameObject obj = Instantiate(spawnedObject, spawnLocation, Quaternion.Euler(0f, 0f, degrees)) as GameObject;
-
-            //Sets curent object to be under the parent object.
-            obj.transform.parent = parentObject.transform;
-            GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(obj);
-            obj = GameObject.FindGameObjectWithTag("CellMembraneButton") as GameObject;
-            if(obj != null)
+            if(rotatableNames.Any(spawnedObject.name.Contains))
+                if(!snapping)
+                    candrop=false;
+            if(candrop)
             {
-                obj.SetActive(false);
+                spawnLocation = transform.position;
+                GameObject obj = Instantiate(spawnedObject, spawnLocation, Quaternion.Euler(0f, 0f, degrees)) as GameObject;
+
+                //Sets curent object to be under the parent object.
+                obj.transform.parent = parentObject.transform;
+                GameObject.Find("EventSystem").GetComponent<ObjectCollection>().Add(obj);
+                obj = GameObject.FindGameObjectWithTag("CellMembraneButton") as GameObject;
+                if(obj != null)
+                {
+                   obj.SetActive(false);
+                }
             }
         }
 
@@ -152,6 +161,7 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
         if(cellDistance < snapDistance * cellMembrane.transform.localScale.x &&
            cellDistance > snapRadius / 1.2)//are we close to the cell membrane wall?
         {
+            snapping = true;
             float cellMemX = guidePosition.x - cellMembrane.transform.position.x;
             float cellMemY = guidePosition.y - cellMembrane.transform.position.y;
             SnapAndRotate(cellMemY, cellMemX, cellMembrane.transform);
@@ -159,12 +169,14 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
         else if(cellDistance < snapRadius / 1.3 &&
                 nucDistance < snapDistance * 1.8 * nucleus.transform.localScale.x)//nucleus wall?
         {
+            snapping = true;
             float nucleusX = guidePosition.x - nucleus.transform.position.x;
             float nucleusY = guidePosition.y - nucleus.transform.position.y;
             SnapAndRotate(nucleusY, nucleusX, nucleus);
         }
         else
         {
+            snapping = false;
             transform.localRotation = returnRotation;
             transform.position = guidePosition;
             degrees = 0f;
@@ -211,11 +223,11 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
         {
             if(value == true)
             {
-                Roam.setAlpha(this.gameObject, 0.25f);
+                BioRubeLibrary.setAlpha(this.gameObject, 0.25f);
             }
             else
             {
-                Roam.setAlpha(this.gameObject, 1.00f);
+                BioRubeLibrary.setAlpha(this.gameObject, 1.00f);
             }
         }
         else
