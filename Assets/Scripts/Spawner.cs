@@ -90,7 +90,6 @@ public class Spawner : MonoBehaviour, Tutorial.SwitchOnOff
     
     void OnMouseDrag()
     {
-
         guidePosition = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, spawnedObject.transform.position.z + 1));
         if(cellMembrane != null || spawnedObject.name == "Cell Membrane")
         {

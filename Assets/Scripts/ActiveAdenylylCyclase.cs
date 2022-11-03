@@ -34,7 +34,7 @@ public class ActiveAdenylylCyclase : MonoBehaviour
         {
             other.GetComponent<CircleCollider2D>().enabled = false;
             other.GetComponent<ATPproperties>().changeState(false);
-
+            
             //Get reference for parent object in UnityEditor
 	        parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
       

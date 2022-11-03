@@ -1560,7 +1560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81877812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07, y: -0.15, z: 0}
+  m_LocalPosition: {x: -0.04, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1628287146}
@@ -15351,7 +15351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628287145}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 39.8, y: 62, z: -594}
+  m_LocalPosition: {x: 39.1, y: 25.5, z: -594}
   m_LocalScale: {x: 13, y: 13, z: 6}
   m_Children:
   - {fileID: 1727861756}
@@ -15372,7 +15372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentObject: {fileID: 0}
-  snapRadius: 25
+  snapRadius: 24
   snapDistance: 40
   snapping: 0
   spawnedObject: {fileID: 3500750840656264705, guid: 96120b6a68b69cc4ea0aa95b36cbb577,
@@ -15392,11 +15392,11 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.73001397, y: -2.6767108}
+  m_Offset: {x: 0.73001397, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.8, y: 11.94}
+    oldSize: {x: 12.8, y: 7.05}
     newSize: {x: 12.8, y: 11.94}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -15747,7 +15747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727861755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0.05, z: 0}
+  m_LocalPosition: {x: -0.02, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1628287146}
@@ -17133,7 +17133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935185760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 102, y: -101, z: -594}
+  m_LocalPosition: {x: 49.2, y: -84.1, z: -594}
   m_LocalScale: {x: 12, y: 12, z: 6}
   m_Children: []
   m_Father: {fileID: 1103273884}
@@ -17152,7 +17152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentObject: {fileID: 0}
-  snapRadius: 28
+  snapRadius: 29.5
   snapDistance: 40
   snapping: 0
   spawnedObject: {fileID: 5117861752728446461, guid: f67b4e3c15f0e2948a3f47241de92da5,
@@ -17172,11 +17172,11 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -4.591526, y: 3.1484752}
+  m_Offset: {x: -0.4, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.8, y: 11.94}
+    oldSize: {x: 4.56, y: 7.66}
     newSize: {x: 12.8, y: 11.94}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
