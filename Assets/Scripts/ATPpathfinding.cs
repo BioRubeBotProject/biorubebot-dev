@@ -73,16 +73,17 @@ public class ATPpathfinding : MonoBehaviour
         }
         else
         {
-            if(found == false)
+            if(found == false || trackThis == null || !trackThis.GetComponent<ActiveAdenylylCyclaseProperties>().isActive)
             {
+                found = false;
                 //GameObject[] foundObjs = GameObject.FindGameObjectsWithTag(trackingTag);       
                 //trackThis = findNearest(foundObjs);
                 trackThis = BioRubeLibrary.FindRandom(trackingTag);
                 if(trackThis != null && trackThis.GetComponent<TrackingProperties>().Find() == true)
-                { 
-                    found = true; 
-                        if(trackThis.name == "Adenylyl_cyclase-B(Clone)") //because cyclase takes multiple ATPs, turn off isFound after every Find
+                {  
+                        if(trackThis.name == "Adenylyl_cyclase-B(Clone)" && trackThis.GetComponent<ActiveAdenylylCyclaseProperties>().isActive) //because cyclase takes multiple ATPs, turn off isFound after every Find
                         {
+                            found = true;
                             trackThis.GetComponent<TrackingProperties>().isFound = false;
                         }
                 }
