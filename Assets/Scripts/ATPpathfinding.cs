@@ -66,6 +66,10 @@ public class ATPpathfinding : MonoBehaviour
     // "trackThis" and calls raycasting so that the ATP can seek it out.  Else, ATP wanders.
     private void FixedUpdate()
     {
+        if(trackThis != null && trackThis.name == "Adenylyl_cyclase-B(Clone)" && !trackThis.GetComponent<ActiveAdenylylCyclaseProperties>().isActive)
+        {
+            found = false;
+        }
         if(droppedOff) 
         { 
             found = false; 
