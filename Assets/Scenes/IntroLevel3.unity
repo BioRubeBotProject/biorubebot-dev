@@ -1818,6 +1818,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
+  snapping: 0
   spawnedObject: {fileID: 194232, guid: 82ff50b0be819514bb3e1c9b4e6568af, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -3053,6 +3054,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
+  snapping: 0
   spawnedObject: {fileID: 192286, guid: 83a0dd58baaaa8d428d25e02e1113806, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -3247,6 +3249,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 31
   snapDistance: 40
+  snapping: 0
   spawnedObject: {fileID: 122922, guid: 995271b7c6986ff4691e0236554a7aa7, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -3394,6 +3397,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 30
   snapDistance: 40
+  snapping: 0
   spawnedObject: {fileID: 148504, guid: 143f4ac855c24f24c9a78b0880606c05, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -7545,6 +7549,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
+  snapping: 0
   spawnedObject: {fileID: 103208, guid: 614739b4c431bd54ba122c75077e6c1c, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -7777,6 +7782,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
+  snapping: 0
   spawnedObject: {fileID: 155230, guid: 819dbd81a5ab5ff4eb51e37b77684abb, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -7861,6 +7867,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
+  snapping: 0
   spawnedObject: {fileID: 155230, guid: 80c59b74a31f1ff44bb6d2002c73805f, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -8355,6 +8362,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
+  snapping: 0
   spawnedObject: {fileID: 164320, guid: 963dc5ff966b86b4f834260259a0f631, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -10125,6 +10133,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
+  snapping: 0
   spawnedObject: {fileID: 155230, guid: 9326425b51fc4dd4dbeb2bf262822d64, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -10679,8 +10688,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780938073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 35, y: 35, z: 1}
+  m_LocalPosition: {x: -18.167, y: -9.618, z: 1}
+  m_LocalScale: {x: 39.72185, y: 34.060673, z: 1}
   m_Children: []
   m_Father: {fileID: 1652320555}
   m_RootOrder: 8
