@@ -1,1 +1,0 @@
-Went into scene template for level 1 and 2 and set all menu objects to be colliders with isTrigger set to true.

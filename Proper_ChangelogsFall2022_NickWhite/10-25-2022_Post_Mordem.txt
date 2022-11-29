@@ -1,4 +1,0 @@
-Fixed:
-	cAmp collision
-	Snapping objects can now only be placed if they are snapping.
-	

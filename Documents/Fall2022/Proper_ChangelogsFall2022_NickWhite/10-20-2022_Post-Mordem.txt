@@ -1,0 +1,5 @@
+Randomized Pathfinding for: 
+	-G_Protein
+
+Errors Fixed:
+	-Receptor out of range

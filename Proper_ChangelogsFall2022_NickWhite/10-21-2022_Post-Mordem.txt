@@ -1,9 +1,0 @@
-Name Change:
-	-public static bool StillHere( GameObject obj, string objTag)
-	changed to:
-	-public static bool StillExists( GameObject obj)
-
-Errors fixed:
-	-Game Crashes
-	-StillHere now works as intended
-	-GPCR .isActive element now is correctly indicated

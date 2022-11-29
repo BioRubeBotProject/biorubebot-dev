@@ -1,3 +1,0 @@
-New things:
-	Menu items no longer have collision
-	
