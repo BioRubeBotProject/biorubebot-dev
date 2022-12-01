@@ -1261,7 +1261,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &74715837
 Canvas:
   m_ObjectHideFlags: 0
@@ -3092,12 +3092,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
   spawnedObject: {fileID: 155230, guid: 80c59b74a31f1ff44bb6d2002c73805f, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
-  parentObject: {fileID: 0}
 --- !u!1 &322777569
 GameObject:
   m_ObjectHideFlags: 0
@@ -3149,12 +3149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
   spawnedObject: {fileID: 192286, guid: 83a0dd58baaaa8d428d25e02e1113806, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
-  parentObject: {fileID: 0}
 --- !u!61 &322777572
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6980,12 +6980,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
   snapRadius: 30
   snapDistance: 40
   spawnedObject: {fileID: 148504, guid: 143f4ac855c24f24c9a78b0880606c05, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
-  parentObject: {fileID: 0}
 --- !u!61 &342686149
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7467,12 +7467,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
   spawnedObject: {fileID: 164320, guid: 963dc5ff966b86b4f834260259a0f631, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
-  parentObject: {fileID: 0}
 --- !u!61 &396464741
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7626,7 +7626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -300, y: -485}
+  m_AnchoredPosition: {x: -894, y: -413}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &443236069
@@ -7696,6 +7696,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2100000, guid: e2c616f6c0b513e45883bcb61bda147e, type: 2}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9624,12 +9636,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
   spawnedObject: {fileID: 155230, guid: 819dbd81a5ab5ff4eb51e37b77684abb, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
-  parentObject: {fileID: 0}
 --- !u!1 &531946120
 GameObject:
   m_ObjectHideFlags: 0
@@ -11313,13 +11325,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
   snapRadius: 31
   snapDistance: 40
   spawnedObject: {fileID: 1334962858973408, guid: f8477a3e0b52046939f07e8fc04bbbbd,
     type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
-  parentObject: {fileID: 0}
 --- !u!1 &951778750
 GameObject:
   m_ObjectHideFlags: 0
@@ -13360,7 +13372,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'PROTEIN SIGNALLER
+  m_Text: 'MITOGEN
 
 '
 --- !u!222 &1207425704
@@ -13494,7 +13506,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 272ba847f100d4251bb8260575189042, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14814,13 +14826,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
   snapRadius: 31
   snapDistance: 40
   spawnedObject: {fileID: 1003749905512788, guid: 3947137d61d0e44d7a9c5492ad29271d,
     type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
-  parentObject: {fileID: 0}
 --- !u!1 &1526202721
 GameObject:
   m_ObjectHideFlags: 0
@@ -15869,12 +15881,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
   spawnedObject: {fileID: 194232, guid: 82ff50b0be819514bb3e1c9b4e6568af, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
-  parentObject: {fileID: 0}
 --- !u!61 &1645006539
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16244,12 +16256,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
   spawnedObject: {fileID: 103208, guid: 614739b4c431bd54ba122c75077e6c1c, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
-  parentObject: {fileID: 0}
 --- !u!114 &1766009824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17490,12 +17502,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66371f22ead6bfa43bfe47064607f1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
   spawnedObject: {fileID: 155230, guid: 9326425b51fc4dd4dbeb2bf262822d64, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
-  parentObject: {fileID: 0}
 --- !u!1 &2022842357
 GameObject:
   m_ObjectHideFlags: 0

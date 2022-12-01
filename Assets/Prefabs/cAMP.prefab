@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4903821672597701867}
   - component: {fileID: 477486834295820672}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Inner Circle Object Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6720496119036104908}
   - component: {fileID: -5253610027394219407}
   - component: {fileID: -1659180171056394799}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cAMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5247027091866179102}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   trackThis: {fileID: 0}
   origin: {fileID: 7665343153298190263}
   trackingTag: PKA
-  maxHeadingChange: 60
+  maxHeadingChange: 140
   angleToRotate: 0
   dockedWithPKA: 0
   maxRoamChangeTime: 50
@@ -297,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6812968547838451788}
   - component: {fileID: 4044576897227145366}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Inner Circle Object Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

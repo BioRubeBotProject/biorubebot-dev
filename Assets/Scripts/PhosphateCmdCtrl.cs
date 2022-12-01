@@ -4,17 +4,18 @@ using System.Collections;
 
 public class Phosphate : MonoBehaviour
 {
+    private Roamer r;                             //an object that holds the values for the roaming (random movement) methods
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
-	
-	}
+        r = new Roamer();
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		Roam.Roaming (this.gameObject);
+		r.Roaming (this.gameObject);
 	}
 }
 

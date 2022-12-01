@@ -18,8 +18,9 @@ public class ActiveAdenylylCyclase : MonoBehaviour
 {
     public  ParticleSystem destructionEffect;
     public  GameObject     parentObject;      //Parent object used for unity editor Tree Hierarchy
-    public  GameObject     replaceATPWith;    //what spawns when ATP collides and explodes
+    public  GameObject     replaceATPWith = null;    //what spawns when ATP collides and explodes
     public  GameObject     inactiveCyclase;   //what spawns when this deactivates
+    public  GameObject     child;
 
     /*  Function:   OnTriggerEnter2D(Collider2D) IEnumerator
         Purpose:    this function handles the event that the Active Adenylyl Cyclase
@@ -42,20 +43,26 @@ public class ActiveAdenylylCyclase : MonoBehaviour
             other.GetComponent<CircleCollider2D>().enabled = true;
             other.gameObject.tag                           = "Untagged";
       
-            StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
+       StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
+       
+       // FuncLibrary fl = new FuncLibrary();
+      //  StartCoroutine(fl.ExplodeChild(other.gameObject, parentObject.gameObject, replaceATPWith.gameObject, destructionEffect));
+        //StartCoroutine(fl.ExplodeChild(other.gameObject, parentObject.gameObject, child.gameObject, destructionEffect));
+        Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called */
+
         }
     }
 
-    /*  Function:   Explode(GameObject) IEnumerator
+     /*   Function:   Explode(GameObject) IEnumerator
         Purpose:    this function causes the given GameObject to explode in the
                     game and sets it to inactive, making it leave the game.
                     in place of the given Object, an instance of replaceATPWith
                     is instantiated. In Unity, this variable is set to the
                     cAMP prefab, so that spawns where the ATP explodes
         Parameters: the ATP to explode
-        Return:     nothing important
-    */
-    private IEnumerator Explode(GameObject other)
+        Return:     nothing important */
+    
+        public IEnumerator Explode(GameObject other)
     {
         GameObject child = null;
 
@@ -71,8 +78,8 @@ public class ActiveAdenylylCyclase : MonoBehaviour
         explosionEffect.loop = false;
         explosionEffect.Play();
         
-        child = (GameObject)Instantiate(replaceATPWith, transform.position, Quaternion.identity);
-        child.GetComponent<Rigidbody2D> ().isKinematic  = true;
+        child = (GameObject)Instantiate(replaceATPWith, other.transform.position, Quaternion.identity);
+        //child.GetComponent<Rigidbody2D> ().iskinematic = true;
         child.transform.parent = parentObject.transform;
     
         //destroy the particle system when its duration is up, right
@@ -82,4 +89,5 @@ public class ActiveAdenylylCyclase : MonoBehaviour
         //destroy our game object
         Destroy(other.gameObject);
     }
+   
 }

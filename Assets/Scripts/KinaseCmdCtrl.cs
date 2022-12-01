@@ -7,25 +7,28 @@
                 Game Objects interact with it differently based on these tags
                 as well, although the full list of tags and relevant behaviors
                 is not currently clear
+                TODO: seperate out the kinase states, and create various scripts for each version.  I e. when it seperates and becomes two new objects. -cb 1/22/22
 */
 using UnityEngine;
 using System.Collections;
 
-public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
+public class KinaseCmdCtrl : MonoBehaviour  //, Roamer.CollectObject
 {
     public  GameObject parentObject; //Parent object used for unity editor Tree Hierarchy
     public  GameObject Kinase_P2;
     public  float      timeoutMaxInterval;
 
+    private Roamer       r = new Roamer();
     private GameObject active_G_Protein;
-    private GameObject T_Reg;
-    private Transform  myTarget;
-    private Vector3    midpoint;
+    public  GameObject T_Reg;
+    public  Transform  myTarget;
+    public Vector3    midpoint;
     private float      delay;
     private float      timeoutForInteraction;
     private bool       midpointSet;
     private bool[]     midpointAchieved = new bool[2];
     private bool       WinConMet        = false; //used to determine if the win condition has already been met
+    private bool       docked           = false; //used when t_reg is docked and transformed.
 
     // Use this for initialization
     void Start()
@@ -40,7 +43,7 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
         parentObject          = GameObject.FindGameObjectWithTag("MainCamera");
     }
     
-    // Update is called once per frame
+    // Update is called once per physics update
     void FixedUpdate()
     {
         if(timeoutForInteraction > timeoutMaxInterval)
@@ -48,7 +51,6 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
             if(tag == "Kinase_Prep_A" || tag == "Kinase_Prep_B")
             {
                 active_G_Protein.GetComponent<G_ProteinCmdCtrl>().resetTarget();
-                active_G_Protein.GetComponent<BoxCollider2D>().enabled = true;
                 active_G_Protein = null;
                 reset();
                 tag = "Kinase";
@@ -57,34 +59,31 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
 
         if(tag == "Kinase")
         {
-            Roam.Roaming(this.gameObject);
+            if(active_G_Protein==null)  //in case kinase was reset because it timed out.
+            {
+                active_G_Protein = BioRubeLibrary.FindClosest(this.gameObject.transform, "FreeG_Protein"); //returns null if no freeGProteins exist.
+            } else
+            {
+                timeoutForInteraction = 0;
+                tag = "Kinase_Prep_A";
+            } //then roam
+            r.Roaming(this.gameObject);
         }
         else if(tag == "Kinase_Prep_A" || tag == "Kinase_Prep_B")
         {
-            if((delay += Time.deltaTime) >= 5.0f)
-            {
-                if(!midpointSet && tag == "Kinase_Prep_A")
-                {
-                    midpoint = Roam.CalcMidPoint(active_G_Protein, this.gameObject);
-                    midpointSet = true;
-                }
-                else if(Roam.ApproachMidpoint(active_G_Protein,this.gameObject,midpointAchieved,midpoint, setupVector(), setupRestraint()))
-                {
-                    setupNextPhase();
-                }
-            }
-            else
-            {
-                Roam.Roaming(this.gameObject);
-            }
+
+            r.moveToDock(this.gameObject, active_G_Protein);
+
             timeoutForInteraction += Time.deltaTime;
         } 
         else if(tag == "Kinase_Prep_C") 
         {
             if(!midpointAchieved [0] || !midpointAchieved [1])
             {
-                midpointAchieved[0] = Roam.ProceedToVector(active_G_Protein,midpoint + new Vector3(0.0f,0.85f,0.0f)); //these values to be changed 
-                midpointAchieved[1] = Roam.ProceedToVector(this.gameObject,midpoint + new Vector3(0.0f,-0.85f,0.0f)); //for snapping kinase to gprotein
+
+                midpoint = BioRubeLibrary.CalcMidPoint(active_G_Protein, this.gameObject);
+                midpointAchieved[0] = r.ProceedToVector(active_G_Protein,midpoint + new Vector3(0.0f,0.85f,0.0f)); //these values to be changed 
+                midpointAchieved[1] = r.ProceedToVector(this.gameObject,midpoint + new Vector3(0.0f,-0.85f,0.0f)); //for snapping kinase to gprotein
             }
             if(midpointAchieved[0] && midpointAchieved[1]) 
             {
@@ -102,11 +101,11 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
                     if(this.gameObject.transform.parent.parent == null)
                     {
                         this.gameObject.GetComponent<Rigidbody2D>().isKinematic   = true;
-                        this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+                        this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
                         this.gameObject.transform.parent                          = active_G_Protein.transform;
-                        active_G_Protein.GetComponent<BoxCollider2D>().enabled    = true;
+                        this.GetComponent<Rigidbody2D>().simulated = true;
                     }
-                    Roam.Roaming(active_G_Protein);
+
                     //determine if win condition has been reached
                     if(!WinConMet &(GameObject.FindWithTag("Win_KinaseTransformation")))
                     {
@@ -120,63 +119,88 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
         else if( tag == "Kinase_Phase_2")
         {
             if(T_Reg == null)
-                T_Reg = Roam.FindClosest(transform, "T_Reg");
-            if( T_Reg != null && !myTarget)
+                T_Reg = BioRubeLibrary.FindClosest(transform, "T_Reg");
+            if (T_Reg != null && myTarget == null)
             {
                 delay = 0;
-                T_Reg.GetComponent <T_RegCmdCtrl>().GetObject(this.gameObject,"T_Reg_Prep_A");
+                T_Reg.GetComponent<T_RegCmdCtrl>().GetObject(this.gameObject, "T_Reg_Prep_A");
                 myTarget = T_Reg.transform;
-            }
-
-            if(myTarget &&(delay += Time.deltaTime) >= 5)
+           // }
+           // else if (myTarget != null && delay >= 1000)
+          //  {
+          //      myTarget = null;
+          //      T_Reg = null;
+            } else if(T_Reg != null && myTarget != null  && !docked)
             {
-            } 
-            else
-                Roam.Roaming(this.gameObject);
+                r.moveToDock(this.gameObject, T_Reg);
+                //Debug.Log("moving to t_reg");
+                //delay += 1;
+            }
+            else if(this.transform.parent.name == "Transcription Regulator2(Clone)")
+            {
+                //if(this.transform.parent.tag == "T_Reg_with_Phosphate")
+                //{
+                //    myTarget = null;
+                //    T_Reg = null;  //sudo reset, drop this t_reg2 because the r_reg2 has dropped you.  should have been happening from the .reset() that t_reg2 just sent to kinase.
+                //}
+
+                //do nothing
+
+            }
+            else{
+                r.Roaming(this.gameObject);
+            }
         }
     }
-
-    private Vector3 setupVector()
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
-        if(tag == "Kinase_Prep_A")
-            return new Vector3(-2.0f, 0.0f, 0.0f);
-        else if(tag == "Kinase_Prep_B")
-            return new Vector3(0.0f, 1.0f, 0.0f);
-        else
-            return new Vector3(0.0f, 0.0f, 0.0f);
+        if (other.gameObject.tag == "FreeG_Protein")
+        {
+            setupNextPhase();
+            this.GetComponent<Rigidbody2D>().simulated = false;
+        } 
+
+       yield return new WaitForSeconds(1);
+
     }
 
-    private float setupRestraint()
-    {
-        if(tag == "Kinase_Prep_A")
-            return 3.25f;
-        else if(tag == "Kinase_Prep_B")
-            return 1.75f;
-        else
-            return 0.0f;
-    }
+  //  private Vector3 setupVector()
+ //   {
+  //      if(tag == "Kinase_Prep_A")
+  //          return new Vector3(-2.0f, 0.0f, 0.0f);
+  //      else if(tag == "Kinase_Prep_B")
+ //           return new Vector3(0.0f, 1.0f, 0.0f);
+ //       else
+//            return new Vector3(0.0f, 0.0f, 0.0f);
+  //  }
+
+  //  private float setupRestraint()
+ //   {
+ //       if(tag == "Kinase_Prep_A")
+  //          return 3.25f;
+ //       else if(tag == "Kinase_Prep_B")
+  //          return 1.75f;
+  //      else
+//            return 0.0f;
+  //  }
 
     private void setupNextPhase()
     {
-        if(tag == "Kinase_Prep_A")
-        {
-            midpointAchieved [0] = midpointAchieved [1] = false;
-            tag = "Kinase_Prep_B";
-        }
-        else if(tag == "Kinase_Prep_B")
-        {
+
+    //    if(tag == "Kinase_Prep_A")
+    //    {
+    //        midpointAchieved [0] = midpointAchieved [1] = false;
+    //        tag = "Kinase_Prep_B";
+    //    }
+
             midpointAchieved[0] = false;
             midpointAchieved[1] = false;
 
-            this.GetComponent<PolygonCollider2D>().enabled         = false;
-            active_G_Protein.GetComponent<BoxCollider2D>().enabled = false;
+            this.GetComponent<PolygonCollider2D>().enabled         = true;
 
             tag   = "Kinase_Prep_C";
             delay = 0.0f;
-        }
-        else if(tag == "Kinase_Prep_C")
-        {
-        }
+
     }
 
     public void reset()
@@ -206,5 +230,10 @@ public class KinaseCmdCtrl : MonoBehaviour, Roam.CollectObject
             active_G_Protein = obj;
         }
     }
+    public void t_RegTransform(GameObject obj)
+    {
+        T_Reg = obj;
+        myTarget = obj.transform;
+        docked = true;
+    }
 }
-
