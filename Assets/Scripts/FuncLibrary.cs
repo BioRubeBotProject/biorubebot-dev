@@ -1,3 +1,12 @@
+/*  File:       Func Library
+    Purpose:    This file holds all non-static functions that can be used
+                in other scripts. Currently houses Explode() and ExplodeChild()
+                which is used in ReceptorLegScript.cs, T_RegCmdCtrl.cs, GTP_CmdCtrl.cs
+                and ActiveAdenylylCyclase.cs. 
+    Author:     Alyson Mosely
+    Created:    Fall 2022
+*/
+
 // **************************************************************
 //  LIBRARY of non-static functions for BioRubeBot game
 //  
@@ -14,31 +23,18 @@ using UnityEngine;
 
 public class FuncLibrary : MonoBehaviour
 {
-    
-    /*
-        Function:   Explode(GameObject other, GameObject parentObject, 
-                    ParticleSystem destructionEffect) IEnumerator
-        Purpose:    This function causes the given GameObject to explode in the
-                    game and sets it to inactive, making it leave the game. You will
-                    need to declare "ParticleSystem destructionEffect" in the designated
-                    script for this function to work.
-        Parameters: the object to explode, the exploding objects parent, and 
-                    ParticleSystem destructionEffect
-        Return:     nothing important
-    */
-    public IEnumerator Explode(GameObject other, GameObject parentObject, ParticleSystem destructionEffect)
+    //GameObject child = null;
+
+        public IEnumerator Explode(GameObject other, GameObject parentObject, ParticleSystem destructionEffect)
     {
-        
-        Debug.Log("library was successfully called");
-
+        Debug.Log("library was called successfully");
         yield return new WaitForSeconds (3f);
-
         //Instantiate our one-off particle system
         ParticleSystem explosionEffect = Instantiate(destructionEffect) as ParticleSystem;
         explosionEffect.transform.position = other.transform.position;
 
         //Sets explosion effect to be under the parent object.
-        explosionEffect.transform.parent = parentObject.transform;
+	    explosionEffect.transform.parent = parentObject.transform;
     
         //play it
         explosionEffect.loop = false;
@@ -50,22 +46,15 @@ public class FuncLibrary : MonoBehaviour
     
         //destroy our game object
         Destroy(other.gameObject);
-    } 
+    }
 
-    /*  Function:   Explode(GameObject) IEnumerator
-        Purpose:    this function causes the given GameObject to explode in the
-                    game and sets it to inactive, making it leave the game.
-                    in place of the given Object, an instance of replaceATPWith
-                    is instantiated. In Unity, this variable is set to the
-                    cAMP prefab, so that spawns where the ATP explodes
-        Parameters: the ATP to explode
-        Return:     nothing important
-    */
-        public IEnumerator ExplodeChild(GameObject other, GameObject parentObject, GameObject replaceATPWith, ParticleSystem destructionEffect)
+    /************************************************************************************/
+      public IEnumerator ExplodeChild(GameObject other, GameObject parentObject, GameObject replaceATPWith, ParticleSystem destructionEffect)
     {
         GameObject child = null;
+         Debug.Log("ExplodeChild was called successfully");
 
-        yield return new WaitForSeconds (3f);
+       
         //Instantiate our one-off particle system
         ParticleSystem explosionEffect     = Instantiate(destructionEffect) as ParticleSystem;
         explosionEffect.transform.position = other.transform.position;
@@ -76,10 +65,22 @@ public class FuncLibrary : MonoBehaviour
         //play it
         explosionEffect.loop = false;
         explosionEffect.Play();
+
         
-        child = (GameObject)Instantiate(replaceATPWith, transform.position, Quaternion.identity);
-        child.GetComponent<Rigidbody2D> ().isKinematic  = true;
-        child.transform.parent = parentObject.transform;
+
+        //child = (GameObject)Instantiate(replaceATPWith, transform.position, Quaternion.identity);
+         child = (GameObject)Instantiate(replaceATPWith, parentObject.transform);
+         Debug.Log("instantiating here");
+         yield return new WaitForSeconds (5f);
+
+        //child.GetComponent<Rigidbody2D> ().isKinematic  = true;
+        //child.transform.parent = parentObject.transform;
+
+        //child = (GameObject)Instantiate(replaceATPWith, transform.position, Quaternion.identity);
+        //child.GetComponent<Rigidbody2D> ().isKinematic  = true;
+        //child.transform.parent = parentObject.transform;
+
+
     
         //destroy the particle system when its duration is up, right
         //it would play a second time.
@@ -87,7 +88,7 @@ public class FuncLibrary : MonoBehaviour
     
         //destroy our game object
         Destroy(other.gameObject);
+        Debug.Log("Destroy");
     }
+
 }
-
-

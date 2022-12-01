@@ -18,8 +18,9 @@ public class ActiveAdenylylCyclase : MonoBehaviour
 {
     public  ParticleSystem destructionEffect;
     public  GameObject     parentObject;      //Parent object used for unity editor Tree Hierarchy
-    public  GameObject     replaceATPWith;    //what spawns when ATP collides and explodes
+    public  GameObject     replaceATPWith = null;    //what spawns when ATP collides and explodes
     public  GameObject     inactiveCyclase;   //what spawns when this deactivates
+    public  GameObject     child;
 
     /*  Function:   OnTriggerEnter2D(Collider2D) IEnumerator
         Purpose:    this function handles the event that the Active Adenylyl Cyclase
@@ -43,9 +44,12 @@ public class ActiveAdenylylCyclase : MonoBehaviour
             other.gameObject.tag                           = "Untagged";
       
        StartCoroutine(Explode(other.gameObject)); //self-destruct after 3 seconds
-      /*  FuncLibrary fl = new FuncLibrary();
-        StartCoroutine(fl.ExplodeChild(other.gameObject, parentObject.gameObject, replaceATPWith.gameObject, destructionEffect));
+       
+       // FuncLibrary fl = new FuncLibrary();
+      //  StartCoroutine(fl.ExplodeChild(other.gameObject, parentObject.gameObject, replaceATPWith.gameObject, destructionEffect));
+        //StartCoroutine(fl.ExplodeChild(other.gameObject, parentObject.gameObject, child.gameObject, destructionEffect));
         Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called */
+
         }
     }
 
@@ -56,8 +60,8 @@ public class ActiveAdenylylCyclase : MonoBehaviour
                     is instantiated. In Unity, this variable is set to the
                     cAMP prefab, so that spawns where the ATP explodes
         Parameters: the ATP to explode
-        Return:     nothing important
-    */
+        Return:     nothing important */
+    
         public IEnumerator Explode(GameObject other)
     {
         GameObject child = null;
