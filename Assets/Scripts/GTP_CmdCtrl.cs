@@ -100,10 +100,10 @@ public class GTP_CmdCtrl: MonoBehaviour
             {
                 r.Roaming(this.gameObject); //move randomly
 
-                openTarget = BioRubeLibrary.FindClosest(transform, "DockedG_Protein");//level one, find a target
+                openTarget = BioRubeLibrary.FindRandom("DockedG_Protein");//level one, find a target
                 if (null == openTarget)
                 {
-                    obj = BioRubeLibrary.FindClosest(transform, "tGProteinDock");//level 2 find a target
+                    obj = BioRubeLibrary.FindRandom("tGProteinDock");//level 2 find a target
                     if (null != obj)
                     {
                         //get the TGProtien. Doc has parent alpha, which has parent TGProtein

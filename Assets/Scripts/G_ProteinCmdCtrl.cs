@@ -72,7 +72,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         if(!targeting && !docked && !haveGTP)
         {
             //Receptor phosphate = closest one to G-Protein
-            openTarget = BioRubeLibrary.FindClosest (transform, "ReceptorPhosphate");
+            openTarget = BioRubeLibrary.FindRandom("ReceptorPhosphate");
 
             //IF phosphate is found
             if (openTarget != null)
@@ -109,7 +109,7 @@ public class G_ProteinCmdCtrl : MonoBehaviour
         //ELSE IF G-Protein has GTP(red) AND G-Protein is ready to roam with attached GTP(red)
         else if(haveGTP && roaming)
         {
-            GameObject Kinase = BioRubeLibrary.FindClosest (transform, "Kinase");
+            GameObject Kinase = BioRubeLibrary.FindRandom ("Kinase");
             if (Kinase != null && !myTarget && isActive)
             {
                 delay = 0;

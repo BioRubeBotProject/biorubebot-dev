@@ -212,13 +212,21 @@ public class AlphaMovement : MonoBehaviour
                     closestTarget = findClosestTarget();//find closes Inactive Adenylyl Cyclase
                     if(null != closestTarget)
                     {
-                        rotationDirection = getRotationDirection(closestTarget);
-
+                        if(rotationDirection == null)
+                            rotationDirection = getRotationDirection(closestTarget);
                         if(rotationDirection == "right")
                             transform.RotateAround(cellMembrane.transform.position, Vector3.back, speed * Time.deltaTime);
                         else if(rotationDirection == "left")
                             transform.RotateAround(cellMembrane.transform.position, Vector3.forward, speed * Time.deltaTime);
                     }
+                    else
+                    {
+                        rotationDirection = null;
+                    }
+                }
+                else
+                {
+                    rotationDirection = null;
                 }
 
                 //check the timer. Time for GTP to leave?

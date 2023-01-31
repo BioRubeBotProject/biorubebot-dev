@@ -1210,6 +1210,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
+  snapping: 0
   spawnedObject: {fileID: 155230, guid: 9326425b51fc4dd4dbeb2bf262822d64, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -2570,6 +2571,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 31
   snapDistance: 40
+  snapping: 0
   spawnedObject: {fileID: 122922, guid: 995271b7c6986ff4691e0236554a7aa7, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -5093,6 +5095,7 @@ MonoBehaviour:
   parentObject: {fileID: 0}
   snapRadius: 0
   snapDistance: 0
+  snapping: 0
   spawnedObject: {fileID: 103208, guid: 614739b4c431bd54ba122c75077e6c1c, type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
   guidePosition: {x: 0, y: 0, z: 0}
@@ -7721,8 +7724,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780938073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 35, y: 35, z: 1}
+  m_LocalPosition: {x: -2.137, y: -3.206, z: 1}
+  m_LocalScale: {x: 39.21435, y: 34.68374, z: 1}
   m_Children: []
   m_Father: {fileID: 1652320555}
   m_RootOrder: 8

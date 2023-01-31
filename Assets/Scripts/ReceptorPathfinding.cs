@@ -25,8 +25,9 @@ public class ReceptorPathfinding : MonoBehaviour
     #region Private Fields + Properties + Events + Delegates + Enums
 
     private float heading;
-    private GameObject[] myFoundObjs;
-    private GameObject myTarget;
+    private GameObject myFoundObj;
+    private GameObject myTarget = null;
+    private bool found = false;
 
     #endregion Private Fields + Properties + Events + Delegates + Enums
 
@@ -44,10 +45,7 @@ public class ReceptorPathfinding : MonoBehaviour
         Quaternion rotation;
         string     strLvl     = null;
         string     strFind    = null;
-        bool       found      = false;
         bool       activeFind = false;
-        int        index      = 0;//index into the game Ojbect array
-        int        count      = 0;//number of found receptors
 
         strLvl = SceneManager.GetActiveScene().name;
         /* In Level2 looking for GPCR. Other levels, looking for ExternalReceptor
@@ -67,16 +65,18 @@ public class ReceptorPathfinding : MonoBehaviour
             activeFind = true;
         }
 
-        myFoundObjs = GameObject.FindGameObjectsWithTag(strFind);
-        count       = myFoundObjs.Length;
-
-        for(index = 0; index < count; index++)
+        if(!BioRubeLibrary.StillExists(myTarget) || myTarget.GetComponent<ActivationProperties>().isActive != activeFind)
         {
-            if((myFoundObjs[index].GetComponent<ActivationProperties>().isActive == activeFind))
+            
+            found = false;
+            myFoundObj = BioRubeLibrary.FindRandom(strFind);
+            if(myFoundObj)
             {
-                myTarget = myFoundObjs[index];
-                found    = true;
-                break;
+                if((myFoundObj.GetComponent<ActivationProperties>().isActive == activeFind))
+                    {
+                        myTarget = myFoundObj;
+                        found    = true;
+                    }
             }
         }
 
