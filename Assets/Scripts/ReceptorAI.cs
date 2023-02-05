@@ -141,6 +141,7 @@ public class ReceptorAI : MonoBehaviour
 
     private IEnumerator SearchForObject()
     {
+        Debug.Log("Hello");
         GameObject[] gos = GameObject.FindGameObjectsWithTag("ExternalReceptor");
         //Component co = GetComponent("Extracellular Signal Body");
         //co.GetComponent<Renderer>().material.color = Color.blue;

@@ -87,7 +87,7 @@ TextureImporter:
       213: 21300054
     second: Kinase_Side_A2
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -108,6 +108,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -146,9 +147,58 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 1
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
@@ -739,6 +789,34 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Receptor Outline: 21300036
+      Kinase Outline: 21300044
+      Extracellular Signal Body: 21300002
+      Extracellular Wall: 21300006
+      All_4: 21300008
+      Kinase_Side_A2: 21300054
+      Transcription Regulator Outline: 21300020
+      Transcription Regulator Body: 21300030
+      Inner Receptor Outline Final: 21300014
+      Inner Circle Object Outline: 21300042
+      Inner Receptor Body Transistion: 21300026
+      Kinase Side B: 21300050
+      Something Side B: 21300034
+      Inner Circle Object Body: 21300046
+      Inner Receptor Outline Transistion: 21300016
+      Something Side A: 21300032
+      Receptor Cap Outline: 21300004
+      Phosphate Transport Body: 21300048
+      Receptor Body: 21300000
+      Something Outline: 21300012
+      Inner Receptor Body Final: 21300024
+      Inner Receptor Body Start: 21300028
+      Kinase Side A: 21300052
+      Inner Receptor Outline Start: 21300018
+      Something Body: 21300022
+      Phosphate Transport Outline: 21300040
+      Receptor Cap Body: 21300010
   spritePackingTag: 
   pSDRemoveMatte: 1
   pSDShowRemoveMatteOption: 1

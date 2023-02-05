@@ -27,6 +27,21 @@ public class BioRubeLibrary : MonoBehaviour
         return meetingPoint;
     }
 
+    public static GameObject FindRandom(string objTag)
+    {
+        GameObject[] trackable = GameObject.FindGameObjectsWithTag(objTag);
+        if(trackable.Length != 0)
+            return trackable[UnityEngine.Random.Range(0, trackable.Length)];
+        else
+            return null;
+    }
+
+    public static bool StillExists( GameObject obj)
+    {
+        if(obj)
+            return true;
+        return false;
+    }
 
     public static GameObject FindClosest(Transform my, string objTag)
     {

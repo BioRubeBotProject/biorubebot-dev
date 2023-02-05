@@ -62,7 +62,14 @@ public class ATPproperties : MonoBehaviour , ActivationProperties
             this.GetComponent<ATPpathfinding>().enabled = true;
         }
     }
-  
+    
+    public void ResetState() // Sets state back to starting state
+    {
+        this.GetComponent<CircleCollider2D>().enabled = true;
+        changeState(true);
+        this.gameObject.tag = "ATP";
+    }
+
     public void dropOff(string name)
     {
         float rotate = 0;
@@ -93,6 +100,11 @@ public class ATPproperties : MonoBehaviour , ActivationProperties
   
     private void Update()
     {
+        GameObject tracking = this.GetComponent<ATPpathfinding>().trackThis;
+        if(tracking != null && tracking.name == "Adenylyl_cyclase-B(Clone)" && !tracking.GetComponent<ActiveAdenylylCyclaseProperties>().isActive)
+        {
+            ResetState();
+        }
         if(this.isActive == false)
         {
             this.allowMovement = false;

@@ -34,7 +34,7 @@ public class ActiveAdenylylCyclase : MonoBehaviour
         {
             other.GetComponent<CircleCollider2D>().enabled = false;
             other.GetComponent<ATPproperties>().changeState(false);
-
+            
             //Get reference for parent object in UnityEditor
 	        parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
       
@@ -48,8 +48,7 @@ public class ActiveAdenylylCyclase : MonoBehaviour
        // FuncLibrary fl = new FuncLibrary();
       //  StartCoroutine(fl.ExplodeChild(other.gameObject, parentObject.gameObject, replaceATPWith.gameObject, destructionEffect));
         //StartCoroutine(fl.ExplodeChild(other.gameObject, parentObject.gameObject, child.gameObject, destructionEffect));
-        Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called */
-
+            Debug.Log("destroy ATP here"); //prints to console to see if func was successfully called */
         }
     }
 

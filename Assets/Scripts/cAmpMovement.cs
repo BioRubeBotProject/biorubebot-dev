@@ -52,6 +52,7 @@ public class cAmpMovement : MonoBehaviour
     // method will detect whether or not the "Inner Cell Wall" is in the cAMP's line of sight with the
     // collider. If it is, a path will be plotted around it. The incident angle is also calculated 
     // ("angleToRotate") in order to give the "dropOff" function a baseline angle to use for rotation.
+
     private void Raycasting()
     {
         CircleCollider2D[] colliders = trackThis.GetComponents<CircleCollider2D>();
@@ -98,8 +99,6 @@ public class cAmpMovement : MonoBehaviour
         if(crossProduct.z < 0)
             angleToRotate = -angleToRotate; // .Angle always returns a positive #
     }
-
-
 
     private void Start()
     {
@@ -174,8 +173,10 @@ public class cAmpMovement : MonoBehaviour
 
             if (foundPKA == true && trackThis != null && trackThis.tag == trackingTag)
             {
-                //Raycasting();
-                r.moveToDock(this.gameObject, trackThis);
+                try
+                {
+                    r.moveToDock(this.gameObject, trackThis);
+                } catch (NullReferenceException e) { Debug.Log(e.ToString()); }
             }
             else
                 foundPKA = false;

@@ -33,7 +33,7 @@ public class GPCR : MonoBehaviour
             //Get reference for parent object in UnityEditor
             parentObject = GameObject.FindGameObjectWithTag ("MainCamera");
 
-            this.gameObject.GetComponent<ActivationProperties>().isActive = false;
+            this.gameObject.GetComponent<ActivationProperties>().isActive = true;
             other.GetComponent<ExtraCellularProperties>().changeState(false);
             other.GetComponent<Rigidbody2D>().isKinematic = true;
        

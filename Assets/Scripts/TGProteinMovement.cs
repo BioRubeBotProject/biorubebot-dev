@@ -114,7 +114,6 @@ public class TGProteinMovement : MonoBehaviour
         hasGdpAttached    = true;
         hasGtpAttached    = false;
         isAlphaSeparated  = false;
-
         childGDP = (GameObject)Instantiate(GDP, transform.position, Quaternion.identity);
         if (null != alpha)
         {

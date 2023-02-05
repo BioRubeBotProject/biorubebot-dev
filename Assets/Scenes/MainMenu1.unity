@@ -215,12 +215,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 419962, guid: 65375bc9d930b6e46b0b4e53f6af5e6c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 33.9735
+      objectReference: {fileID: 0}
+    - target: {fileID: 419962, guid: 65375bc9d930b6e46b0b4e53f6af5e6c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 32.2819
+      objectReference: {fileID: 0}
+    - target: {fileID: 419962, guid: 65375bc9d930b6e46b0b4e53f6af5e6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -220
+      value: -182
       objectReference: {fileID: 0}
     - target: {fileID: 419962, guid: 65375bc9d930b6e46b0b4e53f6af5e6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 240
+      value: 187
       objectReference: {fileID: 0}
     - target: {fileID: 419962, guid: 65375bc9d930b6e46b0b4e53f6af5e6c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -497,8 +505,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019479888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -137, y: 147, z: -3}
-  m_LocalScale: {x: 64.76498, y: 68.367035, z: 0}
+  m_LocalPosition: {x: -183, y: 115, z: -3}
+  m_LocalScale: {x: 49.05144, y: 56.129333, z: 0}
   m_Children: []
   m_Father: {fileID: 1570964346}
   m_RootOrder: 4
@@ -597,8 +605,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -82.6, y: 22.899994}
-  m_SizeDelta: {x: 50, y: 20}
+  m_AnchoredPosition: {x: -37, y: 26}
+  m_SizeDelta: {x: 50, y: 16.794}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058251694
 MonoBehaviour:
@@ -836,8 +844,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 130, y: 210}
-  m_SizeDelta: {x: 225, y: 350}
+  m_AnchoredPosition: {x: 199.728, y: 147.618}
+  m_SizeDelta: {x: 377.28, y: 295.227}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1483393499
 MonoBehaviour:
@@ -880,8 +888,8 @@ MonoBehaviour:
     Metteer, \n   Jeremy Parker, Jeremy Rogers, \n   Danny Carroll, Eric Rogers,\n 
     Kevin Means, Jonathan Dauwen,\n   Jason Hymas, Shelley Bess, \n   Chris Charlton,
     Denzel Sears, \n   Lisa George, Daniel Hughes, \n   David Brosnan, Joshua Brookover,\n  
-    Eric Day, William Kelley, \n   Page Sparks, and Christine Byrd\n\nDesigned and
-    developed at Athens\nState University."
+    Eric Day, William Kelley, \n   Page Sparks, Christine Byrd,\n   Nicholas White
+    and Aaron Agee\n\nDesigned and developed at Athens\nState University."
 --- !u!222 &1483393500
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1159,8 +1167,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622038881}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -136, y: 148, z: -1}
-  m_LocalScale: {x: 66.09889, y: 79.211655, z: 1.00002}
+  m_LocalPosition: {x: -182, y: 112, z: -1}
+  m_LocalScale: {x: 48.053894, y: 60.834553, z: 1.00002}
   m_Children: []
   m_Father: {fileID: 1570964346}
   m_RootOrder: 6
@@ -1253,7 +1261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -331, y: -249.00003}
+  m_AnchoredPosition: {x: -328, y: -152}
   m_SizeDelta: {x: 75, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1626707404
@@ -1399,8 +1407,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711032218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -136, y: 145, z: -2}
-  m_LocalScale: {x: 65.27164, y: 74.11823, z: 6}
+  m_LocalPosition: {x: -185, y: 115, z: -2}
+  m_LocalScale: {x: 47.713566, y: 57.441628, z: 6}
   m_Children: []
   m_Father: {fileID: 1570964346}
   m_RootOrder: 5

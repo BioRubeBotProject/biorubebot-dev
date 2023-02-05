@@ -1,0 +1,583 @@
+{ "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
+,{ "pid":12345, "tid":0, "ts":1675135455510918, "dur":988, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455511913, "dur":70, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1675135455512016, "dur":15, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1675135455512032, "dur":529, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1675135455512590, "dur":514, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455513104, "dur":1, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615296, "dur":98, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615394, "dur":102, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615496, "dur":64, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615560, "dur":15, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615575, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615578, "dur":12, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615590, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615591, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615597, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615600, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615604, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615606, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615611, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615614, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615618, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615620, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615625, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615627, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615632, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615634, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615639, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615642, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615646, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615648, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615653, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615666, "dur":2, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455615685, "dur":1414, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1675135455512598, "dur":511, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455513110, "dur":5036, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455518155, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1675135455518162, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455519058, "dur":378, "ph":"X", "name": "WriteText",  "args": { "detail":"Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1675135455519440, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1675135455519488, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455519713, "dur":3104, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1675135455522819, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":1, "ts":1675135455522881, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455525229, "dur":2626, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":1, "ts":1675135455527906, "dur":529, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455528438, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455529688, "dur":2459, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455532201, "dur":869, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455533073, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455533079, "dur":2622, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455535745, "dur":600, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455536348, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455536353, "dur":4677, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455541079, "dur":522, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455541605, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455541613, "dur":2989, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455544655, "dur":1006, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455545665, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455545670, "dur":3184, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455548903, "dur":582, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455549488, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455549492, "dur":4135, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455553671, "dur":490, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455554163, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455554168, "dur":4011, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455558230, "dur":474, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455558707, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455558711, "dur":3252, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455562037, "dur":636, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455562676, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455562682, "dur":3803, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455566534, "dur":641, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455567178, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455567183, "dur":1898, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455569139, "dur":1450, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455570591, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455570599, "dur":3240, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455573887, "dur":1007, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Pathfinding.Ionic.Zip.Reduced.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455574897, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455574902, "dur":5546, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Pathfinding.Ionic.Zip.Reduced.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675135455580563, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets3.assets" }}
+,{ "pid":12345, "tid":1, "ts":1675135455580619, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455580623, "dur":2902, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets3.assets" }}
+,{ "pid":12345, "tid":1, "ts":1675135455583577, "dur":152, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":1, "ts":1675135455583731, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455583759, "dur":2764, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":1, "ts":1675135455586606, "dur":186, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level4" }}
+,{ "pid":12345, "tid":1, "ts":1675135455586794, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675135455586800, "dur":4854, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level4" }}
+,{ "pid":12345, "tid":1, "ts":1675135455591712, "dur":23591, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455512633, "dur":482, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455513115, "dur":5132, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455518247, "dur":194, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":2, "ts":1675135455518444, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455521194, "dur":1968, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":2, "ts":1675135455523360, "dur":120, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":2, "ts":1675135455523483, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455523488, "dur":2087, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":2, "ts":1675135455525622, "dur":107, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":2, "ts":1675135455525731, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455529044, "dur":7363, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":2, "ts":1675135455536458, "dur":765, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455537226, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455537230, "dur":1686, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455539021, "dur":427, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455539451, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455539455, "dur":4224, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455543727, "dur":563, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455544293, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455544299, "dur":2340, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455546682, "dur":574, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455547260, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455547264, "dur":3501, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455550812, "dur":1112, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455551927, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455551935, "dur":1767, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455553744, "dur":2826, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455556573, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455556577, "dur":5581, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455562208, "dur":512, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455562723, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455562728, "dur":4526, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455567304, "dur":850, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455568196, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455568206, "dur":1885, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455570139, "dur":4929, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455575072, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455575077, "dur":5327, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675135455580450, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets3.assets.resS" }}
+,{ "pid":12345, "tid":2, "ts":1675135455580514, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675135455580518, "dur":32473, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets3.assets.resS" }}
+,{ "pid":12345, "tid":2, "ts":1675135455613044, "dur":2255, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455512619, "dur":493, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455513112, "dur":5194, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455518307, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":3, "ts":1675135455518352, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455520338, "dur":2960, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":3, "ts":1675135455523371, "dur":839, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455524213, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455525558, "dur":3449, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455529056, "dur":1410, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455530469, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455531825, "dur":5139, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455537038, "dur":737, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455537778, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455537783, "dur":6413, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455544246, "dur":440, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455544689, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455544694, "dur":2906, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455547662, "dur":603, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455548268, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455548272, "dur":4450, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455552766, "dur":562, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455553330, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455553335, "dur":3154, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455556528, "dur":891, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455557429, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455557435, "dur":3545, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455561047, "dur":1174, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455562224, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455562228, "dur":2869, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455565152, "dur":456, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455565611, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455565617, "dur":3422, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455569119, "dur":1052, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455570173, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455570178, "dur":4904, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455575137, "dur":5813, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455580953, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455580958, "dur":5582, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675135455586740, "dur":131, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level2" }}
+,{ "pid":12345, "tid":3, "ts":1675135455586873, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675135455586878, "dur":4694, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level2" }}
+,{ "pid":12345, "tid":3, "ts":1675135455591625, "dur":23667, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675135455512654, "dur":464, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675135455513118, "dur":5126, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675135455518244, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":4, "ts":1675135455518298, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675135455520976, "dur":2161, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":4, "ts":1675135455523381, "dur":24215, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675135455547598, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675135455547601, "dur":23018, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675135455570672, "dur":3732, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675135455574407, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675135455574412, "dur":4863, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675135455579347, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets6.assets" }}
+,{ "pid":12345, "tid":4, "ts":1675135455579400, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675135455579404, "dur":2869, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets6.assets" }}
+,{ "pid":12345, "tid":4, "ts":1675135455582390, "dur":104, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":4, "ts":1675135455582496, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675135455582500, "dur":27617, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":4, "ts":1675135455610154, "dur":5159, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455512675, "dur":446, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455513121, "dur":5116, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455518238, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":5, "ts":1675135455518308, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455520279, "dur":2795, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":5, "ts":1675135455523117, "dur":168, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":5, "ts":1675135455523293, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455525480, "dur":1779, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":5, "ts":1675135455527306, "dur":467, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455527776, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455529849, "dur":4535, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455534436, "dur":423, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455534862, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455534867, "dur":1087, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455535998, "dur":997, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455536998, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455537003, "dur":3846, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455540897, "dur":706, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455541605, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455541613, "dur":3433, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455545090, "dur":383, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455545475, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455545480, "dur":2258, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455547862, "dur":1104, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455548969, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455548974, "dur":5573, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455555045, "dur":1230, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455556278, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455556283, "dur":5092, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455561439, "dur":494, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455561936, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455561942, "dur":2708, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455564708, "dur":366, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455565077, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455565082, "dur":3328, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455568464, "dur":1690, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455570156, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455570161, "dur":4020, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455574223, "dur":1269, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Pathfinding.Ionic.Zip.Reduced 2.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455575496, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455575501, "dur":2965, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Pathfinding.Ionic.Zip.Reduced 2.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675135455578514, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":5, "ts":1675135455578568, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455578651, "dur":2039, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":5, "ts":1675135455580744, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets2.resource" }}
+,{ "pid":12345, "tid":5, "ts":1675135455580794, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455580798, "dur":5287, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets2.resource" }}
+,{ "pid":12345, "tid":5, "ts":1675135455586156, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level5" }}
+,{ "pid":12345, "tid":5, "ts":1675135455586210, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675135455586216, "dur":5058, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level5" }}
+,{ "pid":12345, "tid":5, "ts":1675135455591333, "dur":23963, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455512702, "dur":423, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455513125, "dur":5093, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455518218, "dur":219, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":6, "ts":1675135455518440, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455520802, "dur":3460, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":6, "ts":1675135455524365, "dur":12916, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot.exe" }}
+,{ "pid":12345, "tid":6, "ts":1675135455537284, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455537288, "dur":5063, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot.exe" }}
+,{ "pid":12345, "tid":6, "ts":1675135455542389, "dur":541, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455542933, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455542938, "dur":3277, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455546264, "dur":517, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455546784, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455546789, "dur":4718, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455551563, "dur":1014, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455552580, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455552585, "dur":4397, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455557287, "dur":1296, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455558586, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455558593, "dur":3899, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455562546, "dur":582, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455563131, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455563137, "dur":4189, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455567387, "dur":2099, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455569489, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455569503, "dur":2793, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455572353, "dur":2182, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455574538, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455574544, "dur":3342, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455577938, "dur":848, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Assembly-CSharp-firstpass.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455578789, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455578793, "dur":2768, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Assembly-CSharp-firstpass.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675135455581614, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets2.assets" }}
+,{ "pid":12345, "tid":6, "ts":1675135455581686, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455581690, "dur":4125, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets2.assets" }}
+,{ "pid":12345, "tid":6, "ts":1675135455585871, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/resources.assets" }}
+,{ "pid":12345, "tid":6, "ts":1675135455585919, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455585923, "dur":2177, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/resources.assets" }}
+,{ "pid":12345, "tid":6, "ts":1675135455588220, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level0" }}
+,{ "pid":12345, "tid":6, "ts":1675135455588279, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675135455588286, "dur":3589, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level0" }}
+,{ "pid":12345, "tid":6, "ts":1675135455591918, "dur":23397, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455512731, "dur":398, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455513129, "dur":5041, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455518171, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":7, "ts":1675135455518235, "dur":4, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455520262, "dur":2404, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":7, "ts":1675135455522900, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":7, "ts":1675135455522948, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455523370, "dur":5258, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":7, "ts":1675135455528676, "dur":706, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455529385, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455529721, "dur":4064, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455533828, "dur":1339, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455535170, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455535175, "dur":2575, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455537799, "dur":1542, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455539343, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455539348, "dur":4457, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455543851, "dur":545, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455544399, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455544404, "dur":2650, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455547096, "dur":486, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455547585, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455547590, "dur":4237, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455551871, "dur":534, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455552408, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455552413, "dur":2857, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455555317, "dur":459, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455555779, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455555784, "dur":3545, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455559398, "dur":1114, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455560516, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455560524, "dur":3792, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455564364, "dur":377, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455564744, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455564748, "dur":2932, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455567739, "dur":1923, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455569688, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455569695, "dur":3455, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455573204, "dur":908, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455574144, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455574149, "dur":2952, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455577165, "dur":1039, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455578207, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455578213, "dur":2827, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675135455581089, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets2.assets.resS" }}
+,{ "pid":12345, "tid":7, "ts":1675135455581148, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675135455581152, "dur":34080, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets2.assets.resS" }}
+,{ "pid":12345, "tid":7, "ts":1675135455615264, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":7, "ts":1675135455615266, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455512755, "dur":378, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455513133, "dur":5031, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455518164, "dur":242, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":8, "ts":1675135455518409, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455520456, "dur":2661, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":8, "ts":1675135455523208, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":8, "ts":1675135455523269, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455525450, "dur":2571, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":8, "ts":1675135455528070, "dur":496, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455528568, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455529686, "dur":2052, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455531799, "dur":619, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455532421, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455532427, "dur":2731, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455535204, "dur":542, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455535749, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455535754, "dur":1414, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455537209, "dur":1944, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455539156, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455539161, "dur":3110, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455542317, "dur":562, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455542882, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455542888, "dur":2820, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455545749, "dur":809, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455546561, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455546616, "dur":4401, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455551061, "dur":1394, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455552458, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455552480, "dur":2260, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455554778, "dur":516, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455555297, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455555301, "dur":2331, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455557749, "dur":1220, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455558972, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455558977, "dur":2818, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455561861, "dur":1027, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455562891, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455562898, "dur":3795, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455566749, "dur":6090, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455572842, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455572848, "dur":4590, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455577505, "dur":1145, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455578653, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455578658, "dur":3106, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675135455581813, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets1.resource" }}
+,{ "pid":12345, "tid":8, "ts":1675135455581865, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455581869, "dur":3639, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets1.resource" }}
+,{ "pid":12345, "tid":8, "ts":1675135455585567, "dur":804, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":8, "ts":1675135455586374, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455586378, "dur":3504, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":8, "ts":1675135455589962, "dur":195, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/boot.config" }}
+,{ "pid":12345, "tid":8, "ts":1675135455590159, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675135455590165, "dur":3031, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/boot.config" }}
+,{ "pid":12345, "tid":8, "ts":1675135455593247, "dur":22057, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455512784, "dur":351, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455513135, "dur":5013, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455518155, "dur":77, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":9, "ts":1675135455518235, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455522415, "dur":1169, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":9, "ts":1675135455523628, "dur":1102, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":9, "ts":1675135455524733, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455524737, "dur":2078, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":9, "ts":1675135455526865, "dur":588, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455527456, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455529906, "dur":2905, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455532859, "dur":1049, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455533912, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455533917, "dur":2535, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455536499, "dur":821, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455537322, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455537326, "dur":1938, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455539307, "dur":975, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455540286, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455540292, "dur":3752, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455544154, "dur":490, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455544646, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455544651, "dur":2954, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455547651, "dur":477, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455548185, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455548190, "dur":7006, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455555257, "dur":747, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455556007, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455556013, "dur":5577, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455561642, "dur":1402, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455563047, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455563052, "dur":4422, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455567539, "dur":2141, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455569689, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455569696, "dur":3421, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455573180, "dur":684, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455573929, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455573934, "dur":3172, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455577181, "dur":1616, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/AstarPathfindingProject.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455578801, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455578806, "dur":3353, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/AstarPathfindingProject.dll" }}
+,{ "pid":12345, "tid":9, "ts":1675135455582230, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":9, "ts":1675135455582282, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455582287, "dur":4496, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":9, "ts":1675135455586886, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level1" }}
+,{ "pid":12345, "tid":9, "ts":1675135455586938, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1675135455586976, "dur":3362, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level1" }}
+,{ "pid":12345, "tid":9, "ts":1675135455590410, "dur":24884, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455512811, "dur":327, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455513138, "dur":5009, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455518155, "dur":372, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":10, "ts":1675135455518530, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455519941, "dur":3255, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":10, "ts":1675135455523323, "dur":194, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":10, "ts":1675135455523519, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455523524, "dur":3598, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":10, "ts":1675135455527197, "dur":395, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455527595, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455529746, "dur":4467, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455534372, "dur":934, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455535309, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455535335, "dur":2819, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455538196, "dur":1033, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455539232, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455539237, "dur":3183, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455542461, "dur":495, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455542958, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455543101, "dur":3547, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455546692, "dur":667, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455547362, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455547367, "dur":7628, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455555055, "dur":655, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455555716, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455555735, "dur":3659, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455559462, "dur":1219, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455560684, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455560688, "dur":3241, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455563979, "dur":360, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455564342, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455564348, "dur":4068, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455568469, "dur":652, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455569124, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455569130, "dur":1606, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455570794, "dur":631, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455571428, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455571433, "dur":2910, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455574420, "dur":1851, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455576273, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455576277, "dur":3645, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":10, "ts":1675135455579976, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets4.assets" }}
+,{ "pid":12345, "tid":10, "ts":1675135455580048, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455580052, "dur":3039, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets4.assets" }}
+,{ "pid":12345, "tid":10, "ts":1675135455583136, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":10, "ts":1675135455583182, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455583186, "dur":3411, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":10, "ts":1675135455586653, "dur":77, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level3" }}
+,{ "pid":12345, "tid":10, "ts":1675135455586733, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455586737, "dur":3123, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level3" }}
+,{ "pid":12345, "tid":10, "ts":1675135455589925, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":10, "ts":1675135455589979, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1675135455589983, "dur":3086, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":10, "ts":1675135455593127, "dur":22173, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455512833, "dur":307, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455513141, "dur":5276, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455518417, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":11, "ts":1675135455518471, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455521446, "dur":1862, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":11, "ts":1675135455523378, "dur":7574, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455530955, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455531103, "dur":15018, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455546176, "dur":1455, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455547633, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455547638, "dur":4978, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455552666, "dur":1017, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455553686, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455553691, "dur":3155, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455556903, "dur":554, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455557459, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455557463, "dur":3363, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455560879, "dur":588, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455561470, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455561500, "dur":3124, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455564682, "dur":798, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455565483, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455565486, "dur":2959, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455568498, "dur":1494, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455569996, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455570001, "dur":5010, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455575083, "dur":829, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455575936, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455575942, "dur":3518, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":11, "ts":1675135455579504, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets5.assets" }}
+,{ "pid":12345, "tid":11, "ts":1675135455579553, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455579557, "dur":2355, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets5.assets" }}
+,{ "pid":12345, "tid":11, "ts":1675135455581966, "dur":130, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets1.assets" }}
+,{ "pid":12345, "tid":11, "ts":1675135455582099, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455582103, "dur":3978, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets1.assets" }}
+,{ "pid":12345, "tid":11, "ts":1675135455586147, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level6" }}
+,{ "pid":12345, "tid":11, "ts":1675135455586204, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455586213, "dur":2637, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/level6" }}
+,{ "pid":12345, "tid":11, "ts":1675135455588950, "dur":68, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":11, "ts":1675135455589021, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1675135455589026, "dur":3844, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":11, "ts":1675135455592916, "dur":22389, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455512855, "dur":288, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455513143, "dur":5174, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455518319, "dur":182, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":12, "ts":1675135455518502, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455520258, "dur":2564, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":12, "ts":1675135455522868, "dur":164, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":12, "ts":1675135455523034, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455523373, "dur":5273, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":12, "ts":1675135455528704, "dur":763, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455529470, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455529874, "dur":4868, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455534836, "dur":1140, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455535979, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455535983, "dur":2372, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455538415, "dur":983, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455539401, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455539405, "dur":3076, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455542526, "dur":469, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455542997, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455543001, "dur":3520, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455546564, "dur":737, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455547304, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455547308, "dur":4322, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455551680, "dur":644, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455552327, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455552331, "dur":1790, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455554257, "dur":629, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455554889, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455554894, "dur":4550, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455559494, "dur":1555, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455561052, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455561057, "dur":4681, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455565810, "dur":340, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455566153, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455566158, "dur":2394, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455568613, "dur":1304, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455569920, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455569924, "dur":3384, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455573368, "dur":1086, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Pathfinding.JsonFx.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455574457, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455574462, "dur":3833, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/Managed/Pathfinding.JsonFx.dll" }}
+,{ "pid":12345, "tid":12, "ts":1675135455578356, "dur":218, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":12, "ts":1675135455578577, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455579187, "dur":2600, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":12, "ts":1675135455581849, "dur":70, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets1.assets.resS" }}
+,{ "pid":12345, "tid":12, "ts":1675135455581923, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1675135455581928, "dur":20008, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/gryzl/Desktop/test/BioRubeBot_Data/sharedassets1.assets.resS" }}
+,{ "pid":12345, "tid":12, "ts":1675135455601987, "dur":13314, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675135455618170, "dur":1637, "ph":"X", "name": "ProfilerWriteOutput" }
+,
