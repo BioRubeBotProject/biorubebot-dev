@@ -6,7 +6,7 @@ public class DisableScreen : MonoBehaviour
 {
     public Rigidbody test;
     static GameObject[] gratsPanel;
-   
+    public bool HidePopup = false;
     // Use this for initialization
 
     void Start()
@@ -32,22 +32,25 @@ public class DisableScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gratsPanel != null)
+        if (HidePopup == false)
         {
-            GameWon.Set_WinConditions();
-            //Set active congratulations to ative. Unity does not support activating so had to update
-            if (GameWon.IsWon() == true)
+            if (gratsPanel != null)
             {
-                foreach (GameObject obj2 in gratsPanel)
+                GameWon.Set_WinConditions();
+                //Set active congratulations to active. Unity does not support activating so had to update
+                if (GameWon.IsWon() == true)
                 {
-                    if (obj2 != null)
-                        obj2.SetActive(true);
+                    foreach (GameObject obj2 in gratsPanel)
+                    {
+                        if (obj2 != null)
+                            obj2.SetActive(true);
+                    }
                 }
             }
-        } else
-        {
-            gratsPanel = GameObject.FindGameObjectsWithTag("Congratulations");
+            else
+            {
+                gratsPanel = GameObject.FindGameObjectsWithTag("Congratulations");
+            }
         }
     }
-
 }
