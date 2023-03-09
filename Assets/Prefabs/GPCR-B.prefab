@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5195427890273802601}
   - component: {fileID: -5833480495888802603}
+  - component: {fileID: 2106243954347999306}
   m_Layer: 8
   m_Name: GPCR-B
   m_TagString: GPCR_B
@@ -27,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8818340537174518457}
   m_Father: {fileID: 0}
@@ -58,6 +60,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.9154303, y: 3.5082111}
   m_EdgeRadius: 0
+--- !u!210 &2106243954347999306
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659705790624057503}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &7149349326375398096
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,6 +98,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.85, y: 0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5195427890273802601}
   m_RootOrder: 0

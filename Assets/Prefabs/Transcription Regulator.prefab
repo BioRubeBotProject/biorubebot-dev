@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 496024}
   m_RootOrder: 0
@@ -110,6 +111,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 496024}
   m_RootOrder: 1
@@ -181,6 +183,7 @@ GameObject:
   - component: {fileID: 5866848}
   - component: {fileID: 11479298}
   - component: {fileID: 8284694}
+  - component: {fileID: -1929126030068148594}
   m_Layer: 0
   m_Name: Transcription Regulator
   m_TagString: T_Reg
@@ -198,6 +201,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.970293, y: -14.677553, z: 2}
   m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 403820}
   - {fileID: 408062}
@@ -393,3 +397,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!210 &-1929126030068148594
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164320}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0

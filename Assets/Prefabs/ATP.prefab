@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 431110}
   m_RootOrder: 0
@@ -57,6 +58,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451684}
   m_RootOrder: 1
@@ -140,6 +142,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: -0.6, z: -0.04}
   m_LocalScale: {x: 1, y: 1, z: 1.5}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 499166}
   - {fileID: 449834}
@@ -189,6 +192,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 488310}
   m_RootOrder: 1
@@ -259,6 +263,7 @@ GameObject:
   - component: {fileID: 5071214}
   - component: {fileID: 5882228}
   - component: {fileID: 8275988}
+  - component: {fileID: -3943287957354890196}
   m_Layer: 2
   m_Name: ATP
   m_TagString: ATP
@@ -276,6 +281,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.49, y: 12.6, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 424368}
   - {fileID: 426692}
@@ -458,6 +464,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!210 &-3943287957354890196
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155230}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &169170
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +502,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 431110}
   m_RootOrder: 1
@@ -568,6 +586,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 411070}
   m_RootOrder: 1
@@ -651,6 +670,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 411070}
   m_RootOrder: 0
@@ -734,6 +754,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451684}
   m_RootOrder: 0
@@ -817,6 +838,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 431110}
   m_RootOrder: 2
@@ -899,6 +921,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: -1, z: -0.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 462712}
   - {fileID: 428048}
@@ -932,6 +955,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 488310}
   m_RootOrder: 0
@@ -1014,6 +1038,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: -1.4, z: -0.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 416342}
   - {fileID: 441020}

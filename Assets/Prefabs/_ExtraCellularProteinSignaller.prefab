@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 5873878}
   - component: {fileID: 11452416}
   - component: {fileID: 8238892}
-  m_Layer: 0
+  - component: {fileID: -1238870142971481558}
+  m_Layer: 30
   m_Name: _ExtraCellularProteinSignaller
   m_TagString: ECP
   m_Icon: {fileID: 0}
@@ -33,6 +34,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20, y: 40.4, z: 0.6}
   m_LocalScale: {x: 1.35, y: 1.35, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 403210}
   - {fileID: 403212}
@@ -287,6 +289,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!210 &-1238870142971481558
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103208}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &103210
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 403210}
   - component: {fileID: 21203210}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Extracellular Signal Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,6 +327,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 403208}
   m_RootOrder: 0
@@ -380,7 +394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 403212}
   - component: {fileID: 21203212}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Extracellular Signal Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,6 +411,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 403208}
   m_RootOrder: 1
@@ -462,7 +477,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 483176}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,6 +494,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 403208}
   m_RootOrder: 2

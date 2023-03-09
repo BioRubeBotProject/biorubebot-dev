@@ -128,3 +128,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: AllUI
+    uniqueID: 3676116195
+    locked: 0
