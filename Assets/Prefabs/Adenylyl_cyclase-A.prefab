@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8467445766373058741}
   - component: {fileID: -3527004585939902781}
   - component: {fileID: 5250069080498913557}
+  - component: {fileID: 2576848038335528163}
   m_Layer: 0
   m_Name: Adenylyl_cyclase-A
   m_TagString: AdenylylCyclase
@@ -31,6 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6697245904224831512}
   m_Father: {fileID: 0}
@@ -206,6 +208,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!210 &2576848038335528163
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117861752728446461}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &8217955620868266643
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +247,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.1881, y: -0.6948, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 905086429251455228}
   m_RootOrder: 0

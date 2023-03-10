@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3890077229968498156}
   - component: {fileID: 4150380350900046918}
   - component: {fileID: 282544000345999333}
+  - component: {fileID: 5021880891625229526}
   m_Layer: 0
   m_Name: PKA-B
   m_TagString: Kinase_Phase_2
@@ -30,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1535305713055915979}
   m_Father: {fileID: 0}
@@ -136,6 +138,17 @@ PolygonCollider2D:
       - {x: 1.9241459, y: 0.28822064}
       - {x: 1.7920587, y: 0.83417857}
       - {x: 1.0635061, y: 1.058682}
+--- !u!210 &5021880891625229526
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6516999325490774323}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &6686465311299277970
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,6 +177,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.92, y: -0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4388956790229215717}
   m_RootOrder: 0

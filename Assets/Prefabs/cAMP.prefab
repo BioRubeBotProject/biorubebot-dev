@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.020000055, y: -0.030000009, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7665343153298190263}
   m_RootOrder: 0
@@ -98,6 +99,7 @@ GameObject:
   - component: {fileID: -5253610027394219407}
   - component: {fileID: -1659180171056394799}
   - component: {fileID: 2377786956645287788}
+  - component: {fileID: 906573333679714079}
   m_Layer: 2
   m_Name: cAMP
   m_TagString: Untagged
@@ -115,6 +117,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4903821672597701867}
   - {fileID: 6812968547838451788}
@@ -304,6 +307,17 @@ CircleCollider2D:
   m_Offset: {x: 0.01398952, y: -0.02808714}
   serializedVersion: 2
   m_Radius: 0.3398492
+--- !u!210 &906573333679714079
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247027091866179102}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &6771518074736963463
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +345,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.02, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7665343153298190263}
   m_RootOrder: 1
