@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - ECP
+  - ExternalReceptor
+  - ReceptorLeg
+  - ATP
+  - GDP
+  - GTP
+  - Left
+  - T_Reg
+  - Kinase
+  - Target
+  - Targeting
+  - G_Protein
+  - DockedGTP
+  - FreeG_Protein
+  - DockedG_Protein
+  - OccupiedReceptor
+  - OccupiedG_Protein
+  - ReceptorPhosphate
+  - Cell1
+  - Cell2
+  - Cell3
+  - Cell4
+  - Cell5
+  - Cell6
+  - InfoBtn
+  - PlayBtn
+  - Kinase_Phase_2
+  - ReleasedGDP
+  - DyingGDP
+  - CellMembrane
+  - CellMembraneButton
+  - Kinase_Prep_A
+  - Kinase_Prep_B
+  - Kinase_Prep_C
+  - T_Reg_Prep_A
+  - T_Reg_Prep_B
+  - ATP_tracking
+  - T_RegPhosphate
+  - T_Reg_With_Phosphate
+  - Canvas
+  - T_Reg_To_Nucleus
+  - T_Reg_Complete
+  - T_Reg_To_NPC
+  - NPC
+  - volume_slider
+  - Congratulations
+  - RightReceptor
+  - LeftReceptor
+  - LeftReceptorWithProtein
+  - Win_FullReceptorActivated
+  - Win_GProteinFreed
+  - Win_TranscriptionFactorCompleted
+  - Win_TFactorEntersNPC
+  - Condition_Met
+  - Win_T_Reg_Complete
+  - Win_ReceptorCompleted
+  - Win_ReceptorSitesOpen
+  - Rules_Message
+  - Win_ReceptorPhosphorylation
+  - Win_DockedGTP
+  - Win_KinaseTransformation
+  - Win_Kinase_TReg_dock
+  - Win_ReleasedGDP
+  - PlayButton
+  - PauseButton
+  - FastForwardButton
+  - Win_ReceptorsCollideWithProtein
+  - Win_LeftReceptorWithProtein
+  - Drop_Down_Button
+  - GPCR
+  - Win_GPCR_Activated
+  - Win_TGP_Bound_to_GPCR
+  - GPCR_B
+  - tGProteinDock
+  - AdenylylCyclase
+  - Alpha
+  - Win_GTP_Binds_to_Alpha
+  - Win_Alpha_Binds_to_Cyclase
+  - Win_Alpha_Rejoins_GProtein
+  - PKA
+  - inactivePKA
+  - Win_PKA_Separates
+  - ReleasedGTP
+  - Win_TR_Enters_Nucleus
+  - PkaDoc1
+  - PkaDoc2
+  - DockedGDP
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Cell Wall
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Congratulations Menu
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: AllUI
+    uniqueID: 3676116195
+    locked: 0
